@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kmad-model SYSTEM "file:KMADModelJT.dtd">
+<kmad-model version="1.3">
+    <project classkmad="project.Project" id-project-information="K2" idkmad="K1">
+        <projectinformation classkmad="project.GeneralInformation" idkmad="K2">
+            <projectinformation-compagny>ProjetTIS</projectinformation-compagny>
+        </projectinformation>
+    </project>
+    <task classkmad="tache.Task" id-task-point="K3" id-task-subtasks-list="K10 K7 " idkmad="K4">
+        <task-name>Imprimer un registre médical</task-name>
+        <task-numero>Racine   </task-numero>
+        <task-observation/>
+        <task-executant>INT</task-executant>
+        <task-modality>COGN</task-modality>
+        <task-optional>false</task-optional>
+        <task-interruptible>false</task-interruptible>
+        <task-decomposition>SEQ</task-decomposition>
+        <task-precondition>true</task-precondition>
+        <task-effetsdebord>void</task-effetsdebord>
+        <task-iteration>[1]</task-iteration>
+        <task-descriptioniteration>Autant de fois que l'on veut</task-descriptioniteration>
+        <point classkmad="tache.Point" idkmad="K3">
+            <point-x>204</point-x>
+            <point-y>44</point-y>
+        </point>
+        <task classkmad="tache.Task" id-task-point="K9" id-task-subtasks-list="K16 " idkmad="K10">
+            <task-name>Se connecter</task-name>
+            <task-numero>1</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K9">
+                <point-x>117</point-x>
+                <point-y>200</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K15" idkmad="K16">
+                <task-name>Ouvrir le logiciel selon le statut de connexion</task-name>
+                <task-numero>1.1</task-numero>
+                <task-observation/>
+                <task-executant>SYS</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K15">
+                    <point-x>17</point-x>
+                    <point-y>425</point-y>
+                </point>
+            </task>
+        </task>
+        <task classkmad="tache.Task" id-task-point="K6" id-task-subtasks-list="K13 " idkmad="K7">
+            <task-name>Afficher un registre médical</task-name>
+            <task-numero>2</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K6">
+                <point-x>345</point-x>
+                <point-y>200</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K12" id-task-subtasks-list="K19 " idkmad="K13">
+                <task-name>Choix des critères</task-name>
+                <task-numero>2.1</task-numero>
+                <task-observation/>
+                <task-executant>INT</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>ENT</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K12">
+                    <point-x>386</point-x>
+                    <point-y>405</point-y>
+                </point>
+                <task classkmad="tache.Task" id-task-point="K18" idkmad="K19">
+                    <task-name>Affichage du registre médical</task-name>
+                    <task-numero>2.1.1</task-numero>
+                    <task-observation/>
+                    <task-executant>SYS</task-executant>
+                    <task-modality>COGN</task-modality>
+                    <task-optional>false</task-optional>
+                    <task-interruptible>false</task-interruptible>
+                    <task-decomposition>LEAF</task-decomposition>
+                    <task-precondition>true</task-precondition>
+                    <task-effetsdebord>void</task-effetsdebord>
+                    <task-iteration>[1]</task-iteration>
+                    <point classkmad="tache.Point" idkmad="K18">
+                        <point-x>344</point-x>
+                        <point-y>603</point-y>
+                    </point>
+                </task>
+            </task>
+        </task>
+    </task>
+    <task classkmad="tache.Task" id-task-point="K21" id-task-subtasks-list="K25 K29 K41 " idkmad="K22">
+        <task-name>Ajouter une fiche de soins</task-name>
+        <task-numero>Racine   </task-numero>
+        <task-observation/>
+        <task-executant>INT</task-executant>
+        <task-modality>COGN</task-modality>
+        <task-optional>false</task-optional>
+        <task-interruptible>false</task-interruptible>
+        <task-decomposition>SEQ</task-decomposition>
+        <task-precondition>true</task-precondition>
+        <task-effetsdebord>void</task-effetsdebord>
+        <task-iteration>[1]</task-iteration>
+        <task-descriptioniteration>Fiche de soins</task-descriptioniteration>
+        <point classkmad="tache.Point" idkmad="K21">
+            <point-x>886</point-x>
+            <point-y>44</point-y>
+        </point>
+        <task classkmad="tache.Task" id-task-point="K24" id-task-subtasks-list="K27 " idkmad="K25">
+            <task-name>Se connecter</task-name>
+            <task-numero>1</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K24">
+                <point-x>663</point-x>
+                <point-y>200</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K26" idkmad="K27">
+                <task-name>Ouvrir le logiciel selon le statut de connexion</task-name>
+                <task-numero>1.1</task-numero>
+                <task-observation/>
+                <task-executant>SYS</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K26">
+                    <point-x>565</point-x>
+                    <point-y>513</point-y>
+                </point>
+            </task>
+        </task>
+        <task classkmad="tache.Task" id-task-point="K28" id-task-subtasks-list="K32 K38 " idkmad="K29">
+            <task-name>Créer la fiche de soins</task-name>
+            <task-numero>2</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>LEAF</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K28">
+                <point-x>963</point-x>
+                <point-y>200</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K31" idkmad="K32">
+                <task-name>Renseigner les informations</task-name>
+                <task-numero>2.1</task-numero>
+                <task-observation/>
+                <task-executant>INT</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K31">
+                    <point-x>932</point-x>
+                    <point-y>513</point-y>
+                </point>
+            </task>
+            <task classkmad="tache.Task" id-task-point="K37" idkmad="K38">
+                <task-name>Valider l'ajout</task-name>
+                <task-numero>2.2</task-numero>
+                <task-observation/>
+                <task-executant>INT</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K37">
+                    <point-x>1186</point-x>
+                    <point-y>513</point-y>
+                </point>
+            </task>
+        </task>
+        <task classkmad="tache.Task" id-task-point="K40" idkmad="K41">
+            <task-name>Ajout de la fiche de soins dans la base de données</task-name>
+            <task-numero>3</task-numero>
+            <task-observation/>
+            <task-executant>SYS</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>LEAF</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K40">
+                <point-x>1217</point-x>
+                <point-y>200</point-y>
+            </point>
+        </task>
+    </task>
+    <task classkmad="tache.Task" id-task-point="K43" id-task-subtasks-list="K50 K54 " idkmad="K44">
+        <task-name>Afficher un registre médical</task-name>
+        <task-numero>Racine   </task-numero>
+        <task-observation/>
+        <task-executant>INT</task-executant>
+        <task-modality>COGN</task-modality>
+        <task-optional>false</task-optional>
+        <task-interruptible>false</task-interruptible>
+        <task-decomposition>SEQ</task-decomposition>
+        <task-precondition>true</task-precondition>
+        <task-effetsdebord>void</task-effetsdebord>
+        <task-iteration>[1]</task-iteration>
+        <task-descriptioniteration>Registre médical</task-descriptioniteration>
+        <point classkmad="tache.Point" idkmad="K43">
+            <point-x>358</point-x>
+            <point-y>780</point-y>
+        </point>
+        <task classkmad="tache.Task" id-task-point="K49" id-task-subtasks-list="K52 " idkmad="K50">
+            <task-name>Se connecter</task-name>
+            <task-numero>1</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K49">
+                <point-x>239</point-x>
+                <point-y>952</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K51" idkmad="K52">
+                <task-name>Ouvrir le logiciel selon le statut de connexion</task-name>
+                <task-numero>1.1</task-numero>
+                <task-observation/>
+                <task-executant>SYS</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K51">
+                    <point-x>137</point-x>
+                    <point-y>1120</point-y>
+                </point>
+            </task>
+        </task>
+        <task classkmad="tache.Task" id-task-point="K53" id-task-subtasks-list="K56 " idkmad="K54">
+            <task-name>Choix des critères</task-name>
+            <task-numero>2</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K53">
+                <point-x>504</point-x>
+                <point-y>952</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K55" idkmad="K56">
+                <task-name>Affichage du registre médical</task-name>
+                <task-numero>2.1</task-numero>
+                <task-observation/>
+                <task-executant>SYS</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K55">
+                    <point-x>492</point-x>
+                    <point-y>1120</point-y>
+                </point>
+            </task>
+        </task>
+    </task>
+    <task classkmad="tache.Task" id-task-point="K76" id-task-subtasks-list="K61 K58 " idkmad="K77">
+        <task-name>Imprimer l'affichage d'un coût</task-name>
+        <task-numero>Racine   </task-numero>
+        <task-observation/>
+        <task-executant>INT</task-executant>
+        <task-modality>COGN</task-modality>
+        <task-optional>false</task-optional>
+        <task-interruptible>false</task-interruptible>
+        <task-decomposition>SEQ</task-decomposition>
+        <task-precondition>true</task-precondition>
+        <task-effetsdebord>void</task-effetsdebord>
+        <task-iteration>[1]</task-iteration>
+        <task-descriptioniteration>Imprimer</task-descriptioniteration>
+        <point classkmad="tache.Point" idkmad="K76">
+            <point-x>1136</point-x>
+            <point-y>757</point-y>
+        </point>
+        <task classkmad="tache.Task" id-task-point="K60" id-task-subtasks-list="K63 " idkmad="K61">
+            <task-name>Se connecter</task-name>
+            <task-numero>1</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <point classkmad="tache.Point" idkmad="K60">
+                <point-x>979</point-x>
+                <point-y>952</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K62" idkmad="K63">
+                <task-name>Ouvrir le logiciel selon le statut de connexion</task-name>
+                <task-numero>1.1</task-numero>
+                <task-observation/>
+                <task-executant>SYS</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>LEAF</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K62">
+                    <point-x>892</point-x>
+                    <point-y>1148</point-y>
+                </point>
+            </task>
+        </task>
+        <task classkmad="tache.Task" id-task-point="K57" id-task-subtasks-list="K65 " idkmad="K58">
+            <task-name>Calculer et afficher un coût</task-name>
+            <task-numero>2</task-numero>
+            <task-observation/>
+            <task-executant>INT</task-executant>
+            <task-modality>COGN</task-modality>
+            <task-optional>false</task-optional>
+            <task-interruptible>false</task-interruptible>
+            <task-decomposition>ENT</task-decomposition>
+            <task-precondition>true</task-precondition>
+            <task-effetsdebord>void</task-effetsdebord>
+            <task-iteration>[1]</task-iteration>
+            <task-descriptioniteration>Coût</task-descriptioniteration>
+            <point classkmad="tache.Point" idkmad="K57">
+                <point-x>1348</point-x>
+                <point-y>952</point-y>
+            </point>
+            <task classkmad="tache.Task" id-task-point="K64" id-task-subtasks-list="K68 K71 " idkmad="K65">
+                <task-name>Choisir le type de coût</task-name>
+                <task-numero>2.1</task-numero>
+                <task-observation/>
+                <task-executant>INT</task-executant>
+                <task-modality>COGN</task-modality>
+                <task-optional>false</task-optional>
+                <task-interruptible>false</task-interruptible>
+                <task-decomposition>SEQ</task-decomposition>
+                <task-precondition>true</task-precondition>
+                <task-effetsdebord>void</task-effetsdebord>
+                <task-iteration>[1]</task-iteration>
+                <point classkmad="tache.Point" idkmad="K64">
+                    <point-x>1347</point-x>
+                    <point-y>1120</point-y>
+                </point>
+                <task classkmad="tache.Task" id-task-point="K67" idkmad="K68">
+                    <task-name>Calculer le coût</task-name>
+                    <task-numero>2.1.1</task-numero>
+                    <task-observation/>
+                    <task-executant>SYS</task-executant>
+                    <task-modality>COGN</task-modality>
+                    <task-optional>false</task-optional>
+                    <task-interruptible>false</task-interruptible>
+                    <task-decomposition>LEAF</task-decomposition>
+                    <task-precondition>true</task-precondition>
+                    <task-effetsdebord>void</task-effetsdebord>
+                    <task-iteration>[1]</task-iteration>
+                    <point classkmad="tache.Point" idkmad="K67">
+                        <point-x>1253</point-x>
+                        <point-y>1330</point-y>
+                    </point>
+                </task>
+                <task classkmad="tache.Task" id-task-point="K70" idkmad="K71">
+                    <task-name>Afficher le coût</task-name>
+                    <task-numero>2.1.2</task-numero>
+                    <task-observation/>
+                    <task-executant>SYS</task-executant>
+                    <task-modality>COGN</task-modality>
+                    <task-optional>false</task-optional>
+                    <task-interruptible>false</task-interruptible>
+                    <task-decomposition>LEAF</task-decomposition>
+                    <task-precondition>true</task-precondition>
+                    <task-effetsdebord>void</task-effetsdebord>
+                    <task-iteration>[1]</task-iteration>
+                    <point classkmad="tache.Point" idkmad="K70">
+                        <point-x>1452</point-x>
+                        <point-y>1330</point-y>
+                    </point>
+                </task>
+            </task>
+        </task>
+    </task>
+    <task classkmad="tache.Task" id-task-point="K79" idkmad="K80">
+        <task-name>Ajouter un patient</task-name>
+        <task-numero>Racine   </task-numero>
+        <task-observation/>
+        <task-executant>INT</task-executant>
+        <task-modality>COGN</task-modality>
+        <task-optional>false</task-optional>
+        <task-interruptible>false</task-interruptible>
+        <task-decomposition>LEAF</task-decomposition>
+        <task-precondition>true</task-precondition>
+        <task-effetsdebord>void</task-effetsdebord>
+        <task-iteration>[1]</task-iteration>
+        <point classkmad="tache.Point" idkmad="K79">
+            <point-x>400</point-x>
+            <point-y>1330</point-y>
+        </point>
+    </task>
+</kmad-model>
