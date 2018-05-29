@@ -133,5 +133,11 @@ class DossierMedical {
             copieFiches.remove(imin);
         }
     }
+    
+    
+    //ajout méthode getListe utilisée dans DossierPatient
+    public List<FicheDeSoins> getListe(){
+        return fiches;
+    }
 }
 
