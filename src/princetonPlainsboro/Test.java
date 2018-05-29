@@ -45,7 +45,7 @@ class Test {
         InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
         f.setMinimumSize(new Dimension(700,700));
                
-
+        InterfaceAdministration I = new InterfaceAdministration();
 
     }
 }
