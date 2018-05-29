@@ -112,7 +112,7 @@ class DossierMedical {
     }
 
     // tri generique :
-    public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le paramètre, le paramètre sera comparaisonfichecout/date
+    public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le parametre, le parametre sera comparaisonfichecout/date
         Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
 
         while (!copieFiches.isEmpty()) {
