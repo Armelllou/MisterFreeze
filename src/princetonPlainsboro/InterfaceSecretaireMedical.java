@@ -14,12 +14,12 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
     private JPanel menuderoulant = new JPanel();
     private JPanel affichage = new JPanel();
     private JPanel mainPanel = new JPanel();
+    private JButton fichierMedical;
 
     public InterfaceSecretaireMedical() {
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
         mainPanel.setLayout(new BorderLayout());
-
         mainPanel.add(menuderoulant, BorderLayout.WEST);
         mainPanel.add(affichage, BorderLayout.EAST);
 
@@ -62,9 +62,17 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         haut.add(registreMedecin, BorderLayout.CENTER);
 
         //fichierMedical
-        JButton fichierMedical = new JButton("Fichier Medical");
+        fichierMedical = new JButton("Fichier Medical");
         fichierMedical.setFont(police);
         haut.add(fichierMedical, BorderLayout.CENTER);
+        fichierMedical.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               DossierMedical doc1 = new DossierMedical();
+                System.out.println("error");
+                //dispose();
+            }
+        });
+
 
         //acteMedical
         JButton actemedical = new JButton("Acte Medical");
