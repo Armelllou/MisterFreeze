@@ -15,7 +15,7 @@ class Test {
         System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
 
         System.out.println("\n********\n");
-
+        
         String spe = "Cardiologue";
         System.out.println("> cout de la specialite '" + spe + "' : " + dm.coutSpecialite(spe));
 
