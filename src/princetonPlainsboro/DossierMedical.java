@@ -31,7 +31,7 @@ class DossierMedical {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
-            if (p.equals(f.getPatient())) {
+            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier médical d'un patient et d'afficher toutes les fiches
                 cout += f.coutTotal();
             }
         }
@@ -112,7 +112,7 @@ class DossierMedical {
     }
 
     // tri generique :
-    public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le paramètre, le paramètre sera comparaisonfichecout/date
+    public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le parametre, le parametre sera comparaisonfichecout/date
         Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
 
         while (!copieFiches.isEmpty()) {
