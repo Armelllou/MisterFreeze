@@ -8,6 +8,7 @@
 
 package princetonPlainsboro;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.FileInputStream;
@@ -49,7 +50,7 @@ public class LectureXML {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream("src/donnees/dossiers.xml");
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 

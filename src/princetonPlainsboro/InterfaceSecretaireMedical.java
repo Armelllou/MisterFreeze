@@ -49,7 +49,7 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         //menuderoulant.setMaximumSize(new Dimension());
         JPanel haut = new JPanel();
         JPanel bas = new JPanel();
-        haut.setLayout(new GridLayout(2, 1));
+        haut.setLayout(new GridLayout(4, 1));
 
         //JLabel 
         JButton registrePatient = new JButton("Registre Patient");
@@ -59,19 +59,34 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         
         JButton deconnexion = new JButton("Deconnexion");
         deconnexion.setFont(police);
+        JButton registreMedecin = new JButton("Registre Medecin");
+        registreMedecin.setFont(police);
+
         registrePatient.setPreferredSize(new Dimension(230, 50));
+        JButton fichierMedical = new JButton("Fichier Medical");
+        fichierMedical.setFont(police);
+
+        JButton actemedical = new JButton("Acte Medical");
+        actemedical.setFont(police);
 
         menuderoulant.add(haut, BorderLayout.NORTH);
         menuderoulant.add(bas, BorderLayout.SOUTH);
 
-        haut.add(registrePatient, BorderLayout.CENTER);
-        haut.add(deconnexion, BorderLayout.CENTER);
 
+        haut.add(registrePatient, BorderLayout.CENTER);
+        bas.add(deconnexion, BorderLayout.CENTER);
+        haut.add(registreMedecin, BorderLayout.CENTER);
+        haut.add(fichierMedical, BorderLayout.CENTER);
+        haut.add(actemedical, BorderLayout.CENTER);
+
+        
     }
 
     public void setCenterPanel(JPanel affichage) {
         affichage.setLayout(new BorderLayout());
         affichage.setMaximumSize(new Dimension(600, 700));
+
+
 
     }
 
