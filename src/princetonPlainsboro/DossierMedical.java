@@ -16,7 +16,7 @@ class DossierMedical {
         fiches.add(fiche);
     }
 
-    public void afficher() {
+    public void afficher() { //affiche toutes les fiches de la liste
         System.out.println("Dossier medical informatise :");
         System.out.println("-----------------------------");
         for (int i = 0; i < fiches.size(); i++) {
