@@ -47,8 +47,8 @@ public class InterfaceAdministration extends JFrame implements ComponentListener
                 JPanel bas = new JPanel();
                 haut.setLayout(new GridLayout(2, 1));
                 
-                JButton accesPatient = new JButton ("AccèsPatient");
-                JButton deconnexionSecretaire = new JButton ("Déconnexion");
+                JButton accesPatient = new JButton ("AccesPatient");
+                JButton deconnexionSecretaire = new JButton ("Deconnexion");
                 accesPatient.setPreferredSize(new Dimension(250,80));
                 
                 menuSecretaire.add(haut,BorderLayout.NORTH);
