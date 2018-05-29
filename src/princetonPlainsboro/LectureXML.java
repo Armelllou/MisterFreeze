@@ -150,7 +150,7 @@ public class LectureXML {
         if (code.equals("PRO"))
             return Code.PRO;
         // probleme : code inconnu 
-        //on peut coder mieux que ça le code inconnu donne null
+        //on peut coder mieux que ca le code inconnu donne null
         return null;            
     }
 }
