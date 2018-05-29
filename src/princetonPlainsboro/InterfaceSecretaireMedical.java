@@ -5,17 +5,9 @@
  */
 package princetonPlainsboro;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class InterfaceSecretaireMedical extends JFrame implements ComponentListener {
 
@@ -46,46 +38,53 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
 
     public void setLeftPanel(JPanel menuderoulant) {
         menuderoulant.setLayout(new BorderLayout());
-        //menuderoulant.setMaximumSize(new Dimension());
         JPanel haut = new JPanel();
         JPanel bas = new JPanel();
         haut.setLayout(new GridLayout(4, 1));
-
-        //JLabel 
-        JButton registrePatient = new JButton("Registre Patient");
-        Font police = new Font("Tahoma", Font.BOLD, 16);
-
-        registrePatient.setFont(police);
-        
-        JButton deconnexion = new JButton("Deconnexion");
-        deconnexion.setFont(police);
-        JButton registreMedecin = new JButton("Registre Medecin");
-        registreMedecin.setFont(police);
-
-        registrePatient.setPreferredSize(new Dimension(230, 50));
-        JButton fichierMedical = new JButton("Fichier Medical");
-        fichierMedical.setFont(police);
-
-        JButton actemedical = new JButton("Acte Medical");
-        actemedical.setFont(police);
-
         menuderoulant.add(haut, BorderLayout.NORTH);
         menuderoulant.add(bas, BorderLayout.SOUTH);
 
-
+        //RegitrePatient
+        JButton registrePatient = new JButton("Registre Patient");
+        Font police = new Font("Tahoma", Font.BOLD, 16);
+        registrePatient.setFont(police);
+        registrePatient.setPreferredSize(new Dimension(230, 50));
         haut.add(registrePatient, BorderLayout.CENTER);
+
+        //Deconnexion
+        JButton deconnexion = new JButton("Deconnexion");
+        deconnexion.setFont(police);
         bas.add(deconnexion, BorderLayout.CENTER);
+
+        //registreMedecin
+        JButton registreMedecin = new JButton("Registre Medecin");
+        registreMedecin.setFont(police);
         haut.add(registreMedecin, BorderLayout.CENTER);
+
+        //fichierMedical
+        JButton fichierMedical = new JButton("Fichier Medical");
+        fichierMedical.setFont(police);
         haut.add(fichierMedical, BorderLayout.CENTER);
+
+        //acteMedical
+        JButton actemedical = new JButton("Acte Medical");
+        actemedical.setFont(police);
         haut.add(actemedical, BorderLayout.CENTER);
 
-        
+
+        deconnexion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                    Deconnexion deco1 = new Deconnexion();
+                    deco1.setMinimumSize(new Dimension (700, 700));
+                    dispose();
+                }
+        });
     }
+
 
     public void setCenterPanel(JPanel affichage) {
         affichage.setLayout(new BorderLayout());
         affichage.setMaximumSize(new Dimension(600, 700));
-
 
 
     }
