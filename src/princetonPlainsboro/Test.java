@@ -1,5 +1,7 @@
 package princetonPlainsboro;
 
+import java.awt.Dimension;
+
 class Test {
 
     public static void main(String[] args) {
@@ -20,7 +22,7 @@ class Test {
         System.out.println("\n********\n");
 
         Medecin m1 = new Medecin("Deblouze", "Agathe", "Cardiologue");
-        dm.afficherListePatients(m1); //affiche les patients du médecins
+        dm.afficherListePatients(m1); //affiche les patients du mï¿½decins
 
         System.out.println("\n********\n");
 
@@ -39,6 +41,10 @@ class Test {
         System.out.println();
         System.out.println("Dossier trie selon les couts :");  //trie fiches selon les couts
         dm.trier(new ComparaisonFichesCouts());
+        
+        InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
+        f.setMinimumSize(new Dimension(700,700));
+               
 
 
     }
