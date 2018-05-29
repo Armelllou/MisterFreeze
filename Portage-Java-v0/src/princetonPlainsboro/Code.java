@@ -7,7 +7,7 @@ package princetonPlainsboro;
 // de caracteres "forfait pediatrique" et un attribut 'cout' ayant la valeur 5.0
 
 enum Code {
-    // valeurs de l'enum :
+    // valeurs de l'�num :
     CS("consultation au cabinet", 23.0),
     CSC("consultation cardiologie", 45.73),
     FP("forfait pediatrique", 5.0),
@@ -19,7 +19,7 @@ enum Code {
     ORT("orthodontie", 2.15),
     PRO("prothese dentaire", 2.15);
                              
-    // attributs de l'enum :
+    // attributs de l'�num :
     private String libelle;
     private double cout;
     
@@ -29,7 +29,7 @@ enum Code {
         this.cout = cout;
         }
     
-    // methodes :
+    // m�thodes :
     public String toString() {
         return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
         }
