@@ -25,7 +25,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        haut.setLayout(new GridLayout(5, 1));
+        haut.setLayout(new GridLayout(6, 1));
         //bas.setLayout(new BorderLayout());
         menuderoulant.add(haut, BorderLayout.CENTER);
         menuderoulant.add(bas, BorderLayout.SOUTH);
@@ -37,20 +37,39 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistreMedecin.setBackground(Color.red);
         JPanel panelRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
+        JPanel panelActe = new JPanel();
+        JPanel panelFicheSoin = new JPanel();
 
         //cree bouton
         JToggleButton actemedical = new JToggleButton("Acte Medical");
         haut.add(actemedical, BorderLayout.CENTER);
+        Font police = new Font("Tahoma", Font.BOLD, 16);
+        actemedical.setFont(police);
+        actemedical.setPreferredSize(new Dimension(230, 50));
+
         JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
         haut.add(fichierMedical, BorderLayout.CENTER);
+        fichierMedical.setFont(police);
+        fichierMedical.setPreferredSize(new Dimension(230, 50));
+
         JToggleButton ficheSoin = new JToggleButton("Crée une fiche de soin");
         haut.add(ficheSoin, BorderLayout.CENTER);
-        JToggleButton registrePa = new JToggleButton("Registre Patient");
-        haut.add(panelRegistrePatient, BorderLayout.CENTER);
-        JToggleButton registreMe = new JToggleButton("Registre Medecin");
-        haut.add(panelRegistreMedecin, BorderLayout.CENTER);
+        ficheSoin.setFont(police);
+        ficheSoin.setPreferredSize(new Dimension(230, 50));
+
+        JToggleButton registrePatient = new JToggleButton("Registre Patient");
+        haut.add(registrePatient, BorderLayout.CENTER);
+        registrePatient.setFont(police);
+        registrePatient.setPreferredSize(new Dimension(230, 50));
+
+        JToggleButton registreMedecin = new JToggleButton("Registre Medecin");
+        haut.add(registreMedecin, BorderLayout.CENTER);
+        registreMedecin.setFont(police);
+        registreMedecin.setPreferredSize(new Dimension(230, 50));
+
         JToggleButton deconnexion = new JToggleButton("Deconnecter");
         haut.add(deconnexion, BorderLayout.CENTER);
+        deconnexion.setFont(police);
 
         panelRegistreM.setLayout(new BorderLayout());
 
@@ -61,6 +80,15 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistreM.add(dossierMed, BorderLayout.CENTER);
         dossierMed.setVisible(false);
 
+        //titre registre Medical
+        JLabel registreM = new JLabel("Registre Medical");
+        panelRegistreM.add(registreM, BorderLayout.NORTH);
+        registreM.setVisible(false);
+        Font police1 = new Font("Tahoma", Font.BOLD, 20);
+        registreM.setFont(police1);
+        registreM.setHorizontalAlignment(JLabel.CENTER);
+        registreM.setVerticalAlignment(JLabel.CENTER);
+
         //Définition de l'action du bouton fichierMedical
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -68,10 +96,24 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 cl.show(affichage, listContent[2]);
                 if (fichierMedical.isSelected()) {
                     dossierMed.setVisible(true);
-                    //registreM.setVisible(true);
+                    registreM.setVisible(true);
                 } else {
                     dossierMed.setVisible(false);
-                    //registreM.setVisible(false);
+                    registreM.setVisible(false);
+                }
+
+            }
+        });
+
+        //Definition de l'action du bouton registrePatient
+        registrePatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+                cl.show(affichage, listContent[1]);
+                if (registrePatient.isSelected()) {
+
+                } else {
+
                 }
 
             }
@@ -90,17 +132,15 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         });
 
 
-
-
         //On définit le layout
         affichage.setLayout(cl);
 
-//On ajoute les cartes à la pile avec un nom pour les retrouver
-
+        //On ajoute les cartes à la pile avec un nom pour les retrouver
         affichage.add(panelRegistrePatient, listContent[0]);
         affichage.add(panelRegistreMedecin, listContent[1]);
         affichage.add(panelRegistreM, listContent[2]);
-        //affichage.add(ficheSoin, listContent[3]);
+        affichage.add(panelFicheSoin, listContent[3]);
+        affichage.add(panelActe, listContent[4]);
         affichage.add(panelDeconnexion, listContent[5]);
 
 
@@ -110,8 +150,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
     }
 
-    public void setpanelDeconnexion(JPanel panelDeconnexion){
-
+    public void setpanelDeconnexion(JPanel panelDeconnexion) {
         JLabel deco;
         JButton retourAccueil;
 
@@ -134,7 +173,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         this.pack();
         this.setVisible(true);
 
-        //retour page accueil
+        //retour page accueil --> marche pas
         retourAccueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Acceuil accu1 = new Acceuil();
