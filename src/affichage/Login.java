@@ -6,6 +6,7 @@
 package affichage;
 
 
+import princetonPlainsboro.InterfaceSecretaireAdministratif;
 import princetonPlainsboro.InterfaceSecretaireMedical;
 
 import javax.swing.*;
@@ -238,7 +239,7 @@ public class Login extends javax.swing.JFrame {
 
             //Acceuil acceuil = new Acceuil();
             //acceuil.setVisible(true);
-            InterfaceSecretaireMedical ism = new InterfaceSecretaireMedical();
+            InterfaceSecretaireAdministratif ism = new InterfaceSecretaireAdministratif();
             ism.setMinimumSize(new Dimension(700, 700));
             this.dispose();
         } else {

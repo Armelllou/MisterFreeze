@@ -33,7 +33,7 @@ class Test {
         System.out.println("\n********\n");
 
         Medecin m1 = new Medecin("Deblouze", "Agathe", "Cardiologue");
-        dm.afficherListePatients(m1); //affiche les patients du m�decins
+        dm.afficherListePatients(m1); //affiche les patients du medecins
 
         System.out.println("\n********\n");
 
