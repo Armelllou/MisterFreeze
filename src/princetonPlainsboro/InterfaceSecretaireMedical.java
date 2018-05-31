@@ -9,9 +9,11 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+import java.nio.ByteOrder;
 
 public class InterfaceSecretaireMedical extends JFrame implements ComponentListener {
 
+    private CardLayout cardl;
     private JPanel menuderoulant = new JPanel();
     private JPanel affichage = new JPanel();
     private JPanel mainPanel = new JPanel();
@@ -24,10 +26,13 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
     private JButton actemedical;
     private JButton ficheSoin;
     private JTextArea dossierMed;
+    private JLabel registreM;
 
     public InterfaceSecretaireMedical() {
-        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        cardl = new CardLayout();
 
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        //mainPanel.setLayout(cardl);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(menuderoulant, BorderLayout.WEST);
         mainPanel.add(affichage, BorderLayout.CENTER);
@@ -36,6 +41,8 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
 
         setLeftPanel(menuderoulant);
         setCenterPanel(affichage);
+        setButtonFichierMedical(affichage);
+        //setButtonRegistreMedecin(affichage);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
@@ -76,7 +83,6 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         haut.add(fichierMedical, BorderLayout.CENTER);
 
 
-
         //bouton fiche de soin
         ficheSoin = new JButton("Créer une fiche de soin");
         ficheSoin.setFont(police);
@@ -100,31 +106,48 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
 
     }
 
+    //public void setButtonRegistreMedecin (JPanel affichage){}
 
-    public void setCenterPanel(JPanel affichage) {
+
+    public void setButtonFichierMedical (JPanel affichage){
         affichage.setLayout(new BorderLayout());
-        affichage.setMaximumSize(new Dimension(600, 700));
-
-         LectureXML test = new LectureXML("dossiers.xml");
-         DossierMedical dm1 = test.getDossier();
+        //recupère Les fiches de soins du XML
+        LectureXML test = new LectureXML("dossiers.xml");
+        DossierMedical dm1 = test.getDossier();
         dossierMed = new JTextArea(dm1.toStringDM());
         affichage.add(dossierMed, BorderLayout.CENTER);
         dossierMed.setVisible(false);
+
+
+        //titre registre Medical
+        registreM = new JLabel("Registre Medical");
+        affichage.add(registreM, BorderLayout.NORTH);
+        registreM.setVisible(false);
+        Font police = new Font("Tahoma", Font.BOLD, 18);
+        registreM.setFont(police);
+        registreM.setHorizontalAlignment(JLabel.CENTER);
+        registreM.setVerticalAlignment(JLabel.CENTER);
 
         //ouvrir page fichier medical
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (fichierMedical.isSelected()) {
                     dossierMed.setVisible(true);
+                    registreM.setVisible(true);
                 } else {
                     dossierMed.setVisible(false);
+                    registreM.setVisible(false);
                 }
 
 
             }
         });
+    }
 
-        //page
+    public void setCenterPanel(JPanel affichage) {
+        affichage.setLayout(new BorderLayout());
+
+        //accès page deconnexion
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Deconnexion deco1 = new Deconnexion();
