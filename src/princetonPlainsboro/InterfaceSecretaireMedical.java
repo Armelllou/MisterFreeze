@@ -6,6 +6,7 @@
 package princetonPlainsboro;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -14,14 +15,22 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
     private JPanel menuderoulant = new JPanel();
     private JPanel affichage = new JPanel();
     private JPanel mainPanel = new JPanel();
-    private JButton fichierMedical;
+    private JToggleButton fichierMedical;
+    private JPanel haut;
+    private JPanel bas;
+    private JButton registrePatient;
+    private JButton deconnexion;
+    private JButton registreMedecin;
+    private JButton actemedical;
+    private JButton ficheSoin;
+    private JTextArea dossierMed;
 
     public InterfaceSecretaireMedical() {
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(menuderoulant, BorderLayout.WEST);
-        mainPanel.add(affichage, BorderLayout.EAST);
+        mainPanel.add(affichage, BorderLayout.CENTER);
 
         this.add(mainPanel);
 
@@ -38,48 +47,48 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
 
     public void setLeftPanel(JPanel menuderoulant) {
         menuderoulant.setLayout(new BorderLayout());
-        JPanel haut = new JPanel();
-        JPanel bas = new JPanel();
-        haut.setLayout(new GridLayout(4, 1));
+        haut = new JPanel();
+        bas = new JPanel();
+        haut.setLayout(new GridLayout(5, 1));
         menuderoulant.add(haut, BorderLayout.NORTH);
         menuderoulant.add(bas, BorderLayout.SOUTH);
 
         //RegitrePatient
-        JButton registrePatient = new JButton("Registre Patient");
+        registrePatient = new JButton("Registre Patient");
         Font police = new Font("Tahoma", Font.BOLD, 16);
         registrePatient.setFont(police);
         registrePatient.setPreferredSize(new Dimension(230, 50));
         haut.add(registrePatient, BorderLayout.CENTER);
 
         //Deconnexion
-        JButton deconnexion = new JButton("Deconnexion");
+        deconnexion = new JButton("Deconnexion");
         deconnexion.setFont(police);
         bas.add(deconnexion, BorderLayout.CENTER);
 
         //registreMedecin
-        JButton registreMedecin = new JButton("Registre Medecin");
+        registreMedecin = new JButton("Registre Medecin");
         registreMedecin.setFont(police);
         haut.add(registreMedecin, BorderLayout.CENTER);
 
         //fichierMedical
-        fichierMedical = new JButton("Fichier Medical");
+        fichierMedical = new JToggleButton("Fichier Medical");
         fichierMedical.setFont(police);
         haut.add(fichierMedical, BorderLayout.CENTER);
-        fichierMedical.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               DossierMedical doc1 = new DossierMedical();
-                System.out.println("error");
-                //dispose();
-            }
-        });
+
+
+
+        //bouton fiche de soin
+        ficheSoin = new JButton("Créer une fiche de soin");
+        ficheSoin.setFont(police);
+        haut.add(ficheSoin, BorderLayout.CENTER);
 
 
         //acteMedical
-        JButton actemedical = new JButton("Acte Medical");
+        actemedical = new JButton("Acte Medical");
         actemedical.setFont(police);
         haut.add(actemedical, BorderLayout.CENTER);
 
-
+        //page deconnexion
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                     Deconnexion deco1 = new Deconnexion();
@@ -87,6 +96,8 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
                     dispose();
                 }
         });
+
+
     }
 
 
@@ -94,6 +105,33 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         affichage.setLayout(new BorderLayout());
         affichage.setMaximumSize(new Dimension(600, 700));
 
+         LectureXML test = new LectureXML("dossiers.xml");
+         DossierMedical dm1 = test.getDossier();
+        dossierMed = new JTextArea(dm1.toStringDM());
+        affichage.add(dossierMed, BorderLayout.CENTER);
+        dossierMed.setVisible(false);
+
+        //ouvrir page fichier medical
+        fichierMedical.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (fichierMedical.isSelected()) {
+                    dossierMed.setVisible(true);
+                } else {
+                    dossierMed.setVisible(false);
+                }
+
+
+            }
+        });
+
+        //page
+        deconnexion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Deconnexion deco1 = new Deconnexion();
+                deco1.setMinimumSize(new Dimension (700, 700));
+                dispose();
+            }
+        });
 
     }
 

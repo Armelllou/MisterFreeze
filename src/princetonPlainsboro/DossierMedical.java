@@ -16,6 +16,16 @@ class DossierMedical {
         fiches.add(fiche);
     }
 
+    public String toStringDM() {
+        String t = "Dossier medical informatise :" + "\n" + "-----------------------------" + "\n";
+        for (int i = 0; i < fiches.size(); i++) {
+            FicheDeSoins f = fiches.get(i);
+            t += f.toStringFiche();
+            t += "\n";
+        }
+        return t;
+    }
+
     public void afficher() { //affiche toutes les fiches de la liste
         System.out.println("Dossier medical informatise :");
         System.out.println("-----------------------------");
@@ -31,7 +41,7 @@ class DossierMedical {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
-            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier médical d'un patient et d'afficher toutes les fiches
+            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier mï¿½dical d'un patient et d'afficher toutes les fiches
                 cout += f.coutTotal();
             }
         }
@@ -133,10 +143,10 @@ class DossierMedical {
             copieFiches.remove(imin);
         }
     }
-    
-    
-    //ajout méthode getListe utilisée dans DossierPatient
-    public List<FicheDeSoins> getListe(){
+
+
+    //ajout mï¿½thode getListe utilisï¿½e dans DossierPatient
+    public List<FicheDeSoins> getListe() {
         return fiches;
     }
 }

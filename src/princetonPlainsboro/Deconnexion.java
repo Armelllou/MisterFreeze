@@ -1,7 +1,11 @@
 package princetonPlainsboro;
 
+import affichage.Acceuil;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Deconnexion extends JFrame {
 
@@ -18,7 +22,7 @@ public class Deconnexion extends JFrame {
         deco.setVerticalAlignment(JLabel.CENTER);
 
         //Button accueil
-        retourAccueil= new JButton("Accueil");
+        retourAccueil = new JButton("Accueil");
         pageDeco.setLayout(new GridLayout(2, 1));
         pageDeco.add(deco, BorderLayout.NORTH);
         pageDeco.add(retourAccueil, BorderLayout.CENTER);
@@ -29,6 +33,15 @@ public class Deconnexion extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
         this.setVisible(true);
+
+        //retour page accueil
+        retourAccueil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Acceuil accu1 = new Acceuil();
+                accu1.setMinimumSize(new Dimension(700, 700));
+
+            }
+        });
     }
 
 

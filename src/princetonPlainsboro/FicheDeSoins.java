@@ -27,7 +27,19 @@ class FicheDeSoins {
         Acte acte = new Acte(code, coefficient);
         actes.add(acte);
         }
-    
+
+    public String toStringFiche(){
+        String t = "Fiche de soins du " + date.toString() + "\n";
+        t+="- medecin : " + medecin.toString() + "\n";
+        t+="- patient : " + patient.toString() + "\n";
+        t+="- actes medicaux :" + "\n";
+        for (int i=0; i<actes.size(); i++) {
+            Acte a = actes.get(i);
+            t+="    > " + a.toString()+"\n";;
+        }
+        return t;
+    }
+
     public void afficher() {
         System.out.println("Fiche de soins du " + date.toString());
         System.out.println("- medecin : " + medecin.toString());
