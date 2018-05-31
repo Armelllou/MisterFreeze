@@ -3,29 +3,25 @@ package princetonPlainsboro;
 import affichage.Acceuil;
 
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 public class InterfaceSecretaireAdministratif extends JFrame {
-    CardLayout cl = new CardLayout();
-    JPanel affichage = new JPanel();
-
+    JLabel picLabel;
+    private CardLayout cl = new CardLayout();
+    private JPanel affichage = new JPanel();
     //Liste des noms de nos conteneurs pour la supperposition des JPanels
-    String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
-
+    private String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
     private JPanel menuderoulant = new JPanel();
     private JPanel haut = new JPanel();
     private JPanel bas = new JPanel();
     private JTextArea dossierMed;
     //JLabel image ;//= new JLabel( new ImageIcon( "princetonPlainsboro/images.png"));
     private BufferedImage image;
-    JLabel picLabel;
 
 
     public InterfaceSecretaireAdministratif() {
@@ -56,7 +52,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         actemedical.setFont(police);
         actemedical.setPreferredSize(new Dimension(230, 50));
 
-        JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
+        final JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
         haut.add(fichierMedical, BorderLayout.CENTER);
         fichierMedical.setFont(police);
         fichierMedical.setPreferredSize(new Dimension(230, 50));
@@ -66,7 +62,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         ficheSoin.setFont(police);
         ficheSoin.setPreferredSize(new Dimension(230, 50));
 
-        JToggleButton registrePatient = new JToggleButton("Registre Patient");
+        final JToggleButton registrePatient = new JToggleButton("Registre Patient");
         haut.add(registrePatient, BorderLayout.CENTER);
         registrePatient.setFont(police);
         registrePatient.setPreferredSize(new Dimension(230, 50));
@@ -86,7 +82,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //JLabel image = new JLabel( new ImageIcon( "princetonPlainsboro/images.png"));
 
 
-
         panelRegistreM.setLayout(new BorderLayout());
 
         //recupère Les fiches de soins du XML
@@ -97,7 +92,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         dossierMed.setVisible(false);
 
         //titre registre Medical
-        JLabel registreM = new JLabel("Registre Medical");
+        final JLabel registreM = new JLabel("Registre Medical");
         panelRegistreM.add(registreM, BorderLayout.NORTH);
         registreM.setVisible(false);
         Font police1 = new Font("Tahoma", Font.BOLD, 20);
@@ -117,7 +112,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     dossierMed.setVisible(false);
                     registreM.setVisible(false);
                 }
-
             }
         });
 

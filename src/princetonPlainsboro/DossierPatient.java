@@ -6,6 +6,8 @@
 package princetonPlainsboro;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -31,7 +33,7 @@ public class DossierPatient {
         this.p = p;
         this.adresse = adresse;
         this.numeroSecu = numeroSecu;
-        this.fichesDuPatient = new ArrayList<>();
+        this.fichesDuPatient = new ArrayList<FicheDeSoins>();
     }
 
     public void ajoutFiche(FicheDeSoins fiche) {
@@ -39,16 +41,32 @@ public class DossierPatient {
     }
 
     public void trierParDates(Date d1, Date d2) {
-        List<FicheDeSoins> ficheTrier = new ArrayList<>(fichesDuPatient);
-        ficheTrier.removeIf(fiche -> fiche.getDate().compareTo(d1) < 0 || fiche.getDate().compareTo(d2) > 0);
-        ficheTrier.sort((f1, f2) -> f1.getDate().compareTo(f2.getDate()));
-        ficheTrier.forEach(fiche -> System.out.println(fiche));
+        List<FicheDeSoins> ficheTrier = new ArrayList<FicheDeSoins>(fichesDuPatient);
+        for (FicheDeSoins fiche : fichesDuPatient) {
+            if (fiche.getDate().compareTo(d1) < 0 || fiche.getDate().compareTo(d2) > 0) {
+                ficheTrier.remove(fiche);
+            }
+        }
+        Collections.sort(ficheTrier, new Comparator<FicheDeSoins>() {
+            public int compare(FicheDeSoins f1, FicheDeSoins f2) {
+                return f1.getDate().compareTo(f2.getDate());
+            }
+        });
+        for (FicheDeSoins fiche : ficheTrier) {
+            System.out.println(fiche);
+        }
     }
 
     public void afficherParCout() {
-        List<FicheDeSoins> triParCout = new ArrayList<>(fichesDuPatient);
-        triParCout.sort((f1, f2) -> Double.compare(f1.coutTotal(), f2.coutTotal()));
-        triParCout.forEach(fiche -> System.out.println(fiche));
+        List<FicheDeSoins> triParCout = new ArrayList<FicheDeSoins>(fichesDuPatient);
+        Collections.sort(triParCout, new Comparator<FicheDeSoins>() {
+            public int compare(FicheDeSoins f1, FicheDeSoins f2) {
+                return Double.compare(f1.coutTotal(), f2.coutTotal());
+            }
+        });
+        for (FicheDeSoins fiche : triParCout) {
+            System.out.println(fiche);
+        }
     }
 
     public void afficherListeMedecins(Patient p) {
