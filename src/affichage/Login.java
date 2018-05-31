@@ -6,7 +6,10 @@
 package affichage;
 
 
+import princetonPlainsboro.InterfaceSecretaireMedical;
+
 import javax.swing.*;
+import java.awt.*;
 
 
 public class Login extends javax.swing.JFrame {
@@ -232,8 +235,10 @@ public class Login extends javax.swing.JFrame {
             textFieldMdp.setText(null);
             System.out.println("Connection");
 
-            Acceuil acceuil = new Acceuil();
-            acceuil.setVisible(true);
+            //Acceuil acceuil = new Acceuil();
+            //acceuil.setVisible(true);
+            InterfaceSecretaireMedical ism = new InterfaceSecretaireMedical();
+            ism.setMinimumSize(new Dimension(700, 700));
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);

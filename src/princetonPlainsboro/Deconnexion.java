@@ -23,7 +23,7 @@ public class Deconnexion extends JFrame {
         pageDeco.add(deco, BorderLayout.NORTH);
         pageDeco.add(retourAccueil, BorderLayout.CENTER);
         this.add(pageDeco);
-        retourAccueil.setMaximumSize(new Dimension(50, 50));
+        retourAccueil.setMaximumSize(new Dimension(20, 50));
 
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
