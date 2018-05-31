@@ -31,7 +31,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
 
         haut.setLayout(new GridLayout(9, 1));
-        //bas.setLayout(new BorderLayout());
+        bas.setLayout(new BorderLayout());
         menuderoulant.add(haut, BorderLayout.CENTER);
         menuderoulant.add(bas, BorderLayout.SOUTH);
 
@@ -195,17 +195,12 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
     public void ImagePanel() {
         try {
-            File myPicture = new File("image.jpg");
-            //picLabel = new JLabel(new ImageIcon("princetonPlainsboro/images.png"));
-//picLabel.setVisible(true);
-            BufferedImage image = ImageIO.read(myPicture);
-            System.out.println(image.getHeight());
-            System.out.println(image.getHeight());
-
+            picLabel = new JLabel(new ImageIcon("src/princetonPlainsboro/images.png"));
+            picLabel.setVisible(true);
         } catch (Exception ex) {
             System.out.println("error in image");
         }
-        //haut.add(picLabel);
+        bas.add(picLabel);
     }
 
 }
