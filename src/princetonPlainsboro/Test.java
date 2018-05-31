@@ -52,5 +52,21 @@ class Test {
         System.out.println();
         System.out.println("Dossier trie selon les couts :");  //trie fiches selon les couts
         dm.trier(new ComparaisonFichesCouts());
+
+        DossierPatient dp = new DossierPatient(p1,"16 rue de la chapelle" , 2970499);
+
+        Patient p2 = new Patient("Bole", "Maggy");
+        Date d3 = new Date(5, 1, 2007);
+        FicheDeSoins fiche1 = new FicheDeSoins (p1,m1,d1);
+        FicheDeSoins fiche3 = new FicheDeSoins (p1,m1,d2);
+        FicheDeSoins fiche2 = new FicheDeSoins (p1,m1,d3);
+        dp.ajoutFiche(fiche1);
+        dp.ajoutFiche(fiche2);
+        dp.ajoutFiche(fiche3);
+        dp.afficherListeMedecins(p1);
+        dp.afficherParCout(); //affiche pas acte médical
+        dp.trierParDates(d1, d2);
+        dp.trierParDates(d1, d2);
+
     }
 }
