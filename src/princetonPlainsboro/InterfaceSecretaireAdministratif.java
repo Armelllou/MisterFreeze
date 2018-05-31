@@ -1,82 +1,149 @@
 package princetonPlainsboro;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
+import affichage.Acceuil;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class InterfaceSecretaireAdministratif extends JFrame {
     CardLayout cl = new CardLayout();
-    JPanel content = new JPanel();
-    //Liste des noms de nos conteneurs pour la pile de cartes
+    JPanel affichage = new JPanel();
 
-    String[] listContent = {"CARD_1", "CARD_2", "CARD_3"};
-    int indice = 0;
+    //Liste des noms de nos conteneurs pour la supperposition des JPanels
+    String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
+
+    private JPanel menuderoulant = new JPanel();
+    private JPanel haut = new JPanel();
+    private JPanel bas = new JPanel();
+    private JTextArea dossierMed;
+
 
     public InterfaceSecretaireAdministratif() {
-        this.setTitle("CardLayout");
-        this.setSize(300, 120);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(500, 300);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        //On crée trois conteneurs de couleur différente
+        haut.setLayout(new GridLayout(5, 1));
+        //bas.setLayout(new BorderLayout());
+        menuderoulant.add(haut, BorderLayout.CENTER);
+        menuderoulant.add(bas, BorderLayout.SOUTH);
 
-        JPanel card1 = new JPanel();
-        card1.setBackground(Color.pink);
-        JPanel card2 = new JPanel();
-        card2.setBackground(Color.red);
-        JPanel card3 = new JPanel();
-        card3.setBackground(Color.green);
+        //On cree trois conteneurs de couleurs differentes
+        JPanel panelRegistrePatient = new JPanel();
+        panelRegistrePatient.setBackground(Color.pink);
+        JPanel panelRegistreMedecin = new JPanel();
+        panelRegistreMedecin.setBackground(Color.red);
+        JPanel panelRegistreM = new JPanel();
+        JPanel panelDeconnexion = new JPanel();
 
+        //cree bouton
+        JToggleButton actemedical = new JToggleButton("Acte Medical");
+        haut.add(actemedical, BorderLayout.CENTER);
+        JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
+        haut.add(fichierMedical, BorderLayout.CENTER);
+        JToggleButton ficheSoin = new JToggleButton("Crée une fiche de soin");
+        haut.add(ficheSoin, BorderLayout.CENTER);
+        JToggleButton registrePa = new JToggleButton("Registre Patient");
+        haut.add(panelRegistrePatient, BorderLayout.CENTER);
+        JToggleButton registreMe = new JToggleButton("Registre Medecin");
+        haut.add(panelRegistreMedecin, BorderLayout.CENTER);
+        JToggleButton deconnexion = new JToggleButton("Deconnecter");
+        haut.add(deconnexion, BorderLayout.CENTER);
 
-        JPanel boutonPane = new JPanel();
-        JButton bouton = new JButton("Contenu suivant");
+        panelRegistreM.setLayout(new BorderLayout());
 
-        //Définition de l'action du bouton
+        //recupère Les fiches de soins du XML
+        LectureXML test = new LectureXML("dossiers.xml");
+        DossierMedical dm1 = test.getDossier();
+        dossierMed = new JTextArea(dm1.toStringDM());
+        panelRegistreM.add(dossierMed, BorderLayout.CENTER);
+        dossierMed.setVisible(false);
 
-        bouton.addActionListener(new ActionListener() {
-
+        //Définition de l'action du bouton fichierMedical
+        fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.next(content);
+                cl.show(affichage, listContent[2]);
+                if (fichierMedical.isSelected()) {
+                    dossierMed.setVisible(true);
+                    //registreM.setVisible(true);
+                } else {
+                    dossierMed.setVisible(false);
+                    //registreM.setVisible(false);
+                }
 
             }
-
         });
 
 
-        JButton bouton2 = new JButton("Contenu par indice");
-
-        //Définition de l'action du bouton2
-        bouton2.addActionListener(new ActionListener() {
+        //Définition de l'action du Deconnexion
+        deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                if (++indice > 2)
-                    indice = 0;
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(content, listContent[indice]);
+                cl.show(affichage, listContent[5]);
+                Deconnexion deco1 = new Deconnexion();
+                deco1.setMinimumSize(new Dimension(700, 700));
+                dispose();
             }
         });
 
 
-        boutonPane.add(bouton);
-        boutonPane.add(bouton2);
+
 
         //On définit le layout
-        content.setLayout(cl);
+        affichage.setLayout(cl);
 
-        //On ajoute les cartes à la pile avec un nom pour les retrouver
-        content.add(card1, listContent[0]);
-        content.add(card2, listContent[1]);
-        content.add(card3, listContent[2]);
-        this.getContentPane().add(boutonPane, BorderLayout.NORTH);
-        this.getContentPane().add(content, BorderLayout.CENTER);
+//On ajoute les cartes à la pile avec un nom pour les retrouver
+
+        affichage.add(panelRegistrePatient, listContent[0]);
+        affichage.add(panelRegistreMedecin, listContent[1]);
+        affichage.add(panelRegistreM, listContent[2]);
+        //affichage.add(ficheSoin, listContent[3]);
+        affichage.add(panelDeconnexion, listContent[5]);
+
+
+        this.getContentPane().add(menuderoulant, BorderLayout.WEST);
+        this.getContentPane().add(affichage, BorderLayout.CENTER);
         this.setVisible(true);
 
     }
 
+    public void setpanelDeconnexion(JPanel panelDeconnexion){
+
+        JLabel deco;
+        JButton retourAccueil;
+
+        deco = new JLabel("Vous êtes deconnecté");
+        Font police = new Font("Tahoma", Font.BOLD, 30);
+        deco.setFont(police);
+        deco.setHorizontalAlignment(JLabel.CENTER);
+        deco.setVerticalAlignment(JLabel.CENTER);
+
+        //Button accueil
+        retourAccueil = new JButton("Accueil");
+        panelDeconnexion.setLayout(new GridLayout(2, 1));
+        panelDeconnexion.add(deco, BorderLayout.NORTH);
+        panelDeconnexion.add(retourAccueil, BorderLayout.CENTER);
+        this.add(panelDeconnexion);
+        retourAccueil.setMaximumSize(new Dimension(20, 50));
+
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.pack();
+        this.setVisible(true);
+
+        //retour page accueil
+        retourAccueil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Acceuil accu1 = new Acceuil();
+                accu1.setMinimumSize(new Dimension(700, 700));
+
+            }
+        });
+    }
+
 }
+
 
