@@ -25,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField textFieldId;
     private javax.swing.JPasswordField textFieldMdp;
+
     public Login() {
         initComponents();
     }

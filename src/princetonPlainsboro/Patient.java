@@ -8,19 +8,18 @@ class Patient {
         this.nom = nom;
         this.prenom = prenom;
 
-        }
-    
+    }
+
     public String toString() {
         return prenom + " " + nom;
-        }
-    
+    }
+
     public boolean equals(Object o) {
         if (o instanceof Patient) {
-            Patient p = (Patient)o;
+            Patient p = (Patient) o;
             return nom.equals(p.nom) && prenom.equals(p.prenom);
-            }
-        else
+        } else
             return false;
-        }    
     }
+}
 

@@ -18,24 +18,24 @@ enum Code {
     KFB("forfait B", 60.98),
     ORT("orthodontie", 2.15),
     PRO("prothese dentaire", 2.15);
-                             
+
     // attributs de l'enum :
     private String libelle;
     private double cout;
-    
+
     // constructeur :
-    private Code(String libelle, double cout) {
+    Code(String libelle, double cout) {
         this.libelle = libelle;
         this.cout = cout;
-        }
-    
+    }
+
     // methodes :
     public String toString() {
         return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
-        }
-    
+    }
+
     // calcule le prix pour un coefficient donne :
     public double calculerCout(int coefficient) {
         return coefficient * cout;
-        }
     }
+}

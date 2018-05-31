@@ -1,11 +1,22 @@
 package princetonPlainsboro;
 
-import java.awt.Dimension;
+import java.awt.*;
 
 class Test {
 
     public static void main(String[] args) {
+        afficherDossiersConsole();
+
+        InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
+        f.setMinimumSize(new Dimension(700, 700));
+
+        // InterfaceAdministration I = new InterfaceAdministration();
+    }
+
+    private static void afficherDossiersConsole() {
         LectureXML test = new LectureXML("dossiers.xml");
+
+
         DossierMedical dm = test.getDossier();
         dm.afficher();
 
@@ -15,7 +26,7 @@ class Test {
         System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
 
         System.out.println("\n********\n");
-        
+
         String spe = "Cardiologue";
         System.out.println("> cout de la specialite '" + spe + "' : " + dm.coutSpecialite(spe));
 
@@ -41,11 +52,5 @@ class Test {
         System.out.println();
         System.out.println("Dossier trie selon les couts :");  //trie fiches selon les couts
         dm.trier(new ComparaisonFichesCouts());
-        
-        InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
-        f.setMinimumSize(new Dimension(700,700));
-               
-        // InterfaceAdministration I = new InterfaceAdministration();
-
     }
 }

@@ -6,10 +6,11 @@
 package princetonPlainsboro;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.*;
-import java.nio.ByteOrder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 public class InterfaceSecretaireMedical extends JFrame implements ComponentListener {
 
@@ -97,10 +98,10 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         //page deconnexion
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                    Deconnexion deco1 = new Deconnexion();
-                    deco1.setMinimumSize(new Dimension (700, 700));
-                    dispose();
-                }
+                Deconnexion deco1 = new Deconnexion();
+                deco1.setMinimumSize(new Dimension(700, 700));
+                dispose();
+            }
         });
 
 
@@ -109,7 +110,7 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
     //public void setButtonRegistreMedecin (JPanel affichage){}
 
 
-    public void setButtonFichierMedical (JPanel affichage){
+    public void setButtonFichierMedical(JPanel affichage) {
         affichage.setLayout(new BorderLayout());
         //recupère Les fiches de soins du XML
         LectureXML test = new LectureXML("dossiers.xml");
@@ -151,7 +152,7 @@ public class InterfaceSecretaireMedical extends JFrame implements ComponentListe
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Deconnexion deco1 = new Deconnexion();
-                deco1.setMinimumSize(new Dimension (700, 700));
+                deco1.setMinimumSize(new Dimension(700, 700));
                 dispose();
             }
         });
