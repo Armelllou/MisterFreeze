@@ -36,16 +36,17 @@ class FicheDeSoins {
         actes.add(acte);
     }
 
-    public String toStringFiche() {
+    @Override
+    public String toString() {
         String t = "Fiche de soins du " + date.toString() + "\n";
         t += "- medecin : " + medecin.toString() + "\n";
         t += "- patient : " + patient.toString() + "\n";
-        t += "- actes medicaux :" + "\n";
+        t += "- actes medicaux : " + "\n";
         for (int i = 0; i < actes.size(); i++) {
             Acte a = actes.get(i);
             t += "    > " + a.toString() + "\n";
-            ;
         }
+        t += "- cout total : " + coutTotal() + "\n";
         return t;
     }
 

@@ -23,6 +23,15 @@ class Date implements Comparable {
             return false;
     }
 
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + annee;
+        result = 31 * result + mois;
+        result = 31 * result + jour;
+        return result;
+    }
+
     // precondition : 'o' est une instance de 'Date' :
     public int compareTo(Object o) {
         Date d = (Date) o;

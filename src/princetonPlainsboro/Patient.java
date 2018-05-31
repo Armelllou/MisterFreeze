@@ -21,5 +21,13 @@ class Patient {
         } else
             return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + nom.hashCode();
+        result = 31 * result + prenom.hashCode();
+        return result;
+    }
 }
 

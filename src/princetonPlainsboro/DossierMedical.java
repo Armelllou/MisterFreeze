@@ -20,7 +20,7 @@ class DossierMedical {
         String t = "Dossier medical informatise :" + "\n" + "-----------------------------" + "\n";
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
-            t += f.toStringFiche();
+            t += f.toString();
             t += "\n";
         }
         return t;
