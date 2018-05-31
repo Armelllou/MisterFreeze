@@ -2,10 +2,15 @@ package princetonPlainsboro;
 
 import affichage.Acceuil;
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class InterfaceSecretaireAdministratif extends JFrame {
     CardLayout cl = new CardLayout();
@@ -18,6 +23,9 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JPanel haut = new JPanel();
     private JPanel bas = new JPanel();
     private JTextArea dossierMed;
+    //JLabel image ;//= new JLabel( new ImageIcon( "princetonPlainsboro/images.png"));
+    private BufferedImage image;
+    JLabel picLabel;
 
 
     public InterfaceSecretaireAdministratif() {
@@ -25,7 +33,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        haut.setLayout(new GridLayout(6, 1));
+
+        haut.setLayout(new GridLayout(9, 1));
         //bas.setLayout(new BorderLayout());
         menuderoulant.add(haut, BorderLayout.CENTER);
         menuderoulant.add(bas, BorderLayout.SOUTH);
@@ -40,7 +49,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         JPanel panelActe = new JPanel();
         JPanel panelFicheSoin = new JPanel();
 
-        //cree bouton
+        //creation des boutons
         JToggleButton actemedical = new JToggleButton("Acte Medical");
         haut.add(actemedical, BorderLayout.CENTER);
         Font police = new Font("Tahoma", Font.BOLD, 16);
@@ -70,6 +79,13 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         JToggleButton deconnexion = new JToggleButton("Deconnecter");
         haut.add(deconnexion, BorderLayout.CENTER);
         deconnexion.setFont(police);
+
+        ImagePanel();
+
+        //image
+        //JLabel image = new JLabel( new ImageIcon( "princetonPlainsboro/images.png"));
+
+
 
         panelRegistreM.setLayout(new BorderLayout());
 
@@ -181,6 +197,21 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
             }
         });
+    }
+
+    public void ImagePanel() {
+        try {
+            File myPicture = new File("image.jpg");
+            //picLabel = new JLabel(new ImageIcon("princetonPlainsboro/images.png"));
+//picLabel.setVisible(true);
+            BufferedImage image = ImageIO.read(myPicture);
+            System.out.println(image.getHeight());
+            System.out.println(image.getHeight());
+
+        } catch (Exception ex) {
+            System.out.println("error in image");
+        }
+        //haut.add(picLabel);
     }
 
 }
