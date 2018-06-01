@@ -85,7 +85,7 @@ public class DossierPatient {
             FicheDeSoins f = fichesDuPatient.get(i);
             f.afficher();
         }
-        return p.toString() + "" + this.numeroSecu + "" + this.adresse + "";
+        return p.toString() + " " + this.numeroSecu + "" + this.adresse + "";
     }
 
 }

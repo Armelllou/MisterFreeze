@@ -7,7 +7,6 @@ class DossierMedical {
 
     private List<FicheDeSoins> fiches;     // contient des objets de classe 'FicheDeSoins'
 
-
     public DossierMedical() {
         fiches = new Vector<FicheDeSoins>();  // liste vide
     }

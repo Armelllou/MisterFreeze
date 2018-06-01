@@ -5,15 +5,10 @@
  */
 package princetonPlainsboro;
 
-import affichage.Acceuil;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
 
 public class InterfaceSecretaireMedical extends JFrame {
@@ -46,9 +41,8 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //On cree trois conteneurs de couleurs differentes
         JPanel panelRegistrePatient = new JPanel();
-        panelRegistrePatient.setBackground(Color.blue);
         JPanel panelRegistreMedecin = new JPanel();
-        panelRegistreMedecin.setBackground(Color.red);
+        panelRegistreMedecin.setBackground(Color.yellow);
         JPanel panelRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
         JPanel panelActe = new JPanel();
@@ -86,8 +80,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         JToggleButton deconnexion = new JToggleButton("Deconnecter");
         haut.add(deconnexion, BorderLayout.CENTER);
         deconnexion.setFont(police);
-
-
 
 
         panelRegistreM.setLayout(new BorderLayout());
@@ -168,38 +160,6 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
-    public void setpanelDeconnexion(JPanel panelDeconnexion) {
-        JLabel deco;
-        JButton retourAccueil;
-
-        deco = new JLabel("Vous êtes deconnecté");
-        Font police = new Font("Tahoma", Font.BOLD, 30);
-        deco.setFont(police);
-        deco.setHorizontalAlignment(JLabel.CENTER);
-        deco.setVerticalAlignment(JLabel.CENTER);
-
-        //Button accueil
-        retourAccueil = new JButton("Accueil");
-        panelDeconnexion.setLayout(new GridLayout(2, 1));
-        panelDeconnexion.add(deco, BorderLayout.NORTH);
-        panelDeconnexion.add(retourAccueil, BorderLayout.CENTER);
-        this.add(panelDeconnexion);
-        retourAccueil.setMaximumSize(new Dimension(20, 50));
-
-        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.pack();
-        this.setVisible(true);
-
-        //retour page accueil --> marche pas
-        retourAccueil.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Acceuil accu1 = new Acceuil();
-                accu1.setMinimumSize(new Dimension(700, 700));
-
-            }
-        });
-    }
 
     public void ImagePanel() {
         try {

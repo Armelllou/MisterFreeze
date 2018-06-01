@@ -243,7 +243,6 @@ public class Login extends javax.swing.JFrame {
                 textFieldMdp.setText(null);
                 System.out.println("Connection");
 
-
                 InterfaceSecretaireAdministratif ism = new InterfaceSecretaireAdministratif();
                 ism.setMinimumSize(new Dimension(700, 700));
                 this.dispose();

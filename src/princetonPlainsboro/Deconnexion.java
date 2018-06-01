@@ -1,6 +1,6 @@
 package princetonPlainsboro;
 
-import affichage.Acceuil;
+import affichage.Login;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ public class Deconnexion extends JFrame {
 
     JPanel pageDeco = new JPanel();
     JLabel deco;
-    JButton retourAccueil;
+    JToggleButton retourAccueil;
 
     Deconnexion() {
         //JLabel
@@ -22,12 +22,12 @@ public class Deconnexion extends JFrame {
         deco.setVerticalAlignment(JLabel.CENTER);
 
         //Button accueil
-        retourAccueil = new JButton("Accueil");
-        pageDeco.setLayout(new GridLayout(2, 1));
-        pageDeco.add(deco, BorderLayout.NORTH);
-        pageDeco.add(retourAccueil, BorderLayout.CENTER);
+        retourAccueil = new JToggleButton("Accueil");
+        pageDeco.setLayout(new BorderLayout());
+        pageDeco.add(deco, BorderLayout.CENTER);
+        pageDeco.add(retourAccueil, BorderLayout.SOUTH);
         this.add(pageDeco);
-        retourAccueil.setMaximumSize(new Dimension(20, 50));
+        retourAccueil.setMaximumSize(new Dimension(100, 150));
 
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -37,8 +37,9 @@ public class Deconnexion extends JFrame {
         //retour page accueil
         retourAccueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Acceuil accu1 = new Acceuil();
-                accu1.setMinimumSize(new Dimension(700, 700));
+                Login login1 = new Login();
+                login1.setMinimumSize(new Dimension(700, 700));
+                dispose();
 
             }
         });

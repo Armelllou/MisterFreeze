@@ -73,11 +73,17 @@ class Test {
         dp.afficherListeMedecins(p1);
         dp.afficherListeMedecins(p2);
 
+
         dp.afficherParCout(); //affiche pas acte médical
         System.out.println("\nAfficher date 1\n");
         dp.trierParDates(d1, d2);
         System.out.println("\nAfficher date 2\n");
         dp.trierParDates(d1, d3);
 
+        System.out.println("TEST");
+        System.out.println("  ");
+        ListDossierPatient ldp = new ListDossierPatient();
+        ldp.ajoutDossierPatient(dp);
+        ldp.afficherListDossierPatient();
     }
 }
