@@ -56,23 +56,18 @@ public class InterfaceAdministration extends JFrame implements ComponentListener
         affichageSecretaire.setMaximumSize(new Dimension(600, 700));
     }
 
-
-    @Override
     public void componentResized(ComponentEvent e) {
         mainPanelSecretaire.setSize(new Dimension((int) e.getComponent().getSize().getWidth(), 1000));
     }
 
-    @Override
     public void componentMoved(ComponentEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void componentShown(ComponentEvent e) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void componentHidden(ComponentEvent e) {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

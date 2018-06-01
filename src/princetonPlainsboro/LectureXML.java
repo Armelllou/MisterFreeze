@@ -187,6 +187,7 @@ public class LectureXML {
                         break;
                 }
             }
+            in.close();
             parser.close();
         } catch (XMLStreamException ex) {
             System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
