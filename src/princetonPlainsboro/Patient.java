@@ -31,5 +31,13 @@ class Patient {
         result = 31 * result + prenom.hashCode();
         return result;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
 }
 
