@@ -23,6 +23,8 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JPanel bas = new JPanel();
     private JTextArea dossierMed;
     private BufferedImage image;
+    private JToggleButton registrePatient;
+    private JPanel panelRegistrePatient;
 
 
     public InterfaceSecretaireMedical() {
@@ -40,7 +42,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         menuderoulant.add(bas, BorderLayout.SOUTH);
 
         //On cree trois conteneurs de couleurs differentes
-        JPanel panelRegistrePatient = new JPanel();
+        panelRegistrePatient = new JPanel();
         JPanel panelRegistreMedecin = new JPanel();
         panelRegistreMedecin.setBackground(Color.yellow);
         JPanel panelRegistreM = new JPanel();
@@ -67,7 +69,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         ficheSoin.setFont(police);
         ficheSoin.setPreferredSize(new Dimension(230, 50));
 
-        final JToggleButton registrePatient = new JToggleButton("Registre Patient");
+        registrePatient = new JToggleButton("Registre Patient");
         haut.add(registrePatient, BorderLayout.CENTER);
         registrePatient.setFont(police);
         registrePatient.setPreferredSize(new Dimension(230, 50));
@@ -115,21 +117,6 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         });
 
-        //Definition de l'action du bouton registrePatient
-        registrePatient.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[1]);
-                if (registrePatient.isSelected()) {
-
-                } else {
-
-                }
-
-            }
-        });
-
-
         //Définition de l'action du Deconnexion
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -158,6 +145,13 @@ public class InterfaceSecretaireMedical extends JFrame {
         this.getContentPane().add(affichage, BorderLayout.CENTER);
         this.setVisible(true);
 
+        JLabel registrePa = new JLabel("Registre Patient");
+        panelRegistrePatient.add(registrePa, BorderLayout.NORTH);
+        registrePa.setVisible(false);
+        registrePa.setFont(police1);
+        registrePa.setHorizontalAlignment(JLabel.CENTER);
+        registrePa.setVerticalAlignment(JLabel.CENTER);
+
     }
 
 
@@ -172,5 +166,21 @@ public class InterfaceSecretaireMedical extends JFrame {
             System.out.println("error in image");
         }
         haut.add(picLabel, BorderLayout.NORTH);
+    }
+
+
+
+    public void setButtonRegistrePatient (){
+        registrePatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                cl.show(affichage, listContent[0]);
+                if (registrePatient.isSelected()) {
+                    registrePatient.setVisible(true);
+                } else {
+                    registrePatient.setVisible(false);
+                }
+            }
+        });
     }
 }

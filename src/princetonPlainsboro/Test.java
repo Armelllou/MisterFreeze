@@ -67,7 +67,7 @@ class Test {
         DossierPatient dp = new DossierPatient(p1, "16 rue de la chapelle", 2970499);
 
         dp.ajoutFiche(new FicheDeSoins(p1, m1, d1));
-        dp.ajoutFiche(new FicheDeSoins(p2, m2, d2));
+        dp.ajoutFiche(new FicheDeSoins(p2, m2, d2)); // test pour empecher melange dossier patient
         dp.ajoutFiche(new FicheDeSoins(p1, m3, d3));
         dp.ajoutFiche(new FicheDeSoins(p2, m1, d4));
         dp.afficherListeMedecins(p1);

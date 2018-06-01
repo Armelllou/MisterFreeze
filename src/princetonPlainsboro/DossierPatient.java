@@ -5,6 +5,7 @@
  */
 package princetonPlainsboro;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -85,6 +86,8 @@ public class DossierPatient {
             FicheDeSoins f = fichesDuPatient.get(i);
             f.afficher();
         }
+        System.out.println(" ");
+        System.out.println("Dossier Patient : ");
         return p.toString() + " " + this.numeroSecu + "" + this.adresse + "";
     }
 
