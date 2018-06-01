@@ -15,7 +15,7 @@ class Acte {
         codes.add();
 
         }
-    }
+
 
     public String toString() {
         return code.toString() + ", coefficient : " + coef;
@@ -32,7 +32,6 @@ class Acte {
         }
         return ;
     }
-
 
 
 

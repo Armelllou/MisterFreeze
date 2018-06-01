@@ -4,7 +4,7 @@ package princetonPlainsboro;
 import java.util.ArrayList;
 import java.util.List;
 
- class ListePatient {
+class ListePatient {
     private List<Patient> lp;
 
     public  ListePatient(){
@@ -21,4 +21,3 @@ import java.util.List;
         return p;
     }
 }
-

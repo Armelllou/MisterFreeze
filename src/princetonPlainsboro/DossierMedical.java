@@ -6,6 +6,7 @@ import java.util.Vector;
 class DossierMedical {
 
     private List<FicheDeSoins> fiches;     // contient des objets de classe 'FicheDeSoins'
+    private List<Patient> lp;
 
     public DossierMedical() {
         fiches = new Vector<FicheDeSoins>();  // liste vide
@@ -144,12 +145,20 @@ class DossierMedical {
     }
 
 
-    //ajout m�thode getListe utilis�e dans DossierPatient
+    //ajout methode getListe utilisee dans DossierPatient
     public List<FicheDeSoins> getListe() {
         return fiches;
     }
 
-
+    public Patient rechercher(String nom, String prenom){
+        int i=0;
+        Patient p =new Patient(nom,prenom);
+        while(lp.get(i).getNom()!=nom && lp.get(i).getPrenom()!=prenom){
+            i++;
+        }
+        p=lp.get(i);
+        return p;
+    }
 
 
 }

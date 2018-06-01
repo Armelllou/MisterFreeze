@@ -242,5 +242,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         b2.add(ok);
 
 
+        rechercherPatient(nomPatient.getText(),prenomPatient.getText());
+
     }
 }
