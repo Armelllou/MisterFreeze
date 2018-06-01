@@ -30,6 +30,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JTextField nomPatient;
     private Font police1;
     private JButton ok;
+    private  JToggleButton registreMedecin;
 
 
 
@@ -84,7 +85,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registrePatient.setFont(police);
         registrePatient.setPreferredSize(new Dimension(230, 50));
 
-        JToggleButton registreMedecin = new JToggleButton("Registre Medecin");
+        registreMedecin = new JToggleButton("Registre Medecin");
         haut.add(registreMedecin, BorderLayout.CENTER);
         registreMedecin.setFont(police);
         registreMedecin.setPreferredSize(new Dimension(230, 50));
@@ -195,6 +196,20 @@ public class InterfaceSecretaireMedical extends JFrame {
                 }
             }
         });
+        registreMedecin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                cl.show(affichage, listContent[0]);
+                registreMedecin rm = new registreMedecin();
+                if (registreMedecin.isSelected()) {
+                    rm.appelRegistreMedecin();
+                } else {
+
+                }
+            }
+        });
+
+        setPanelRegistreMedecin();
     }
 
     public void setPanelRegistrePatient(){
@@ -204,6 +219,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registrePa = new JLabel("Registre Patient");
         panelRegistrePatient.add(registrePa, BorderLayout.NORTH);
         registrePa.setVisible(false);
+        Font police1 = new Font("Tahoma", Font.BOLD, 20);
         registrePa.setFont(police1);
         registrePa.setHorizontalAlignment(JLabel.CENTER);
         registrePa.setVerticalAlignment(JLabel.CENTER);
@@ -212,22 +228,25 @@ public class InterfaceSecretaireMedical extends JFrame {
 
 
         //JTextFiled nom et prenom
-        nomPatient = new JTextField("Nom");
-        prenomPatient = new JTextField("Prenom");
+        nomPatient = new JTextField("Nom     ");
+        prenomPatient = new JTextField("Prenom   ");
         panelRegistrePatient.add(nomPatient,BorderLayout.CENTER);
         nomPatient.setVisible(false);
         prenomPatient.setVisible(false);
+        Font police2 = new Font("Tahoma", Font.ITALIC, 15);
+        nomPatient.setFont(police2);
         panelRegistrePatient.add(prenomPatient,BorderLayout.CENTER);
-        prenomPatient.setBounds(190, 90, 190, 26);
+        prenomPatient.setBounds(190, 90, 500, 300);
         //nomPatient.setPreferredSize(300,200);
 
         //bouton ok
-        ok = new JButton("Ok");
+        ok = new JButton(" Ok ");
         panelRegistrePatient.add(ok,BorderLayout.CENTER);
         ok.setVisible(false);
-        ok.setFont(police1);
+        //ok.setFont(police1);
         ok.setHorizontalAlignment(JLabel.CENTER);
         ok.setVerticalAlignment(JLabel.CENTER);
+
 
         JPanel b1 = new JPanel();
         JPanel b2 = new JPanel();
@@ -243,6 +262,11 @@ public class InterfaceSecretaireMedical extends JFrame {
 
 
         //rechercherPatient(nomPatient.getText(),prenomPatient.getText());
+
+    }
+
+    public void setPanelRegistreMedecin(){
+
 
     }
 }

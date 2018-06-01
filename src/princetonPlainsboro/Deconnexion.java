@@ -13,6 +13,7 @@ public class Deconnexion extends JFrame {
     JLabel deco;
     JToggleButton retourAccueil;
 
+
     Deconnexion() {
         //JLabel
         deco = new JLabel("Vous êtes deconnecté");
@@ -34,16 +35,18 @@ public class Deconnexion extends JFrame {
         this.pack();
         this.setVisible(true);
 
+
         //retour page accueil
         retourAccueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Login login1 = new Login();
-                login1.setMinimumSize(new Dimension(700, 700));
-                dispose();
 
+                new Login().showLogin();
+                close();
             }
         });
     }
 
-
+    private void close(){
+        this.dispose();
+    }
 }

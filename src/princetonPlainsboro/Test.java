@@ -1,14 +1,15 @@
 package princetonPlainsboro;
 
-import java.awt.*;
+import affichage.Login;
 
 class Test {
 
     public static void main(String[] args) {
-        afficherDossiersConsole();
+        //afficherDossiersConsole();
+        new Login().showLogin();
 
-        InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
-        f.setMinimumSize(new Dimension(700, 700));
+        //InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
+        //f.setMinimumSize(new Dimension(700, 700));
 
         // InterfaceAdministration I = new InterfaceAdministration();
     }
@@ -85,6 +86,7 @@ class Test {
         ListDossierPatient ldp = new ListDossierPatient();
         ldp.ajoutDossierPatient(dp);
         ldp.afficherListDossierPatient();
+
     }
 
 
