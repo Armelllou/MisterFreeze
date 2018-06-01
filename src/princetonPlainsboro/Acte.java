@@ -12,7 +12,7 @@ class Acte {
         this.code = code;
         this.coef = coef;
         this.codes = new ArrayList<Code>();
-        codes.add();
+        //codes.add();
 
         }
 
@@ -30,7 +30,7 @@ class Acte {
         while (code!=codeATrouver){
             i++;
         }
-        //return ;
+        return i;
     }
 
 
