@@ -3,3 +3,5 @@
 out/
 sonar-project\.properties
 \.scannerwork/
+.classpath
+.project
