@@ -149,5 +149,9 @@ class DossierMedical {
     public List<FicheDeSoins> getListe() {
         return fiches;
     }
+
+
+
+
 }
 

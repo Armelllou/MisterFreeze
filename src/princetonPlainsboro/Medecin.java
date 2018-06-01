@@ -26,6 +26,15 @@ class Medecin {
         } else
             return false;
     }
+
+    public String getNom (){
+        return nom;
+    }
+
+    public String getPrenom (){
+        return prenom;
+
+    }
 }
 
 
