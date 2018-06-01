@@ -8,6 +8,7 @@ package affichage;
 
 import princetonPlainsboro.InterfaceSecretaireAdministratif;
 import princetonPlainsboro.InterfaceSecretaireMedical;
+import princetonPlainsboro.LectureXML;
 
 import javax.swing.*;
 import java.awt.*;
@@ -232,7 +233,32 @@ public class Login extends javax.swing.JFrame {
     private void buttonSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeConnecterActionPerformed
         String id = textFieldId.getText();
         String mdp = textFieldMdp.getText();
-        if (mdp.contains("abc") && mdp.length() == 3 && id.contains("id")) {
+
+        LectureXML lectA = new LectureXML("authentifications.xml");
+
+        for (int i = 0; i < lectA.repertoire().size()-1; i++) {
+            if (id.equals(lectA.repertoire().get(i)) && mdp.equals(lectA.repertoire().get(i + 1))) {
+
+                textFieldId.setText(null);
+                textFieldMdp.setText(null);
+                System.out.println("Connection");
+
+
+                //Acceuil acceuil = new Acceuil();
+                //acceuil.setVisible(true);
+                InterfaceSecretaireAdministratif ism = new InterfaceSecretaireAdministratif();
+                ism.setMinimumSize(new Dimension(700, 700));
+                this.dispose();
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+                textFieldId.setText(null);
+                textFieldMdp.setText(null);
+                break;
+            }
+        }
+
+          /*  if (mdp.contains("abc") && mdp.length() == 3 && id.contains("id")) {
             textFieldId.setText(null);
             textFieldMdp.setText(null);
             System.out.println("Connection");
@@ -247,7 +273,7 @@ public class Login extends javax.swing.JFrame {
             textFieldId.setText(null);
             textFieldMdp.setText(null);
         }
-
+*/
     }//GEN-LAST:event_buttonSeConnecterActionPerformed
 
     private void textFieldMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMdpActionPerformed
