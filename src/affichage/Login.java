@@ -244,8 +244,6 @@ public class Login extends javax.swing.JFrame {
                 System.out.println("Connection");
 
 
-                //Acceuil acceuil = new Acceuil();
-                //acceuil.setVisible(true);
                 InterfaceSecretaireAdministratif ism = new InterfaceSecretaireAdministratif();
                 ism.setMinimumSize(new Dimension(700, 700));
                 this.dispose();
