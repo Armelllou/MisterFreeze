@@ -3,6 +3,8 @@ package princetonPlainsboro;
 class Patient {
     private String nom;
     private String prenom;
+    //rajouter date de naissance
+    //rajouter num secu
 
     public Patient(String nom, String prenom) {
         this.nom = nom;

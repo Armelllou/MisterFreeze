@@ -25,6 +25,12 @@ public class InterfaceSecretaireMedical extends JFrame {
     private BufferedImage image;
     private JToggleButton registrePatient;
     private JPanel panelRegistrePatient;
+    private JLabel registrePa;
+    private JTextField prenomPatient;
+    private JTextField nomPatient;
+    private Font police1;
+    private JButton ok;
+
 
 
     public InterfaceSecretaireMedical() {
@@ -33,7 +39,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         this.setLocationRelativeTo(null);
 
         //panel
-        haut.setLayout(new GridLayout(9, 1));
+        haut.setLayout(new GridLayout(8, 1));
         menuderoulant.setBackground(Color.PINK);
         haut.setBackground(Color.PINK);
         bas.setBackground(Color.PINK);
@@ -43,6 +49,10 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //On cree trois conteneurs de couleurs differentes
         panelRegistrePatient = new JPanel();
+        panelRegistrePatient.setLayout(new BorderLayout());
+
+
+
         JPanel panelRegistreMedecin = new JPanel();
         panelRegistreMedecin.setBackground(Color.yellow);
         JPanel panelRegistreM = new JPanel();
@@ -145,12 +155,9 @@ public class InterfaceSecretaireMedical extends JFrame {
         this.getContentPane().add(affichage, BorderLayout.CENTER);
         this.setVisible(true);
 
-        JLabel registrePa = new JLabel("Registre Patient");
-        panelRegistrePatient.add(registrePa, BorderLayout.NORTH);
-        registrePa.setVisible(false);
-        registrePa.setFont(police1);
-        registrePa.setHorizontalAlignment(JLabel.CENTER);
-        registrePa.setVerticalAlignment(JLabel.CENTER);
+
+        setPanelRegistrePatient();
+        setButtonRegistrePatient ();
 
     }
 
@@ -176,11 +183,64 @@ public class InterfaceSecretaireMedical extends JFrame {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
                 cl.show(affichage, listContent[0]);
                 if (registrePatient.isSelected()) {
-                    registrePatient.setVisible(true);
+                    registrePa.setVisible(true);
+                    nomPatient.setVisible(true);
+                    prenomPatient.setVisible(true);
+                    ok.setVisible(true);
                 } else {
-                    registrePatient.setVisible(false);
+                    registrePa.setVisible(false);
+                    nomPatient.setVisible(false);
+                    prenomPatient.setVisible(false);
+                    ok.setVisible(false);
                 }
             }
         });
+    }
+
+    public void setPanelRegistrePatient(){
+
+
+        //titre du registre
+        registrePa = new JLabel("Registre Patient");
+        panelRegistrePatient.add(registrePa, BorderLayout.NORTH);
+        registrePa.setVisible(false);
+        registrePa.setFont(police1);
+        registrePa.setHorizontalAlignment(JLabel.CENTER);
+        registrePa.setVerticalAlignment(JLabel.CENTER);
+
+
+
+
+        //JTextFiled nom et prenom
+        nomPatient = new JTextField("Nom");
+        prenomPatient = new JTextField("Prenom");
+        panelRegistrePatient.add(nomPatient,BorderLayout.CENTER);
+        nomPatient.setVisible(false);
+        prenomPatient.setVisible(false);
+        panelRegistrePatient.add(prenomPatient,BorderLayout.CENTER);
+        prenomPatient.setBounds(190, 90, 190, 26);
+        //nomPatient.setPreferredSize(300,200);
+
+        //bouton ok
+        ok = new JButton("Ok");
+        panelRegistrePatient.add(ok,BorderLayout.CENTER);
+        ok.setVisible(false);
+        ok.setFont(police1);
+        ok.setHorizontalAlignment(JLabel.CENTER);
+        ok.setVerticalAlignment(JLabel.CENTER);
+
+        JPanel b1 = new JPanel();
+        JPanel b2 = new JPanel();
+        panelRegistrePatient.add(b1,BorderLayout.CENTER);
+
+        //On définit le layout en lui indiquant qu'il travaillera en ligne
+        b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
+        b2.setLayout(new FlowLayout());
+        b1.add(b2);
+        b2.add(nomPatient);
+        b2.add(prenomPatient);
+        b2.add(ok);
+
+
     }
 }
