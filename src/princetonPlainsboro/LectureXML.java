@@ -171,7 +171,7 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("root")) {
-                            repertoire = new ArrayList<>();
+                            repertoire = new ArrayList<String>();
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:

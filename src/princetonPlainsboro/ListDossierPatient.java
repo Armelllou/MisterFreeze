@@ -7,7 +7,7 @@ public class ListDossierPatient {
     private List<DossierPatient> dossierPatientList;
 
     public ListDossierPatient() {
-        dossierPatientList = new ArrayList<>();
+        dossierPatientList = new ArrayList<DossierPatient>();
     }
 
     public void ajoutDossierPatient(DossierPatient dp) {
