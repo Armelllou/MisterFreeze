@@ -5,14 +5,17 @@
  */
 package affichage;
 
-
 import princetonPlainsboro.InterfaceSecretaireAdministratif;
 import princetonPlainsboro.InterfaceSecretaireMedical;
 import princetonPlainsboro.LectureXML;
 
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import static java.awt.event.KeyEvent.VK_B;
+import static java.awt.event.KeyEvent.VK_ENTER;
+import java.awt.event.KeyListener;
 
 public class Login extends javax.swing.JFrame {
 
@@ -30,6 +33,17 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        textFieldMdp.addKeyListener
+      (new KeyAdapter() {
+         public void keyPressed(KeyEvent e) {
+           int key = e.getKeyCode();
+           if (key == KeyEvent.VK_ENTER) {
+              Toolkit.getDefaultToolkit().beep();   
+              seConnecter();
+              }
+           }
+         }
+      );
     }
 
     public void showLogin() {
@@ -228,12 +242,33 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldIdActionPerformed
 
     public void buttonSeConnecterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeConnecterActionPerformed
-        String id = textFieldId.getText();
+        seConnecter();
+
+        /*  if (mdp.contains("abc") && mdp.length() == 3 && id.contains("id")) {
+            textFieldId.setText(null);
+            textFieldMdp.setText(null);
+            System.out.println("Connection");
+
+            //Acceuil acceuil = new Acceuil();
+            //acceuil.setVisible(true);
+            InterfaceSecretaireAdministratif ism = new InterfaceSecretaireAdministratif();
+            ism.setMinimumSize(new Dimension(700, 700));
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+            textFieldId.setText(null);
+            textFieldMdp.setText(null);
+        }
+         */
+    }//GEN-LAST:event_buttonSeConnecterActionPerformed
+    
+    public void seConnecter(){
+         String id = textFieldId.getText();
         String mdp = textFieldMdp.getText();
 
         LectureXML lectA = new LectureXML("authentifications.xml");
 
-        for (int i = 0; i < lectA.repertoire().size()-1; i++) {
+        for (int i = 0; i < lectA.repertoire().size() - 1; i++) {
             if (id.equals(lectA.repertoire().get(i)) && mdp.equals(lectA.repertoire().get(i + 1))) {
 
                 textFieldId.setText(null);
@@ -251,24 +286,9 @@ public class Login extends javax.swing.JFrame {
                 break;
             }
         }
+    }
 
-          /*  if (mdp.contains("abc") && mdp.length() == 3 && id.contains("id")) {
-            textFieldId.setText(null);
-            textFieldMdp.setText(null);
-            System.out.println("Connection");
 
-            //Acceuil acceuil = new Acceuil();
-            //acceuil.setVisible(true);
-            InterfaceSecretaireAdministratif ism = new InterfaceSecretaireAdministratif();
-            ism.setMinimumSize(new Dimension(700, 700));
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
-            textFieldId.setText(null);
-            textFieldMdp.setText(null);
-        }
-*/
-    }//GEN-LAST:event_buttonSeConnecterActionPerformed
 
     public void textFieldMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMdpActionPerformed
 
