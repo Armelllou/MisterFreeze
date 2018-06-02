@@ -29,6 +29,10 @@ enum Code {
         this.cout = cout;
     }
 
+    public String getLibelle() {
+        return libelle;
+    }
+
     // methodes :
     public String toString() {
         return super.toString() + " : " + libelle + ", cout=" + cout + " euros";

@@ -9,10 +9,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
-import static princetonPlainsboro.ecrireXML.saveToXML;
+import static princetonPlainsboro.EcrireXML.saveToXML;
 
 public class InterfaceSecretaireMedical extends JFrame {
 
@@ -175,7 +177,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         //recupère Les fiches de soins du XML
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm1 = test.getDossier();
-            dossierMed = new JTextArea(dm1.toStringDM());
+        dossierMed = new JTextArea(dm1.toStringDM());
         panelRegistreM.add(dossierMed, BorderLayout.CENTER);
         dossierMed.setVisible(false);
 
@@ -244,6 +246,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         //a mettre dans secretaire medical
         setAjouterMedecin();
         setAjouterPatient();
+        setAjouterFicheSoin();
 
     }
 
@@ -322,7 +325,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelFicheSoin.add(label2New);
         label2New.setBounds(new Rectangle(new Point(20, 65), label2New.getPreferredSize()));
         panelFicheSoin.add(textField1New);
-        textField1New.setBounds(80, 60,40,30);
+        textField1New.setBounds(80, 60, 40, 30);
         panelFicheSoin.add(textField2New);
         textField2New.setBounds(140, 60, 40, 30);
         panelFicheSoin.add(textField3New);
@@ -869,7 +872,7 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
-    public void setAjouterMedecin(){
+    public void setAjouterMedecin() {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
@@ -1020,9 +1023,10 @@ public class InterfaceSecretaireMedical extends JFrame {
 
 
     }
+
     //mettre dans secretaire administrative
-    public void setAjouterPatient(){
-        button1Patient.addActionListener(new ActionListener() {
+    public void setAjouterPatient() {
+        /*button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
                 xmlToSave.put(null, "patient");
@@ -1031,6 +1035,21 @@ public class InterfaceSecretaireMedical extends JFrame {
                 xmlToSave.put("date", textField4Patient.getText());
                 xmlToSave.put("numeroSecurite", textField1Patient.getText());
                 saveToXML(xmlToSave);
+            }
+        });*/
+
+    }
+
+    public void setAjouterFicheSoin() {
+        button1Patient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                Date date = new Date(15, 6, 2009);
+                Medecin medecin = new Medecin("Blouze", "Bu", "blabla", 4);
+                Patient patient = new Patient("Blablabla", "Armelle", new Date(14, 3, 1996), 5);
+                List<Acte> actes = new ArrayList<Acte>();
+                actes.add(new Acte(Code.ORT, 2));
+                actes.add(new Acte(Code.CS, 1));
+                EcrireXML.saveFicheDeSoinToXML(date, medecin, patient, actes);
             }
         });
 

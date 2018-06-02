@@ -29,15 +29,14 @@ class Medecin {
             return false;
     }
 
-    public String getNom (){
+    public String getNom() {
         return nom;
     }
 
-    public String getPrenom (){
+    public String getPrenom() {
         return prenom;
 
     }
-
 }
 
 

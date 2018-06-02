@@ -144,7 +144,7 @@ public class LectureXML {
         } catch (XMLStreamException ex) {
             System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
             System.out.println("Details :");
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         } catch (IOException ex) {
             System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
             System.out.println("Verifier le chemin.");

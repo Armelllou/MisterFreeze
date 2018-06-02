@@ -10,58 +10,112 @@
         <prenom>bol</prenom>
         <specialite>cardio</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bolo</nom>
         <prenom>Pat</prenom>
         <specialite>Beurk</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bolo</nom>
         <prenom>Pat</prenom>
         <specialite>Beurk</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bolo</nom>
         <prenom>Pat</prenom>
         <specialite>Beurk</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bolo</nom>
         <prenom>Pat</prenom>
         <specialite>Beurk</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bernard</nom>
         <prenom>Armelle</prenom>
         <specialite>Cancero</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bernard</nom>
         <prenom>Armelle</prenom>
         <specialite>Cancero</specialite>
     </medecin>
-<medecin>
+    <medecin>
         <nom>Bernard</nom>
         <prenom>Armelle</prenom>
         <specialite>cardiologie</specialite>
         <numeroTelephone>076546575646</numeroTelephone>
     </medecin>
-<patient>
+    <patient>
         <nom/>
         <prenom/>
         <dateNaissance/>
         <numeroSecurite/>
     </patient>
-<patient>
+    <patient>
         <nom/>
         <prenom/>
         <dateNaissance/>
         <numeroSecurite/>
     </patient>
-<patient>
+    <patient>
         <nom>salord</nom>
         <prenom>florian</prenom>
         <dateNaissance>14031996</dateNaissance>
         <numeroSecurite>1728662</numeroSecurite>
     </patient>
+    <ficheDeSoins>
+        <date>2009-6-15</date>
+        <medecin>
+            <nom>
+                <Blouze/>
+            </nom>
+            <prenom>
+                <Bu/>
+            </prenom>
+            <specialite>
+                <blabla/>
+            </specialite>
+        </medecin>
+        <patient>
+            <nom>
+                <Blablabla/>
+            </nom>
+            <prenom>
+                <Armelle/>
+            </prenom>
+        </patient>
+    </ficheDeSoins>
+    <ficheDeSoins>
+        <date>2009-6-15</date>
+        <medecin>
+            <nom>Blouze</nom>
+            <prenom>Bu</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>Blablabla</nom>
+            <prenom>Armelle</prenom>
+        </patient>
+    </ficheDeSoins>
+    <ficheDeSoins>
+        <date>2009-6-15</date>
+        <medecin>
+            <nom>Blouze</nom>
+            <prenom>Bu</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>Blablabla</nom>
+            <prenom>Armelle</prenom>
+        </patient>
+        <acte>
+            <code>orthodontie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>

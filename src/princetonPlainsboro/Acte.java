@@ -14,8 +14,15 @@ class Acte {
         this.codes = new ArrayList<Code>();
         //codes.add();
 
-        }
+    }
 
+    public Code getCode() {
+        return code;
+    }
+
+    public int getCoef() {
+        return coef;
+    }
 
     public String toString() {
         return code.toString() + ", coefficient : " + coef;
@@ -25,14 +32,13 @@ class Acte {
         return code.calculerCout(coef);
     }
 
-    public int rechercherCout (Code codeATrouver){
-        int i=0;
-        while (code!=codeATrouver){
+    public int rechercherCout(Code codeATrouver) {
+        int i = 0;
+        while (code != codeATrouver) {
             i++;
         }
         return i;
     }
-
 
 
 }

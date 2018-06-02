@@ -15,6 +15,10 @@ class Date implements Comparable {
         return jour + "/" + mois + "/" + annee;
     }
 
+    public String toXML(){
+        return annee + "-" + mois + "-" + jour;
+    }
+
     public boolean equals(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;
