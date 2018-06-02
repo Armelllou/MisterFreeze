@@ -1026,17 +1026,11 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     //mettre dans secretaire administrative
     public void setAjouterPatient() {
-        /*button1Patient.addActionListener(new ActionListener() {
+        button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
-                xmlToSave.put(null, "patient");
-                xmlToSave.put("nom", textField2Patient.getText());
-                xmlToSave.put("prenom", textField3Patient.getText());
-                xmlToSave.put("date", textField4Patient.getText());
-                xmlToSave.put("numeroSecurite", textField1Patient.getText());
-                saveToXML(xmlToSave);
+                //EcrireXML.saveToXML("src/donnees/dossiers2.xml", ...);
             }
-        });*/
+        });
 
     }
 
@@ -1049,7 +1043,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 List<Acte> actes = new ArrayList<Acte>();
                 actes.add(new Acte(Code.ORT, 2));
                 actes.add(new Acte(Code.CS, 1));
-                EcrireXML.saveFicheDeSoinToXML(date, medecin, patient, actes);
+                EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
             }
         });
 
