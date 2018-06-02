@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static princetonPlainsboro.ecrireXML.saveToXML;
+
 
 class Test {
 
@@ -35,87 +37,14 @@ class Test {
         // InterfaceAdministration I = new InterfaceAdministration();
 
 
-        //Creer document XML:
-        Medecin m1 = new Medecin("Deblouze", "Agathe", "Cardiologue", 1233);
+        /*Medecin m1 = new Medecin("Deblouze", "Agathe", "Cardiologue", 1233);
+
         Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
         xmlToSave.put(null, "medecin");
         xmlToSave.put("nom", "Bolo");
         xmlToSave.put("prenom", "Pat");
         xmlToSave.put("specialite", "Beurk");
-        saveToXML(xmlToSave);
-
-        /*try {
-         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-         Document doc = dBuilder.newDocument();
-
-         // root element
-         Element rootElement = doc.createElement("Medecin");
-         doc.appendChild(rootElement);
-
-         // supercars element
-         Element info = doc.createElement("Informations");
-         rootElement.appendChild(info);
-
-
-         Element nom = doc.createElement("Nom");
-         nom.appendChild(doc.createTextNode(m1.getNom()));
-         info.appendChild(nom);
-
-         Element prenom = doc.createElement("prenom");
-         prenom.appendChild(doc.createTextNode(m1.getPrenom()));
-         info.appendChild(prenom);
-
-         Element spe = doc.createElement("Specialite");
-         rootElement.appendChild(spe);
-
-       Element nomspe = doc.createElement("Specialiste");
-      nomspe.appendChild(doc.createTextNode(m1.getSpecialite()));
-         spe.appendChild(nomspe);
-
-         TransformerFactory transformerFactory = TransformerFactory.newInstance();
-         Transformer transformer = transformerFactory.newTransformer();
-         DOMSource source = new DOMSource(doc);
-         StreamResult result = new StreamResult(new File("src/donnees/dossiers2.xml"));
-                 transformer.transform(source, result);
-
-
-
-        StreamResult consoleResult = new StreamResult(System.out);
-         transformer.transform(source, consoleResult);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }*/
-
-
-        //modifier XML
-        /*try {
-            File inputFile = new File("src/donnees/dossiers2.xml");
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(inputFile);
-            Node medecin = doc.getFirstChild();
-
-
-            NodeList childNodes = medecin.getChildNodes();
-
-            for (int count = 0; count < childNodes.getLength(); count++) {
-                Node node = childNodes.item(count);
-
-                if ("ficheDeSoins".equals(node.getNodeName()))
-                    medecin.removeChild(node);
-            }
-
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(doc);
-            System.out.println("-----------Modified File-----------");
-            StreamResult consoleResult = new StreamResult(new File("src/donnees/dossiers.xml"));
-            transformer.transform(source, consoleResult);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
+        saveToXML(xmlToSave);*/
 
     }
 
@@ -194,49 +123,5 @@ class Test {
 
     }
 
-    public static void saveToXML(Map<String, String> toSave) {
-        Document dom;
-        Element e = null;
 
-        // instance of a DocumentBuilderFactory
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        try {
-            // use factory to get an instance of document builder
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            // create instance of DOM
-            dom = db.parse(new File("src/donnees/dossiers2.xml"));
-            // create the root element
-            Element rootEle = dom.createElement(toSave.get(null));
-            toSave.remove(null);
-
-            // create data elements and place them under root
-            for (Map.Entry<String, String> entry : toSave.entrySet()) {
-                e = dom.createElement(entry.getKey());
-                e.appendChild(dom.createTextNode(entry.getValue()));
-                rootEle.appendChild(e);
-            }
-            //dom.appendChild(rootEle);
-            //Element element = dom.getElementById("dossier");
-            dom.getFirstChild().appendChild(rootEle);
-
-            try {
-                Transformer tr = TransformerFactory.newInstance().newTransformer();
-                tr.setOutputProperty(OutputKeys.INDENT, "yes");
-                tr.setOutputProperty(OutputKeys.METHOD, "xml");
-                tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-                tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-                // send DOM to file
-                tr.transform(new DOMSource(dom),
-                        new StreamResult(new File("src/donnees/dossiers2.xml")));
-
-            } catch (TransformerException te) {
-                System.out.println(te.getMessage());
-            } catch (Exception ioe) {
-                System.out.println(ioe.getMessage());
-            }
-        } catch (Exception pce) {
-            System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
-        }
-    }
 }

@@ -9,6 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static princetonPlainsboro.ecrireXML.saveToXML;
 
 public class InterfaceSecretaireMedical extends JFrame {
 
@@ -171,7 +175,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         //recupère Les fiches de soins du XML
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm1 = test.getDossier();
-        dossierMed = new JTextArea(dm1.toStringDM());
+            dossierMed = new JTextArea(dm1.toStringDM());
         panelRegistreM.add(dossierMed, BorderLayout.CENTER);
         dossierMed.setVisible(false);
 
@@ -236,6 +240,9 @@ public class InterfaceSecretaireMedical extends JFrame {
         setButtonActe();
         setButtonFicheSoin();
         setPanelFicheSoin();
+        //a mettre dans secretaire medical
+        setAjouterMedecin();
+        setAjouterPatient();
 
     }
 
@@ -443,11 +450,11 @@ public class InterfaceSecretaireMedical extends JFrame {
             this2New.add(label12New);
             label12New.setBounds(new Rectangle(new Point(20, 65), label12New.getPreferredSize()));
             this2New.add(textField9New);
-            textField9New.setBounds(new Rectangle(new Point(80, 60), textField9New.getPreferredSize()));
+            textField9New.setBounds(50, 60, 400, 30);
             this2New.add(textField10New);
-            textField10New.setBounds(140, 60, 36, 30);
+            textField10New.setBounds(140, 60, 50, 30);
             this2New.add(textField11New);
-            textField11New.setBounds(200, 60, 36, 30);
+            textField11New.setBounds(210, 60, 50, 30);
 
             //---- label13New ----
             label13New.setText("Medecin");
@@ -717,7 +724,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         label1Patient.setBounds(new Rectangle(new Point(35, 60), label1Patient.getPreferredSize()));
 
         //---- label2Patient ----
-        label2Patient.setText("Num\u00e9ro de Securit\u00e9 Sociale : ");
+        label2Patient.setText("Numero de Securite Sociale : ");
         panelRegistrePatient.add(label2Patient);
         label2Patient.setBounds(new Rectangle(new Point(35, 100), label2Patient.getPreferredSize()));
 
@@ -726,7 +733,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.add(button1Patient);
         button1Patient.setBounds(new Rectangle(new Point(35, 130), button1Patient.getPreferredSize()));
         panelRegistrePatient.add(textField1Patient);
-        textField1Patient.setBounds(195, 100, 115, 20);
+        textField1Patient.setBounds(195, 100, 115, 30);
 
         //---- label3Patient ----
         label3Patient.setText("Nom ");
@@ -738,22 +745,23 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.add(label4Patient);
         label4Patient.setBounds(new Rectangle(new Point(195, 180), label4Patient.getPreferredSize()));
         panelRegistrePatient.add(textField2Patient);
-        textField2Patient.setBounds(40, 205, 120, 20);
+        textField2Patient.setBounds(40, 205, 120, 30);
         panelRegistrePatient.add(textField3Patient);
-        textField3Patient.setBounds(190, 205, 125, 20);
+        textField3Patient.setBounds(190, 205, 125, 30);
 
         //---- label5Patient ----
         label5Patient.setText("Date de naissance");
         panelRegistrePatient.add(label5Patient);
         label5Patient.setBounds(new Rectangle(new Point(345, 180), label5Patient.getPreferredSize()));
         panelRegistrePatient.add(textField4Patient);
-        textField4Patient.setBounds(345, 205, 150, 20);
+        textField4Patient.setBounds(345, 205, 125, 30);
 
         //---- label6Patient ----
         label6Patient.setText("Registre Patient");
         label6Patient.setFont(new Font("Segoe UI", Font.BOLD, 30));
         panelRegistrePatient.add(label6Patient);
         label6Patient.setBounds(new Rectangle(new Point(175, 5), label6Patient.getPreferredSize()));
+
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -830,6 +838,7 @@ public class InterfaceSecretaireMedical extends JFrame {
             panelRegistreMedecin.add(textField3);
             textField3.setBounds(75, 210, 120, 25);
 
+
             //---- label6 ----
             label6.setText("Specialite");
             panelRegistreMedecin.add(label6);
@@ -857,6 +866,20 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         }
 
+    }
+
+    public void setAjouterMedecin(){
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
+                xmlToSave.put(null, "medecin");
+                xmlToSave.put("nom", textField1.getText());
+                xmlToSave.put("prenom", textField2.getText());
+                xmlToSave.put("specialite", textField3.getText());
+                xmlToSave.put("numeroTelephone", textField4.getText());
+                saveToXML(xmlToSave);
+            }
+        });
     }
 
     public void setButtonRegistreMedecin() {
@@ -994,6 +1017,21 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         });
 
+
+    }
+    //mettre dans secretaire administrative
+    public void setAjouterPatient(){
+        button1Patient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
+                xmlToSave.put(null, "patient");
+                xmlToSave.put("nom", textField2Patient.getText());
+                xmlToSave.put("prenom", textField3Patient.getText());
+                xmlToSave.put("date", textField4Patient.getText());
+                xmlToSave.put("numeroSecurite", textField1Patient.getText());
+                saveToXML(xmlToSave);
+            }
+        });
 
     }
 }

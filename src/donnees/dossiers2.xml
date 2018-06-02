@@ -11,18 +11,57 @@
         <specialite>cardio</specialite>
     </medecin>
 <medecin>
-        <specialite>Beurk</specialite>
         <nom>Bolo</nom>
         <prenom>Pat</prenom>
-    </medecin>
-<medecin>
         <specialite>Beurk</specialite>
-        <nom>Bolo</nom>
-        <prenom>Pat</prenom>
     </medecin>
 <medecin>
         <nom>Bolo</nom>
         <prenom>Pat</prenom>
         <specialite>Beurk</specialite>
     </medecin>
+<medecin>
+        <nom>Bolo</nom>
+        <prenom>Pat</prenom>
+        <specialite>Beurk</specialite>
+    </medecin>
+<medecin>
+        <nom>Bolo</nom>
+        <prenom>Pat</prenom>
+        <specialite>Beurk</specialite>
+    </medecin>
+<medecin>
+        <nom>Bernard</nom>
+        <prenom>Armelle</prenom>
+        <specialite>Cancero</specialite>
+    </medecin>
+<medecin>
+        <nom>Bernard</nom>
+        <prenom>Armelle</prenom>
+        <specialite>Cancero</specialite>
+    </medecin>
+<medecin>
+        <nom>Bernard</nom>
+        <prenom>Armelle</prenom>
+        <specialite>cardiologie</specialite>
+        <numeroTelephone>076546575646</numeroTelephone>
+    </medecin>
+<patient>
+        <nom/>
+        <prenom/>
+        <dateNaissance/>
+        <numeroSecurite/>
+    </patient>
+<patient>
+        <nom/>
+        <prenom/>
+        <dateNaissance/>
+        <numeroSecurite/>
+    </patient>
+<patient>
+        <nom>salord</nom>
+        <prenom>florian</prenom>
+        <dateNaissance>14031996</dateNaissance>
+        <numeroSecurite>1728662</numeroSecurite>
+    </patient>
 </dossier>
