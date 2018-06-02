@@ -240,6 +240,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         setButtonActe();
         setButtonFicheSoin();
         setPanelFicheSoin();
+
         //a mettre dans secretaire medical
         setAjouterMedecin();
         setAjouterPatient();
@@ -321,7 +322,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelFicheSoin.add(label2New);
         label2New.setBounds(new Rectangle(new Point(20, 65), label2New.getPreferredSize()));
         panelFicheSoin.add(textField1New);
-        textField1New.setBounds(new Rectangle(new Point(90, 60), textField1New.getPreferredSize()));
+        textField1New.setBounds(80, 60,40,30);
         panelFicheSoin.add(textField2New);
         textField2New.setBounds(140, 60, 40, 30);
         panelFicheSoin.add(textField3New);
