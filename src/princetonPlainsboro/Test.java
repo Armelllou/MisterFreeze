@@ -1,8 +1,30 @@
 package princetonPlainsboro;
 
 import affichage.Login;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 
 class Test {
+
+    private static String role1 = "pat";
+    private static String role2 = "bol";
+    private static String role3 = "cardio";
+    //private String role4 = null;
+    private ArrayList<String> rolev;
 
     public static void main(String[] args) {
         //afficherDossiersConsole();
@@ -10,8 +32,91 @@ class Test {
 
         //InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
         //f.setMinimumSize(new Dimension(700, 700));
-
         // InterfaceAdministration I = new InterfaceAdministration();
+
+
+        //Creer document XML:
+        Medecin m1 = new Medecin("Deblouze", "Agathe", "Cardiologue", 1233);
+        Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
+        xmlToSave.put(null, "medecin");
+        xmlToSave.put("nom", "Bolo");
+        xmlToSave.put("prenom", "Pat");
+        xmlToSave.put("specialite", "Beurk");
+        saveToXML(xmlToSave);
+
+        /*try {
+         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+         Document doc = dBuilder.newDocument();
+
+         // root element
+         Element rootElement = doc.createElement("Medecin");
+         doc.appendChild(rootElement);
+
+         // supercars element
+         Element info = doc.createElement("Informations");
+         rootElement.appendChild(info);
+
+
+         Element nom = doc.createElement("Nom");
+         nom.appendChild(doc.createTextNode(m1.getNom()));
+         info.appendChild(nom);
+
+         Element prenom = doc.createElement("prenom");
+         prenom.appendChild(doc.createTextNode(m1.getPrenom()));
+         info.appendChild(prenom);
+
+         Element spe = doc.createElement("Specialite");
+         rootElement.appendChild(spe);
+
+       Element nomspe = doc.createElement("Specialiste");
+      nomspe.appendChild(doc.createTextNode(m1.getSpecialite()));
+         spe.appendChild(nomspe);
+
+         TransformerFactory transformerFactory = TransformerFactory.newInstance();
+         Transformer transformer = transformerFactory.newTransformer();
+         DOMSource source = new DOMSource(doc);
+         StreamResult result = new StreamResult(new File("src/donnees/dossiers2.xml"));
+                 transformer.transform(source, result);
+
+
+
+        StreamResult consoleResult = new StreamResult(System.out);
+         transformer.transform(source, consoleResult);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }*/
+
+
+        //modifier XML
+        /*try {
+            File inputFile = new File("src/donnees/dossiers2.xml");
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(inputFile);
+            Node medecin = doc.getFirstChild();
+
+
+            NodeList childNodes = medecin.getChildNodes();
+
+            for (int count = 0; count < childNodes.getLength(); count++) {
+                Node node = childNodes.item(count);
+
+                if ("ficheDeSoins".equals(node.getNodeName()))
+                    medecin.removeChild(node);
+            }
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            System.out.println("-----------Modified File-----------");
+            StreamResult consoleResult = new StreamResult(new File("src/donnees/dossiers.xml"));
+            transformer.transform(source, consoleResult);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+
     }
 
     private static void afficherDossiersConsole() {
@@ -25,15 +130,13 @@ class Test {
         Date d4 = new Date(4, 1, 2006);
 
 
-        Patient p1 = new Patient("Bole", "Pat", d1,12345 );
+        Patient p1 = new Patient("Bole", "Pat", d1, 12345);
         Patient p2 = new Patient("Bole", "Maggy", d2, 13456);
 
         String spe = "Cardiologue";
         Medecin m1 = new Medecin("Deblouze", "Agathe", spe, 1234);
         Medecin m2 = new Medecin("Jared", "Curry", "Moche", 134);
         Medecin m3 = new Medecin("Roussillon", "Julien", "Musicien", 456);
-
-
 
 
         DossierMedical dm = test.getDossier();
@@ -77,7 +180,6 @@ class Test {
         dp.afficherListeMedecins(p1);
         dp.afficherListeMedecins(p2);
 
-
         dp.afficherParCout(); //affiche pas acte médical
         System.out.println("\nAfficher date 1\n");
         dp.trierParDates(d1, d2);
@@ -92,5 +194,49 @@ class Test {
 
     }
 
+    public static void saveToXML(Map<String, String> toSave) {
+        Document dom;
+        Element e = null;
 
+        // instance of a DocumentBuilderFactory
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try {
+            // use factory to get an instance of document builder
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            // create instance of DOM
+            dom = db.parse(new File("src/donnees/dossiers2.xml"));
+            // create the root element
+            Element rootEle = dom.createElement(toSave.get(null));
+            toSave.remove(null);
+
+            // create data elements and place them under root
+            for (Map.Entry<String, String> entry : toSave.entrySet()) {
+                e = dom.createElement(entry.getKey());
+                e.appendChild(dom.createTextNode(entry.getValue()));
+                rootEle.appendChild(e);
+            }
+            //dom.appendChild(rootEle);
+            //Element element = dom.getElementById("dossier");
+            dom.getFirstChild().appendChild(rootEle);
+
+            try {
+                Transformer tr = TransformerFactory.newInstance().newTransformer();
+                tr.setOutputProperty(OutputKeys.INDENT, "yes");
+                tr.setOutputProperty(OutputKeys.METHOD, "xml");
+                tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+                tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+                // send DOM to file
+                tr.transform(new DOMSource(dom),
+                        new StreamResult(new File("src/donnees/dossiers2.xml")));
+
+            } catch (TransformerException te) {
+                System.out.println(te.getMessage());
+            } catch (Exception ioe) {
+                System.out.println(ioe.getMessage());
+            }
+        } catch (Exception pce) {
+            System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
+        }
+    }
 }
