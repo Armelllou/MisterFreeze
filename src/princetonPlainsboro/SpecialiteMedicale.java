@@ -2,15 +2,14 @@ package princetonPlainsboro;
 
 public enum SpecialiteMedicale {
 
-    Gynecologie,
+    GYNECOLOGIE,
     ORL,
-    Cardiologie,
-    Orthodontie,
-    Dentiste,
+    CARDIOLOGIE,
+    ORTHODONTIE,
+    DENTISTE,
+    AUTRE;
 
-    Autre;
-
-    public String toString(){
+    public String toString() {
         return super.toString();
     }
 

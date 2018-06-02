@@ -19,18 +19,21 @@ class Test {
 
         String separation = "\n********\n";
 
-        Patient p1 = new Patient("Bole", "Pat");
-        Patient p2 = new Patient("Bole", "Maggy");
-
-        String spe = "Cardiologue";
-        Medecin m1 = new Medecin("Deblouze", "Agathe", spe);
-        Medecin m2 = new Medecin("Jared", "Curry", "Moche");
-        Medecin m3 = new Medecin("Roussillon", "Julien", "Musicien");
-
         Date d1 = new Date(1, 11, 2005);
         Date d2 = new Date(5, 1, 2006);
         Date d3 = new Date(5, 1, 2007);
         Date d4 = new Date(4, 1, 2006);
+
+
+        Patient p1 = new Patient("Bole", "Pat", d1,12345 );
+        Patient p2 = new Patient("Bole", "Maggy", d2, 13456);
+
+        String spe = "Cardiologue";
+        Medecin m1 = new Medecin("Deblouze", "Agathe", spe, 1234);
+        Medecin m2 = new Medecin("Jared", "Curry", "Moche", 134);
+        Medecin m3 = new Medecin("Roussillon", "Julien", "Musicien", 456);
+
+
 
 
         DossierMedical dm = test.getDossier();

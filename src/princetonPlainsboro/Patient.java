@@ -3,17 +3,20 @@ package princetonPlainsboro;
 class Patient {
     private String nom;
     private String prenom;
-    //rajouter date de naissance
-    //rajouter num secu
+    private Date dateNaissance;
+    private int numSecu;
 
-    public Patient(String nom, String prenom) {
+
+    public Patient(String nom, String prenom, Date dateNaissance, int numSecu) {
         this.nom = nom;
         this.prenom = prenom;
+        this. dateNaissance = dateNaissance;
+        this.numSecu = numSecu;
 
     }
 
     public String toString() {
-        return prenom + " " + nom;
+        return prenom + " " + nom + " " + dateNaissance + " " + numSecu;
     }
 
     public boolean equals(Object o) {

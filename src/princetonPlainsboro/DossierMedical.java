@@ -150,9 +150,9 @@ class DossierMedical {
         return fiches;
     }
 
-    public Patient rechercher(String nom, String prenom){
+    public Patient rechercher(String nom, String prenom, Date dateNaissance, int numSecu){
         int i=0;
-        Patient p =new Patient(nom,prenom);
+        Patient p =new Patient(nom,prenom,dateNaissance,numSecu);
         while(lp.get(i).getNom()!=nom && lp.get(i).getPrenom()!=prenom){
             i++;
         }
