@@ -70,6 +70,7 @@ public class LectureXML {
         String prenomCourant = "";
         String specialiteCourante = "";
         Code codeCourant = null;
+        String numTel = "";
         int coefCourant = 0;
 
         // analyser le fichier par StAX
@@ -120,7 +121,7 @@ public class LectureXML {
                             dossierCourant.ajouterFiche(f);
                         }
                         if (parser.getLocalName().equals("medecin")) {
-                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, 1234);
+                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante,numTel);
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;

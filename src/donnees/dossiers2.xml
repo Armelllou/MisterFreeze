@@ -118,4 +118,31 @@
             <coef>1</coef>
         </acte>
     </ficheDeSoins>
+<medecin>
+        <medecin>
+            <nom>Bernard</nom>
+            <prenom>Julie</prenom>
+            <specialite>Cardiologie</specialite>
+        </medecin>
+    </medecin>
+<ficheDeSoins>
+        <date>2009-6-15</date>
+        <medecin>
+            <nom>Blouze</nom>
+            <prenom>Bu</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>Blablabla</nom>
+            <prenom>Armelle</prenom>
+        </patient>
+        <acte>
+            <code>orthodontie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>

@@ -4,9 +4,9 @@ class Medecin {
     private String nom;
     private String prenom;
     private String specialite;
-    private int numeroTel;
+    private String numeroTel;
 
-    public Medecin(String nom, String prenom, String specialite, int numeroTel) {
+    public Medecin(String nom, String prenom, String specialite, String numeroTel) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;

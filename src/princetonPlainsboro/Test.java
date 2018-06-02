@@ -48,9 +48,9 @@ class Test {
         Patient p2 = new Patient("Bole", "Maggy", d2, 13456);
 
         String spe = "Cardiologue";
-        Medecin m1 = new Medecin("Deblouze", "Agathe", spe, 1234);
-        Medecin m2 = new Medecin("Jared", "Curry", "Moche", 134);
-        Medecin m3 = new Medecin("Roussillon", "Julien", "Musicien", 456);
+        Medecin m1 = new Medecin("Deblouze", "Agathe", spe, "1234");
+        Medecin m2 = new Medecin("Jared", "Curry", "Moche", "134");
+        Medecin m3 = new Medecin("Roussillon", "Julien", "Musicien", "456");
 
 
         DossierMedical dm = test.getDossier();
