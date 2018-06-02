@@ -33,17 +33,16 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        textFieldMdp.addKeyListener
-      (new KeyAdapter() {
-         public void keyPressed(KeyEvent e) {
-           int key = e.getKeyCode();
-           if (key == KeyEvent.VK_ENTER) {
-              Toolkit.getDefaultToolkit().beep();   
-              seConnecter();
-              }
-           }
-         }
-      );
+        textFieldMdp.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+                    Toolkit.getDefaultToolkit().beep();
+                    seConnecter();
+                }
+            }
+        }
+        );
     }
 
     public void showLogin() {
@@ -261,16 +260,19 @@ public class Login extends javax.swing.JFrame {
         }
          */
     }//GEN-LAST:event_buttonSeConnecterActionPerformed
-    
-    public void seConnecter(){
-         String id = textFieldId.getText();
+
+    public void seConnecter() {
+        String id = textFieldId.getText();
         String mdp = textFieldMdp.getText();
 
         LectureXML lectA = new LectureXML("authentifications.xml");
+        int k = 0;
 
         for (int i = 0; i < lectA.repertoire().size() - 1; i++) {
+            k++;
             if (id.equals(lectA.repertoire().get(i)) && mdp.equals(lectA.repertoire().get(i + 1))) {
 
+                k = 0;
                 textFieldId.setText(null);
                 textFieldMdp.setText(null);
                 System.out.println("Connection");
@@ -279,16 +281,15 @@ public class Login extends javax.swing.JFrame {
                 ism.setMinimumSize(new Dimension(700, 700));
                 this.dispose();
                 break;
-            } else {
-                JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
-                textFieldId.setText(null);
-                textFieldMdp.setText(null);
-                break;
             }
+
+        }
+        if (k == lectA.repertoire().size() - 1) {
+            JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+            textFieldId.setText(null);
+            textFieldMdp.setText(null);
         }
     }
-
-
 
     public void textFieldMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMdpActionPerformed
 
