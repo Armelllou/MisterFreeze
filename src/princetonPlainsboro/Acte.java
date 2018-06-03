@@ -32,14 +32,12 @@ class Acte {
         return code.calculerCout(coef);
     }
 
-    public int rechercherCout(Code codeATrouver) {
-        int i = 0;
-        while (i< codes.size() && code != codeATrouver) { //si utilisateur écrit un code faux.
-            i++;
+    /*public double rechercherCout(Code codeATrouver) {
+        for(Code code : codes){
+            if(code == codeATrouver){
+                return code.getCout();
+            }
         }
-        
-        return i;
-    }
-
-
+        return 0.0;
+    }*/ //inutile -> utiliser code.getCout()
 }

@@ -17,7 +17,7 @@ class Medecin {
     }
 
     public String toString() {
-        return "Dr " + prenom + " " + nom + ", " + specialite + ", " + numeroTel;
+        return "Dr " + prenom + " " + nom + ", " + specialite + ", " + numeroTel+ ", " + mdp;
     }
 
     public boolean equals(Object o) {
@@ -36,6 +36,26 @@ class Medecin {
     public String getPrenom() {
         return prenom;
 
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
+
+    public void setNumeroTel(String numeroTel) {
+        this.numeroTel = numeroTel;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     public String getSpecialite() {

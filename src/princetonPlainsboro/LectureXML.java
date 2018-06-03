@@ -27,6 +27,9 @@ public class LectureXML {
     private final static String repBase = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier;
+    private final static String repBase1 = "src/donnees/";
+    /// nom du document XML a analyser
+    private String nomFichier1= "listeMedecin.xml";
 
     // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
     public LectureXML(String nomFichier) {
@@ -202,4 +205,67 @@ public class LectureXML {
         }
         return repertoire;
     }
+
+    public ListeMedecin getListeMedecin() {
+        ListeMedecin listeMedecinCourant =new ListeMedecin();
+        Medecin medecinCourant = null;
+        String donneesCourantes = "";
+        String nomCourant = "";
+        String prenomCourant = "";
+        String mdpCourant = "";
+        String specialiteCourante = "";
+        String numTel = "";
+        // analyser le fichier par StAX
+        try {
+            // instanciation du parser
+            InputStream in = new FileInputStream(repBase1 + nomFichier1);
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader parser = factory.createXMLStreamReader(in);
+
+            // lecture des evenements
+            for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
+                // traitement selon l'evenement
+                switch (event) {
+                    case XMLStreamConstants.START_ELEMENT:
+                        if(parser.getLocalName().equals("dossiers"))
+                        break;
+                    case XMLStreamConstants.END_ELEMENT:
+                        if (parser.getLocalName().equals("medecin")){
+                            listeMedecinCourant.ajouterMedecin(new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant));
+                        }
+                        if (parser.getLocalName().equals("nom")) {
+                            nomCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("prenom")) {
+                            prenomCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("specialite")) {
+                            specialiteCourante = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("numTel")) {
+                            numTel = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("mdp")) {
+                            mdpCourant = donneesCourantes;
+                        }
+                        break;
+                    case XMLStreamConstants.CHARACTERS:
+                        donneesCourantes = parser.getText();
+                        break;
+                } // end switch
+            } // end while
+            parser.close();
+        } catch (XMLStreamException ex) {
+            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier1);
+            System.out.println("Details :");
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier1);
+            System.out.println("Verifier le chemin.");
+            System.out.println(ex.getMessage());
+        }
+
+        return listeMedecinCourant;
+    }
+
 }

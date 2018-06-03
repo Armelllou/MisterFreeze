@@ -14,8 +14,8 @@ class Test {
     private ArrayList<String> rolev;
 
     public static void main(String[] args) {
-        //afficherDossiersConsole();
-        new Login().showLogin();
+        afficherDossiersConsole();
+        //new Login().showLogin();
 
         //InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
         //f.setMinimumSize(new Dimension(700, 700));
@@ -34,9 +34,10 @@ class Test {
     }
 
     private static void afficherDossiersConsole() {
-        LectureXML test = new LectureXML("dossiers.xml");
-
         String separation = "\n********\n";
+        //LectureXML test = new LectureXML("dossiers.xml");
+/*
+
 
         Date d1 = new Date(1, 11, 2005);
         Date d2 = new Date(5, 1, 2006);
@@ -51,12 +52,25 @@ class Test {
         Medecin m1 = new Medecin("Deblouze", "Agathe", spe, "1234","mdp1");
         Medecin m2 = new Medecin("Jared", "Curry", "Moche", "134","mdp2");
         Medecin m3 = new Medecin("Roussillon", "Julien", "Musicien", "456","mdp3");
+        ListeMedecin lm = new ListeMedecin();
+        lm.ajouterMedecin(m1);
+        lm.ajouterMedecin(m2);
+        lm.ajouterMedecin(m3);
 
 
         DossierMedical dm = test.getDossier();
         dm.afficher();
+*/
 
-        System.out.println(separation);
+        System.out.println("test recherche medecin");
+        LectureXML test1 = new LectureXML("listeMedecin.xml");
+        ListeMedecin lm2 = test1.getListeMedecin();
+        lm2.afficherMedecin();
+        System.out.println("  ");
+        System.out.println(lm2.rechercherMedecin("pat","bol"));
+
+
+       /* System.out.println(separation);
 
         System.out.println("> cout de " + p1.toString() + " : " + dm.coutPatient(p1));
 
@@ -107,7 +121,11 @@ class Test {
         ldp.afficherListDossierPatient();
         
         //System.out.println("Fiches de soins triées entre 2 dates : ");
-        //dm.trierEntreDeuxDates(2005, 2007, new ComparaisonFichesDates()); voir comment le tester 
+        //dm.trierEntreDeuxDates(2005, 2007, new ComparaisonFichesDates()); voir comment le tester
+
+        //Test rechercher medecin
+        System.out.println("recherche medecin");
+        System.out.println( lm.rechercherMedecin("Deblouze", "Agathe")); */
 
     }
 

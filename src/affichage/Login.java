@@ -278,7 +278,7 @@ public class Login extends javax.swing.JFrame {
                 System.out.println("Connection");
 
                 InterfaceSecretaireMedical ism = new InterfaceSecretaireMedical();
-                ism.setMinimumSize(new Dimension(700, 700));
+                ism.setMinimumSize(new Dimension(1000, 700));
                 this.dispose();
                 break;
             }
