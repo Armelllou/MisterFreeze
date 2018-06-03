@@ -883,7 +883,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 xmlToSave.put("prenom", textField2.getText());
                 xmlToSave.put("specialite", textField3.getText());
                 xmlToSave.put("numeroTelephone", textField4.getText());
-                Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(), textField4.getText(),""); //ajouter mdp
+                Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(), textField4.getText(),textField5.getText()); //ajouter mdp
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml","medecin",medecin1);
 
             }
