@@ -89,6 +89,8 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JTextArea textArea1;
     private ListeMedecin listeMedecin;
 
+    private JButton button1Medecin;
+
 
 
     public InterfaceSecretaireMedical() {
@@ -606,26 +608,12 @@ public class InterfaceSecretaireMedical extends JFrame {
         label4 = new JLabel();
         textField2 = new JTextField();
         label5 = new JLabel();
-        button1New = new JButton();
-        textField3 = new JTextField();
+        button1Medecin = new JButton();
+        textField3 = new JTextField("");
         label6 = new JLabel();
         label7 = new JLabel();
         textField4 = new JTextField();
 
-        //======== panel1 ========
-        {
-
-            // JFormDesigner evaluation mark
-            panelRegistreMedecin.setBorder(new javax.swing.border.CompoundBorder(
-                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                            "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                            javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                            java.awt.Color.red), panelRegistreMedecin.getBorder()));
-            panelRegistreMedecin.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-                public void propertyChange(java.beans.PropertyChangeEvent e) {
-                    if ("border".equals(e.getPropertyName())) throw new RuntimeException();
-                }
-            });
 
             panelRegistreMedecin.setLayout(null);
 
@@ -650,9 +638,9 @@ public class InterfaceSecretaireMedical extends JFrame {
             label5.setBounds(290, 60, 60, 20);
 
             //---- button1New ----
-            button1New.setText("Valider");
-            panelRegistreMedecin.add(button1New);
-            button1New.setBounds(75, 130, 95, button1New.getPreferredSize().height);
+            button1Medecin.setText("Valider");
+            panelRegistreMedecin.add(button1Medecin);
+            button1Medecin.setBounds(75, 130, 95, button1Medecin.getPreferredSize().height);
             panelRegistreMedecin.add(textField3);
             textField3.setBounds(75, 210, 120, 25);
 
@@ -684,10 +672,10 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         }
 
-    }
+
 
     public void setRechercherMedecin() {
-        button1New.addActionListener(new ActionListener() {
+        button1Medecin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 /*Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
                 xmlToSave.put(null, "medecin");
@@ -698,10 +686,8 @@ public class InterfaceSecretaireMedical extends JFrame {
 
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
-                listeMedecin.rechercherMedecin(textField1.getText(),textField2.getText());
-                textField3 = new JTextField(listeMedecin.rechercherMedecin(textField1.getText(),textField2.getText()).getNom());
-
-
+                System.out.println(listeMedecin.rechercherMedecin(textField1.getText(),textField2.getText()));
+                textField3.setText(listeMedecin.rechercherMedecin(textField1.getText(),textField2.getText()).getNom());
             }
         });
     }

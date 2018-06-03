@@ -14,8 +14,8 @@ class Test {
     private ArrayList<String> rolev;
 
     public static void main(String[] args) {
-        afficherDossiersConsole();
-        //new Login().showLogin();
+        //afficherDossiersConsole();
+        new Login().showLogin();
 
         //InterfaceSecretaireMedical f = new InterfaceSecretaireMedical();
         //f.setMinimumSize(new Dimension(700, 700));
