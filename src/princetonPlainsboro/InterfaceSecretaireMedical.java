@@ -266,14 +266,6 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //======== panelFicheSoin ========
         {
-
-            // JFormDesigner evaluation mark
-            panelFicheSoin.setBorder(new javax.swing.border.CompoundBorder(
-                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                            "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                            javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                            java.awt.Color.red), panelFicheSoin.getBorder())); panelFicheSoin.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
             panelFicheSoin.setLayout(null);
 
             //---- label11 ----
@@ -344,16 +336,9 @@ public class InterfaceSecretaireMedical extends JFrame {
             label20.setBounds(new Rectangle(new Point(435, 160), label20.getPreferredSize()));
             panelFicheSoin.add(comboBox1);
             comboBox1.setBounds(90, 220, 90, 30);
-            comboBox1.addItem("CS");
-            comboBox1.addItem("CSC");
-            comboBox1.addItem("FP");
-            comboBox1.addItem("KC");
-            comboBox1.addItem("KE");
-            comboBox1.addItem("K");
-            comboBox1.addItem("KFA");
-            comboBox1.addItem("KFB");
-            comboBox1.addItem("ORT");
-            comboBox1.addItem("PRO");
+            for(Code code : Code.values()){
+                comboBox1.addItem(code.name());
+            }
 
 
             //---- label21 ----

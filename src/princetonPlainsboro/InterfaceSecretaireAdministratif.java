@@ -338,16 +338,9 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             label20.setBounds(new Rectangle(new Point(435, 160), label20.getPreferredSize()));
             panelFicheSoin.add(comboBox1);
             comboBox1.setBounds(90, 220, 90, 30);
-            comboBox1.addItem("CS");
-            comboBox1.addItem("CSC");
-            comboBox1.addItem("FP");
-            comboBox1.addItem("KC");
-            comboBox1.addItem("KE");
-            comboBox1.addItem("K");
-            comboBox1.addItem("KFA");
-            comboBox1.addItem("KFB");
-            comboBox1.addItem("ORT");
-            comboBox1.addItem("PRO");
+            for(Code code : Code.values()){
+                comboBox1.addItem(code.name());
+            }
 
 
             //---- label21 ----
