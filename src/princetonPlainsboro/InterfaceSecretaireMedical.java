@@ -883,7 +883,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 xmlToSave.put("prenom", textField2.getText());
                 xmlToSave.put("specialite", textField3.getText());
                 xmlToSave.put("numeroTelephone", textField4.getText());
-                Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(), textField4.getText());
+                Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(), textField4.getText(),""); //ajouter mdp
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml","medecin",medecin1);
 
             }
@@ -1042,7 +1042,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Date date = new Date(15, 6, 2009);
-                Medecin medecin = new Medecin("Blouze", "Bu", "blabla", "4");
+                Medecin medecin = new Medecin("Blouze", "Bu", "blabla", "4","mdp5");
                 Patient patient = new Patient("Blablabla", "Armelle", new Date(14, 3, 1996), 5);
                 List<Acte> actes = new ArrayList<Acte>();
                 actes.add(new Acte(Code.ORT, 2));

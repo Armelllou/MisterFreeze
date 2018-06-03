@@ -34,9 +34,10 @@ class Acte {
 
     public int rechercherCout(Code codeATrouver) {
         int i = 0;
-        while (code != codeATrouver) {
+        while (i< codes.size() && code != codeATrouver) { //si utilisateur écrit un code faux.
             i++;
         }
+        
         return i;
     }
 

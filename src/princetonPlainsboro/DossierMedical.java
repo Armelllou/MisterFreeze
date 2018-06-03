@@ -6,7 +6,7 @@ import java.util.Vector;
 class DossierMedical {
 
     private List<FicheDeSoins> fiches;     // contient des objets de classe 'FicheDeSoins'
-    private List<Patient> lp;
+    private List<Patient> lp;  //vérifier si lp etait la au debut
 
     public DossierMedical() {
         fiches = new Vector<FicheDeSoins>();  // liste vide
@@ -34,6 +34,14 @@ class DossierMedical {
             f.afficher();
             // pour separer les fiches de soins :
             System.out.println("--------------------------------------");
+        }
+    }
+
+    public void afficherPatients() { //affiche tous les patients
+        System.out.println("Les patients de l'etablissement sont : ");
+        for (int i = 0; i < lp.size(); i++) {
+            System.out.println(lp.get(i).toString() + ";");
+
         }
     }
 
@@ -142,24 +150,86 @@ class DossierMedical {
             //on la supprime de la liste :
             copieFiches.remove(imin);
         }
+
     }
 
+    public void trierEntreDeuxDates(Date d1, Date d2, ComparaisonFiches c) { 
+        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
+
+        while (!copieFiches.isEmpty()) { //tant que c'est vide ???? bizarre
+            // on cherche la fiche de soins minimale :
+            int imin = 0;
+            FicheDeSoins f = fiches.get(imin);
+            Date d = f.getDate();
+            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
+                for (int i = 1; i < copieFiches.size(); i++) {
+                    FicheDeSoins f2 = copieFiches.get(i);
+                    if (c.comparer(f2, f) < 0) {
+                        imin = i;
+                        f = f2;
+                    }
+                }
+            }
+            // on affiche la fiche de soins trouvee :
+            f.afficher();
+            System.out.println("------------------------");
+            //on la supprime de la liste :
+            copieFiches.remove(imin);
+        }
+
+    }
 
     //ajout methode getListe utilisee dans DossierPatient
     public List<FicheDeSoins> getListe() {
         return fiches;
     }
 
-    public Patient rechercher(String nom, String prenom, Date dateNaissance, int numSecu){
-        int i=0;
-        Patient p =new Patient(nom,prenom,dateNaissance,numSecu);
-        while(lp.get(i).getNom()!=nom && lp.get(i).getPrenom()!=prenom){
+    //rechercher patient à partir de son numèro de sécu
+    public Patient rechercherPatientViaSecu(int numSecu) {
+        int i = 0;
+        while (i < lp.size() && lp.get(i).getNumSecu() != numSecu) {
             i++;
         }
-        p=lp.get(i);
-        return p;
+        if (i == lp.size()) {
+            return null;
+        } else {
+            return lp.get(i);
+        }
+
     }
 
+    //donne toutes les fiches de soins d'un patient
+    public List<FicheDeSoins> rechercherfichesDUnPatient(Patient patient) {
+        Vector<FicheDeSoins> lfs = new Vector<FicheDeSoins>();
+        for (int i = 0; i < fiches.size(); i++) {
+            if (patient.equals(fiches.get(i).getPatient())) {
+                lfs.add(fiches.get(i));
+            }
+        }
+        return lfs;
+    }
 
+    //donne la fiche d'un patient à un temps t
+    public FicheDeSoins rechercherFiche(Patient patient, Date date) {
+        int i = 0;
+        while (i < fiches.size() && !patient.equals(fiches.get(i).getPatient()) && !date.equals(fiches.get(i).getDate())) {
+            i++;
+        }
+        if (i == fiches.size()) {
+            return null;
+        } else {
+            return fiches.get(i);
+        }
+    }
+
+    /*
+    public Patient rechercher(String nom, String prenom, Date dateNaissance, int numSecu) {
+        int i = 0;
+        Patient p = new Patient(nom, prenom, dateNaissance, numSecu);
+        while (lp.get(i).getNom() != nom && lp.get(i).getPrenom() != prenom) {
+            i++;
+        }
+        p = lp.get(i);
+        return p;
+    }*/
 }
-
