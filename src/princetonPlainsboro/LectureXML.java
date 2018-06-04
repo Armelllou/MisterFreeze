@@ -318,14 +318,13 @@ public class LectureXML {
                         if (parser.getLocalName().equals("numeroSecurite")) {
                             numSecu = donneesCourantes;
                         }
-                        /*if (parser.getLocalName().equals("date")) {
+                        if (parser.getLocalName().equals("date")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
                             int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
                             dateCourante = new Date(jour, mois, annee);
-                        }*/
-
+                        }
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();

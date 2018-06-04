@@ -1,6 +1,7 @@
 package princetonPlainsboro;
 
 import affichage.Acceuil;
+import affichage.Login;
 
 import javax.swing.*;
 import java.awt.*;
@@ -188,8 +189,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
                 cl.show(affichage, listContent[5]);
-                Deconnexion deco1 = new Deconnexion();
-                deco1.setMinimumSize(new Dimension(700, 700));
+                new Login().showLogin();
                 dispose();
             }
         });

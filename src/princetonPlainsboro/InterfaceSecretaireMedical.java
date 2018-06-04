@@ -5,6 +5,8 @@
  */
 package princetonPlainsboro;
 
+import affichage.Login;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -90,6 +92,9 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
     private ListeMedecin listeMedecin;
+    private JToggleButton deconnexion;
+    private JToggleButton fichierMedical;
+    private JLabel registreM;
 
     private JButton button1Medecin;
 
@@ -105,7 +110,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         bas.setBackground(Color.PINK);
         bas.setLayout(new BorderLayout());
         menuderoulant.add(haut, BorderLayout.CENTER);
-        menuderoulant.add(bas, BorderLayout.SOUTH);
+        menuderoulant.add(bas, BorderLayout.NORTH);
 
         //On cree trois conteneurs de couleurs differentes
         panelRegistrePatient = new JPanel();
@@ -127,7 +132,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         actemedical.setFont(police);
         actemedical.setPreferredSize(new Dimension(230, 50));
 
-        final JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
+        fichierMedical = new JToggleButton("Fichier Medical");
         haut.add(fichierMedical, BorderLayout.CENTER);
         fichierMedical.setFont(police);
         fichierMedical.setPreferredSize(new Dimension(230, 50));
@@ -147,7 +152,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreMedecin.setFont(police);
         registreMedecin.setPreferredSize(new Dimension(230, 50));
 
-        JToggleButton deconnexion = new JToggleButton("Deconnecter");
+        deconnexion = new JToggleButton("Deconnecter");
         haut.add(deconnexion, BorderLayout.CENTER);
         deconnexion.setFont(police);
 
@@ -161,7 +166,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         dossierMed.setVisible(false);
 
         //titre registre Medical
-        final JLabel registreM = new JLabel("Registre Medical");
+        registreM = new JLabel("Registre Medical");
         panelRegistreM.add(registreM, BorderLayout.NORTH);
         registreM.setVisible(false);
         Font police1 = new Font("Tahoma", Font.BOLD, 20);
@@ -169,31 +174,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreM.setHorizontalAlignment(JLabel.CENTER);
         registreM.setVerticalAlignment(JLabel.CENTER);
 
-        //Définition de l'action du bouton fichierMedical
-        fichierMedical.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[2]);
-                if (fichierMedical.isSelected()) {
-                    dossierMed.setVisible(true);
-                    registreM.setVisible(true);
-                } else {
-                    dossierMed.setVisible(false);
-                    registreM.setVisible(false);
-                }
-            }
-        });
-
-        //Définition de l'action du Deconnexion
-        deconnexion.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[5]);
-                Deconnexion deco1 = new Deconnexion();
-                deco1.setMinimumSize(new Dimension(700, 700));
-                dispose();
-            }
-        });
 
         //On définit le layout
         affichage.setLayout(cl);
@@ -222,10 +202,41 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherMedecin();
         setButtonImprimer();
         setRechercherPatient();
+        setButtonDeconnexion();
+        setButtonFichierMedical();
 
         //a mettre dans secretaire medical
         //setAjouterPatient();
 
+    }
+
+    public void setButtonFichierMedical(){
+        //Définition de l'action du bouton fichierMedical
+        fichierMedical.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+                cl.show(affichage, listContent[2]);
+                if (fichierMedical.isSelected()) {
+                    dossierMed.setVisible(true);
+                    registreM.setVisible(true);
+                } else {
+                    dossierMed.setVisible(false);
+                    registreM.setVisible(false);
+                }
+            }
+        });
+    }
+
+    public void setButtonDeconnexion(){
+        //Définition de l'action du Deconnexion
+        deconnexion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                cl.show(affichage, listContent[5]);
+                new Login().showLogin();
+                dispose();
+            }
+        });
     }
 
     public void setPanelFicheSoin() {
@@ -482,7 +493,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         } catch (Exception ex) {
             System.out.println("error in image");
         }
-        haut.add(picLabel, BorderLayout.NORTH);
+        haut.add(picLabel, BorderLayout.CENTER);
     }
 
     public void setButtonRegistrePatient() {
@@ -714,7 +725,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     label4.setVisible(true);
                     textField2.setVisible(true);
                     label5.setVisible(true);
-                    button1New.setVisible(true);
+                    button1Medecin.setVisible(true);
                     textField3.setVisible(true);
                     label6.setVisible(true);
                     label7.setVisible(true);
@@ -725,7 +736,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     label4.setVisible(false);
                     textField2.setVisible(false);
                     label5.setVisible(false);
-                    button1New.setVisible(false);
+                    button1Medecin.setVisible(false);
                     textField3.setVisible(false);
                     label6.setVisible(false);
                     label7.setVisible(false);
