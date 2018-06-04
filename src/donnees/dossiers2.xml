@@ -952,4 +952,188 @@
             <coef>1</coef>
         </acte>
     </ficheDeSoins>
+<ficheDeSoins>
+        <date>1111-11-11</date>
+        <medecin>
+            <nom>a</nom>
+            <prenom>z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>e</nom>
+            <prenom>r</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>1222-12-12</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2010-12-12</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>R</nom>
+            <prenom>T</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2101-13-12</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2010-12-23</date>
+        <medecin>
+            <nom>AZ</nom>
+            <prenom>ER</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>RT</nom>
+            <prenom>TY</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>12</coef>
+        </acte>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>12</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>3029-23-13</date>
+        <medecin>
+            <nom>AZERTY</nom>
+            <prenom>AZER</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>AZE</nom>
+            <prenom>AZ</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2134-13-12</date>
+        <medecin>
+            <nom>AZ</nom>
+            <prenom>PAZ</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>ZE</nom>
+            <prenom>ZE</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>1234-12-12</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>1234-12-12</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>1234-13-12</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>

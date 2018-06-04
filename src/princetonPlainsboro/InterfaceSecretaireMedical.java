@@ -456,6 +456,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     numSecu.setVisible(true);
                     label20.setVisible(true);
                     comboBox1.setVisible(true);
+                    comboBox2.setVisible(true);
                     label21.setVisible(true);
                     label22.setVisible(true);
                     coef.setVisible(true);
@@ -496,6 +497,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     buttonImp.setVisible(false);
                     labelajoutActe.setVisible(false);
                     buttonAjoutActe.setVisible(false);
+                    comboBox2.setVisible(false);
 
                 }
             }
@@ -889,39 +891,43 @@ public class InterfaceSecretaireMedical extends JFrame {
         buttonAjoutActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
 
-            System.out.println("test");
-            System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
-            String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
-            Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
-            actes.add(a);
-            String s2 = actes.toString();
-            scrollPane1.setText(s2);
+                System.out.println("test");
+                System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
+                String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
+                Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
+                actes.add(a);
+                scrollPane1.setText(actes.toString());
 
-        button1New.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
+                button1New.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent event) {
 
-                //actes.add(new Acte(Code.CS, 1));
-                JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.OK_OPTION);
-                label11 = new JLabel();
-                jj.setText(null);
-                mm.setText(null);
-                aaaa.setText(null);
-                nomMed.setText(null);
-                nomPa.setText(null);
-                prenomMed.setText(null);
-                prenomPa.setText(null);
-                numSecu.setText(null);
-                coef.setText(null);
+                        //actes.add(new Acte(Code.CS, 1));
+                        //JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.OK_OPTION);
 
-                Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
-                Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), "blabla", "4", "mdp5");
-                Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), new Date(14, 3, 1996), numSecu.getText());
-                EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
+
+                        Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
+                        Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), "blabla", "4", "mdp5");
+                        Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), new Date(14, 3, 1996), numSecu.getText());
+                        EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
+
+
+                        JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.INFORMATION_MESSAGE);
+
+                        jj.setText(null);
+                        mm.setText(null);
+                        aaaa.setText(null);
+                        nomMed.setText(null);
+                        nomPa.setText(null);
+                        prenomMed.setText(null);
+                        prenomPa.setText(null);
+                        numSecu.setText(null);
+                        coef.setText(null);
+                        scrollPane1.setText(null);
+                        }
+                });
+
             }
         });
 
     }
-});
-
-        }
-        }
+}
