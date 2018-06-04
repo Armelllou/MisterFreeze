@@ -25,7 +25,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
     //Liste des noms de nos conteneurs pour la supperposition des JPanels
-    private String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
+    private String[] listContent = {"ACCUEIL", "REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
     private JPanel menuderoulant = new JPanel();
     private JPanel haut = new JPanel();
     private JPanel bas = new JPanel();
@@ -97,6 +97,8 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JLabel registreM;
     private JLabel labelajoutActe;
     private JButton buttonAjoutActe;
+    private JPanel panelAccueil;
+    private JPanel panelBasAccueil;
 
     private JButton button1Medecin;
 
@@ -110,22 +112,24 @@ public class InterfaceSecretaireMedical extends JFrame {
         menuderoulant.setBackground(Color.PINK);
         haut.setBackground(Color.PINK);
         bas.setBackground(Color.PINK);
-        bas.setLayout(new BorderLayout());
+        //haut.setLayout(new FlowLayout());
+
         menuderoulant.add(haut, BorderLayout.CENTER);
-        menuderoulant.add(bas, BorderLayout.NORTH);
+
 
         //On cree trois conteneurs de couleurs differentes
         panelRegistrePatient = new JPanel();
-        panelRegistrePatient.setLayout(new FlowLayout());
+        panelRegistrePatient.setLayout(new BorderLayout());
         panelRegistreMedecin = new JPanel();
         panelRegistreMedecin.setLayout(new BorderLayout());
+        panelAccueil = new JPanel();
+        panelAccueil.setLayout(new BorderLayout());
 
         JPanel panelRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
         panelActe = new JPanel();
         panelFicheSoin = new JPanel();
 
-        ImagePanel();
 
         //creation des boutons
         actemedical = new JToggleButton("Acte Medical");
@@ -155,7 +159,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreMedecin.setPreferredSize(new Dimension(230, 50));
 
         deconnexion = new JToggleButton("Deconnecter");
-        haut.add(deconnexion, BorderLayout.CENTER);
+        haut.add(deconnexion, BorderLayout.SOUTH);
         deconnexion.setFont(police);
 
         panelRegistreM.setLayout(new BorderLayout());
@@ -180,12 +184,24 @@ public class InterfaceSecretaireMedical extends JFrame {
         affichage.setLayout(cl);
 
         //On ajoute les cartes à la pile avec un nom pour les retrouver
-        affichage.add(panelRegistrePatient, listContent[0]);
-        affichage.add(panelRegistreMedecin, listContent[1]);
-        affichage.add(panelRegistreM, listContent[2]);
-        affichage.add(panelFicheSoin, listContent[3]);
-        affichage.add(panelActe, listContent[4]);
-        affichage.add(panelDeconnexion, listContent[5]);
+        affichage.add(panelAccueil, listContent[0]);
+        JPanel panelHautAccueil = new JPanel();
+        panelBasAccueil = new JPanel();
+        panelBasAccueil.setBackground(Color.white);
+        panelAccueil.add(panelHautAccueil, BorderLayout.NORTH);
+        JLabel titreAccueil= new JLabel("Andromeda");
+        Font police2 = new Font("Tahoma", Font.BOLD, 20);
+        titreAccueil.setHorizontalAlignment(JLabel.CENTER);
+        titreAccueil.setVerticalAlignment(JLabel.CENTER);
+        titreAccueil.setFont(police2);
+        panelHautAccueil.add(titreAccueil,BorderLayout.NORTH);
+        panelAccueil.add(panelBasAccueil, BorderLayout.CENTER);
+        affichage.add(panelRegistrePatient, listContent[1]);
+        affichage.add(panelRegistreMedecin, listContent[2]);
+        affichage.add(panelRegistreM, listContent[3]);
+        affichage.add(panelFicheSoin, listContent[4]);
+        affichage.add(panelActe, listContent[5]);
+        affichage.add(panelDeconnexion, listContent[6]);
 
         this.getContentPane().add(menuderoulant, BorderLayout.WEST);
         this.getContentPane().add(affichage, BorderLayout.CENTER);
@@ -205,9 +221,16 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherPatient();
         setButtonDeconnexion();
         setButtonFichierMedical();
+        ImagePanel();
+        setPanelAccueil();
+        ImagePanelAccueil();
 
         //a mettre dans secretaire medical
         //setAjouterPatient();
+    }
+
+    public void setPanelAccueil() {
+
     }
 
     public void setButtonFichierMedical() {
@@ -215,7 +238,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[2]);
+                cl.show(affichage, listContent[3]);
                 if (fichierMedical.isSelected()) {
                     dossierMed.setVisible(true);
                     registreM.setVisible(true);
@@ -232,7 +255,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[5]);
+                cl.show(affichage, listContent[6]);
                 new Login().showLogin();
                 dispose();
             }
@@ -435,7 +458,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         ficheSoin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[3]);
+                cl.show(affichage, listContent[4]);
                 if (ficheSoin.isSelected()) {
                     label11.setVisible(true);
                     label12.setVisible(true);
@@ -515,14 +538,27 @@ public class InterfaceSecretaireMedical extends JFrame {
         } catch (Exception ex) {
             System.out.println("error in image");
         }
-        haut.add(picLabel, BorderLayout.CENTER);
+        haut.add(picLabel, BorderLayout.SOUTH);
+    }
+
+    public void ImagePanelAccueil() {
+        try {
+            ImageIcon icon = new ImageIcon(new ImageIcon("src/princetonPlainsboro/Bienvenue.jpg").getImage().getScaledInstance(700, 500, Image.SCALE_DEFAULT));
+            picLabel = new JLabel(icon);
+            picLabel.setVisible(true);
+            picLabel.setOpaque(true);
+            picLabel.setBackground(Color.white);
+        } catch (Exception ex) {
+            System.out.println("error in image");
+        }
+        panelBasAccueil.add(picLabel, BorderLayout.CENTER);
     }
 
     public void setButtonRegistrePatient() {
         registrePatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[0]);
+                cl.show(affichage, listContent[1]);
                 if (registrePatient.isSelected()) {
                     label1Patient.setVisible(true);
                     label2Patient.setVisible(true);
@@ -740,7 +776,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreMedecin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[1]);
+                cl.show(affichage, listContent[2]);
                 if (registreMedecin.isSelected()) {
                     label3.setVisible(true);
                     textField1.setVisible(true);
@@ -780,19 +816,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         textField3Acte = new JTextField();
 
         //======== this ========
-        // JFormDesigner evaluation mark
-        panelActe.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), panelActe.getBorder()));
-        panelActe.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent e) {
-                if ("border".equals(e.getPropertyName())) {
-                    throw new RuntimeException();
-                }
-            }
-        });
+
 
         panelActe.setLayout(null);
 
@@ -849,7 +873,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         actemedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[4]);
+                cl.show(affichage, listContent[5]);
                 if (actemedical.isSelected()) {
                     label1Acte.setVisible(true);
                     label2Acte.setVisible(true);
@@ -923,7 +947,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                         numSecu.setText(null);
                         coef.setText(null);
                         scrollPane1.setText(null);
-                        }
+                    }
                 });
 
             }
