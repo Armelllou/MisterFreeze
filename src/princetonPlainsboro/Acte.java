@@ -24,8 +24,12 @@ class Acte {
         return coef;
     }
 
+   /* public String toString() {
+        return code.toString() + ", coefficient : " + coef ;
+    }*/
+
     public String toString() {
-        return code.toString() + ", coefficient : " + coef;
+        return code.toString() + ", coefficient : " + coef  + "\n";
     }
 
     public double cout() {
