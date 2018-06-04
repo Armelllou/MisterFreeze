@@ -220,6 +220,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         setPanelFicheSoin();
         setAjouterFicheSoin();
         setRechercherMedecin();
+        setButtonImprimer();
 
         //a mettre dans secretaire medical
         setAjouterPatient();
@@ -362,9 +363,9 @@ public class InterfaceSecretaireMedical extends JFrame {
             button1New.setBounds(445, 270, 105, 40);
 
             //---- buttonImprimer ----
-            buttonImp.setText("Imprimer la fiche de soin crée");
+            buttonImp.setText("Imprimer la fiche de soin");
             panelFicheSoin.add(buttonImp);
-            buttonImp.setBounds(445, 320, 105, 40);
+            buttonImp.setBounds(445, 320, 200, 40);
 
             { // compute preferred size
                 Dimension preferredSize = new Dimension();

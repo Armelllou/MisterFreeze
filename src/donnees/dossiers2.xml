@@ -652,4 +652,20 @@
             <prenom/>
         </patient>
     </patient>
+<ficheDeSoins>
+        <date>2010-11-12</date>
+        <medecin>
+            <nom>BER</nom>
+            <prenom>BOS</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>BAb</nom>
+            <prenom>be</prenom>
+        </patient>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>2</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>
