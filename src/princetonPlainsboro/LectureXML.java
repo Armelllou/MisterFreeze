@@ -14,10 +14,9 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.ArrayList;
 
 /**
  * Lecture d'un document XML et transformation en instances Java.
@@ -27,9 +26,9 @@ import java.util.ArrayList;
 public class LectureXML {
 
     private final static String repBase = "src/donnees/";
+    private final static String repBase1 = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier;
-    private final static String repBase1 = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier1 = "listeMedecin.xml";
     private String nomFichier2 = "listePatient.xml";
@@ -291,11 +290,10 @@ public class LectureXML {
         String prenomCourant = "";
         Date dateCourante = null;
         String numSecu = "";
-        Date date= null;
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase1 + nomFichier2);
+            InputStream in = new FileInputStream(repBase1 + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -317,16 +315,17 @@ public class LectureXML {
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
                         }
-                        if (parser.getLocalName().equals("dateNaissance")) {
+                        if (parser.getLocalName().equals("numeroSecurite")) {
+                            numSecu = donneesCourantes;
+                        }
+                        /*if (parser.getLocalName().equals("date")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
                             int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
-                            date = new Date(jour, mois, annee);
-                        }
-                        if (parser.getLocalName().equals("numeroSecurite")) {
-                            numSecu = donneesCourantes;
-                        }
+                            dateCourante = new Date(jour, mois, annee);
+                        }*/
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();

@@ -28,7 +28,7 @@ class ListePatient {
 
     public Patient rechercher(String numSecu) {
         for(Patient patient : lp){
-            if(patient.getNom().equals(numSecu)){
+            if(patient.getNumSecu().equals(numSecu)){
                 return patient;
             }
         }

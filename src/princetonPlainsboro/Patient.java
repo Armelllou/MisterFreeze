@@ -70,6 +70,7 @@ class Patient {
         return dateNaissance;
     }
 
+
     /**
      * @param dateNaissance the dateNaissance to set
      */
