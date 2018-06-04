@@ -98,7 +98,7 @@ public class ListeMedecin {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if(parser.getLocalName().equals("medecin")) {
-                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante,numTel, mdpCourant);}
+                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant);}
                         break;
 
                     case XMLStreamConstants.CHARACTERS:

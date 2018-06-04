@@ -1,8 +1,15 @@
 package princetonPlainsboro;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
 import java.util.Vector;
 
-class FicheDeSoins {
+class FicheDeSoins implements Printable {
+
     private Patient patient;
     private Medecin medecin;
     private Date date;
@@ -69,5 +76,24 @@ class FicheDeSoins {
         }
         return total;
     }
-}
 
+    @Override
+    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+        if (pageIndex > 0) {
+            return NO_SUCH_PAGE;
+        }
+        /* On définit une marge  */
+        int marge = 30;
+
+        /* Récupère les coordonnées des bords de la page */
+        int x = (int) pageFormat.getImageableX();
+        int y = (int) pageFormat.getImageableY();
+        int w = (int) pageFormat.getImageableWidth();
+        int h = (int) pageFormat.getImageableHeight();
+        graphics.setColor(Color.LIGHT_GRAY);
+        graphics.setFont(new Font("Arial", Font.PLAIN, 14));
+        graphics.setColor(Color.BLACK);
+        graphics.drawString(toString(), x + marge, y + marge);
+        return PAGE_EXISTS;
+    }
+}

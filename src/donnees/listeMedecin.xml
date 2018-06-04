@@ -46,4 +46,10 @@
         <specialite>cardiologie</specialite>
         <numeroTelephone>076546575646</numeroTelephone>
     </medecin>
+    <medecin>
+        <nom>GB</nom>
+        <prenom>JL</prenom>
+        <specialite>cardiologie</specialite>
+        <numeroTelephone>0123456788</numeroTelephone>
+    </medecin>
 </dossier>

@@ -5,7 +5,6 @@
  *
  * Lecture d'un document XML et transformation en instances Java
  */
-
 package princetonPlainsboro;
 
 import javax.xml.stream.XMLInputFactory;
@@ -15,21 +14,25 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
 import java.util.ArrayList;
+
 /**
  * Lecture d'un document XML et transformation en instances Java.
  *
  * @author promayon
  */
 public class LectureXML {
+
     private final static String repBase = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier;
     private final static String repBase1 = "src/donnees/";
     /// nom du document XML a analyser
-    private String nomFichier1= "listeMedecin.xml";
+    private String nomFichier1 = "listeMedecin.xml";
+    private String nomFichier2 = "listePatient.xml";
 
     // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
     public LectureXML(String nomFichier) {
@@ -37,26 +40,36 @@ public class LectureXML {
     }
 
     private static Code getCode(String code) {
-        if (code.equals("CS"))
+        if (code.equals("CS")) {
             return Code.CS;
-        if (code.equals("CSC"))
+        }
+        if (code.equals("CSC")) {
             return Code.CSC;
-        if (code.equals("FP"))
+        }
+        if (code.equals("FP")) {
             return Code.FP;
-        if (code.equals("KC"))
+        }
+        if (code.equals("KC")) {
             return Code.KC;
-        if (code.equals("KE"))
+        }
+        if (code.equals("KE")) {
             return Code.KE;
-        if (code.equals("K"))
+        }
+        if (code.equals("K")) {
             return Code.K;
-        if (code.equals("KFA"))
+        }
+        if (code.equals("KFA")) {
             return Code.KFA;
-        if (code.equals("KFB"))
+        }
+        if (code.equals("KFB")) {
             return Code.KFB;
-        if (code.equals("ORT"))
+        }
+        if (code.equals("ORT")) {
             return Code.ORT;
-        if (code.equals("PRO"))
+        }
+        if (code.equals("PRO")) {
             return Code.PRO;
+        }
         // probleme : code inconnu
         //on peut coder mieux que ca le code inconnu donne null
         return null;
@@ -99,8 +112,9 @@ public class LectureXML {
                         }
                         if (parser.getLocalName().equals("code")) {
                             codeCourant = getCode(donneesCourantes);
-                            if (codeCourant == null)
+                            if (codeCourant == null) {
                                 throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
+                            }
                         }
                         if (parser.getLocalName().equals("coef")) {
                             coefCourant = Integer.parseInt(donneesCourantes);
@@ -125,13 +139,13 @@ public class LectureXML {
                             dossierCourant.ajouterFiche(f);
                         }
                         if (parser.getLocalName().equals("medecin")) {
-                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante,numTel, mdpCourant);
+                            medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant);
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant,date, 1234 );
+                            patientCourant = new Patient(nomCourant, prenomCourant, date, 1234);
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
@@ -207,7 +221,7 @@ public class LectureXML {
     }
 
     public ListeMedecin getListeMedecin() {
-        ListeMedecin listeMedecinCourant =new ListeMedecin();
+        ListeMedecin listeMedecinCourant = new ListeMedecin();
         Medecin medecinCourant = null;
         String donneesCourantes = "";
         String nomCourant = "";
@@ -227,10 +241,11 @@ public class LectureXML {
                 // traitement selon l'evenement
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
-                        if(parser.getLocalName().equals("dossiers"))
-                        break;
+                        if (parser.getLocalName().equals("dossiers")) {
+                            break;
+                        }
                     case XMLStreamConstants.END_ELEMENT:
-                        if (parser.getLocalName().equals("medecin")){
+                        if (parser.getLocalName().equals("medecin")) {
                             listeMedecinCourant.ajouterMedecin(new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant));
                         }
                         if (parser.getLocalName().equals("nom")) {
@@ -242,7 +257,7 @@ public class LectureXML {
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = donneesCourantes;
                         }
-                        if (parser.getLocalName().equals("numTel")) {
+                        if (parser.getLocalName().equals("numeroTelephone")) {
                             numTel = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("mdp")) {
@@ -266,6 +281,67 @@ public class LectureXML {
         }
 
         return listeMedecinCourant;
+    }
+
+    public ListePatient getListePatient() {
+        ListePatient listePatientCourant = new ListePatient();
+        Medecin patientCourant = null;
+        String donneesCourantes = "";
+        String nomCourant = "";
+        String prenomCourant = "";
+        Date dateCourante = null;
+        int numSecu = 0;
+        // analyser le fichier par StAX
+        try {
+            // instanciation du parser
+            InputStream in = new FileInputStream(repBase1 + nomFichier1);
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader parser = factory.createXMLStreamReader(in);
+
+            // lecture des evenements
+            for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
+                // traitement selon l'evenement
+                switch (event) {
+                    case XMLStreamConstants.START_ELEMENT:
+                        if (parser.getLocalName().equals("dossiers")) {
+                            break;
+                        }
+                    case XMLStreamConstants.END_ELEMENT:
+                        if (parser.getLocalName().equals("patient")) {
+                            listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, dateCourante, numSecu));
+                        }
+                        if (parser.getLocalName().equals("nom")) {
+                            nomCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("prenom")) {
+                            prenomCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("dateNaissance")) {
+                            prenomCourant =donneesCourantes; //problème string convertir en date java puis en notre date
+                            
+
+                        }
+                        if (parser.getLocalName().equals("numeroSecurite")) {
+                            numSecu = Integer.parseInt(donneesCourantes);
+                        }
+                        break;
+                    case XMLStreamConstants.CHARACTERS:
+                        donneesCourantes = parser.getText();
+                        break;
+                } // end switch
+            } // end while
+            parser.close();
+        } catch (XMLStreamException ex) {
+            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier1);
+            System.out.println("Details :");
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier1);
+            System.out.println("Verifier le chemin.");
+            System.out.println(ex.getMessage());
+        }
+
+        return listePatientCourant;
     }
 
 }

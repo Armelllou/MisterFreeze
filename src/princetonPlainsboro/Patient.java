@@ -14,9 +14,10 @@ class Patient {
         this.numSecu = numSecu;
 
     }
+    
 
     public String toString() {
-        return prenom + " " + nom + ", nee le " + dateNaissance + " et ayant pour numero de securite sociale " + numSecu;
+        return prenom + " " + nom + ", nee le " + getDateNaissance() + " et ayant pour numero de securite sociale " + numSecu;
     }
 
     public boolean equals(Object o) {
@@ -47,4 +48,41 @@ class Patient {
     public int getNumSecu() {
         return numSecu;
     }
+
+    /**
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * @param prenom the prenom to set
+     */
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    /**
+     * @return the dateNaissance
+     */
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    /**
+     * @param dateNaissance the dateNaissance to set
+     */
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    /**
+     * @param numSecu the numSecu to set
+     */
+    public void setNumSecu(int numSecu) {
+        this.numSecu = numSecu;
+    }
+    
+    
 }
