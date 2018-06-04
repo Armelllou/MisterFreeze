@@ -145,7 +145,7 @@ public class LectureXML {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, date, 1234);
+                            patientCourant = new Patient(nomCourant, prenomCourant, date, "1234");
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
@@ -285,16 +285,17 @@ public class LectureXML {
 
     public ListePatient getListePatient() {
         ListePatient listePatientCourant = new ListePatient();
-        Medecin patientCourant = null;
+        Patient patientCourant = null;
         String donneesCourantes = "";
         String nomCourant = "";
         String prenomCourant = "";
         Date dateCourante = null;
-        int numSecu = 0;
+        String numSecu = "";
+        Date date= null;
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase1 + nomFichier1);
+            InputStream in = new FileInputStream(repBase1 + nomFichier2);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -317,12 +318,14 @@ public class LectureXML {
                             prenomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("dateNaissance")) {
-                            prenomCourant =donneesCourantes; //problème string convertir en date java puis en notre date
-                            
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
+                            date = new Date(jour, mois, annee);
                         }
                         if (parser.getLocalName().equals("numeroSecurite")) {
-                            numSecu = Integer.parseInt(donneesCourantes);
+                            numSecu = donneesCourantes;
                         }
                         break;
                     case XMLStreamConstants.CHARACTERS:
@@ -332,11 +335,11 @@ public class LectureXML {
             } // end while
             parser.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier1);
+            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier2);
             System.out.println("Details :");
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier1);
+            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier2);
             System.out.println("Verifier le chemin.");
             System.out.println(ex.getMessage());
         }

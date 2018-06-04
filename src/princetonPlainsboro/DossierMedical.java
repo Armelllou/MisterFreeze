@@ -185,7 +185,7 @@ class DossierMedical {
     }
 
     //rechercher patient à partir de son numèro de sécu
-    public Patient rechercherPatientViaSecu(int numSecu) {
+    public Patient rechercherPatientViaSecu(String numSecu) {
         int i = 0;
         while (i < lp.size() && lp.get(i).getNumSecu() != numSecu) {
             i++;

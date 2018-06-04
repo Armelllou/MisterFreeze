@@ -5,9 +5,9 @@ class Patient {
     private String nom;
     private String prenom;
     private Date dateNaissance;
-    private int numSecu;
+    private String numSecu;
 
-    public Patient(String nom, String prenom, Date dateNaissance, int numSecu) {
+    public Patient(String nom, String prenom, Date dateNaissance, String numSecu) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -45,7 +45,7 @@ class Patient {
         return prenom;
     }
 
-    public int getNumSecu() {
+    public String getNumSecu() {
         return numSecu;
     }
 
@@ -80,7 +80,7 @@ class Patient {
     /**
      * @param numSecu the numSecu to set
      */
-    public void setNumSecu(int numSecu) {
+    public void setNumSecu(String numSecu) {
         this.numSecu = numSecu;
     }
     

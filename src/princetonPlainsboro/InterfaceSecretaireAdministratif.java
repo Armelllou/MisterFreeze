@@ -835,7 +835,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     public void setAjouterPatient() {
         button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Patient patient1 = new Patient(textField1Patient.getText(), textField2Patient.getText(), new Date(14, 3, 1996),Integer.parseInt(textField4Patient.getText()));
+                Patient patient1 = new Patient(textField1Patient.getText(), textField2Patient.getText(), new Date(14, 3, 1996),textField4Patient.getText());
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml","patient", patient1);
             }
         });
@@ -847,7 +847,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
                 Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), "blabla", "4","mdp5");
-                Patient patient = new Patient(nomPa.getText(),prenomPa.getText(), new Date(14, 3, 1996), Integer.parseInt(numSecu.getText()));
+                Patient patient = new Patient(nomPa.getText(),prenomPa.getText(), new Date(14, 3, 1996), numSecu.getText());
                 List<Acte> actes = new ArrayList<Acte>();
                 System.out.println("test");
                 System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));

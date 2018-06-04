@@ -221,9 +221,10 @@ public class InterfaceSecretaireMedical extends JFrame {
         setAjouterFicheSoin();
         setRechercherMedecin();
         setButtonImprimer();
+        setRechercherPatient();
 
         //a mettre dans secretaire medical
-        setAjouterPatient();
+        //setAjouterPatient();
 
     }
 
@@ -602,18 +603,11 @@ public class InterfaceSecretaireMedical extends JFrame {
         System.out.println("marche");
         button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                /*Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
-                xmlToSave.put(null, "medecin");
-                xmlToSave.put("nom", textField1.getText());
-                xmlToSave.put("prenom", textField2.getText());
-                xmlToSave.put("specialite", textField3.getText());
-                xmlToSave.put("numeroTelephone", textField4.getText());*/
-
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
-                System.out.println(listePatient.rechercher(Integer.parseInt(textField1Patient.getText())));
-                textField2Patient.setText(listePatient.rechercher(Integer.parseInt(textField1Patient.getText())).getNom());
-                textField3Patient.setText(listePatient.rechercher(Integer.parseInt(textField1Patient.getText())).getPrenom());
+                System.out.println(listePatient.rechercher(textField1Patient.getText()));
+                textField2Patient.setText(listePatient.rechercher(textField1Patient.getText()).getNom());
+                textField3Patient.setText(listePatient.rechercher(textField1Patient.getText()).getPrenom());
                 //textField4.setText(listePatient.rechercher(Integer.parseInt(textField1.getText())).getDateNaissance());
             }
         });
@@ -848,7 +842,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     }
 
     //mettre dans secretaire administrative
-    public void setAjouterPatient() {
+    /*public void setAjouterPatient() {
         button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Patient patient1 = new Patient(textField1Patient.getText(), textField2Patient.getText(), new Date(14, 3, 1996), 1728662);
@@ -856,14 +850,15 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         });
 
-    }
+    }*/
+
 
     public void setAjouterFicheSoin() {
         button1New.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
                 Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), "blabla", "4", "mdp5");
-                Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), new Date(14, 3, 1996), Integer.parseInt(numSecu.getText()));
+                Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), new Date(14, 3, 1996), numSecu.getText());
                 List<Acte> actes = new ArrayList<Acte>();
                 System.out.println("test");
                 System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));

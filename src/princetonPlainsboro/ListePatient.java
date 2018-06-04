@@ -26,14 +26,20 @@ class ListePatient {
         this.lp.add(p);
     }
 
-    public Patient rechercher(int numSecu) {
-        int i = 0;
+    public Patient rechercher(String numSecu) {
+        for(Patient patient : lp){
+            if(patient.getNom().equals(numSecu)){
+                return patient;
+            }
+        }
+        return null;
+        /*int i = 0;
         Patient p = new Patient("", "", null, numSecu);
         while (i < lp.size() && lp.get(i).getNumSecu() != numSecu) {
             i++;
         }
         p = lp.get(i);
-        return p;
+        return p;*/
     }
 
     public void setNomFichier(String nomFichier) {
@@ -53,7 +59,7 @@ class ListePatient {
         String mdpCourant = "";
         String specialiteCourante = "";
         Code codeCourant = null;
-        int numSecu = 0;
+        String numSecu = "";
         int coefCourant = 0;
 
         // analyser le fichier par StAX
