@@ -832,4 +832,124 @@
             <coef>2</coef>
         </acte>
     </ficheDeSoins>
+<ficheDeSoins>
+        <date>2011-2-1</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2011-2-1</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2011-2-1</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2011-2-1</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2011-2-1</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2011-2-1</date>
+        <medecin>
+            <nom>A</nom>
+            <prenom>Z</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>E</nom>
+            <prenom>R</prenom>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes de chirurgie et de specialite</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>
