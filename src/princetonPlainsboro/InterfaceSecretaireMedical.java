@@ -85,6 +85,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JTextField numSecu;
     private JLabel label20;
     private JComboBox comboBox1;
+    private JComboBox comboBox2;
     private JLabel label21;
     private JLabel label22;
     private JTextField coef;
@@ -174,7 +175,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreM.setHorizontalAlignment(JLabel.CENTER);
         registreM.setVerticalAlignment(JLabel.CENTER);
 
-
         //On définit le layout
         affichage.setLayout(cl);
 
@@ -207,10 +207,9 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //a mettre dans secretaire medical
         //setAjouterPatient();
-
     }
 
-    public void setButtonFichierMedical(){
+    public void setButtonFichierMedical() {
         //Définition de l'action du bouton fichierMedical
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -227,7 +226,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         });
     }
 
-    public void setButtonDeconnexion(){
+    public void setButtonDeconnexion() {
         //Définition de l'action du Deconnexion
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -260,6 +259,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         numSecu = new JTextField();
         label20 = new JLabel();
         comboBox1 = new JComboBox();
+        comboBox2 = new JComboBox();
         label21 = new JLabel();
         label22 = new JLabel();
         coef = new JTextField();
@@ -344,6 +344,10 @@ public class InterfaceSecretaireMedical extends JFrame {
             for (Code code : Code.values()) {
                 comboBox1.addItem(code.name());
             }
+            panelFicheSoin.add(comboBox2);
+            comboBox2.setBounds(265, 220, 135, 30);          
+            comboBox2.addItem("thérapeutique");
+            comboBox2.addItem("diagnostique");
 
             //---- label21 ----
             label21.setText("Code ");
@@ -411,7 +415,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                         e1.printStackTrace();
                     }
                 }
-            } 
+            }
         });
     }
 
@@ -440,6 +444,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     numSecu.setVisible(true);
                     label20.setVisible(true);
                     comboBox1.setVisible(true);
+                    comboBox2.setVisible(false);
                     label21.setVisible(true);
                     label22.setVisible(true);
                     coef.setVisible(true);
@@ -468,6 +473,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     numSecu.setVisible(false);
                     label20.setVisible(false);
                     comboBox1.setVisible(false);
+                    comboBox1.setVisible(false);
                     label21.setVisible(false);
                     label22.setVisible(false);
                     coef.setVisible(false);
@@ -480,8 +486,17 @@ public class InterfaceSecretaireMedical extends JFrame {
                 }
             }
         });
-
+            /*public void setRechercher() {
+        button1Medecin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                System.out.println(listeMedecin.rechercherMedecin(textField1.getText(), textField2.getText()));
+                textField3.setText(listeMedecin.rechercherMedecin(textField1.getText(), textField2.getText()).getSpecialite());
+                textField4.setText(listeMedecin.rechercherMedecin(textField1.getText(), textField2.getText()).getNumeroTel());
+            }
+        });*/
     }
+
+   
 
     public void ImagePanel() {
         try {
@@ -862,8 +877,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         });
 
     }*/
-
-
     public void setAjouterFicheSoin() {
         button1New.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -878,6 +891,17 @@ public class InterfaceSecretaireMedical extends JFrame {
 
                 //actes.add(new Acte(Code.CS, 1));
                 EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
+                JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.OK_OPTION);
+                label11 = new JLabel();
+                jj.setText(null);
+                mm.setText(null);
+                aaaa.setText(null);
+                nomMed.setText(null);
+                nomPa.setText(null);
+                prenomMed.setText(null);
+                prenomPa.setText(null);
+                numSecu.setText(null);
+                coef.setText(null);
             }
         });
 
