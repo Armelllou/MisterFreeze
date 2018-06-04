@@ -66,7 +66,7 @@ public class EcrireXML {
             addDate(dom, root, date);
             addMedecin(dom, root, medecin);
             addPatient(dom, root, patient);
-            addActes(dom, root, actes);
+                addActes(dom, root, actes);
 
             dom.getFirstChild().appendChild(root);
 
