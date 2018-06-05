@@ -116,4 +116,57 @@
             <coef>1</coef>
         </acte>
     </ficheDeSoins>
+<ficheDeSoins>
+        <date>1234-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Henfayitte</nom>
+            <Adresse/>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2010-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Henfayitte</nom>
+            <Adresse/>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2012-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Henfayitte</nom>
+            <prenom>Melusine</prenom>
+            <numeroSecuriteSociale>12345</numeroSecuriteSociale>
+            <Adresse/>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>

@@ -37,6 +37,10 @@ class Medecin {
         return prenom;
 
     }
+    public String getMdp() {
+        return mdp;
+
+    }
 
     public String getNumeroTel() {
         return numeroTel;

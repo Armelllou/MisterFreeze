@@ -4,20 +4,19 @@ class Patient {
 
     private String nom;
     private String prenom;
-    private Date dateNaissance;
+    private String adresse;
     private String numSecu;
 
-    public Patient(String nom, String prenom, Date dateNaissance, String numSecu) {
+    public Patient(String nom, String prenom, String adresse, String numSecu) {
         this.nom = nom;
         this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
+        this.adresse = adresse;
         this.numSecu = numSecu;
 
     }
-    
 
     public String toString() {
-        return prenom + " " + nom + ", nee le " + getDateNaissance() + " et ayant pour numero de securite sociale " + numSecu;
+        return prenom + " " + nom + ", nee le " + getAdresse() + " et ayant pour numero de securite sociale " + numSecu;
     }
 
     public boolean equals(Object o) {
@@ -41,19 +40,15 @@ class Patient {
         return nom;
     }
 
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public String getNumSecu() {
-        return numSecu;
-    }
-
     /**
      * @param nom the nom to set
      */
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
     }
 
     /**
@@ -63,19 +58,8 @@ class Patient {
         this.prenom = prenom;
     }
 
-    /**
-     * @return the dateNaissance
-     */
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-
-    /**
-     * @param dateNaissance the dateNaissance to set
-     */
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
+    public String getNumSecu() {
+        return numSecu;
     }
 
     /**
@@ -84,6 +68,18 @@ class Patient {
     public void setNumSecu(String numSecu) {
         this.numSecu = numSecu;
     }
-    
-    
+
+    /**
+     * @return the dateNaissance
+     */
+    public String getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * @param dateNaissance the dateNaissance to set
+     */
+
+
+
 }

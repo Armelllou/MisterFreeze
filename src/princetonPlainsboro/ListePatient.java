@@ -42,6 +42,15 @@ class ListePatient {
         return p;*/
     }
 
+    public Patient rechercherViaNomPrenom(String nom, String prenom) {
+        for (Patient patient : lp) {
+            if ((patient.getNom().equals(nom)) && (patient.getPrenom().equals(prenom))) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
     public void setNomFichier(String nomFichier) {
         this.nomFichier = nomFichier;
     }
@@ -55,6 +64,7 @@ class ListePatient {
         //List<FicheDeSoins> fiches = new Vector<FicheDeSoins>();
         String donneesCourantes = "";
         String nomCourant = "";
+        String adresseCourante = "";
         String prenomCourant = "";
         String mdpCourant = "";
         String specialiteCourante = "";
@@ -75,7 +85,7 @@ class ListePatient {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, dateNaissance, numSecu);
+                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourante, numSecu);
                         }
                         break;
 

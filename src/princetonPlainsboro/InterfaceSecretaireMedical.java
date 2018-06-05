@@ -565,7 +565,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     label1Patient.setVisible(false);
                     label2Patient.setVisible(false);
                     button1Patient.setVisible(false);
-                    ;
                     textField1Patient.setVisible(false);
                     label3Patient.setVisible(false);
                     label4Patient.setVisible(false);
@@ -926,15 +925,27 @@ public class InterfaceSecretaireMedical extends JFrame {
                 actes.add(a);
                 scrollPane1.append(a.toString());
 
-                //scrollPane1.setText(actes.toString());
                 button1New.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
-
-                        //actes.add(new Acte(Code.CS, 1));
-                        //JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.OK_OPTION);
                         Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
-                        Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), "blabla", "4", "mdp5");
-                        Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), new Date(14, 3, 1996), numSecu.getText());
+
+                        //retrouver info Medecin
+                        LectureXML test = new LectureXML("listeMedecin.xml");
+                        ListeMedecin listeMedecin = test.getListeMedecin();
+                        System.out.println(listeMedecin.rechercherMedecin(nomMed.getText(), prenomMed.getText()));
+                        String specialite = listeMedecin.rechercherMedecin(nomMed.getText(), prenomMed.getText()).getSpecialite();
+                        String numTel = listeMedecin.rechercherMedecin(nomMed.getText(), prenomMed.getText()).getNumeroTel();
+                        String mdp = listeMedecin.rechercherMedecin(nomMed.getText(), prenomMed.getText()).getMdp();
+                        Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), specialite, numTel, mdp);
+
+                        //retrouver info patient pour completer
+                        LectureXML test1 = new LectureXML("listePatient.xml");
+                        ListePatient listePatient = test1.getListePatient();
+                        System.out.println(listePatient.rechercherViaNomPrenom(nomPa.getText(), prenomPa.getText()));
+                        String adresse = listePatient.rechercherViaNomPrenom(nomPa.getText(), prenomPa.getText()).getAdresse();
+                        Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), adresse, numSecu.getText());
+
+                        //ecrire dans dossiers.xml
                         EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
 
                         JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.INFORMATION_MESSAGE);
@@ -949,6 +960,8 @@ public class InterfaceSecretaireMedical extends JFrame {
                         numSecu.setText(null);
                         coef.setText(null);
                         scrollPane1.setText(null);
+                        actes.clear();
+
                     }
                 });
 
