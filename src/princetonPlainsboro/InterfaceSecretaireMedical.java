@@ -22,10 +22,12 @@ import java.util.List;
 
 public class InterfaceSecretaireMedical extends JFrame {
 
-    JLabel picLabel;
-    JToggleButton actemedical;
-    JToggleButton ficheSoin;
-    JPanel panelFicheSoin;
+    private JLabel picLabel;
+    private JToggleButton actemedical;
+    private JToggleButton ficheSoin;
+    private JPanel panelFicheSoin;
+    private Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
+
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
     //Liste des noms de nos conteneurs pour la supperposition des JPanels
@@ -192,34 +194,18 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //creation des boutons
         actemedical = new JToggleButton("Acte Medical");
-        haut.add(actemedical, BorderLayout.CENTER);
-        Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
-        actemedical.setFont(police);
-        actemedical.setPreferredSize(new Dimension(230, 50));
-
         fichierMedical = new JToggleButton("Fichier Medical");
-        haut.add(fichierMedical, BorderLayout.CENTER);
-        fichierMedical.setFont(police);
-        fichierMedical.setPreferredSize(new Dimension(230, 50));
-
         ficheSoin = new JToggleButton("Créer une fiche de soin");
-        haut.add(ficheSoin, BorderLayout.CENTER);
-        ficheSoin.setFont(police);
-        ficheSoin.setPreferredSize(new Dimension(230, 50));
-
         registrePatient = new JToggleButton("Registre Patient");
-        haut.add(registrePatient, BorderLayout.CENTER);
-        registrePatient.setFont(police);
-        registrePatient.setPreferredSize(new Dimension(230, 50));
-
         registreMedecin = new JToggleButton("Registre Medecin");
-        haut.add(registreMedecin, BorderLayout.CENTER);
-        registreMedecin.setFont(police);
-        registreMedecin.setPreferredSize(new Dimension(230, 50));
-
         deconnexion = new JToggleButton("Deconnecter");
-        haut.add(deconnexion, BorderLayout.CENTER);
-        deconnexion.setFont(police);
+
+        setSideButton(actemedical);
+        setSideButton(fichierMedical);
+        setSideButton(ficheSoin);
+        setSideButton(registrePatient);
+        setSideButton(registreMedecin);
+        setSideButton(deconnexion);
 
         panelRegistreM.setLayout(new BorderLayout());
 
@@ -490,19 +476,8 @@ public class InterfaceSecretaireMedical extends JFrame {
             panelFicheSoin.add(buttonImp);
             buttonImp.setBounds(445, 470, 200, 40);
 
-            { // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for (int i = 0; i < panelFicheSoin.getComponentCount(); i++) {
-                    Rectangle bounds = panelFicheSoin.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panelFicheSoin.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panelFicheSoin.setMinimumSize(preferredSize);
-                panelFicheSoin.setPreferredSize(preferredSize);
-            }
+            computePreferedSize(panelFicheSoin);
+
         }
     }
 
@@ -811,22 +786,8 @@ public class InterfaceSecretaireMedical extends JFrame {
         validerRecherche.setBounds(new Rectangle(new Point(480, 110), validerRecherche.getPreferredSize()));
 
 
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
-        }
+        computePreferedSize(panelRegistrePatient);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-
     }
 
 
@@ -935,22 +896,7 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         panelRegistreMedecin.add(separator1M);
 
-
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
-        }
-
-
+        computePreferedSize(panelRegistreMedecin);
     }
 
     public void setRechercherMedecin() {
@@ -966,7 +912,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()));
-                if (textPrenom.getText()!=null && textNom.getText()!=null ) {
+                if (textPrenom.getText() != null && textNom.getText() != null) {
                     textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getSpecialite());
                     textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getNumeroTel());
                 }
@@ -1047,7 +993,7 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
-    public void RechercheCout(){
+    public void RechercheCout() {
 
     }
 
@@ -1132,19 +1078,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelActe.add(validerActe);
         validerActe.setBounds(new Rectangle(new Point(345, 300), validerActe.getPreferredSize()));
 
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
-        }
+        computePreferedSize(panelActe);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -1255,5 +1189,26 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         });
 
+
+    }
+
+    private void computePreferedSize(JPanel panel) {
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < panel.getComponentCount(); i++) {
+            Rectangle bounds = panel.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+        }
+        Insets insets = panel.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        panel.setMinimumSize(preferredSize);
+        panel.setPreferredSize(preferredSize);
+    }
+
+    private void setSideButton(JToggleButton button) {
+        haut.add(button, BorderLayout.CENTER);
+        button.setFont(police);
+        button.setPreferredSize(new Dimension(230, 50));
     }
 }
