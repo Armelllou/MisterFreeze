@@ -3,6 +3,7 @@ package princetonPlainsboro;
 import affichage.Login;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,40 +27,22 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JToggleButton registreMedecin;
     private JButton button1New;
     private JPanel panelRegistreMedecin;
-    private JLabel label1Acte;
-    private JLabel label2Acte;
-    private JTextField textField1Acte;
-    private JLabel label3Acte;
-    private JTextField textField2Acte;
-    private JButton button1Acte;
-    private JLabel label4ACte;
-    private JTextField textField3Acte;
+
     private JPanel panelActe;
-    private JLabel label11;
-    private JLabel label12;
-    private JTextField jj;
-    private JTextField mm;
-    private JTextField aaaa;
-    private JLabel label13;
-    private JLabel label14;
-    private JTextField nomMed;
-    private JTextField nomPa;
-    private JLabel label15;
-    private JLabel label16;
-    private JLabel label17;
-    private JLabel label18;
-    private JTextField prenomMed;
-    private JTextField prenomPa;
-    private JLabel label19;
-    private JTextField numSecu;
-    private JLabel label20;
-    private JComboBox comboBox1;
-    private JLabel label21;
-    private JLabel label22;
-    private JTextField coef;
-    private JLabel label23;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
+
+
+    private JLabel rAM;
+    private JLabel acte;
+    private JLabel type;
+    private JLabel code;
+    private JLabel coeff;
+    private JLabel cout;
+    private JTextField textType;
+    private JTextField textCode;
+    private JTextField textCoef;
+    private JTextField textCout;
+    private JLabel euro;
+    private JButton validerActe;
 
     private JLabel rP;
     private JLabel recherche;
@@ -273,56 +256,90 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         });
     }*/
 
-    public void setPanelActe() {
-        label1Acte = new JLabel();
-        label2Acte = new JLabel();
-        textField1Acte = new JTextField();
-        label3Acte = new JLabel();
-        textField2Acte = new JTextField();
-        button1Acte = new JButton();
-        label4ACte = new JLabel();
-        textField3Acte = new JTextField();
+    public void setPanelActe(){
+
+        rAM = new JLabel();
+        acte = new JLabel();
+        type = new JLabel();
+        code = new JLabel();
+        coeff = new JLabel();
+        cout = new JLabel();
+        textType = new JTextField();
+        textCode = new JTextField();
+        textCoef = new JTextField();
+        textCout = new JTextField();
+        euro = new JLabel();
+        validerActe = new JButton();
 
         //======== this ========
+        panelActe.setBorder(new BevelBorder(BevelBorder.LOWERED));
 
 
         panelActe.setLayout(null);
 
-        //---- label1Acte ----
-        label1Acte.setText("Rechercher un acte");
-        label1Acte.setFont(new Font("Segoe UI", Font.BOLD, 24));
-        panelActe.add(label1Acte);
-        label1Acte.setBounds(new Rectangle(new Point(185, 5), label1Acte.getPreferredSize()));
+        //---- rAM ----
+        rAM.setText("Rechercher d'un acte medical");
+        rAM.setFont(new Font("Arimo", Font.BOLD, 22));
+        rAM.setForeground(new Color(51, 0, 153));
+        panelActe.add(rAM);
+        rAM.setBounds(150, 35, 350, 30);
+        rAM.setHorizontalAlignment(JLabel.CENTER);
+        rAM.setVerticalAlignment(JLabel.CENTER);
 
-        //---- label2Acte ----
-        label2Acte.setText("Code associ\u00e9 \u00e0 son coefficient (exemple K12) ");
-        panelActe.add(label2Acte);
-        label2Acte.setBounds(new Rectangle(new Point(60, 80), label2Acte.getPreferredSize()));
-        panelActe.add(textField1Acte);
-        textField1Acte.setBounds(55, 105, 225, 25);
+        //---- acte ----
+        acte.setText("ACTE");
+        acte.setForeground(new Color(0, 102, 102));
+        acte.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        panelActe.add(acte);
+        acte.setBounds(70, 95, 50, acte.getPreferredSize().height);
 
-        //---- label3Acte ----
-        label3Acte.setText("Type de consultation");
-        panelActe.add(label3Acte);
-        label3Acte.setBounds(new Rectangle(new Point(60, 145), label3Acte.getPreferredSize()));
-        panelActe.add(textField2Acte);
-        textField2Acte.setBounds(55, 170, 170, 25);
+        //---- type ----
+        type.setText(" Type :");
+        type.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(type);
+        type.setBounds(100, 140, 45, type.getPreferredSize().height);
 
-        //---- button1Acte ----
-        button1Acte.setText("Valider");
-        panelActe.add(button1Acte);
-        button1Acte.setBounds(new Rectangle(new Point(340, 100), button1Acte.getPreferredSize()));
+        //---- code ----
+        code.setText("Code :");
+        code.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(code);
+        code.setBounds(100, 175, 45, code.getPreferredSize().height);
 
-        //---- label4ACte ----
-        label4ACte.setText("Co\u00fbt");
-        panelActe.add(label4ACte);
-        label4ACte.setBounds(new Rectangle(new Point(60, 215), label4ACte.getPreferredSize()));
-        panelActe.add(textField3Acte);
-        textField3Acte.setBounds(55, 235, 165, 25);
+        //---- coeff ----
+        coeff.setText("Coefficient :");
+        coeff.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(coeff);
+        coeff.setBounds(70, 210, 75, coeff.getPreferredSize().height);
+
+        //---- cout ----
+        cout.setText(" Co\u00fbt :");
+        cout.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(cout);
+        cout.setBounds(100, 245, 45, 15);
+        panelActe.add(textType);
+        textType.setBounds(150, 135, 235, textType.getPreferredSize().height);
+        panelActe.add(textCode);
+        textCode.setBounds(150, 170, 65, textCode.getPreferredSize().height);
+        panelActe.add(textCoef);
+        textCoef.setBounds(150, 205, 65, textCoef.getPreferredSize().height);
+        panelActe.add(textCout);
+        textCout.setBounds(150, 240, 65, textCout.getPreferredSize().height);
+
+        //---- euro ----
+        euro.setText("\u20ac");
+        euro.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(euro);
+        euro.setBounds(220, 245, 15, euro.getPreferredSize().height);
+
+        //---- validerActe ----
+        validerActe.setText("Valider");
+        validerActe.setBackground(new Color(0, 161, 219));
+        panelActe.add(validerActe);
+        validerActe.setBounds(new Rectangle(new Point(345, 300), validerActe.getPreferredSize()));
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
+            for(int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -342,31 +359,40 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
                 cl.show(affichage, listContent[4]);
+                textCoef.setEditable(false);
+                textCout.setEditable(false);
+
                 if (actemedical.isSelected()) {
-                    label1Acte.setVisible(true);
-                    label2Acte.setVisible(true);
-                    textField1Acte.setVisible(true);
-                    label3Acte.setVisible(true);
-                    textField2Acte.setVisible(true);
-                    button1Acte.setVisible(true);
-                    label4ACte.setVisible(true);
-                    textField3Acte.setVisible(true);
+                    rAM.setVisible(true);
+                    acte.setVisible(true);
+                    type.setVisible(true);
+                    code.setVisible(true);
+                    coeff.setVisible(true);
+                    cout.setVisible(true);
+                    textType.setVisible(true);
+                    textCode.setVisible(true);
+                    textCoef.setVisible(true);
+                    textCout.setVisible(true);
+                    euro.setVisible(true);
+                    validerActe.setVisible(true);
                 } else {
-                    label1Acte.setVisible(false);
-                    label2Acte.setVisible(false);
-                    textField1Acte.setVisible(false);
-                    label3Acte.setVisible(false);
-                    textField2Acte.setVisible(false);
-                    button1Acte.setVisible(false);
-                    label4ACte.setVisible(false);
-                    textField3Acte.setVisible(false);
+                    rAM.setVisible(false);
+                    acte.setVisible(false);
+                    type.setVisible(false);
+                    code.setVisible(false);
+                    coeff.setVisible(false);
+                    cout.setVisible(false);
+                    textType.setVisible(false);
+                    textCode.setVisible(false);
+                    textCoef.setVisible(false);
+                    textCout.setVisible(false);
+                    euro.setVisible(false);
+                    validerActe.setVisible(false);
                 }
             }
         });
 
-
     }
-
     //mettre dans secretaire administrative
     /*public void setAjouterPatient() {
         button1Patient.addActionListener(new ActionListener() {
