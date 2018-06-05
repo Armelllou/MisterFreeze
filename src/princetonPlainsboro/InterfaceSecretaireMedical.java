@@ -159,9 +159,10 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JSeparator separator1;
     private JButton validerAjout;
     private JTextField textAdresse;
-
-
     private JButton button1Medecin;
+
+    private Date date;
+    private Patient patient;
 
     public InterfaceSecretaireMedical() {
         this.setSize(500, 300);
@@ -268,7 +269,10 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherPatient();
         setButtonDeconnexion();
         setButtonFichierMedical();
+        setAjouterPatient();
 
+        //a mettre dans secretaire medical
+        //setAjouterPatient();
     }
 
     public void setButtonFichierMedical() {
@@ -353,22 +357,22 @@ public class InterfaceSecretaireMedical extends JFrame {
         //======== panelFicheSoin ========
         {
             coef.addKeyListener(new KeyAdapter() {
-                                    @Override
-                                    public void keyPressed(KeyEvent e) {
-                                        final List<Acte> actes = new ArrayList<Acte>();
-                                        int key = e.getKeyCode();
-                                        if (key == KeyEvent.VK_ENTER) {
-                                            Toolkit.getDefaultToolkit().beep();
-                                            setAjouterFicheSoin();
-                                            System.out.println("test");
-                                            System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
-                                            String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
-                                            Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
-                                            actes.add(a);
-                                            scrollPane1.setText(actes.toString());
-                                        }
-                                    }
-                                }
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    final List<Acte> actes = new ArrayList<Acte>();
+                    int key = e.getKeyCode();
+                    if (key == KeyEvent.VK_ENTER) {
+                        Toolkit.getDefaultToolkit().beep();
+                        setAjouterFicheSoin();
+                        System.out.println("test");
+                        System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
+                        String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
+                        Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
+                        actes.add(a);
+                        scrollPane1.setText(actes.toString());
+                    }
+                }
+            }
             );
             panelFicheSoin.setLayout(null);
 
@@ -509,17 +513,22 @@ public class InterfaceSecretaireMedical extends JFrame {
     public void setButtonImprimer() {
         buttonImp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                LectureXML test = new LectureXML("dossiers.xml");
+                DossierMedical dm2 = test.getDossier();
+                FicheDeSoins fiche = dm2.rechercherFiche(patient, date);
                 PrinterJob job = PrinterJob.getPrinterJob();
                 /* On donne le contenu à imprimer au job */
-                //job.setPrintable(FicheDeSoins ficheCree);
+
+                job.setPrintable(new ImprimerFiche(fiche));
                 /* Affichage de la boite de dialogue d'impression */
-                boolean doPrint = job.printDialog();
-                if (doPrint) {
+
+                if (job.printDialog()) {
                     try {
                         /* Lancement de l'impression */
                         job.print();
                     } catch (PrinterException e1) {
-                        System.out.println(e1.getMessage());
+                        //System.out.println(e1.getMessage());
+                        e1.printStackTrace();
                     }
                 }
             }
@@ -736,7 +745,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         textAdresse = new JTextField();
 
         //======== this ========
-
         panelRegistrePatient.setLayout(null);
 
         //---- rP ----
@@ -768,7 +776,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         nom.setBounds(150, 155, 45, nom.getPreferredSize().height);
 
         //---- ou ----
-
         //---- dateDeNaissance ----
         dateDeNaissance.setText("Date de naissance (jj/mm/aaaa):");
         dateDeNaissance.setAlignmentX(0.5F);
@@ -784,7 +791,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         adresse.setBounds(140, 280, 55, adresse.getPreferredSize().height);
 
         // TextAdresse
-
         panelRegistrePatient.add(textAdresse);
         textAdresse.setBounds(210, 275, 250, textAdresse.getPreferredSize().height);
 
@@ -803,13 +809,11 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.add(jour);
         jour.setBounds(210, 230, 250, jour.getPreferredSize().height);
 
-
         //---- validerRecherche ----
         validerRecherche.setText(Constants.VALIDER.getValue());
         validerRecherche.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerRecherche);
         validerRecherche.setBounds(new Rectangle(new Point(480, 110), validerRecherche.getPreferredSize()));
-
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -826,9 +830,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-
     }
-
 
     public void setRechercherPatient() {
         System.out.println("marche");
@@ -872,7 +874,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         validerRechercheM2 = new JButton();
 
         //======== this ========
-
         panelRegistreMedecin.setLayout(null);
 
         //---- rM ----
@@ -932,9 +933,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         validerRechercheM.setBounds(445, 150, 72, 24);
 
         //---- ouM ----
-
         panelRegistreMedecin.add(separator1M);
-
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -949,7 +948,6 @@ public class InterfaceSecretaireMedical extends JFrame {
             setMinimumSize(preferredSize);
             setPreferredSize(preferredSize);
         }
-
 
     }
 
@@ -966,7 +964,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()));
-                if (textPrenom.getText()!=null && textNom.getText()!=null ) {
+                if (textPrenom.getText() != null && textNom.getText() != null) {
                     textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getSpecialite());
                     textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getNumeroTel());
                 }
@@ -1044,7 +1042,6 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         });
 
-
     }
 
     public void setPanelActe() {
@@ -1064,7 +1061,6 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //======== this ========
         panelActe.setBorder(new BevelBorder(BevelBorder.LOWERED));
-
 
         panelActe.setLayout(null);
 
@@ -1196,6 +1192,16 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
+    //mettre dans secretaire administrative
+    public void setAjouterPatient() {
+        button1Patient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                Patient patient1 = new Patient(textNom2.getText(), textPrenom2.getText(), "adresse1", "1728662", new Date(Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()), Integer.parseInt(annee2.getText())));
+                EcrireXML.saveToXML("src/donnees/dossiers2.xml", "patient", patient1);
+            }
+        });
+
+    }
 
     public void setAjouterFicheSoin() {
         final List<Acte> actes = new ArrayList<Acte>();

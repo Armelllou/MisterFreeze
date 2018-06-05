@@ -305,8 +305,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 dossierMed.setForeground(Color.BLACK);
                 Date d1= new Date(Integer.parseInt(date1.getText()),Integer.parseInt(date2.getText()),Integer.parseInt(date3.getText()));                
                 Date d2= new Date(Integer.parseInt(date4.getText()),Integer.parseInt(date5.getText()),Integer.parseInt(date6.getText()));
-                dm1.trierEntreDeuxDates(d1,d2, new ComparaisonFichesCouts());
-                dossierMed.setText(dm1.toStringDM());
+                
+                dossierMed.setText(dm1.trierEntreDeuxDates(d1,d2, new ComparaisonFichesCouts()).toString());
 
             }
         });
