@@ -411,26 +411,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
 
 
-    /*public void setAjouterMedecin() {
-        button1New.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
-                xmlToSave.put(null, "medecin");
-                xmlToSave.put("nom", textField1.getText());
-                xmlToSave.put("prenom", textField2.getText());
-                xmlToSave.put("specialite", textField3.getText());
-                xmlToSave.put("numeroTelephone", textField4.getText());
-                //Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(), textField4.getText(),textField5.getText()); //ajouter mdp
-                Medecin medecin1 = new Medecin(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), " "); //ajouter mdp
-                EcrireXML.saveToXML("src/donnees/dossiers2.xml", "medecin", medecin1);
 
-                Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(),textField4.getText()," "); //ajouter mdp
-                EcrireXML.saveToXML("src/donnees/dossiers2.xml","medecin",medecin1);
-                listMedecin.ajouterMedecin(medecin1);
-
-            }
-        });
-    }*/
 
     public void setPanelActe(){
 
@@ -449,17 +430,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
         //======== this ========
 
-        // JFormDesigner evaluation mark
-        panelActe.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red), panelActe.getBorder()));
-        panelActe.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent e) {
-                if ("border".equals(e.getPropertyName())) throw new RuntimeException();
-            }
-        });
 
         panelActe.setLayout(null);
 
@@ -1039,13 +1009,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     public void setRechercherMedecin() {
         validerRechercheM.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                /*Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
-                xmlToSave.put(null, "medecin");
-                xmlToSave.put("nom", textField1.getText());
-                xmlToSave.put("prenom", textField2.getText());
-                xmlToSave.put("specialite", textField3.getText());
-                xmlToSave.put("numeroTelephone", textField4.getText());*/
-
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()));
@@ -1123,8 +1086,39 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     public void setAjouterMedecin() {
         validerRechercheM2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Medecin medecin= new Medecin(textNomM2.getText(), textPrenomM2.getText(), textSpecialite2.getText(),textTelephone2.getText(), textmdpMedecin.getText());
-                EcrireXML.saveToXML("src/donnees/dossiers2.xml","medecin", medecin);
+                Medecin medecin= new Medecin(textNomM2.getText(), textPrénomM2.getText(), textSpecialite2.getText(),textTelephone2.getText(), textmdpMedecin.getText());
+                EcrireXML.saveToXML("src/donnees/ListeMedecin.xml","medecin", medecin);
+
+                JOptionPane.showMessageDialog(null, "Ajout Medecin", "Réussis", JOptionPane.INFORMATION_MESSAGE);
+
+                textNomM2.setText(null);
+                textPrénomM2.setText(null);
+                textSpecialite2.setText(null);
+                textTelephone2.setText(null);
+                textmdpMedecin.setText(null);
+
+            }
+        });
+
+    }
+
+
+    public void setAjouterPatient() {
+        validerAjout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                Patient patient = new Patient(textNom2.getText(), textPrenom2.getText(), textAdresse2.getText(),textNumSecu2.getText(), new Date(Integer.parseInt(jour2.getText()),Integer.parseInt(mois2.getText()),Integer.parseInt(annee2.getText())));
+                EcrireXML.saveToXML("src/donnees/ListePatient.xml","patient", patient);
+
+                JOptionPane.showMessageDialog(null, "Ajout Patient", "Réussis", JOptionPane.INFORMATION_MESSAGE);
+
+                textNom2.setText(null);
+                textPrenom2.setText(null);
+                textAdresse2.setText(null);
+                textNumSecu2.setText(null);
+                jour2.setText(null);
+                mois2.setText(null);
+                annee2.setText(null);
+
             }
         });
 
