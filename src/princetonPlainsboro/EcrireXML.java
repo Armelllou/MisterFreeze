@@ -134,7 +134,7 @@ public class EcrireXML {
             e = dom.createElement("prenom");
             e.appendChild(dom.createTextNode(patient.getPrenom()));
             pat.appendChild(e);
-            e = dom.createElement("numeroSecuriteSociale");
+            e = dom.createElement("numeroSecurite");
             e.appendChild(dom.createTextNode(patient.getNumSecu()));
             pat.appendChild(e);
             e = dom.createElement("dateNaissance");

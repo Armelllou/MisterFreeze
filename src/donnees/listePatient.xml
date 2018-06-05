@@ -7,4 +7,67 @@
         <adresse>16 boulevard du soleil levant Chine</adresse>
         <dateNaissance>2006-01-06</dateNaissance>
     </patient>
+<patient>
+        <patient>
+            <nom>Nom:</nom>
+            <prenom>Prénom:</prenom>
+            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
+            <dateNaissance>1997-5-16</dateNaissance>
+            <adresse>Adresse:</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>Nom:</nom>
+            <prenom>Prénom:</prenom>
+            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
+            <dateNaissance>1997-5-16</dateNaissance>
+            <adresse>Adresse:</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>Nom:</nom>
+            <prenom>Prénom:</prenom>
+            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
+            <dateNaissance>1997-5-16</dateNaissance>
+            <adresse>Adresse:</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>Nom:</nom>
+            <prenom>Prénom:</prenom>
+            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
+            <dateNaissance>1997-5-16</dateNaissance>
+            <adresse>Adresse:</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
+            <dateNaissance>1990-2-12</dateNaissance>
+            <adresse>Adresse4</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>SALORD</nom>
+            <prenom>FLORIAN</prenom>
+            <numeroSecuriteSociale>55555</numeroSecuriteSociale>
+            <dateNaissance>1996-6-15</dateNaissance>
+            <adresse>ADRESSE4</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>salord</nom>
+            <prenom>florian</prenom>
+            <numeroSecurite>55555</numeroSecurite>
+            <dateNaissance>1996-6-15</dateNaissance>
+            <adresse>adresse6</adresse>
+        </patient>
+    </patient>
 </dossier>

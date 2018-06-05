@@ -169,4 +169,31 @@
             <coef>1</coef>
         </acte>
     </ficheDeSoins>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>1728662</numeroSecuriteSociale>
+            <dateNaissance>1996-3-14</dateNaissance>
+            <adresse>adresse1</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>1728662</numeroSecuriteSociale>
+            <dateNaissance>1995-4-15</dateNaissance>
+            <adresse>adresse1</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>1728662</numeroSecuriteSociale>
+            <dateNaissance>1995-4-15</dateNaissance>
+            <adresse>adresse1</adresse>
+        </patient>
+    </patient>
 </dossier>

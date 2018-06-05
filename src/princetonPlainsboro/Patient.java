@@ -66,7 +66,7 @@ class Patient {
     public String getAdresse() {
         return adresse;
     }
-}
+
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;

@@ -268,10 +268,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherPatient();
         setButtonDeconnexion();
         setButtonFichierMedical();
-        setAjouterPatient();
 
-        //a mettre dans secretaire medical
-        //setAjouterPatient();
     }
 
     public void setButtonFichierMedical() {
@@ -1199,16 +1196,6 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
-    //mettre dans secretaire administrative
-    public void setAjouterPatient() {
-        button1Patient.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                Patient patient1 = new Patient(textNom2.getText(), textPrenom2.getText(), "adresse1", "1728662", new Date( Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()), Integer.parseInt(annee2.getText())));
-                EcrireXML.saveToXML("src/donnees/dossiers2.xml", "patient", patient1);
-            }
-        });
-
-    }
 
     public void setAjouterFicheSoin() {
         final List<Acte> actes = new ArrayList<Acte>();
