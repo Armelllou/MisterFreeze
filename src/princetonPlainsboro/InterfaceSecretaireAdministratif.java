@@ -96,7 +96,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JLabel specialité2;
     private JLabel telephone2;
     private JTextField textNomM2;
-    private JTextField textPrenomM2;
+    private JTextField textPrénomM2;
     private JTextField textSpecialite2;
     private JTextField textTelephone2;
     private JButton validerRechercheM2;
@@ -268,7 +268,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         ficheDUnPatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-
+                dossierMed.setForeground(Color.BLACK);
                 dossierMed.setText(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
 
             }
@@ -278,7 +278,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
 
-                
+                                dossierMed.setForeground(Color.BLACK);
                 dossierMed.setText(dm1.toStringDM());
 
             }
@@ -292,6 +292,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                      dossierMed.setForeground(Color.GRAY);
                     dossierMed.setText("Pas de correspondance...");
                 }else{
+                    dossierMed.setForeground(Color.BLACK);
                     dossierMed.setText(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
                 }
 
@@ -301,6 +302,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         entreDeuxDates.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
+                dossierMed.setForeground(Color.BLACK);
                 Date d1= new Date(Integer.parseInt(date1.getText()),Integer.parseInt(date2.getText()),Integer.parseInt(date3.getText()));                
                 Date d2= new Date(Integer.parseInt(date4.getText()),Integer.parseInt(date5.getText()),Integer.parseInt(date6.getText()));
                 dm1.trierEntreDeuxDates(d1,d2, new ComparaisonFichesCouts());
@@ -312,7 +314,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         listePatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-
+                dossierMed.setForeground(Color.BLACK);
                 dossierMed.setText(test.getListePatient().toString());
 
             }
@@ -321,7 +323,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         listeMedecin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-
+                dossierMed.setForeground(Color.BLACK);
                 dossierMed.setText(test.getListeMedecin().toString());
 
             }
@@ -330,7 +332,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         trieDate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-
+                dossierMed.setForeground(Color.BLACK);
                 dm1.trierDates();
                 dossierMed.setText(dm1.toStringDM());
 
@@ -340,7 +342,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         trieCout.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-
+                dossierMed.setForeground(Color.BLACK);
                 dm1.trier(new ComparaisonFichesCouts());
                 dossierMed.setText(dm1.toStringDM());
 
@@ -383,7 +385,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         setRechercherPatient();
 
         //setAjouterMedecin();
-        setAjouterPatient();
+        //setAjouterPatient();
 
     }
 
@@ -401,16 +403,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         haut.add(picLabel, BorderLayout.NORTH);
     }
 
-    //mettre dans secretaire administrative
-    public void setAjouterPatient() {
-        validerAjout.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                Patient patient1 = new Patient(textNom2.getText(), textPrenom2.getText(), textAdresse2.getText(), textNumSecu2.getText(), new Date( Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()), Integer.parseInt(annee2.getText())));
-                EcrireXML.saveToXML("src/donnees/ListePatient.xml", "patient", patient1);
-            }
-        });
 
-    }
 
     /*public void setAjouterMedecin() {
         button1New.addActionListener(new ActionListener() {
@@ -899,12 +892,13 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         specialité2 = new JLabel();
         telephone2 = new JLabel();
         textNomM2 = new JTextField();
-        textPrenomM2 = new JTextField();
+        textPrénomM2 = new JTextField();
         textSpecialite2 = new JTextField();
         textTelephone2 = new JTextField();
         validerRechercheM2 = new JButton();
 
         //======== this ========
+
 
         panelRegistreMedecin.setLayout(null);
 
@@ -1005,8 +999,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         telephone2.setBounds(100, 445, 70, 20);
         panelRegistreMedecin.add(textNomM2);
         textNomM2.setBounds(180, 325, 250, 24);
-        panelRegistreMedecin.add(textPrenomM2);
-        textPrenomM2.setBounds(180, 365, 250, 24);
+        panelRegistreMedecin.add(textPrénomM2);
+        textPrénomM2.setBounds(180, 365, 250, 24);
         panelRegistreMedecin.add(textSpecialite2);
         textSpecialite2.setBounds(180, 405, 250, 24);
         panelRegistreMedecin.add(textTelephone2);
@@ -1059,7 +1053,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     nomM2.setVisible(true);
                     prenomM2.setVisible(true);
                     textNomM2.setVisible(true);
-                    textPrenomM2.setVisible(true);
+                    textPrénomM2.setVisible(true);
                     telephone2.setVisible(true);
                     textTelephone2.setVisible(true);
                     separator1M.setVisible(true);
@@ -1083,22 +1077,12 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     nomM2.setVisible(false);
                     prenomM2.setVisible(false);
                     textNomM2.setVisible(false);
-                    textPrenomM2.setVisible(false);
+                    textPrénomM2.setVisible(false);
                     telephone2.setVisible(false);
                     textTelephone2.setVisible(false);
                     separator1M.setVisible(false);
                     validerRechercheM2.setVisible(false);
                 }
-            }
-        });
-
-    }
-
-    public void setAjouterMedecin() {
-        validerRechercheM2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                Medecin medecin= new Medecin(textNomM2.getText(), textPrenomM2.getText(), textSpecialite2.getText(),textTelephone2.getText(), );
-                EcrireXML.saveToXML("src/donnees/dossiers2.xml","medecin", medecin);
             }
         });
 
