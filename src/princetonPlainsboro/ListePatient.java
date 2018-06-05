@@ -14,7 +14,6 @@ import javax.xml.stream.XMLStreamReader;
 class ListePatient {
 
     private List<Patient> lp;
-    private final static String repBase = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier = "listePatient.xml";
 
@@ -24,6 +23,14 @@ class ListePatient {
 
     public void ajouterPatient(Patient p) {
         this.lp.add(p);
+    }
+    public String toString(){
+        String s ="";
+        for(int i = 0; i<lp.size();i++){
+            s+=lp.get(i).toString();
+            s+="\n";
+        }
+        return s;
     }
 
     public Patient rechercher(String numSecu) {
@@ -42,6 +49,15 @@ class ListePatient {
         return p;*/
     }
 
+    public Patient rechercherViaNomPrenom(String nom, String prenom) {
+        for (Patient patient : lp) {
+            if ((patient.getNom().equals(nom)) && (patient.getPrenom().equals(prenom))) {
+                return patient;
+            }
+        }
+        return null;
+    }
+
     public void setNomFichier(String nomFichier) {
         this.nomFichier = nomFichier;
     }
@@ -55,17 +71,19 @@ class ListePatient {
         //List<FicheDeSoins> fiches = new Vector<FicheDeSoins>();
         String donneesCourantes = "";
         String nomCourant = "";
+        String adresseCourante = "";
         String prenomCourant = "";
         String mdpCourant = "";
         String specialiteCourante = "";
         Code codeCourant = null;
         String numSecu = "";
+
         int coefCourant = 0;
 
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -75,7 +93,7 @@ class ListePatient {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, dateNaissance, numSecu);
+                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourante, numSecu, dateNaissance);
                         }
                         break;
 
@@ -85,6 +103,7 @@ class ListePatient {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
         } catch (XMLStreamException ex) {
             System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
             System.out.println("Details :");

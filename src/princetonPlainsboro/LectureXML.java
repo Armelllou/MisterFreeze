@@ -25,53 +25,15 @@ import java.util.Vector;
  */
 public class LectureXML {
 
-    private final static String repBase = "src/donnees/";
-    private final static String repBase1 = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier;
     /// nom du document XML a analyser
     private String nomFichier1 = "listeMedecin.xml";
     private String nomFichier2 = "listePatient.xml";
 
-    // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
+    // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'REP_BASE' a lire :
     public LectureXML(String nomFichier) {
         this.nomFichier = nomFichier;
-    }
-
-    private static Code getCode(String code) {
-        if (code.equals("CS")) {
-            return Code.CS;
-        }
-        if (code.equals("CSC")) {
-            return Code.CSC;
-        }
-        if (code.equals("FP")) {
-            return Code.FP;
-        }
-        if (code.equals("KC")) {
-            return Code.KC;
-        }
-        if (code.equals("KE")) {
-            return Code.KE;
-        }
-        if (code.equals("K")) {
-            return Code.K;
-        }
-        if (code.equals("KFA")) {
-            return Code.KFA;
-        }
-        if (code.equals("KFB")) {
-            return Code.KFB;
-        }
-        if (code.equals("ORT")) {
-            return Code.ORT;
-        }
-        if (code.equals("PRO")) {
-            return Code.PRO;
-        }
-        // probleme : code inconnu
-        //on peut coder mieux que ca le code inconnu donne null
-        return null;
     }
 
     public DossierMedical getDossier() {
@@ -88,11 +50,13 @@ public class LectureXML {
         Code codeCourant = null;
         String numTel = "";
         int coefCourant = 0;
+        String adresseCourant = "";
+        String numSecuCourant = "";
 
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -110,10 +74,7 @@ public class LectureXML {
                             actes.add(new Acte(codeCourant, coefCourant));
                         }
                         if (parser.getLocalName().equals("code")) {
-                            codeCourant = getCode(donneesCourantes);
-                            if (codeCourant == null) {
-                                throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
-                            }
+                            codeCourant = Code.valueOf(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("coef")) {
                             coefCourant = Integer.parseInt(donneesCourantes);
@@ -144,7 +105,7 @@ public class LectureXML {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, date, "1234");
+                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourant, numSecuCourant, date);
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
@@ -152,6 +113,8 @@ public class LectureXML {
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = donneesCourantes;
                         }
+
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();
@@ -159,14 +122,15 @@ public class LectureXML {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            System.out.println(("Impossible de trouver le code d'acte = " + donneesCourantes));
         }
 
         return dossierCourant;
@@ -181,7 +145,7 @@ public class LectureXML {
         List<String> repertoire = null;
         //setNomFichier("listeMedecin.xml");
         try {
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -208,12 +172,10 @@ public class LectureXML {
             in.close();
             parser.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
-            System.out.println(ex);
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
+            System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
         return repertoire;
@@ -224,7 +186,7 @@ public class LectureXML {
         List<String> repertoire = null;
         //setNomFichier("authentifications.xml");
         try {
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -251,12 +213,10 @@ public class LectureXML {
             in.close();
             parser.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
-            System.out.println(ex);
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
+            System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
         return repertoire;
@@ -274,7 +234,7 @@ public class LectureXML {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase1 + nomFichier1);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier1);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -284,8 +244,8 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
-                            break;
                         }
+                        break;
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("medecin")) {
                             listeMedecinCourant.ajouterMedecin(new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant));
@@ -312,13 +272,12 @@ public class LectureXML {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier1);
-            System.out.println("Details :");
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier1);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
 
@@ -333,10 +292,11 @@ public class LectureXML {
         String prenomCourant = "";
         Date dateCourante = null;
         String numSecu = "";
+        String adresseCourant = "";
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase1 + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -346,11 +306,12 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
-                            break;
-                        }
+                            }
+                        break;
+
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("patient")) {
-                            listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, dateCourante, numSecu));
+                            listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, adresseCourant, numSecu, dateCourante));
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
@@ -361,13 +322,17 @@ public class LectureXML {
                         if (parser.getLocalName().equals("numeroSecurite")) {
                             numSecu = donneesCourantes;
                         }
-                        /*if (parser.getLocalName().equals("date")) {
+                        if (parser.getLocalName().equals("dateNaissance")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
                             int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
                             dateCourante = new Date(jour, mois, annee);
-                        }*/
+                        }
+                        if (parser.getLocalName().equals("adresse")) {
+                            adresseCourant = donneesCourantes;
+                        }
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();
@@ -375,17 +340,16 @@ public class LectureXML {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
+
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier2);
-            System.out.println("Details :");
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier2);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
 
         return listePatientCourant;
     }
-
 }

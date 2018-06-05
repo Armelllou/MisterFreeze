@@ -4,20 +4,22 @@ class Patient {
 
     private String nom;
     private String prenom;
-    private Date dateNaissance;
+    private String adresse;
     private String numSecu;
+    private Date dateNaissance;
 
-    public Patient(String nom, String prenom, Date dateNaissance, String numSecu) {
+    public Patient(String nom, String prenom, String adresse, String numSecu, Date dateNaissance) {
         this.nom = nom;
         this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
+        this.adresse = adresse;
         this.numSecu = numSecu;
+        this.dateNaissance=dateNaissance;
+
 
     }
-    
 
     public String toString() {
-        return prenom + " " + nom + ", nee le " + getDateNaissance() + " et ayant pour numero de securite sociale " + numSecu;
+        return prenom + " " + nom + ", Adresse :  " + adresse + ", et ayant pour numero de securite sociale " + numSecu + ", né(e) le : " + dateNaissance;
     }
 
     public boolean equals(Object o) {
@@ -41,49 +43,40 @@ class Patient {
         return nom;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public String getPrenom() {
         return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getNumSecu() {
         return numSecu;
     }
 
-    /**
-     * @param nom the nom to set
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNumSecu(String numSecu) {
+        this.numSecu = numSecu;
     }
 
-    /**
-     * @param prenom the prenom to set
-     */
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public String getAdresse() {
+        return adresse;
+    }
+}
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
-    /**
-     * @return the dateNaissance
-     */
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-
-    /**
-     * @param dateNaissance the dateNaissance to set
-     */
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
-    /**
-     * @param numSecu the numSecu to set
-     */
-    public void setNumSecu(String numSecu) {
-        this.numSecu = numSecu;
+    public Date getDateNaissance() {
+        return dateNaissance;
     }
-    
-    
 }

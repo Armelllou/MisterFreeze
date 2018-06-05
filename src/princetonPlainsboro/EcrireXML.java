@@ -66,7 +66,7 @@ public class EcrireXML {
             addDate(dom, root, date);
             addMedecin(dom, root, medecin);
             addPatient(dom, root, patient);
-                addActes(dom, root, actes);
+            addActes(dom, root, actes);
 
             dom.getFirstChild().appendChild(root);
 
@@ -115,6 +115,12 @@ public class EcrireXML {
             e = dom.createElement("specialite");
             e.appendChild(dom.createTextNode(medecin.getSpecialite()));
             med.appendChild(e);
+            e = dom.createElement("numeroTelephone");
+            e.appendChild(dom.createTextNode(medecin.getNumeroTel()));
+            med.appendChild(e);
+            e = dom.createElement("mdp");
+            e.appendChild(dom.createTextNode(medecin.getMdp()));
+            med.appendChild(e);
             root.appendChild(med);
         }
     }
@@ -127,6 +133,15 @@ public class EcrireXML {
             pat.appendChild(e);
             e = dom.createElement("prenom");
             e.appendChild(dom.createTextNode(patient.getPrenom()));
+            pat.appendChild(e);
+            e = dom.createElement("numeroSecuriteSociale");
+            e.appendChild(dom.createTextNode(patient.getNumSecu()));
+            pat.appendChild(e);
+            e = dom.createElement("dateNaissance");
+            e.appendChild(dom.createTextNode(patient.getDateNaissance().toXML()));
+            pat.appendChild(e);
+            e = dom.createElement("adresse");
+            e.appendChild(dom.createTextNode(patient.getAdresse()));
             pat.appendChild(e);
             root.appendChild(pat);
         }

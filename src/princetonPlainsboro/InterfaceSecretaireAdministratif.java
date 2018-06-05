@@ -1,20 +1,16 @@
 package princetonPlainsboro;
 
-import affichage.Acceuil;
 import affichage.Login;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 public class InterfaceSecretaireAdministratif extends JFrame {
+
     JLabel picLabel;
     JToggleButton actemedical;
     JToggleButton ficheSoin;
@@ -30,63 +26,24 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JToggleButton registrePatient;
     private JPanel panelRegistrePatient;
     private JToggleButton registreMedecin;
-    private JLabel label3;
-    private JTextField textField1;
-    private JLabel label4;
-    private JTextField textField2;
-    private JLabel label5;
     private JButton button1New;
-    private JTextField textField3;
-    private JLabel label6;
-    private JLabel label7;
-    private JTextField textField4;
     private JPanel panelRegistreMedecin;
-    private JLabel label1Patient;
-    private JLabel label2Patient;
-    private JButton button1Patient;
-    private JTextField textField1Patient;
-    private JLabel label3Patient;
-    private JLabel label4Patient;
-    private JTextField textField2Patient;
-    private JTextField textField3Patient;
-    private JLabel label5Patient;
-    private JTextField textField4Patient;
-    private JLabel label6Patient;
-    private JLabel label1Acte;
-    private JLabel label2Acte;
-    private JTextField textField1Acte;
-    private JLabel label3Acte;
-    private JTextField textField2Acte;
-    private JButton button1Acte;
-    private JLabel label4ACte;
-    private JTextField textField3Acte;
+
     private JPanel panelActe;
-    private JLabel label11;
-    private JLabel label12;
-    private JTextField jj;
-    private JTextField mm;
-    private JTextField aaaa;
-    private JLabel label13;
-    private JLabel label14;
-    private JTextField nomMed;
-    private JTextField nomPa;
-    private JLabel label15;
-    private JLabel label16;
-    private JLabel label17;
-    private JLabel label18;
-    private JTextField prenomMed;
-    private JTextField prenomPa;
-    private JLabel label19;
-    private JTextField numSecu;
-    private JLabel label20;
-    private JComboBox comboBox1;
-    private JLabel label21;
-    private JLabel label22;
-    private JTextField coef;
-    private JLabel label23;
-    private JScrollPane scrollPane1;
-    private JTextArea textArea1;
-    private ListeMedecin listMedecin;
+
+
+    private JLabel rAM;
+    private JLabel acte;
+    private JLabel type;
+    private JLabel code;
+    private JLabel coeff;
+    private JLabel cout;
+    private JTextField textType;
+    private JTextField textCode;
+    private JTextField textCoef;
+    private JTextField textCout;
+    private JLabel euro;
+    private JButton validerActe;
 
     private JLabel rP;
     private JLabel recherche;
@@ -97,7 +54,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JLabel prenom;
     private JTextField textNumSecu;
     private JTextField textNom;
-    private JTextField textPrénom;
+    private JTextField textPrenom;
     private JTextField jour;
     private JTextField mois;
     private JTextField annee;
@@ -109,12 +66,16 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JLabel dateDeNaissance2;
     private JTextField textNumSecu2;
     private JTextField textNom2;
-    private JTextField textPrénom2;
+    private JTextField textPrenom2;
     private JTextField jour2;
     private JTextField mois2;
     private JTextField annee2;
     private JSeparator separator1;
     private JButton validerAjout;
+    private JLabel adresse;
+    private JTextField textAdresse;
+    private JLabel adresse2;
+    private JTextField textAdresse2;
 
     private JLabel rM;
     private JLabel rechercheM;
@@ -140,7 +101,24 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JTextField textTelephone2;
     private JButton validerRechercheM2;
 
-
+    private JButton trieDate;
+    private JButton listeMedecin;
+    private JButton trieCout;
+    private JButton listePatient;
+    private JButton entreDeuxDates;
+    private JButton ficheDUnPatient;
+    private JTextField listePatientText;
+    private JButton dossierMedical;
+    private JTextField date1;
+    private JTextField date2;
+    private JTextField date3;
+    private JTextField date4;
+    private JTextField date5;
+    private JTextField date6;
+    private JLabel textdate1;
+    private JLabel textdate2;
+    private JTextField textFiche;
+    private JPanel hautRegistreM;
 
 
     public InterfaceSecretaireAdministratif() {
@@ -164,20 +142,18 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistreMedecin.setLayout(new BorderLayout());
 
 
-
-
         JPanel panelRegistreM = new JPanel();
+        JPanel hautRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
         panelActe = new JPanel();
         panelFicheSoin = new JPanel();
 
         ImagePanel();
 
-
         //creation des boutons
         actemedical = new JToggleButton("Acte Medical");
         haut.add(actemedical, BorderLayout.CENTER);
-        Font police = new Font("Tahoma", Font.BOLD, 16);
+        Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
         actemedical.setFont(police);
         actemedical.setPreferredSize(new Dimension(230, 50));
 
@@ -186,10 +162,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         fichierMedical.setFont(police);
         fichierMedical.setPreferredSize(new Dimension(230, 50));
 
-        ficheSoin = new JToggleButton("Crée une fiche de soin");
-        haut.add(ficheSoin, BorderLayout.CENTER);
-        ficheSoin.setFont(police);
-        ficheSoin.setPreferredSize(new Dimension(230, 50));
 
         registrePatient = new JToggleButton("Registre Patient");
         haut.add(registrePatient, BorderLayout.CENTER);
@@ -205,21 +177,72 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         haut.add(deconnexion, BorderLayout.CENTER);
         deconnexion.setFont(police);
 
-
         panelRegistreM.setLayout(new BorderLayout());
+
+        hautRegistreM.setPreferredSize(new Dimension(500, 110));
+
+        dossierMedical = new JButton("Dossier Médical");
+        dossierMedical.setPreferredSize(new Dimension(160, 25));
+        hautRegistreM.add(dossierMedical);
+        listeMedecin = new JButton("Liste des médecins");
+        listeMedecin.setPreferredSize(new Dimension(160, 25));
+        hautRegistreM.add(listeMedecin);
+        listePatient = new JButton("Liste des patients");
+        listePatient.setPreferredSize(new Dimension(160, 25));
+        hautRegistreM.add(listePatient);
+        trieDate = new JButton("Trier les fiches par dates");
+        trieDate.setPreferredSize(new Dimension(180, 25));
+        hautRegistreM.add(trieDate);
+        trieCout = new JButton("Trier les fiches par cout");
+        trieCout.setPreferredSize(new Dimension(160, 25));
+        hautRegistreM.add(trieCout);
+        ficheDUnPatient = new JButton("Afficher le dossier d'un patient via numéro de sécu");
+        hautRegistreM.add(ficheDUnPatient);
+        textFiche = new JTextField();
+        textFiche.setPreferredSize(new Dimension(60, 25));
+        hautRegistreM.add(textFiche);
+        entreDeuxDates = new JButton("Fiches entre les dates suivantes :");
+        entreDeuxDates.setPreferredSize(new Dimension(200, 25));
+        hautRegistreM.add(entreDeuxDates);
+        textdate1 = new JLabel("Date de début JJ/MM/AAAA : ");
+        textdate2 = new JLabel("Date de fin JJ/MM/AAAA : ");
+        hautRegistreM.add(textdate1);
+
+        date1 = new JTextField();
+        date2 = new JTextField();
+        date3 = new JTextField();
+        date4 = new JTextField();
+        date5 = new JTextField();
+        date6 = new JTextField();
+        date1.setPreferredSize(new Dimension(25, 25));
+        date2.setPreferredSize(new Dimension(25, 25));
+        date3.setPreferredSize(new Dimension(40, 25));
+        date4.setPreferredSize(new Dimension(25, 25));
+        date5.setPreferredSize(new Dimension(25, 25));
+        date6.setPreferredSize(new Dimension(40, 25));
+        hautRegistreM.add(date1);
+        hautRegistreM.add(date2);
+        hautRegistreM.add(date3);
+        hautRegistreM.add(textdate2);
+        hautRegistreM.add(date4);
+        hautRegistreM.add(date5);
+        hautRegistreM.add(date6);
 
         //recupère Les fiches de soins du XML
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm1 = test.getDossier();
         dossierMed = new JTextArea(dm1.toStringDM());
-        panelRegistreM.add(dossierMed, BorderLayout.CENTER);
-        dossierMed.setVisible(false);
+        JScrollPane sp = new JScrollPane(dossierMed);
+        panelRegistreM.add(sp, BorderLayout.CENTER);
+        panelRegistreM.add(hautRegistreM, BorderLayout.SOUTH);
+
+        sp.setVisible(false);
 
         //titre registre Medical
         final JLabel registreM = new JLabel("Registre Medical");
         panelRegistreM.add(registreM, BorderLayout.NORTH);
         registreM.setVisible(false);
-        Font police1 = new Font("Tahoma", Font.BOLD, 20);
+        Font police1 = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 20);
         registreM.setFont(police1);
         registreM.setHorizontalAlignment(JLabel.CENTER);
         registreM.setVerticalAlignment(JLabel.CENTER);
@@ -230,12 +253,97 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 //Via cette instruction, on passe au prochain conteneur de la pile
                 cl.show(affichage, listContent[2]);
                 if (fichierMedical.isSelected()) {
-                    dossierMed.setVisible(true);
+
+                    sp.setVisible(true);
                     registreM.setVisible(true);
+                    hautRegistreM.setVisible(true);
                 } else {
-                    dossierMed.setVisible(false);
+                    sp.setVisible(false);
                     registreM.setVisible(false);
+                    hautRegistreM.setVisible(false);
                 }
+            }
+        });
+        //boutons registre médical
+        ficheDUnPatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                dossierMed.setText(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
+
+            }
+        });
+        
+        dossierMedical.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                
+                dossierMed.setText(dm1.toStringDM());
+
+            }
+        });
+
+        ficheDUnPatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                if(dm1.rechercherfichesDUnPatient(textFiche.getText())==null){
+                     dossierMed.setForeground(Color.GRAY);
+                    dossierMed.setText("Pas de correspondance...");
+                }else{
+                    dossierMed.setText(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
+                }
+
+            }
+        });
+
+        entreDeuxDates.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+                Date d1= new Date(Integer.parseInt(date1.getText()),Integer.parseInt(date2.getText()),Integer.parseInt(date3.getText()));                
+                Date d2= new Date(Integer.parseInt(date4.getText()),Integer.parseInt(date5.getText()),Integer.parseInt(date6.getText()));
+                dm1.trierEntreDeuxDates(d1,d2, new ComparaisonFichesCouts());
+                dossierMed.setText(dm1.toStringDM());
+
+            }
+        });
+
+        listePatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                dossierMed.setText(test.getListePatient().toString());
+
+            }
+        });
+
+        listeMedecin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                dossierMed.setText(test.getListeMedecin().toString());
+
+            }
+        });
+
+        trieDate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                dm1.trierDates();
+                dossierMed.setText(dm1.toStringDM());
+
+            }
+        });
+
+        trieCout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+
+                dm1.trier(new ComparaisonFichesCouts());
+                dossierMed.setText(dm1.toStringDM());
+
             }
         });
 
@@ -243,12 +351,13 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
                 cl.show(affichage, listContent[5]);
                 new Login().showLogin();
                 dispose();
             }
         });
-
+        //  PAS DE MODIF EN DESSOUS
 
         //On définit le layout
         affichage.setLayout(cl);
@@ -261,11 +370,9 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         affichage.add(panelActe, listContent[4]);
         affichage.add(panelDeconnexion, listContent[5]);
 
-
         this.getContentPane().add(menuderoulant, BorderLayout.WEST);
         this.getContentPane().add(affichage, BorderLayout.CENTER);
         this.setVisible(true);
-
 
         setPanelRegistrePatient();
         setButtonRegistrePatient();
@@ -273,242 +380,13 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         setButtonRegistreMedecin();
         setPanelActe();
         setButtonActe();
-        setButtonFicheSoin();
-        setPanelFicheSoin();
-        setAjouterFicheSoin();
+        setRechercherPatient();
 
-        //a mettre dans secretaire medical
-        setAjouterMedecin();
+        //setAjouterMedecin();
         //setAjouterPatient();
 
-
     }
 
-    public void setPanelFicheSoin() {
-
-        label11 = new JLabel();
-        label12 = new JLabel();
-        jj = new JTextField();
-        mm = new JTextField();
-        aaaa = new JTextField();
-        label13 = new JLabel();
-        label14 = new JLabel();
-        nomMed = new JTextField();
-        nomPa = new JTextField();
-        label15 = new JLabel();
-        label16 = new JLabel();
-        label17 = new JLabel();
-        label18 = new JLabel();
-        prenomMed = new JTextField();
-        prenomPa = new JTextField();
-        label19 = new JLabel();
-        numSecu = new JTextField();
-        label20 = new JLabel();
-        comboBox1 = new JComboBox();
-        label21 = new JLabel();
-        label22 = new JLabel();
-        coef = new JTextField();
-        label23 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        textArea1 = new JTextArea();
-        button1New = new JButton();
-
-        //======== panelFicheSoin ========
-        {
-
-            // JFormDesigner evaluation mark
-            panelFicheSoin.setBorder(new javax.swing.border.CompoundBorder(
-                    new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                            "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                            javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                            java.awt.Color.red), panelFicheSoin.getBorder())); panelFicheSoin.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
-
-            panelFicheSoin.setLayout(null);
-
-            //---- label11 ----
-            label11.setText("Ajouter une nouvelle fiche de soin");
-            label11.setFont(new Font("Segoe UI", Font.BOLD, 22));
-            panelFicheSoin.add(label11);
-            label11.setBounds(new Rectangle(new Point(125, 0), label11.getPreferredSize()));
-
-            //---- label12 ----
-            label12.setText("Date");
-            panelFicheSoin.add(label12);
-            label12.setBounds(new Rectangle(new Point(20, 65), label12.getPreferredSize()));
-            panelFicheSoin.add(jj);
-            jj.setBounds(90, 60, 36, 30);
-            panelFicheSoin.add(mm);
-            mm.setBounds(140, 60, 36, 30);
-            panelFicheSoin.add(aaaa);
-            aaaa.setBounds(200, 60, 36, 30);
-
-            //---- label13 ----
-            label13.setText("Medecin");
-            panelFicheSoin.add(label13);
-            label13.setBounds(new Rectangle(new Point(20, 150), label13.getPreferredSize()));
-
-            //---- label14 ----
-            label14.setText("Patient");
-            panelFicheSoin.add(label14);
-            label14.setBounds(new Rectangle(new Point(20, 185), label14.getPreferredSize()));
-            panelFicheSoin.add(nomMed);
-            nomMed.setBounds(85, 140, 150, 25);
-            panelFicheSoin.add(nomPa);
-            nomPa.setBounds(85, 180, 150, 25);
-
-            //---- label15 ----
-            label15.setText("JJ");
-            panelFicheSoin.add(label15);
-            label15.setBounds(90, 40, 20, 16);
-
-            //---- label16 ----
-            label16.setText("MM");
-            panelFicheSoin.add(label16);
-            label16.setBounds(new Rectangle(new Point(145, 40), label16.getPreferredSize()));
-
-            //---- label17 ----
-            label17.setText("AAAA");
-            panelFicheSoin.add(label17);
-            label17.setBounds(new Rectangle(new Point(205, 40), label17.getPreferredSize()));
-
-            //---- label18 ----
-            label18.setText("Nom");
-            panelFicheSoin.add(label18);
-            label18.setBounds(new Rectangle(new Point(85, 120), label18.getPreferredSize()));
-            panelFicheSoin.add(prenomMed);
-            prenomMed.setBounds(265, 140, 130, 25);
-            panelFicheSoin.add(prenomPa);
-            prenomPa.setBounds(265, 180, 135, 25);
-
-            //---- label19 ----
-            label19.setText("Prenom");
-            panelFicheSoin.add(label19);
-            label19.setBounds(new Rectangle(new Point(270, 120), label19.getPreferredSize()));
-            panelFicheSoin.add(numSecu);
-            numSecu.setBounds(435, 180, 100, 25);
-
-            //---- label20 ----
-            label20.setText("Numero Securite Social");
-            panelFicheSoin.add(label20);
-            label20.setBounds(new Rectangle(new Point(435, 160), label20.getPreferredSize()));
-            panelFicheSoin.add(comboBox1);
-            comboBox1.setBounds(90, 220, 90, 30);
-            for(Code code : Code.values()){
-                comboBox1.addItem(code.name());
-            }
-
-
-            //---- label21 ----
-            label21.setText("Code ");
-            panelFicheSoin.add(label21);
-            label21.setBounds(new Rectangle(new Point(20, 225), label21.getPreferredSize()));
-
-            //---- label22 ----
-            label22.setText("Coefficient");
-            panelFicheSoin.add(label22);
-            label22.setBounds(new Rectangle(new Point(15, 265), label22.getPreferredSize()));
-            panelFicheSoin.add(coef);
-            coef.setBounds(90, 260, 80, 25);
-
-            //---- label23 ----
-            label23.setText("Observation");
-            panelFicheSoin.add(label23);
-            label23.setBounds(new Rectangle(new Point(10, 295), label23.getPreferredSize()));
-
-            //======== scrollPane1 ========
-            {
-                scrollPane1.setViewportView(textArea1);
-            }
-            panelFicheSoin.add(scrollPane1);
-            scrollPane1.setBounds(90, 300, 300, 65);
-
-            //---- button1New ----
-            button1New.setText("Valider");
-            panelFicheSoin.add(button1New);
-            button1New.setBounds(445, 300, 105, 40);
-
-            { // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panelFicheSoin.getComponentCount(); i++) {
-                    Rectangle bounds = panelFicheSoin.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panelFicheSoin.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panelFicheSoin.setMinimumSize(preferredSize);
-                panelFicheSoin.setPreferredSize(preferredSize);
-            }
-        }
-    }
-
-
-    public void setButtonFicheSoin() {
-        ficheSoin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[3]);
-                if (ficheSoin.isSelected()) {
-                    label11.setVisible(true);
-                    label12.setVisible(true);
-                    jj.setVisible(true);
-                    mm.setVisible(true);
-                    aaaa.setVisible(true);
-                    label13.setVisible(true);
-                    label14.setVisible(true);
-                    nomMed.setVisible(true);
-                    nomPa.setVisible(true);
-                    label15.setVisible(true);
-                    label16.setVisible(true);
-                    label17.setVisible(true);
-                    label18.setVisible(true);
-                    prenomMed.setVisible(true);
-                    prenomPa.setVisible(true);
-                    label19.setVisible(true);
-                    numSecu.setVisible(true);
-                    label20.setVisible(true);
-                    comboBox1.setVisible(true);
-                    label21.setVisible(true);
-                    label22.setVisible(true);
-                    coef.setVisible(true);
-                    label23.setVisible(true);
-                    scrollPane1.setVisible(true);
-                    textArea1.setVisible(true);
-                    button1New.setVisible(true);
-                } else {
-                    label11.setVisible(false);
-                    label12.setVisible(false);
-                    jj.setVisible(false);
-                    mm.setVisible(false);
-                    aaaa.setVisible(false);
-                    label13.setVisible(false);
-                    label14.setVisible(false);
-                    nomMed.setVisible(false);
-                    nomPa.setVisible(false);
-                    label15.setVisible(false);
-                    label16.setVisible(false);
-                    label17.setVisible(false);
-                    label18.setVisible(false);
-                    prenomMed.setVisible(false);
-                    prenomPa.setVisible(false);
-                    label19.setVisible(false);
-                    numSecu.setVisible(false);
-                    label20.setVisible(false);
-                    comboBox1.setVisible(false);
-                    label21.setVisible(false);
-                    label22.setVisible(false);
-                    coef.setVisible(false);
-                    label23.setVisible(false);
-                    scrollPane1.setVisible(false);
-                    textArea1.setVisible(false);
-                    button1New.setVisible(false);
-
-                }
-            }
-        });
-
-    }
 
     public void ImagePanel() {
         try {
@@ -523,8 +401,9 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         haut.add(picLabel, BorderLayout.NORTH);
     }
 
-
     public void setAjouterMedecin() {
+
+    /*public void setAjouterMedecin() {
         button1New.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
@@ -534,23 +413,31 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 xmlToSave.put("specialite", textField3.getText());
                 xmlToSave.put("numeroTelephone", textField4.getText());
                 //Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(), textField4.getText(),textField5.getText()); //ajouter mdp
+                Medecin medecin1 = new Medecin(textField1.getText(), textField2.getText(), textField3.getText(), textField4.getText(), " "); //ajouter mdp
+                EcrireXML.saveToXML("src/donnees/dossiers2.xml", "medecin", medecin1);
+
                 Medecin medecin1 = new Medecin(textField1.getText(),textField2.getText(),textField3.getText(),textField4.getText()," "); //ajouter mdp
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml","medecin",medecin1);
                 listMedecin.ajouterMedecin(medecin1);
 
             }
         });
-    }
+    }*/
 
-    public void setPanelActe() {
-        label1Acte = new JLabel();
-        label2Acte = new JLabel();
-        textField1Acte = new JTextField();
-        label3Acte = new JLabel();
-        textField2Acte = new JTextField();
-        button1Acte = new JButton();
-        label4ACte = new JLabel();
-        textField3Acte = new JTextField();
+    public void setPanelActe(){
+
+        rAM = new JLabel();
+        acte = new JLabel();
+        type = new JLabel();
+        code = new JLabel();
+        coeff = new JLabel();
+        cout = new JLabel();
+        textType = new JTextField();
+        textCode = new JTextField();
+        textCoef = new JTextField();
+        textCout = new JTextField();
+        euro = new JLabel();
+        validerActe = new JButton();
 
         //======== this ========
 
@@ -568,41 +455,69 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
         panelActe.setLayout(null);
 
-        //---- label1Acte ----
-        label1Acte.setText("Rechercher un acte");
-        label1Acte.setFont(new Font("Segoe UI", Font.BOLD, 24));
-        panelActe.add(label1Acte);
-        label1Acte.setBounds(new Rectangle(new Point(185, 5), label1Acte.getPreferredSize()));
+        //---- rAM ----
+        rAM.setText("Rechercher d'un acte medical");
+        rAM.setFont(new Font("Arimo", Font.BOLD, 22));
+        rAM.setForeground(new Color(51, 0, 153));
+        panelActe.add(rAM);
+        rAM.setBounds(150, 35, 350, 30);
+        rAM.setHorizontalAlignment(JLabel.CENTER);
+        rAM.setVerticalAlignment(JLabel.CENTER);
 
-        //---- label2Acte ----
-        label2Acte.setText("Code associ\u00e9 \u00e0 son coefficient (exemple K12) ");
-        panelActe.add(label2Acte);
-        label2Acte.setBounds(new Rectangle(new Point(60, 80), label2Acte.getPreferredSize()));
-        panelActe.add(textField1Acte);
-        textField1Acte.setBounds(55, 105, 225, 25);
+        //---- acte ----
+        acte.setText("ACTE");
+        acte.setForeground(new Color(0, 102, 102));
+        acte.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
+        panelActe.add(acte);
+        acte.setBounds(70, 95, 50, acte.getPreferredSize().height);
 
-        //---- label3Acte ----
-        label3Acte.setText("Type de consultation");
-        panelActe.add(label3Acte);
-        label3Acte.setBounds(new Rectangle(new Point(60, 145), label3Acte.getPreferredSize()));
-        panelActe.add(textField2Acte);
-        textField2Acte.setBounds(55, 170, 170, 25);
+        //---- type ----
+        type.setText(" Type :");
+        type.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(type);
+        type.setBounds(100, 140, 45, type.getPreferredSize().height);
 
-        //---- button1Acte ----
-        button1Acte.setText("Valider");
-        panelActe.add(button1Acte);
-        button1Acte.setBounds(new Rectangle(new Point(340, 100), button1Acte.getPreferredSize()));
+        //---- code ----
+        code.setText("Code :");
+        code.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(code);
+        code.setBounds(100, 175, 45, code.getPreferredSize().height);
 
-        //---- label4ACte ----
-        label4ACte.setText("Co\u00fbt");
-        panelActe.add(label4ACte);
-        label4ACte.setBounds(new Rectangle(new Point(60, 215), label4ACte.getPreferredSize()));
-        panelActe.add(textField3Acte);
-        textField3Acte.setBounds(55, 235, 165, 25);
+        //---- coeff ----
+        coeff.setText("Coefficient :");
+        coeff.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(coeff);
+        coeff.setBounds(70, 210, 75, coeff.getPreferredSize().height);
+
+        //---- cout ----
+        cout.setText(" Cout :");
+        cout.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(cout);
+        cout.setBounds(100, 245, 45, 15);
+        panelActe.add(textType);
+        textType.setBounds(150, 135, 235, textType.getPreferredSize().height);
+        panelActe.add(textCode);
+        textCode.setBounds(150, 170, 65, textCode.getPreferredSize().height);
+        panelActe.add(textCoef);
+        textCoef.setBounds(150, 205, 65, textCoef.getPreferredSize().height);
+        panelActe.add(textCout);
+        textCout.setBounds(150, 240, 65, textCout.getPreferredSize().height);
+
+        //---- euro ----
+        euro.setText("\u20ac");
+        euro.setBorder(new BevelBorder(BevelBorder.LOWERED));
+        panelActe.add(euro);
+        euro.setBounds(220, 245, 15, euro.getPreferredSize().height);
+
+        //---- validerActe ----
+        validerActe.setText(Constants.VALIDER.getValue());
+        validerActe.setBackground(new Color(0, 161, 219));
+        panelActe.add(validerActe);
+        validerActe.setBounds(new Rectangle(new Point(345, 300), validerActe.getPreferredSize()));
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
+            for(int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -622,62 +537,53 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
                 cl.show(affichage, listContent[4]);
+                textCoef.setEditable(false);
+                textCout.setEditable(false);
+
                 if (actemedical.isSelected()) {
-                    label1Acte.setVisible(true);
-                    label2Acte.setVisible(true);
-                    textField1Acte.setVisible(true);
-                    label3Acte.setVisible(true);
-                    textField2Acte.setVisible(true);
-                    button1Acte.setVisible(true);
-                    label4ACte.setVisible(true);
-                    textField3Acte.setVisible(true);
+                    rAM.setVisible(true);
+                    acte.setVisible(true);
+                    type.setVisible(true);
+                    code.setVisible(true);
+                    coeff.setVisible(true);
+                    cout.setVisible(true);
+                    textType.setVisible(true);
+                    textCode.setVisible(true);
+                    textCoef.setVisible(true);
+                    textCout.setVisible(true);
+                    euro.setVisible(true);
+                    validerActe.setVisible(true);
                 } else {
-                    label1Acte.setVisible(false);
-                    label2Acte.setVisible(false);
-                    textField1Acte.setVisible(false);
-                    label3Acte.setVisible(false);
-                    textField2Acte.setVisible(false);
-                    button1Acte.setVisible(false);
-                    label4ACte.setVisible(false);
-                    textField3Acte.setVisible(false);
+                    rAM.setVisible(false);
+                    acte.setVisible(false);
+                    type.setVisible(false);
+                    code.setVisible(false);
+                    coeff.setVisible(false);
+                    cout.setVisible(false);
+                    textType.setVisible(false);
+                    textCode.setVisible(false);
+                    textCoef.setVisible(false);
+                    textCout.setVisible(false);
+                    euro.setVisible(false);
+                    validerActe.setVisible(false);
                 }
             }
         });
 
-
     }
 
-    //mettre dans secretaire administrative
     /*public void setAjouterPatient() {
-        button1Patient.addActionListener(new ActionListener() {
+        validerAjout.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Patient patient1 = new Patient(textField1Patient.getText(), textField2Patient.getText(), new Date(14, 3, 1996),textField4Patient.getText());
+                Patient patient1 = new Patient(textNom2.getText(), textPrenom2.getText(), new Date(Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()),Integer.parseInt(annee2.getText())),textAdresse.getText());
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml","patient", patient1);
             }
         });
 
     }*/
 
-    public void setAjouterFicheSoin() {
-        button1New.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
-                Medecin medecin = new Medecin(nomMed.getText(), prenomMed.getText(), "blabla", "4","mdp5");
-                Patient patient = new Patient(nomPa.getText(),prenomPa.getText(), new Date(14, 3, 1996), numSecu.getText());
-                List<Acte> actes = new ArrayList<Acte>();
-                System.out.println("test");
-                System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
-                String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
-                actes.add(new Acte(Code.valueOf(s),Integer.parseInt(coef.getText())));
 
-                //actes.add(new Acte(Code.CS, 1));
-                EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
-            }
-        });
-
-    }
-
-    public void setPanelRegistrePatient(){
+    public void setPanelRegistrePatient() {
         rP = new JLabel();
         recherche = new JLabel();
         numSec = new JLabel();
@@ -687,7 +593,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         prenom = new JLabel();
         textNumSecu = new JTextField();
         textNom = new JTextField();
-        textPrénom = new JTextField();
+        textPrenom = new JTextField();
         jour = new JTextField();
         mois = new JTextField();
         annee = new JTextField();
@@ -699,21 +605,18 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         dateDeNaissance2 = new JLabel();
         textNumSecu2 = new JTextField();
         textNom2 = new JTextField();
-        textPrénom2 = new JTextField();
+        textPrenom2 = new JTextField();
         separator1 = new JSeparator();
         jour2 = new JTextField();
         mois2 = new JTextField();
         annee2 = new JTextField();
         validerAjout = new JButton();
+        adresse = new JLabel();
+        textAdresse = new JTextField();
+        adresse2 = new JLabel();
+        textAdresse2 = new JTextField();
 
         //======== this ========
-
-        // JFormDesigner evaluation mark
-        panelRegistrePatient.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red),   panelRegistrePatient.getBorder()));  panelRegistrePatient.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         panelRegistrePatient.setLayout(null);
 
@@ -727,7 +630,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- recherche ----
         recherche.setText("Recherche");
         recherche.setForeground(Color.blue);
-        recherche.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        recherche.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche);
         recherche.setBounds(new Rectangle(new Point(55, 80), recherche.getPreferredSize()));
 
@@ -745,12 +648,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistrePatient.add(nom);
         nom.setBounds(150, 155, 45, nom.getPreferredSize().height);
 
-        //---- ou ----
-        ou.setText("OU");
-        ou.setBorder(new EtchedBorder());
-        ou.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        panelRegistrePatient.add(ou);
-        ou.setBounds(new Rectangle(new Point(480, 110), ou.getPreferredSize()));
 
         //---- dateDeNaissance ----
         dateDeNaissance.setText("Date de naissance (jj/mm/aaaa):");
@@ -769,79 +666,103 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textNumSecu.setBounds(210, 110, 250, textNumSecu.getPreferredSize().height);
         panelRegistrePatient.add(textNom);
         textNom.setBounds(210, 150, 250, textNom.getPreferredSize().height);
-        panelRegistrePatient.add(textPrénom);
-        textPrénom.setBounds(210, 190, 250, textPrénom.getPreferredSize().height);
+        panelRegistrePatient.add(textPrenom);
+        textPrenom.setBounds(210, 190, 250, textPrenom.getPreferredSize().height);
         panelRegistrePatient.add(jour);
-        jour.setBounds(210, 230, 35, jour.getPreferredSize().height);
-        panelRegistrePatient.add(mois);
-        mois.setBounds(255, 230, 130, 24);
-        panelRegistrePatient.add(annee);
-        annee.setBounds(395, 230, 65, 24);
+        jour.setBounds(210, 230, 250, jour.getPreferredSize().height);
 
         //---- validerRecherche ----
-        validerRecherche.setText("Valider");
+        validerRecherche.setText(Constants.VALIDER.getValue());
         validerRecherche.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerRecherche);
-        validerRecherche.setBounds(new Rectangle(new Point(480, 255), validerRecherche.getPreferredSize()));
+        validerRecherche.setBounds(480, 110, 72, 24);
 
         //---- recherche2 ----
         recherche2.setText("Ajout d'un patient");
         recherche2.setForeground(Color.blue);
-        recherche2.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        recherche2.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche2);
-        recherche2.setBounds(55, 295, 160, 17);
+        recherche2.setBounds(55, 355, 160, 17);
 
         //---- numSecu2 ----
         numSecu2.setText("Num\u00e9ro de s\u00e9curit\u00e9 sociale:");
         numSecu2.setAlignmentX(0.5F);
         numSecu2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(numSecu2);
-        numSecu2.setBounds(35, 330, 160, 20);
+        numSecu2.setBounds(35, 400, 160, 20);
 
         //---- nom2 ----
         nom2.setText("Nom:");
         nom2.setAlignmentX(0.5F);
         nom2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(nom2);
-        nom2.setBounds(150, 370, 45, 20);
+        nom2.setBounds(150, 430, 45, 20);
+
 
         //---- prenom2 ----
         prenom2.setText("Pr\u00e9nom:");
         prenom2.setAlignmentX(0.5F);
         prenom2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(prenom2);
-        prenom2.setBounds(135, 410, 60, 15);
+        prenom2.setBounds(135, 470, 60, 15);
+
+        // adresse
+        adresse.setText("Adresse:");
+        adresse.setAlignmentX(0.5F);
+        adresse.setBorder(new EtchedBorder());
+        panelRegistrePatient.add(adresse);
+        adresse.setBounds(140, 275, 55, adresse.getPreferredSize().height);
+
+
+        // TextAdresse
+
+        panelRegistrePatient.add(textAdresse);
+        textAdresse.setBounds(210, 275, 250, textAdresse.getPreferredSize().height);
 
         //---- dateDeNaissance2 ----
         dateDeNaissance2.setText("Date de naissance (jj/mm/aaaa):");
         dateDeNaissance2.setAlignmentX(0.5F);
         dateDeNaissance2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(dateDeNaissance2);
-        dateDeNaissance2.setBounds(10, 445, 185, 20);
+        dateDeNaissance2.setBounds(10, 505, 185, 20);
         panelRegistrePatient.add(textNumSecu2);
-        textNumSecu2.setBounds(210, 325, 250, 24);
+        textNumSecu2.setBounds(210, 385, 250, 24);
         panelRegistrePatient.add(textNom2);
-        textNom2.setBounds(210, 365, 250, 24);
-        panelRegistrePatient.add(textPrénom2);
-        textPrénom2.setBounds(210, 405, 250, 24);
+        textNom2.setBounds(210, 425, 250, 24);
+        panelRegistrePatient.add(textPrenom2);
+        textPrenom2.setBounds(210, 465, 250, 24);
         panelRegistrePatient.add(separator1);
-        separator1.setBounds(0, 285, 570, 15);
+        separator1.setBounds(0, 325, 1200, 15);
         panelRegistrePatient.add(jour2);
-        jour2.setBounds(210, 445, 35, 24);
+        jour2.setBounds(210, 505, 35, 24);
         panelRegistrePatient.add(mois2);
-        mois2.setBounds(255, 445, 130, 24);
+        mois2.setBounds(255, 505, 130, 24);
         panelRegistrePatient.add(annee2);
-        annee2.setBounds(395, 445, 65, 24);
+        annee2.setBounds(395, 505, 65, 24);
 
         //---- validerAjout ----
-        validerAjout.setText("Valider");
+        validerAjout.setText(Constants.VALIDER.getValue());
         validerAjout.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerAjout);
-        validerAjout.setBounds(480, 475, 72, 24);
+        validerAjout.setBounds(480, 555, 72, 24);
+
+        // adresse2
+        adresse2.setText("Adresse:");
+        adresse2.setAlignmentX(0.5F);
+        adresse2.setBorder(new EtchedBorder());
+        panelRegistrePatient.add(adresse2);
+        adresse2.setBounds(140, 550, 55, adresse2.getPreferredSize().height);
+
+
+        // TextAdresse2
+
+        panelRegistrePatient.add(textAdresse2);
+        textAdresse2.setBounds(210, 550, 250, textAdresse2.getPreferredSize().height);
+
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < getComponentCount(); i++) {
+            for (int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -854,7 +775,20 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-
+    }
+    public void setRechercherPatient() {
+        System.out.println("marche");
+        validerRecherche.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                LectureXML test1 = new LectureXML("listePatient.xml");
+                ListePatient listePatient = test1.getListePatient();
+                System.out.println(listePatient.rechercher(textNumSecu.getText()));
+                textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
+                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
+                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+            }
+        });
     }
 
     public void setButtonRegistrePatient() {
@@ -872,7 +806,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom.setVisible(true);
                     textNumSecu.setVisible(true);
                     textNom.setVisible(true);
-                    textPrénom.setVisible(true);
+                    textPrenom.setVisible(true);
                     jour.setVisible(true);
                     mois.setVisible(true);
                     annee.setVisible(true);
@@ -884,12 +818,17 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom2.setVisible(true);
                     textNumSecu2.setVisible(true);
                     textNom2.setVisible(true);
-                    textPrénom2.setVisible(true);
+                    textPrenom2.setVisible(true);
                     jour2.setVisible(true);
                     mois2.setVisible(true);
                     annee2.setVisible(true);
                     separator1.setVisible(true);
                     validerAjout.setVisible(true);
+                    adresse.setVisible(true);
+                    textAdresse.setVisible(true);
+                    adresse2.setVisible(true);
+                    textAdresse2.setVisible(true);
+
                 } else {
                     rP.setVisible(false);
                     recherche.setVisible(false);
@@ -900,7 +839,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom.setVisible(false);
                     textNumSecu.setVisible(false);
                     textNom.setVisible(false);
-                    textPrénom.setVisible(false);
+                    textPrenom.setVisible(false);
                     jour.setVisible(false);
                     mois.setVisible(false);
                     annee.setVisible(false);
@@ -912,22 +851,25 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom2.setVisible(false);
                     textNumSecu2.setVisible(false);
                     textNom2.setVisible(false);
-                    textPrénom2.setVisible(false);
+                    textPrenom2.setVisible(false);
                     jour2.setVisible(false);
                     mois2.setVisible(false);
                     annee2.setVisible(false);
                     separator1.setVisible(false);
                     validerAjout.setVisible(false);
+                    adresse.setVisible(false);
+                    textAdresse.setVisible(false);
+                    adresse2.setVisible(false);
+                    textAdresse2.setVisible(false);
+
                 }
             }
         });
 
 
-
-
     }
 
-    public void setPanelRegistreMedecin(){
+    public void setPanelRegistreMedecin() {
 
         rM = new JLabel();
         rechercheM = new JLabel();
@@ -955,12 +897,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
         //======== this ========
 
-        // JFormDesigner evaluation mark
-        panelRegistreMedecin.setBorder(new javax.swing.border.CompoundBorder(
-                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                        "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                        javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                        java.awt.Color.red),  panelRegistreMedecin.getBorder()));  panelRegistreMedecin.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
         panelRegistreMedecin.setLayout(null);
 
@@ -974,7 +910,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- rechercheM ----
         rechercheM.setText("Recherche");
         rechercheM.setForeground(Color.orange);
-        rechercheM.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
         rechercheM.setBounds(55, 80, 93, 17);
 
@@ -1015,24 +951,20 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textTelephone.setBounds(180, 230, 250, textTelephone.getPreferredSize().height);
 
         //---- validerRechercheM ----
-        validerRechercheM.setText("Valider");
+        validerRechercheM.setText(Constants.VALIDER.getValue());
         validerRechercheM.setBackground(new Color(51, 153, 255));
         panelRegistreMedecin.add(validerRechercheM);
-        validerRechercheM.setBounds(445, 255, 72, 24);
+        validerRechercheM.setBounds(445, 150, 72, 24);
 
         //---- ouM ----
-        ouM.setText("OU");
-        ouM.setBorder(new EtchedBorder());
-        ouM.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        panelRegistreMedecin.add(ouM);
-        ouM.setBounds(445, 150, 25, 24);
+
         panelRegistreMedecin.add(separator1M);
-        separator1M.setBounds(0, 285, 570, 15);
+        separator1M.setBounds(0, 285, 1200, 15);
 
         //---- ajoutM ----
         ajoutM.setText("Ajout d'un medecin");
         ajoutM.setForeground(Color.orange);
-        ajoutM.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        ajoutM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(ajoutM);
         ajoutM.setBounds(55, 295, 175, 17);
 
@@ -1073,14 +1005,14 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textTelephone2.setBounds(180, 445, 250, 24);
 
         //---- validerRechercheM2 ----
-        validerRechercheM2.setText("Valider");
+        validerRechercheM2.setText(Constants.VALIDER.getValue());
         validerRechercheM2.setBackground(new Color(51, 153, 255));
         panelRegistreMedecin.add(validerRechercheM2);
         validerRechercheM2.setBounds(445, 475, 72, 24);
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
-            for(int i = 0; i < getComponentCount(); i++) {
+            for (int i = 0; i < getComponentCount(); i++) {
                 Rectangle bounds = getComponent(i).getBounds();
                 preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                 preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
@@ -1092,9 +1024,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             setPreferredSize(preferredSize);
         }
 
-
     }
-
 
 
     public void setButtonRegistreMedecin() {
@@ -1153,7 +1083,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 }
             }
         });
-
 
     }
 }

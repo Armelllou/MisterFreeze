@@ -14,7 +14,6 @@ import java.util.Vector;
 public class ListeMedecin {
 
     private List<Medecin> lm;
-    private final static String repBase = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier = "listeMedecin.xml";
 
@@ -29,6 +28,15 @@ public class ListeMedecin {
     public Medecin rechercherMedecin(String nom, String prenom) {
         for(Medecin medecin : lm){
             if(medecin.getNom().equals(nom) && medecin.getPrenom().equals(prenom)){
+                return medecin;
+            }
+        }
+        return null;
+    }
+
+    public Medecin rechercheMViaTelSpe(String telephone, String specialite){
+        for (Medecin medecin: lm){
+            if(medecin.getSpecialite().equals(specialite) && medecin.getNumeroTel().equals(telephone)){
                 return medecin;
             }
         }
@@ -88,7 +96,7 @@ public class ListeMedecin {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -107,6 +115,7 @@ public class ListeMedecin {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
         } catch (XMLStreamException ex) {
             System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
             System.out.println("Details :");
@@ -123,9 +132,14 @@ public class ListeMedecin {
     public void setNomFichier(String nomFichier) {
         this.nomFichier = nomFichier;
     }
-
-
-
-
+    
+    public String toString(){
+        String s ="";
+        for(int i = 0; i<lm.size();i++){
+            s+=lm.get(i).toString();
+            s+="\n";
+        }
+        return s;
+    }
 
 }

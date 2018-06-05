@@ -49,7 +49,7 @@ class DossierMedical {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
-            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier m�dical d'un patient et d'afficher toutes les fiches
+            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier medical d'un patient et d'afficher toutes les fiches
                 cout += f.coutTotal();
             }
         }
@@ -109,7 +109,7 @@ class DossierMedical {
 
     public void trierDates() {
         Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
-
+        Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
         while (!copieFiches.isEmpty()) {  //tant que c'est pas vide, on affiche la fiche minimale qu'on en date et on la supprime
             // on cherche la fiche de soins de date minimale :
             int imin = 0;
@@ -124,14 +124,17 @@ class DossierMedical {
             // on affiche la fiche de soins trouvee :
             f1.afficher();
             System.out.println("------------------------");
-            //on la supprime de la liste :
+            //on copie dans copieLocale et on la supprime de la liste :
+            copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);
         }
+        fiches = copieLocale;
     }
 
     // tri generique :
     public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le parametre, le parametre sera comparaisonfichecout/date
         Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
+        Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
 
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
@@ -147,16 +150,19 @@ class DossierMedical {
             // on affiche la fiche de soins trouvee :
             f1.afficher();
             System.out.println("------------------------");
-            //on la supprime de la liste :
+            //on la supprime de la liste apès avoir copier dans copie locale :
+            copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);
         }
+        fiches = copieLocale;
 
     }
 
-    public void trierEntreDeuxDates(Date d1, Date d2, ComparaisonFiches c) { 
+    public void trierEntreDeuxDates(Date d1, Date d2, ComparaisonFiches c) {
         Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
+        Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
 
-        while (!copieFiches.isEmpty()) { //tant que c'est vide ???? bizarre
+        while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
             int imin = 0;
             FicheDeSoins f = fiches.get(imin);
@@ -173,9 +179,11 @@ class DossierMedical {
             // on affiche la fiche de soins trouvee :
             f.afficher();
             System.out.println("------------------------");
-            //on la supprime de la liste :
+            //on la supprime de la liste après avoir copié dans copieLocale:
+            copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);
         }
+        fiches = copieLocale;
 
     }
 
@@ -199,15 +207,21 @@ class DossierMedical {
     }
 
     //donne toutes les fiches de soins d'un patient
-    public List<FicheDeSoins> rechercherfichesDUnPatient(Patient patient) {
+    public List<FicheDeSoins> rechercherfichesDUnPatient(String num) {
         Vector<FicheDeSoins> lfs = new Vector<FicheDeSoins>();
         for (int i = 0; i < fiches.size(); i++) {
-            if (patient.equals(fiches.get(i).getPatient())) {
+            if (num.equals(fiches.get(i).getPatient().getNumSecu())) {
                 lfs.add(fiches.get(i));
             }
         }
-        return lfs;
+        if (lfs.isEmpty()) {
+            return null;
+        }else{
+            return lfs;
+        }
+        
     }
+    
 
     //donne la fiche d'un patient à un temps t
     public FicheDeSoins rechercherFiche(Patient patient, Date date) {
