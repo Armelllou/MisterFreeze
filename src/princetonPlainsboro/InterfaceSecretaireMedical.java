@@ -269,6 +269,8 @@ public class InterfaceSecretaireMedical extends JFrame {
     public void setRechercheCout(){
         validerActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                textCoef.setEditable(false);
+                textCout.setEditable(false);
                 Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()));
                 textCoef.setText(acte.getCode().getLibelle());
                 textCout.setText(String.valueOf(acte.cout()));
@@ -818,9 +820,16 @@ public class InterfaceSecretaireMedical extends JFrame {
 
 
     public void setRechercherPatient() {
-        System.out.println("marche");
+        textNom.setEditable(false);
+        textPrenom.setEditable(false);
+        jour.setEditable(false);
+        textAdresse.setEditable(false);
         validerRecherche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                textNom.setEditable(false);
+                textPrenom.setEditable(false);
+                jour.setEditable(false);
+                textAdresse.setEditable(false);
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
@@ -926,6 +935,8 @@ public class InterfaceSecretaireMedical extends JFrame {
     }
 
     public void setRechercherMedecin() {
+        textSpecialite.setEditable(false);
+        textTelephone.setEditable(false);
         validerRechercheM.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 /*Map<String, String> xmlToSave = new LinkedHashMap<String, String>();

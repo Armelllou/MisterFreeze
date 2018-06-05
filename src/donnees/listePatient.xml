@@ -34,4 +34,13 @@
             <adresse>adressebeta</adresse>
         </patient>
     </patient>
+<patient>
+        <patient>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>1996-12-21</dateNaissance>
+            <adresse>5 rue de l'ancienne gare</adresse>
+        </patient>
+    </patient>
 </dossier>

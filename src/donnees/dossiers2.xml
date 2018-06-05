@@ -223,4 +223,31 @@
             <mdp>mdp21</mdp>
         </medecin>
     </medecin>
+<medecin>
+        <medecin>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <specialite>Genetique</specialite>
+            <numeroTelephone>09876543211</numeroTelephone>
+            <mdp>sophie1</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <specialite>Genetique</specialite>
+            <numeroTelephone>09876543211</numeroTelephone>
+            <mdp>sophie1</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <specialite>genetique</specialite>
+            <numeroTelephone>0988776655</numeroTelephone>
+            <mdp>sophie1</mdp>
+        </medecin>
+    </medecin>
 </dossier>

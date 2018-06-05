@@ -128,6 +128,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.setTitle("Andromeda");
 
         //panel
         haut.setLayout(new GridLayout(8, 1));
@@ -746,7 +747,10 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     }
 
     public void setRechercherPatient() {
-        System.out.println("marche");
+        textNom.setEditable(false);
+        textPrenom.setEditable(false);
+        jour.setEditable(false);
+        textAdresse.setEditable(false);
         validerRecherche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 LectureXML test1 = new LectureXML("listePatient.xml");
@@ -995,6 +999,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     }
 
     public void setRechercherMedecin() {
+        textSpecialite.setEditable(false);
+        textTelephone.setEditable(false);
         validerRechercheM.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
@@ -1075,7 +1081,14 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         validerRechercheM2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Medecin medecin = new Medecin(textNomM2.getText(), textPrenomM2.getText(), textSpecialite2.getText(), textTelephone2.getText(), textmdpMedecin.getText());
-                EcrireXML.saveToXML("src/donnees/dossiers2.xml", "medecin", medecin);
+                EcrireXML.saveToXML("src/donnees/ListeMedecin.xml", "medecin", medecin);
+                JOptionPane.showMessageDialog(null, "Vous avez ajouté un medecin", "Ajout Medecin", JOptionPane.INFORMATION_MESSAGE);
+
+                textNomM2.setText(null);
+                textPrenomM2.setText(null);
+                textSpecialite2.setText(null);
+                textTelephone2.setText(null);
+                textmdpMedecin.setText(null);
             }
         });
 
@@ -1088,7 +1101,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 Patient patient = new Patient(textNom2.getText(), textPrenom2.getText(), textAdresse2.getText(), textNumSecu2.getText(), new Date(Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()), Integer.parseInt(annee2.getText())));
                 EcrireXML.saveToXML("src/donnees/ListePatient.xml", "patient", patient);
-                JOptionPane.showMessageDialog(null, "Ajout Patient", "Réussis", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vous avez ajouté un medecin", "Ajout Patient", JOptionPane.INFORMATION_MESSAGE);
 
                 textNom2.setText(null);
                 textPrenom2.setText(null);
