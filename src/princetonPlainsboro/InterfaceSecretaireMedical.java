@@ -171,6 +171,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.setTitle("Andromeda");
 
         //panel
         haut.setLayout(new GridLayout(8, 1));
@@ -271,7 +272,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                 Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()));
                 textCoef.setText(acte.getCode().getLibelle());
                 textCout.setText(String.valueOf(acte.cout()));
-
             }
         });
     }
@@ -750,7 +750,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         rP.setBounds(new Rectangle(new Point(225, 30), rP.getPreferredSize()));
 
         //---- recherche ----
-        recherche.setText("Recherche");
+        recherche.setText("Recherche : entrez le numero de securite");
         recherche.setForeground(Color.blue);
         recherche.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche);
@@ -870,7 +870,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         rM.setBounds(new Rectangle(new Point(225, 30), rM.getPreferredSize()));
 
         //---- rechercheM ----
-        rechercheM.setText("Recherche");
+        rechercheM.setText("Recherche: entrez le nom et le prenom");
         rechercheM.setForeground(Color.orange);
         rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
@@ -1017,9 +1017,6 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
-    public void RechercheCout() {
-
-    }
 
     public void setPanelActe() {
 
@@ -1043,7 +1040,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelActe.setLayout(null);
 
         //---- rAM ----
-        rAM.setText("Rechercher d'un acte m\u00e9dical");
+        rAM.setText("Rechercher d'un acte m2dical");
         rAM.setFont(new Font("Arimo", Font.BOLD, 22));
         rAM.setForeground(new Color(51, 0, 153));
         panelActe.add(rAM);
@@ -1052,7 +1049,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         rAM.setVerticalAlignment(JLabel.CENTER);
 
         //---- acte ----
-        acte.setText("ACTE");
+        acte.setText("ACTE : entrez le coefficient et le code ");
         acte.setForeground(new Color(0, 102, 102));
         acte.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelActe.add(acte);
