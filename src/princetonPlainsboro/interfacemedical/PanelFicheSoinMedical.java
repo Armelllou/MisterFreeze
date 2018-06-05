@@ -212,12 +212,11 @@ public class PanelFicheSoinMedical {
         final List<Acte> actes = new ArrayList<Acte>();
         buttonAjoutActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-
                 System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
                 String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
                 Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
                 actes.add(a);
-                scrollPane1.append(a.toString());
+                scrollPane1.append(a.toString()+ "\n");
 
                 button1New.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
