@@ -152,7 +152,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JLabel dateDeNaissance2;
     private JTextField textNumSecu2;
     private JTextField textNom2;
-    private JTextField textPrénom2;
+    private JTextField textPrenom2;
     private JTextField jour2;
     private JTextField mois2;
     private JTextField annee2;
@@ -268,6 +268,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherPatient();
         setButtonDeconnexion();
         setButtonFichierMedical();
+        setAjouterPatient();
 
         //a mettre dans secretaire medical
         //setAjouterPatient();
@@ -652,7 +653,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     prenom2.setVisible(true);
                     textNumSecu2.setVisible(true);
                     textNom2.setVisible(true);
-                    textPrénom2.setVisible(true);
+                    textPrenom2.setVisible(true);
                     jour2.setVisible(true);
                     mois2.setVisible(true);
                     annee2.setVisible(true);
@@ -687,7 +688,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     prenom2.setVisible(false);
                     textNumSecu2.setVisible(false);
                     textNom2.setVisible(false);
-                    textPrénom2.setVisible(false);
+                    textPrenom2.setVisible(false);
                     jour2.setVisible(false);
                     mois2.setVisible(false);
                     annee2.setVisible(false);
@@ -728,7 +729,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         dateDeNaissance2 = new JLabel();
         textNumSecu2 = new JTextField();
         textNom2 = new JTextField();
-        textPrénom2 = new JTextField();
+        textPrenom2 = new JTextField();
         separator1 = new JSeparator();
         jour2 = new JTextField();
         mois2 = new JTextField();
@@ -1199,15 +1200,16 @@ public class InterfaceSecretaireMedical extends JFrame {
     }
 
     //mettre dans secretaire administrative
-    /*public void setAjouterPatient() {
+    public void setAjouterPatient() {
         button1Patient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Patient patient1 = new Patient(textField1Patient.getText(), textField2Patient.getText(), new Date(14, 3, 1996), 1728662);
+                Patient patient1 = new Patient(textNom2.getText(), textPrenom2.getText(), "adresse1", "1728662", new Date( Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()), Integer.parseInt(annee2.getText())));
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml", "patient", patient1);
             }
         });
 
-    }*/
+    }
+
     public void setAjouterFicheSoin() {
         final List<Acte> actes = new ArrayList<Acte>();
         buttonAjoutActe.addActionListener(new ActionListener() {
