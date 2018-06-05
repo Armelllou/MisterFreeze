@@ -207,10 +207,10 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
                 cl.show(affichage, listContent[5]);
                 new Login().showLogin();
                 dispose();
-                JOptionPane.showMessageDialog(null, "Deconnexion", "Réussis", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
