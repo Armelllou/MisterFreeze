@@ -503,7 +503,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                         /* Lancement de l'impression */
                         job.print();
                     } catch (PrinterException e1) {
-                        e1.printStackTrace();
+                        System.out.println(e1.getMessage());
                     }
                 }
             }
