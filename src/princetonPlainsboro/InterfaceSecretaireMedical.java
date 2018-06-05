@@ -833,10 +833,16 @@ public class InterfaceSecretaireMedical extends JFrame {
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
-                textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
-                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
-                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
-                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                if(textNumSecu.getText().length()<16) {
+                    textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
+                    textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                    jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
+                    textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Vous avez ajouté un trop grand nombre de chiffre", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    textNumSecu.setText(null);
+                }
             }
         });
     }
@@ -1178,6 +1184,7 @@ public class InterfaceSecretaireMedical extends JFrame {
 
                 button1New.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
+
                         Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
 
                         //retrouver info Medecin
