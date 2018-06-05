@@ -98,47 +98,6 @@ class ListePatient {
         return patientCourant;
     }
 
-    public List<String> repertoire() {
-        String donneesCourantes = "";
-        List<String> repertoire = null;
-        setNomFichier("authentifications.xml");
-        try {
-            InputStream in = new FileInputStream(repBase + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
 
-            for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
-                switch (event) {
-                    case XMLStreamConstants.START_ELEMENT:
-                        if (parser.getLocalName().equals("root")) {
-                            repertoire = new ArrayList<String>();
-                        }
-                        break;
-                    case XMLStreamConstants.END_ELEMENT:
-                        if (parser.getLocalName().equals("id")) {
-                            repertoire.add(donneesCourantes);
-                        }
-                        if (parser.getLocalName().equals("mdp")) {
-                            repertoire.add(donneesCourantes);
-                        }
-                        break;
-                    case XMLStreamConstants.CHARACTERS:
-                        donneesCourantes = parser.getText();
-                        break;
-                }
-            }
-            in.close();
-            parser.close();
-        } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
-            System.out.println(ex);
-        } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
-            System.out.println(ex.getMessage());
-        }
-        return repertoire;
-    }
 
 }
