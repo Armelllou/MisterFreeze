@@ -17,7 +17,7 @@ class DossierMedical {
     }
 
     public String toStringDM() {
-        String t = "Dossier medical informatise :" + "\n" + "-----------------------------" + "\n";
+        String t = "Dossier medical informatise :" + "\n" + Constants.SEPARATION.getValue() + "\n";
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
             t += f.toString();
