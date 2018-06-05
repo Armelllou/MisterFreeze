@@ -96,4 +96,24 @@
             <coef>1</coef>
         </acte>
     </ficheDeSoins>
+<ficheDeSoins>
+        <date>2010-12-12</date>
+        <medecin>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>SALORD</nom>
+            <prenom>FLORIAN</prenom>
+        </patient>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>forfait A</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>
