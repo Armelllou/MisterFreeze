@@ -11,7 +11,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-class ListePatient {
+public class ListePatient {
 
     private List<Patient> lp;
     /// nom du document XML a analyser

@@ -6,14 +6,12 @@
 package affichage;
 
 import princetonPlainsboro.*;
+import princetonPlainsboro.interfacemedical.InterfaceSecretaireMedical;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import static java.awt.event.KeyEvent.VK_B;
-import static java.awt.event.KeyEvent.VK_ENTER;
-import java.awt.event.KeyListener;
 
 public class Login extends javax.swing.JFrame {
 

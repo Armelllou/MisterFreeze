@@ -3,7 +3,7 @@ package princetonPlainsboro;
 import java.util.List;
 import java.util.Vector;
 
-class DossierMedical {
+public class DossierMedical {
 
     private List<FicheDeSoins> fiches;     // contient des objets de classe 'FicheDeSoins'
     private List<Patient> lp;  //vérifier si lp etait la au debut

@@ -8,7 +8,7 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.util.Vector;
 
-class FicheDeSoins implements Printable {
+public class FicheDeSoins implements Printable {
 
     private Patient patient;
     private Medecin medecin;

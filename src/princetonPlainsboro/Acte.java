@@ -3,7 +3,7 @@ package princetonPlainsboro;
 import java.util.ArrayList;
 import java.util.List;
 
-class Acte {
+public class Acte {
     private Code code;
     private int coef;
     private List<Code> codes;

@@ -1,6 +1,7 @@
 package princetonPlainsboro;
 
 import affichage.Login;
+import princetonPlainsboro.interfacemedical.PanelCompute;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -518,7 +519,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         validerActe.setBackground(new Color(0, 161, 219));
         panelActe.add(validerActe);
         validerActe.setBounds(new Rectangle(new Point(400, 170), validerActe.getPreferredSize()));
-        computePreferedSize(panelActe);
+        PanelCompute.computePreferedSize(panelActe);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -741,7 +742,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textAdresse2.setBounds(210, 550, 250, textAdresse2.getPreferredSize().height);
 
 
-        computePreferedSize(panelRegistrePatient);
+        PanelCompute.computePreferedSize(panelRegistrePatient);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
     }
@@ -994,7 +995,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistreMedecin.add(validerRechercheM2);
         validerRechercheM2.setBounds(445, 535, 72, 24);
 
-        computePreferedSize(panelRegistreMedecin);
+        PanelCompute.computePreferedSize(panelRegistreMedecin);
 
     }
 
@@ -1112,20 +1113,5 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 annee2.setText(null);
             }
         });
-    }
-
-
-    private void computePreferedSize(JPanel panel) {
-        Dimension preferredSize = new Dimension();
-        for (int i = 0; i < panel.getComponentCount(); i++) {
-            Rectangle bounds = panel.getComponent(i).getBounds();
-            preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-            preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-        }
-        Insets insets = panel.getInsets();
-        preferredSize.width += insets.right;
-        preferredSize.height += insets.bottom;
-        panel.setMinimumSize(preferredSize);
-        panel.setPreferredSize(preferredSize);
     }
 }
