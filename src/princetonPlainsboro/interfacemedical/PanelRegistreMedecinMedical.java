@@ -61,7 +61,7 @@ public class PanelRegistreMedecinMedical {
         rechercheM.setForeground(Color.orange);
         rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
-        rechercheM.setBounds(55, 80, 93, 17);
+        rechercheM.setBounds(55, 80, 300, 17);
 
         //---- nomM ----
         nomM.setText("Nom:");
