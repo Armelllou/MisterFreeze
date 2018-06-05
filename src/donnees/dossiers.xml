@@ -10,6 +10,7 @@
     <patient>
         <nom>Track</nom>
         <prenom>Pat</prenom>
+        <numeroSecurite>333</numeroSecurite>
     </patient>
     <acte>
         <code>CS</code>

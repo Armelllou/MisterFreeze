@@ -283,7 +283,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         dossierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-
                 dossierMed.setForeground(Color.BLACK);
                 dossierMed.setText(dm1.toStringDM());
 
@@ -398,7 +397,20 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         setAjouterPatient();
         setRechercherMedecin();
         ImagePanelAccueil();
+        setRechercheCout();
     }
+
+    public void setRechercheCout(){
+        validerActe.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()));
+                    textCoef.setText(acte.getCode().getLibelle());
+                    textCout.setText(String.valueOf(acte.cout()));
+
+            }
+        });
+    }
+
 
     public void ImagePanelAccueil() {
         try {
@@ -463,10 +475,10 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         acte.setBounds(70, 95, 50, acte.getPreferredSize().height);
 
         //---- type ----
-        type.setText(" Type :");
+        type.setText("Coefficient :");
         type.setBorder(new BevelBorder(BevelBorder.LOWERED));
         panelActe.add(type);
-        type.setBounds(100, 140, 45, type.getPreferredSize().height);
+        type.setBounds(70, 140, 75, type.getPreferredSize().height);
 
         //---- code ----
         code.setText("Code :");
@@ -475,10 +487,10 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         code.setBounds(100, 175, 45, code.getPreferredSize().height);
 
         //---- coeff ----
-        coeff.setText("Coefficient :");
+        coeff.setText("Type :");
         coeff.setBorder(new BevelBorder(BevelBorder.LOWERED));
         panelActe.add(coeff);
-        coeff.setBounds(70, 210, 75, coeff.getPreferredSize().height);
+        coeff.setBounds(100, 210, 45, coeff.getPreferredSize().height);
 
         //---- cout ----
         cout.setText(" Cout :");
@@ -488,11 +500,11 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelActe.add(textType);
         textType.setBounds(150, 135, 235, textType.getPreferredSize().height);
         panelActe.add(textCode);
-        textCode.setBounds(150, 170, 65, textCode.getPreferredSize().height);
+        textCode.setBounds(150, 170, 235, textCode.getPreferredSize().height);
         panelActe.add(textCoef);
-        textCoef.setBounds(150, 205, 65, textCoef.getPreferredSize().height);
+        textCoef.setBounds(150, 205, 235, textCoef.getPreferredSize().height);
         panelActe.add(textCout);
-        textCout.setBounds(150, 240, 65, textCout.getPreferredSize().height);
+        textCout.setBounds(150, 240, 235, textCout.getPreferredSize().height);
 
         //---- euro ----
         euro.setText("\u20ac");
@@ -504,8 +516,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         validerActe.setText(Constants.VALIDER.getValue());
         validerActe.setBackground(new Color(0, 161, 219));
         panelActe.add(validerActe);
-        validerActe.setBounds(new Rectangle(new Point(345, 300), validerActe.getPreferredSize()));
-
+        validerActe.setBounds(new Rectangle(new Point(400, 170), validerActe.getPreferredSize()));
         computePreferedSize(panelActe);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }

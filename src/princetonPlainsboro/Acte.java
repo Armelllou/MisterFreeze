@@ -24,24 +24,20 @@ class Acte {
         return coef;
     }
 
-   /* public String toString() {
-        return code.toString() + ", coefficient : " + coef ;
-    }*/
 
     public String toString() {
-        return code.toString() + ", coefficient : " + coef  + "\n";
+        return code.toString() + ", coefficient : " + coef ;
+    }
+    public String toStringCout() {
+        return code.toString() + ", coefficient : " + coef ;
     }
 
     public double cout() {
         return code.calculerCout(coef);
     }
+    public double rechercheCout(Code code, int coef){
+        return code.calculerCout(coef);
+    }
 
-    /*public double rechercherCout(Code codeATrouver) {
-        for(Code code : codes){
-            if(code == codeATrouver){
-                return code.getCout();
-            }
-        }
-        return 0.0;
-    }*/ //inutile -> utiliser code.getCout()
+
 }
