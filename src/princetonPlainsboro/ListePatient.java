@@ -69,6 +69,7 @@ class ListePatient {
         String specialiteCourante = "";
         Code codeCourant = null;
         String numSecu = "";
+
         int coefCourant = 0;
 
         // analyser le fichier par StAX

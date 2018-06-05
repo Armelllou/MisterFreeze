@@ -15,6 +15,7 @@ class Patient {
         this.numSecu = numSecu;
         this.dateNaissance=dateNaissance;
 
+
     }
 
     public String toString() {
@@ -65,6 +66,7 @@ class Patient {
     public String getAdresse() {
         return adresse;
     }
+}
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;

@@ -202,7 +202,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         fichierMedical.setFont(police);
         fichierMedical.setPreferredSize(new Dimension(230, 50));
 
-        ficheSoin = new JToggleButton("Crée une fiche de soin");
+        ficheSoin = new JToggleButton("Créer une fiche de soin");
         haut.add(ficheSoin, BorderLayout.CENTER);
         ficheSoin.setFont(police);
         ficheSoin.setPreferredSize(new Dimension(230, 50));
@@ -282,9 +282,20 @@ public class InterfaceSecretaireMedical extends JFrame {
                 if (fichierMedical.isSelected()) {
                     dossierMed.setVisible(true);
                     registreM.setVisible(true);
+
+                    actemedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    registreMedecin.setSelected(false);
+
                 } else {
                     dossierMed.setVisible(false);
                     registreM.setVisible(false);
+
+                    actemedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    registreMedecin.setSelected(false);
                 }
             }
         });
@@ -295,6 +306,11 @@ public class InterfaceSecretaireMedical extends JFrame {
         deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                actemedical.setSelected(false);
+                ficheSoin.setSelected(false);
+                registrePatient.setSelected(false);
+                registreMedecin.setSelected(false);
+                fichierMedical.setSelected(false);
                 JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
                 cl.show(affichage, listContent[5]);
                 new Login().showLogin();
@@ -549,6 +565,11 @@ public class InterfaceSecretaireMedical extends JFrame {
                     buttonImp.setVisible(true);
                     labelajoutActe.setVisible(true);
                     buttonAjoutActe.setVisible(true);
+
+                    actemedical.setSelected(false);
+                    fichierMedical.setSelected(false);
+                    registrePatient.setSelected(false);
+                    registreMedecin.setSelected(false);
                 } else {
                     label11.setVisible(false);
                     label12.setVisible(false);
@@ -581,6 +602,10 @@ public class InterfaceSecretaireMedical extends JFrame {
                     buttonAjoutActe.setVisible(false);
                     comboBox2.setVisible(false);
 
+                    actemedical.setSelected(false);
+                    fichierMedical.setSelected(false);
+                    registrePatient.setSelected(false);
+                    registreMedecin.setSelected(false);
                 }
             }
         });
@@ -633,6 +658,11 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(true);
                     separator1.setVisible(true);
                     validerAjout.setVisible(true);
+
+                    actemedical.setSelected(false);
+                    fichierMedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registreMedecin.setSelected(false);
                     adresse.setVisible(true);
                     textAdresse.setVisible(true);
                 } else {
@@ -663,6 +693,11 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(false);
                     separator1.setVisible(false);
                     validerAjout.setVisible(false);
+
+                    actemedical.setSelected(false);
+                    fichierMedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registreMedecin.setSelected(false);
                     adresse.setVisible(false);
                     textAdresse.setVisible(false);
                 }
@@ -972,6 +1007,12 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textTelephone2.setVisible(true);
                     separator1M.setVisible(true);
                     validerRechercheM2.setVisible(true);
+
+                    actemedical.setSelected(false);
+                    fichierMedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registrePatient.setSelected(false);
+
                 } else {
                     rM.setVisible(false);
                     rechercheM.setVisible(false);
@@ -996,6 +1037,11 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textTelephone2.setVisible(false);
                     separator1M.setVisible(false);
                     validerRechercheM2.setVisible(false);
+
+                    actemedical.setSelected(false);
+                    fichierMedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registrePatient.setSelected(false);
                 }
             }
         });
@@ -1122,6 +1168,12 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textCout.setVisible(true);
                     euro.setVisible(true);
                     validerActe.setVisible(true);
+
+                    fichierMedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    registreMedecin.setSelected(false);
+
                 } else {
                     rAM.setVisible(false);
                     acte.setVisible(false);
@@ -1135,6 +1187,11 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textCout.setVisible(false);
                     euro.setVisible(false);
                     validerActe.setVisible(false);
+
+                    fichierMedical.setSelected(false);
+                    ficheSoin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    registreMedecin.setSelected(false);
                 }
             }
         });
