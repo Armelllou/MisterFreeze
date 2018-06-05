@@ -403,6 +403,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     }
 
     public void setRechercheCout(){
+        textCoef.setEditable(false);
+        textCout.setEditable(false);
         validerActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()));

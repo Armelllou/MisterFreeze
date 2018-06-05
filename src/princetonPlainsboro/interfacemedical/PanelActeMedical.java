@@ -52,7 +52,7 @@ public class PanelActeMedical {
         acte.setForeground(new Color(0, 102, 102));
         acte.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelActe.add(acte);
-        acte.setBounds(70, 95, 50, acte.getPreferredSize().height);
+        acte.setBounds(70, 95, 300, acte.getPreferredSize().height);
 
         //---- type ----
         type.setText(" Coefficient :");
@@ -103,6 +103,8 @@ public class PanelActeMedical {
     }
 
     private void setRechercheCout(){
+        textCoef.setEditable(false);
+        textCout.setEditable(false);
         validerActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 textCoef.setEditable(false);
