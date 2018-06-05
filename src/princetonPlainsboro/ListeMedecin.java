@@ -34,6 +34,15 @@ public class ListeMedecin {
         return null;
     }
 
+    public Medecin rechercheMViaTelSpe(String telephone, String specialite){
+        for (Medecin medecin: lm){
+            if(medecin.getSpecialite().equals(specialite) && medecin.getNumeroTel().equals(telephone)){
+                return medecin;
+            }
+        }
+        return null;
+    }
+
     public void afficherMedecin() { //affiche toutes les fiches de la liste
         System.out.println("Liste Medecin  :");
         System.out.println("-----------------------------");

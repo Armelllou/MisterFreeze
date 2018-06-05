@@ -4,5 +4,7 @@
         <nom>Henfayitte</nom>
         <prenom>Melusine</prenom>
         <numeroSecurite>12345</numeroSecurite>
+        <adresse>16 boulevard du soleil levant Chine</adresse>
+        <dateNaissance>2006-01-06</dateNaissance>
     </patient>
 </dossier>

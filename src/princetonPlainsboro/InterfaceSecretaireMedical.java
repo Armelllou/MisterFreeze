@@ -136,10 +136,11 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JLabel nom;
     private JLabel ou;
     private JLabel dateDeNaissance;
+    private JLabel adresse;
     private JLabel prenom;
     private JTextField textNumSecu;
     private JTextField textNom;
-    private JTextField textPrénom;
+    private JTextField textPrenom;
     private JTextField jour;
     private JTextField mois;
     private JTextField annee;
@@ -157,6 +158,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JTextField annee2;
     private JSeparator separator1;
     private JButton validerAjout;
+    private JTextField textAdresse;
 
 
     private JButton button1Medecin;
@@ -613,7 +615,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     prenom.setVisible(true);
                     textNumSecu.setVisible(true);
                     textNom.setVisible(true);
-                    textPrénom.setVisible(true);
+                    textPrenom.setVisible(true);
                     jour.setVisible(true);
                     mois.setVisible(true);
                     annee.setVisible(true);
@@ -631,6 +633,8 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(true);
                     separator1.setVisible(true);
                     validerAjout.setVisible(true);
+                    adresse.setVisible(true);
+                    textAdresse.setVisible(true);
                 } else {
                     rP.setVisible(false);
                     recherche.setVisible(false);
@@ -641,7 +645,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                     prenom.setVisible(false);
                     textNumSecu.setVisible(false);
                     textNom.setVisible(false);
-                    textPrénom.setVisible(false);
+                    textPrenom.setVisible(false);
                     jour.setVisible(false);
                     mois.setVisible(false);
                     annee.setVisible(false);
@@ -659,6 +663,8 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(false);
                     separator1.setVisible(false);
                     validerAjout.setVisible(false);
+                    adresse.setVisible(false);
+                    textAdresse.setVisible(false);
                 }
             }
         });
@@ -675,7 +681,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         prenom = new JLabel();
         textNumSecu = new JTextField();
         textNom = new JTextField();
-        textPrénom = new JTextField();
+        textPrenom = new JTextField();
         jour = new JTextField();
         mois = new JTextField();
         annee = new JTextField();
@@ -693,6 +699,8 @@ public class InterfaceSecretaireMedical extends JFrame {
         mois2 = new JTextField();
         annee2 = new JTextField();
         validerAjout = new JButton();
+        adresse = new JLabel();
+        textAdresse = new JTextField();
 
         //======== this ========
 
@@ -727,11 +735,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         nom.setBounds(150, 155, 45, nom.getPreferredSize().height);
 
         //---- ou ----
-        ou.setText("OU");
-        ou.setBorder(new EtchedBorder());
-        ou.setFont(new Font(Constants.SEGOE.getValue(), Font.BOLD, 14));
-        panelRegistrePatient.add(ou);
-        ou.setBounds(new Rectangle(new Point(480, 110), ou.getPreferredSize()));
 
         //---- dateDeNaissance ----
         dateDeNaissance.setText("Date de naissance (jj/mm/aaaa):");
@@ -739,6 +742,18 @@ public class InterfaceSecretaireMedical extends JFrame {
         dateDeNaissance.setBorder(new EtchedBorder());
         panelRegistrePatient.add(dateDeNaissance);
         dateDeNaissance.setBounds(10, 230, 185, dateDeNaissance.getPreferredSize().height);
+
+        // adresse
+        adresse.setText("Adresse:");
+        adresse.setAlignmentX(0.5F);
+        adresse.setBorder(new EtchedBorder());
+        panelRegistrePatient.add(adresse);
+        adresse.setBounds(140, 280, 55, adresse.getPreferredSize().height);
+
+        // TextAdresse
+
+        panelRegistrePatient.add(textAdresse);
+        textAdresse.setBounds(210, 275, 250, textAdresse.getPreferredSize().height);
 
         //---- prenom ----
         prenom.setText("Prenom:");
@@ -750,8 +765,8 @@ public class InterfaceSecretaireMedical extends JFrame {
         textNumSecu.setBounds(210, 110, 250, textNumSecu.getPreferredSize().height);
         panelRegistrePatient.add(textNom);
         textNom.setBounds(210, 150, 250, textNom.getPreferredSize().height);
-        panelRegistrePatient.add(textPrénom);
-        textPrénom.setBounds(210, 190, 250, textPrénom.getPreferredSize().height);
+        panelRegistrePatient.add(textPrenom);
+        textPrenom.setBounds(210, 190, 250, textPrenom.getPreferredSize().height);
         panelRegistrePatient.add(jour);
         jour.setBounds(210, 230, 35, jour.getPreferredSize().height);
         panelRegistrePatient.add(mois);
@@ -763,7 +778,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         validerRecherche.setText(Constants.VALIDER.getValue());
         validerRecherche.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerRecherche);
-        validerRecherche.setBounds(new Rectangle(new Point(480, 255), validerRecherche.getPreferredSize()));
+        validerRecherche.setBounds(new Rectangle(new Point(480, 110), validerRecherche.getPreferredSize()));
 
 
         { // compute preferred size
@@ -793,8 +808,9 @@ public class InterfaceSecretaireMedical extends JFrame {
                 ListePatient listePatient = test1.getListePatient();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
                 textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
-                textPrénom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
                 //textField4.setText(listePatient.rechercher(Integer.parseInt(textField1.getText())).getDateNaissance());
+                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
             }
         });
     }
@@ -883,14 +899,10 @@ public class InterfaceSecretaireMedical extends JFrame {
         validerRechercheM.setText(Constants.VALIDER.getValue());
         validerRechercheM.setBackground(new Color(51, 153, 255));
         panelRegistreMedecin.add(validerRechercheM);
-        validerRechercheM.setBounds(445, 255, 72, 24);
+        validerRechercheM.setBounds(445, 150, 72, 24);
 
         //---- ouM ----
-        ouM.setText("OU");
-        ouM.setBorder(new EtchedBorder());
-        ouM.setFont(new Font(Constants.SEGOE.getValue(), Font.BOLD, 14));
-        panelRegistreMedecin.add(ouM);
-        ouM.setBounds(445, 150, 25, 24);
+
         panelRegistreMedecin.add(separator1M);
 
 
@@ -924,8 +936,10 @@ public class InterfaceSecretaireMedical extends JFrame {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()));
-                textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getSpecialite());
-                textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getNumeroTel());
+                if (textPrenom.getText()!=null && textNom.getText()!=null ) {
+                    textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getSpecialite());
+                    textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrénomM.getText()).getNumeroTel());
+                }
             }
         });
     }
@@ -1169,7 +1183,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                         ListePatient listePatient = test1.getListePatient();
                         System.out.println(listePatient.rechercherViaNomPrenom(nomPa.getText(), prenomPa.getText()));
                         String adresse = listePatient.rechercherViaNomPrenom(nomPa.getText(), prenomPa.getText()).getAdresse();
-                        Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), adresse, numSecu.getText());
+                        Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), adresse, numSecu.getText(), new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText())));
 
                         //ecrire dans dossiers.xml
                         EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);

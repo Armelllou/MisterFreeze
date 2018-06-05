@@ -138,7 +138,10 @@ public class EcrireXML {
             e = dom.createElement("numeroSecuriteSociale");
             e.appendChild(dom.createTextNode(patient.getNumSecu()));
             pat.appendChild(e);
-            e = dom.createElement("Adresse");
+            e = dom.createElement("dateNaissance");
+            e.appendChild(dom.createTextNode(patient.getDateNaissance().toString()));
+            pat.appendChild(e);
+            e = dom.createElement("adresse");
             e.appendChild(dom.createTextNode(patient.getAdresse()));
             pat.appendChild(e);
             root.appendChild(pat);

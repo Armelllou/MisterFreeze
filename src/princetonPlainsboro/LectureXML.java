@@ -105,7 +105,7 @@ public class LectureXML {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourant, numSecuCourant);
+                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourant, numSecuCourant, date);
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
@@ -113,6 +113,8 @@ public class LectureXML {
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = donneesCourantes;
                         }
+
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();
@@ -308,7 +310,7 @@ public class LectureXML {
                         }
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("patient")) {
-                            listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, adresseCourant, numSecu));
+                            listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, adresseCourant, numSecu, dateCourante));
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
@@ -319,13 +321,17 @@ public class LectureXML {
                         if (parser.getLocalName().equals("numeroSecurite")) {
                             numSecu = donneesCourantes;
                         }
-                        if (parser.getLocalName().equals("date")) {
+                        if (parser.getLocalName().equals("dateNaissance")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
                             int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
                             dateCourante = new Date(jour, mois, annee);
                         }
+                        if (parser.getLocalName().equals("adresse")) {
+                            adresseCourant = donneesCourantes;
+                        }
+
                         break;
                     case XMLStreamConstants.CHARACTERS:
                         donneesCourantes = parser.getText();

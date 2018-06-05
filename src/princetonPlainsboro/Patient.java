@@ -6,17 +6,19 @@ class Patient {
     private String prenom;
     private String adresse;
     private String numSecu;
+    private Date dateNaissance;
 
-    public Patient(String nom, String prenom, String adresse, String numSecu) {
+    public Patient(String nom, String prenom, String adresse, String numSecu, Date dateNaissance) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.numSecu = numSecu;
+        this.dateNaissance=dateNaissance;
 
     }
 
     public String toString() {
-        return prenom + " " + nom + ", Adresse :  " + getAdresse() + ", et ayant pour numero de securite sociale " + numSecu;
+        return prenom + " " + nom + ", Adresse :  " + adresse + ", et ayant pour numero de securite sociale " + numSecu + ", né(e) le : " + dateNaissance;
     }
 
     public boolean equals(Object o) {
@@ -64,5 +66,15 @@ class Patient {
         return adresse;
     }
 
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
 }
