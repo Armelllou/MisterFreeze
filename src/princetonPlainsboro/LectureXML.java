@@ -38,42 +38,6 @@ public class LectureXML {
         this.nomFichier = nomFichier;
     }
 
-    private static Code getCode(String code) {
-        if (code.equals("CS")) {
-            return Code.CS;
-        }
-        if (code.equals("CSC")) {
-            return Code.CSC;
-        }
-        if (code.equals("FP")) {
-            return Code.FP;
-        }
-        if (code.equals("KC")) {
-            return Code.KC;
-        }
-        if (code.equals("KE")) {
-            return Code.KE;
-        }
-        if (code.equals("K")) {
-            return Code.K;
-        }
-        if (code.equals("KFA")) {
-            return Code.KFA;
-        }
-        if (code.equals("KFB")) {
-            return Code.KFB;
-        }
-        if (code.equals("ORT")) {
-            return Code.ORT;
-        }
-        if (code.equals("PRO")) {
-            return Code.PRO;
-        }
-        // probleme : code inconnu
-        //on peut coder mieux que ca le code inconnu donne null
-        return null;
-    }
-
     public DossierMedical getDossier() {
         DossierMedical dossierCourant = null;
         Date date = null;
@@ -112,10 +76,7 @@ public class LectureXML {
                             actes.add(new Acte(codeCourant, coefCourant));
                         }
                         if (parser.getLocalName().equals("code")) {
-                            codeCourant = getCode(donneesCourantes);
-                            if (codeCourant == null) {
-                                throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
-                            }
+                            codeCourant = Code.valueOf(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("coef")) {
                             coefCourant = Integer.parseInt(donneesCourantes);
@@ -169,6 +130,8 @@ public class LectureXML {
             System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
             System.out.println("Verifier le chemin.");
             System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            System.out.println(("Impossible de trouver le code d'acte = " + donneesCourantes));
         }
 
         return dossierCourant;
@@ -335,7 +298,7 @@ public class LectureXML {
         String prenomCourant = "";
         Date dateCourante = null;
         String numSecu = "";
-        String adresseCourant ="";
+        String adresseCourant = "";
         // analyser le fichier par StAX
         try {
             // instanciation du parser
