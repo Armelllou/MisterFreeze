@@ -57,8 +57,7 @@ public class LectureXML {
         try {
             // instanciation du parser
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             // lecture des evenements
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
@@ -146,8 +145,7 @@ public class LectureXML {
         //setNomFichier("listeMedecin.xml");
         try {
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
                 switch (event) {
@@ -187,8 +185,7 @@ public class LectureXML {
         //setNomFichier("authentifications.xml");
         try {
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
                 switch (event) {
@@ -235,8 +232,7 @@ public class LectureXML {
         try {
             // instanciation du parser
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier1);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             // lecture des evenements
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
@@ -297,8 +293,7 @@ public class LectureXML {
         try {
             // instanciation du parser
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             // lecture des evenements
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
@@ -306,6 +301,7 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
+                            listePatientCourant = new ListePatient();
                             }
                         break;
 
