@@ -9,6 +9,7 @@ public enum SpecialiteMedicale {
     DENTISTE,
     AUTRE;
 
+    @Override
     public String toString() {
         return super.toString();
     }

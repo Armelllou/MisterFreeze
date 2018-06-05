@@ -128,7 +128,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //creation des boutons
         actemedical = new JToggleButton("Acte Medical");
         haut.add(actemedical, BorderLayout.CENTER);
-        Font police = new Font("Tahoma", Font.BOLD, 16);
+        Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
         actemedical.setFont(police);
         actemedical.setPreferredSize(new Dimension(230, 50));
 
@@ -166,7 +166,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         final JLabel registreM = new JLabel("Registre Medical");
         panelRegistreM.add(registreM, BorderLayout.NORTH);
         registreM.setVisible(false);
-        Font police1 = new Font("Tahoma", Font.BOLD, 20);
+        Font police1 = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 20);
         registreM.setFont(police1);
         registreM.setHorizontalAlignment(JLabel.CENTER);
         registreM.setVerticalAlignment(JLabel.CENTER);
@@ -289,7 +289,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- acte ----
         acte.setText("ACTE");
         acte.setForeground(new Color(0, 102, 102));
-        acte.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        acte.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelActe.add(acte);
         acte.setBounds(70, 95, 50, acte.getPreferredSize().height);
 
@@ -332,7 +332,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         euro.setBounds(220, 245, 15, euro.getPreferredSize().height);
 
         //---- validerActe ----
-        validerActe.setText("Valider");
+        validerActe.setText(Constants.VALIDER.getValue());
         validerActe.setBackground(new Color(0, 161, 219));
         panelActe.add(validerActe);
         validerActe.setBounds(new Rectangle(new Point(345, 300), validerActe.getPreferredSize()));
@@ -448,7 +448,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- recherche ----
         recherche.setText("Recherche");
         recherche.setForeground(Color.blue);
-        recherche.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        recherche.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche);
         recherche.setBounds(new Rectangle(new Point(55, 80), recherche.getPreferredSize()));
 
@@ -469,7 +469,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- ou ----
         ou.setText("OU");
         ou.setBorder(new EtchedBorder());
-        ou.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        ou.setFont(new Font(Constants.SEGOE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(ou);
         ou.setBounds(new Rectangle(new Point(480, 110), ou.getPreferredSize()));
 
@@ -500,7 +500,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         annee.setBounds(395, 230, 65, 24);
 
         //---- validerRecherche ----
-        validerRecherche.setText("Valider");
+        validerRecherche.setText(Constants.VALIDER.getValue());
         validerRecherche.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerRecherche);
         validerRecherche.setBounds(new Rectangle(new Point(480, 255), validerRecherche.getPreferredSize()));
@@ -508,7 +508,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- recherche2 ----
         recherche2.setText("Ajout d'un patient");
         recherche2.setForeground(Color.blue);
-        recherche2.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        recherche2.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche2);
         recherche2.setBounds(55, 295, 160, 17);
 
@@ -555,7 +555,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         annee2.setBounds(395, 445, 65, 24);
 
         //---- validerAjout ----
-        validerAjout.setText("Valider");
+        validerAjout.setText(Constants.VALIDER.getValue());
         validerAjout.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerAjout);
         validerAjout.setBounds(480, 475, 72, 24);
@@ -686,7 +686,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- rechercheM ----
         rechercheM.setText("Recherche");
         rechercheM.setForeground(Color.orange);
-        rechercheM.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
         rechercheM.setBounds(55, 80, 93, 17);
 
@@ -727,7 +727,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textTelephone.setBounds(180, 230, 250, textTelephone.getPreferredSize().height);
 
         //---- validerRechercheM ----
-        validerRechercheM.setText("Valider");
+        validerRechercheM.setText(Constants.VALIDER.getValue());
         validerRechercheM.setBackground(new Color(51, 153, 255));
         panelRegistreMedecin.add(validerRechercheM);
         validerRechercheM.setBounds(445, 255, 72, 24);
@@ -735,7 +735,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- ouM ----
         ouM.setText("OU");
         ouM.setBorder(new EtchedBorder());
-        ouM.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        ouM.setFont(new Font(Constants.SEGOE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(ouM);
         ouM.setBounds(445, 150, 25, 24);
         panelRegistreMedecin.add(separator1M);
@@ -744,7 +744,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         //---- ajoutM ----
         ajoutM.setText("Ajout d'un medecin");
         ajoutM.setForeground(Color.orange);
-        ajoutM.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 14));
+        ajoutM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(ajoutM);
         ajoutM.setBounds(55, 295, 175, 17);
 
@@ -785,7 +785,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textTelephone2.setBounds(180, 445, 250, 24);
 
         //---- validerRechercheM2 ----
-        validerRechercheM2.setText("Valider");
+        validerRechercheM2.setText(Constants.VALIDER.getValue());
         validerRechercheM2.setBackground(new Color(51, 153, 255));
         panelRegistreMedecin.add(validerRechercheM2);
         validerRechercheM2.setBounds(445, 475, 72, 24);

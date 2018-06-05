@@ -5,10 +5,7 @@
  */
 package affichage;
 
-import princetonPlainsboro.InterfaceSecretaireAdministratif;
-import princetonPlainsboro.InterfaceSecretaireMedical;
-import princetonPlainsboro.LectureXML;
-import princetonPlainsboro.ListeMedecin;
+import princetonPlainsboro.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +32,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         textFieldMdp.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
@@ -99,11 +97,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 5, true));
         jPanel1.setForeground(new java.awt.Color(51, 51, 255));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font(Constants.TAHOMA.getValue(), 0, 14)); // NOI18N
         jLabel2.setText("Identifiant :");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font(Constants.TAHOMA.getValue(), 0, 14)); // NOI18N
         jLabel3.setText("Mot de passe :");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -190,7 +188,7 @@ public class Login extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font(Constants.TAHOMA.getValue(), 0, 18)); // NOI18N
         jLabel1.setText("Andromeda");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);

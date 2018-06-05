@@ -49,7 +49,7 @@ class DossierMedical {
         double cout = 0;
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
-            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier m�dical d'un patient et d'afficher toutes les fiches
+            if (p.equals(f.getPatient())) { //cherche dans toutes les fiches si elles ont pour patient p, ce qui es lourd alors qu'il sera plus simple d'utiliser le dossier medical d'un patient et d'afficher toutes les fiches
                 cout += f.coutTotal();
             }
         }
@@ -123,7 +123,7 @@ class DossierMedical {
             }
             // on affiche la fiche de soins trouvee :
             f1.afficher();
-            System.out.println("------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
             //on la supprime de la liste :
             copieFiches.remove(imin);
         }
@@ -146,7 +146,7 @@ class DossierMedical {
             }
             // on affiche la fiche de soins trouvee :
             f1.afficher();
-            System.out.println("------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
             //on la supprime de la liste :
             copieFiches.remove(imin);
         }
@@ -172,7 +172,7 @@ class DossierMedical {
             }
             // on affiche la fiche de soins trouvee :
             f.afficher();
-            System.out.println("------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
             //on la supprime de la liste :
             copieFiches.remove(imin);
         }

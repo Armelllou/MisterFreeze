@@ -37,7 +37,7 @@ enum Code {
         return cout;
     }
 
-    // methodes :
+    @Override
     public String toString() {
         return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
     }

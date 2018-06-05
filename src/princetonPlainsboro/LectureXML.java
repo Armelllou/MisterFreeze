@@ -25,15 +25,13 @@ import java.util.Vector;
  */
 public class LectureXML {
 
-    private final static String repBase = "src/donnees/";
-    private final static String repBase1 = "src/donnees/";
     /// nom du document XML a analyser
     private String nomFichier;
     /// nom du document XML a analyser
     private String nomFichier1 = "listeMedecin.xml";
     private String nomFichier2 = "listePatient.xml";
 
-    // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
+    // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'REP_BASE' a lire :
     public LectureXML(String nomFichier) {
         this.nomFichier = nomFichier;
     }
@@ -58,7 +56,7 @@ public class LectureXML {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -122,13 +120,12 @@ public class LectureXML {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (Exception e) {
             System.out.println(("Impossible de trouver le code d'acte = " + donneesCourantes));
@@ -146,7 +143,7 @@ public class LectureXML {
         List<String> repertoire = null;
         //setNomFichier("listeMedecin.xml");
         try {
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -173,12 +170,10 @@ public class LectureXML {
             in.close();
             parser.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
-            System.out.println(ex);
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
+            System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
         return repertoire;
@@ -189,7 +184,7 @@ public class LectureXML {
         List<String> repertoire = null;
         //setNomFichier("authentifications.xml");
         try {
-            InputStream in = new FileInputStream(repBase + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -216,12 +211,10 @@ public class LectureXML {
             in.close();
             parser.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Details :");
-            System.out.println(ex);
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
+            System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
         return repertoire;
@@ -239,7 +232,7 @@ public class LectureXML {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase1 + nomFichier1);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier1);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -277,13 +270,12 @@ public class LectureXML {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier1);
-            System.out.println("Details :");
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier1);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
 
@@ -302,7 +294,7 @@ public class LectureXML {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(repBase1 + nomFichier);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader parser = factory.createXMLStreamReader(in);
 
@@ -341,17 +333,16 @@ public class LectureXML {
                 } // end switch
             } // end while
             parser.close();
+            in.close();
+
         } catch (XMLStreamException ex) {
-            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier2);
-            System.out.println("Details :");
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier2);
-            System.out.println("Verifier le chemin.");
+            System.out.println(Constants.IOEXC.getValue() + nomFichier);
             System.out.println(ex.getMessage());
         }
 
         return listePatientCourant;
     }
-
 }
