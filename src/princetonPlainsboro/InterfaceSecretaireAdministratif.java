@@ -65,12 +65,16 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JLabel dateDeNaissance2;
     private JTextField textNumSecu2;
     private JTextField textNom2;
-    private JTextField textPrénom2;
+    private JTextField textPrenom2;
     private JTextField jour2;
     private JTextField mois2;
     private JTextField annee2;
     private JSeparator separator1;
     private JButton validerAjout;
+    private JLabel adresse;
+    private JTextField textAdresse;
+    private JLabel adresse2;
+    private JTextField textAdresse2;
 
     private JLabel rM;
     private JLabel rechercheM;
@@ -223,7 +227,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         setPanelActe();
         setButtonActe();
         setRechercherPatient();
-
 
         //setAjouterMedecin();
         //setAjouterPatient();
@@ -395,11 +398,11 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         });
 
     }
-    //mettre dans secretaire administrative
+
     /*public void setAjouterPatient() {
-        button1Patient.addActionListener(new ActionListener() {
+        validerAjout.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                Patient patient1 = new Patient(textField1Patient.getText(), textField2Patient.getText(), new Date(14, 3, 1996),textField4Patient.getText());
+                Patient patient1 = new Patient(textNom2.getText(), textPrenom2.getText(), new Date(Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()),Integer.parseInt(annee2.getText())),textAdresse.getText());
                 EcrireXML.saveToXML("src/donnees/dossiers2.xml","patient", patient1);
             }
         });
@@ -429,12 +432,16 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         dateDeNaissance2 = new JLabel();
         textNumSecu2 = new JTextField();
         textNom2 = new JTextField();
-        textPrénom2 = new JTextField();
+        textPrenom2 = new JTextField();
         separator1 = new JSeparator();
         jour2 = new JTextField();
         mois2 = new JTextField();
         annee2 = new JTextField();
         validerAjout = new JButton();
+        adresse = new JLabel();
+        textAdresse = new JTextField();
+        adresse2 = new JLabel();
+        textAdresse2 = new JTextField();
 
         //======== this ========
 
@@ -468,12 +475,6 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistrePatient.add(nom);
         nom.setBounds(150, 155, 45, nom.getPreferredSize().height);
 
-        //---- ou ----
-        ou.setText("OU");
-        ou.setBorder(new EtchedBorder());
-        ou.setFont(new Font(Constants.SEGOE.getValue(), Font.BOLD, 14));
-        panelRegistrePatient.add(ou);
-        ou.setBounds(new Rectangle(new Point(480, 110), ou.getPreferredSize()));
 
         //---- dateDeNaissance ----
         dateDeNaissance.setText("Date de naissance (jj/mm/aaaa):");
@@ -501,62 +502,90 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         validerRecherche.setText(Constants.VALIDER.getValue());
         validerRecherche.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerRecherche);
-        validerRecherche.setBounds(new Rectangle(new Point(480, 255), validerRecherche.getPreferredSize()));
+        validerRecherche.setBounds(480, 110, 72, 24);
 
         //---- recherche2 ----
         recherche2.setText("Ajout d'un patient");
         recherche2.setForeground(Color.blue);
         recherche2.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche2);
-        recherche2.setBounds(55, 295, 160, 17);
+        recherche2.setBounds(55, 355, 160, 17);
 
         //---- numSecu2 ----
         numSecu2.setText("Num\u00e9ro de s\u00e9curit\u00e9 sociale:");
         numSecu2.setAlignmentX(0.5F);
         numSecu2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(numSecu2);
-        numSecu2.setBounds(35, 330, 160, 20);
+        numSecu2.setBounds(35, 400, 160, 20);
 
         //---- nom2 ----
         nom2.setText("Nom:");
         nom2.setAlignmentX(0.5F);
         nom2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(nom2);
-        nom2.setBounds(150, 370, 45, 20);
+        nom2.setBounds(150, 430, 45, 20);
+
 
         //---- prenom2 ----
         prenom2.setText("Pr\u00e9nom:");
         prenom2.setAlignmentX(0.5F);
         prenom2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(prenom2);
-        prenom2.setBounds(135, 410, 60, 15);
+        prenom2.setBounds(135, 470, 60, 15);
+
+        // adresse
+        adresse.setText("Adresse:");
+        adresse.setAlignmentX(0.5F);
+        adresse.setBorder(new EtchedBorder());
+        panelRegistrePatient.add(adresse);
+        adresse.setBounds(140, 275, 55, adresse.getPreferredSize().height);
+
+
+        // TextAdresse
+
+        panelRegistrePatient.add(textAdresse);
+        textAdresse.setBounds(210, 275, 250, textAdresse.getPreferredSize().height);
 
         //---- dateDeNaissance2 ----
         dateDeNaissance2.setText("Date de naissance (jj/mm/aaaa):");
         dateDeNaissance2.setAlignmentX(0.5F);
         dateDeNaissance2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(dateDeNaissance2);
-        dateDeNaissance2.setBounds(10, 445, 185, 20);
+        dateDeNaissance2.setBounds(10, 505, 185, 20);
         panelRegistrePatient.add(textNumSecu2);
-        textNumSecu2.setBounds(210, 325, 250, 24);
+        textNumSecu2.setBounds(210, 385, 250, 24);
         panelRegistrePatient.add(textNom2);
-        textNom2.setBounds(210, 365, 250, 24);
-        panelRegistrePatient.add(textPrénom2);
-        textPrénom2.setBounds(210, 405, 250, 24);
+        textNom2.setBounds(210, 425, 250, 24);
+        panelRegistrePatient.add(textPrenom2);
+        textPrenom2.setBounds(210, 465, 250, 24);
         panelRegistrePatient.add(separator1);
-        separator1.setBounds(0, 285, 570, 15);
+        separator1.setBounds(0, 325, 1200, 15);
         panelRegistrePatient.add(jour2);
-        jour2.setBounds(210, 445, 35, 24);
+        jour2.setBounds(210, 505, 35, 24);
         panelRegistrePatient.add(mois2);
-        mois2.setBounds(255, 445, 130, 24);
+        mois2.setBounds(255, 505, 130, 24);
         panelRegistrePatient.add(annee2);
-        annee2.setBounds(395, 445, 65, 24);
+        annee2.setBounds(395, 505, 65, 24);
 
         //---- validerAjout ----
         validerAjout.setText(Constants.VALIDER.getValue());
         validerAjout.setBackground(new Color(51, 153, 255));
         panelRegistrePatient.add(validerAjout);
-        validerAjout.setBounds(480, 475, 72, 24);
+        validerAjout.setBounds(480, 555, 72, 24);
+
+        // adresse2
+        adresse2.setText("Adresse:");
+        adresse2.setAlignmentX(0.5F);
+        adresse2.setBorder(new EtchedBorder());
+        panelRegistrePatient.add(adresse2);
+        adresse2.setBounds(140, 550, 55, adresse2.getPreferredSize().height);
+
+
+        // TextAdresse2
+
+        panelRegistrePatient.add(textAdresse2);
+        textAdresse2.setBounds(210, 550, 250, textAdresse2.getPreferredSize().height);
+
 
         { // compute preferred size
             Dimension preferredSize = new Dimension();
@@ -616,12 +645,17 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom2.setVisible(true);
                     textNumSecu2.setVisible(true);
                     textNom2.setVisible(true);
-                    textPrénom2.setVisible(true);
+                    textPrenom2.setVisible(true);
                     jour2.setVisible(true);
                     mois2.setVisible(true);
                     annee2.setVisible(true);
                     separator1.setVisible(true);
                     validerAjout.setVisible(true);
+                    adresse.setVisible(true);
+                    textAdresse.setVisible(true);
+                    adresse2.setVisible(true);
+                    textAdresse2.setVisible(true);
+
                 } else {
                     rP.setVisible(false);
                     recherche.setVisible(false);
@@ -644,12 +678,17 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom2.setVisible(false);
                     textNumSecu2.setVisible(false);
                     textNom2.setVisible(false);
-                    textPrénom2.setVisible(false);
+                    textPrenom2.setVisible(false);
                     jour2.setVisible(false);
                     mois2.setVisible(false);
                     annee2.setVisible(false);
                     separator1.setVisible(false);
                     validerAjout.setVisible(false);
+                    adresse.setVisible(false);
+                    textAdresse.setVisible(false);
+                    adresse2.setVisible(false);
+                    textAdresse2.setVisible(false);
+
                 }
             }
         });
@@ -742,16 +781,12 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         validerRechercheM.setText(Constants.VALIDER.getValue());
         validerRechercheM.setBackground(new Color(51, 153, 255));
         panelRegistreMedecin.add(validerRechercheM);
-        validerRechercheM.setBounds(445, 255, 72, 24);
+        validerRechercheM.setBounds(445, 150, 72, 24);
 
         //---- ouM ----
-        ouM.setText("OU");
-        ouM.setBorder(new EtchedBorder());
-        ouM.setFont(new Font(Constants.SEGOE.getValue(), Font.BOLD, 14));
-        panelRegistreMedecin.add(ouM);
-        ouM.setBounds(445, 150, 25, 24);
+
         panelRegistreMedecin.add(separator1M);
-        separator1M.setBounds(0, 285, 570, 15);
+        separator1M.setBounds(0, 285, 1200, 15);
 
         //---- ajoutM ----
         ajoutM.setText("Ajout d'un medecin");
