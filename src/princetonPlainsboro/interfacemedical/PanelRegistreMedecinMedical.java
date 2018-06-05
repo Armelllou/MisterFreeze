@@ -110,18 +110,14 @@ public class PanelRegistreMedecinMedical {
         panelRegistreMedecin.add(separator1M);
 
         PanelCompute.computePreferedSize(panelRegistreMedecin);
+        setRechercherMedecin();
     }
 
     public void setRechercherMedecin() {
+        textSpecialite.setEditable(false);
+        textTelephone.setEditable(false);
         validerRechercheM.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                /*Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
-                xmlToSave.put(null, "medecin");
-                xmlToSave.put("nom", textField1.getText());
-                xmlToSave.put("prenom", textField2.getText());
-                xmlToSave.put("specialite", textField3.getText());
-                xmlToSave.put("numeroTelephone", textField4.getText());*/
-
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()));

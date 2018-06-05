@@ -271,4 +271,45 @@
             <coef>1</coef>
         </acte>
     </ficheDeSoins>
+<ficheDeSoins>
+        <date>2016-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2016-12-12</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+    </ficheDeSoins>
 </dossier>

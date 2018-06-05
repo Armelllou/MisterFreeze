@@ -130,16 +130,28 @@ public class PanelRegistrePatientMedical {
     }
 
     public void setRechercherPatient() {
+        textNom.setEditable(false);
+        textPrenom.setEditable(false);
+        jour.setEditable(false);
+        textAdresse.setEditable(false);
         System.out.println("marche");
         validerRecherche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
-                textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
-                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
-                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
-                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                if(textNumSecu.getText().length()<16) {
+                    textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
+                    textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                    jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
+                    textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                }
+
+                else {
+                    JOptionPane.showMessageDialog(null, "Vous avez ajouté un trop grand nombre de chiffre", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    textNumSecu.setText(null);
+                }
+
             }
         });
     }
