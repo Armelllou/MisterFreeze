@@ -314,10 +314,10 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
                 dossierMed.setForeground(Color.BLACK);
-                Date d1 = new Date(Integer.parseInt(date1.getText()), Integer.parseInt(date2.getText()), Integer.parseInt(date3.getText()));
-                Date d2 = new Date(Integer.parseInt(date4.getText()), Integer.parseInt(date5.getText()), Integer.parseInt(date6.getText()));
-                dm1.trierEntreDeuxDates(d1, d2, new ComparaisonFichesCouts());
-                dossierMed.setText(dm1.toStringDM());
+                Date d1= new Date(Integer.parseInt(date1.getText()),Integer.parseInt(date2.getText()),Integer.parseInt(date3.getText()));                
+                Date d2= new Date(Integer.parseInt(date4.getText()),Integer.parseInt(date5.getText()),Integer.parseInt(date6.getText()));
+                
+                dossierMed.setText(dm1.trierEntreDeuxDates(d1,d2, new ComparaisonFichesCouts()).toString());
 
             }
         });
@@ -757,10 +757,16 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
-                textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
-                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
-                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
-                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                if(textNumSecu.getText().length()<16) {
+                    textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
+                    textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                    jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
+                    textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Vous avez ajouté un trop grand nombre de chiffre", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    textNumSecu.setText(null);
+                }
             }
         });
     }

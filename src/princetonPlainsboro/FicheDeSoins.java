@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
+import java.util.List;
 import java.util.Vector;
 
 public class FicheDeSoins implements Printable {
@@ -75,6 +76,10 @@ public class FicheDeSoins implements Printable {
             total += a.cout();
         }
         return total;
+    }
+    public List<Acte> getActes(){
+        return actes;
+
     }
 
     @Override

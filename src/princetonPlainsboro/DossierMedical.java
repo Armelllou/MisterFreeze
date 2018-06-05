@@ -158,10 +158,20 @@ public class DossierMedical {
 
     }
 
-    public void trierEntreDeuxDates(Date d1, Date d2, ComparaisonFiches c) {
+    public List<FicheDeSoins> trierEntreDeuxDates(Date d1, Date d2, ComparaisonFiches c) {
         Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
         Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
 
+        for (int i = 0; i < fiches.size(); i++) {
+            int imin = 0;
+            FicheDeSoins f = fiches.get(imin);
+            Date d = f.getDate();
+            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
+                copieFiches.add(fiches.get(imin));
+
+            }
+
+        }
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
             int imin = 0;
@@ -183,7 +193,7 @@ public class DossierMedical {
             copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);
         }
-        fiches = copieLocale;
+        return copieLocale;
 
     }
 
@@ -216,12 +226,11 @@ public class DossierMedical {
         }
         if (lfs.isEmpty()) {
             return null;
-        }else{
+        } else {
             return lfs;
         }
-        
+
     }
-    
 
     //donne la fiche d'un patient à un temps t
     public FicheDeSoins rechercherFiche(Patient patient, Date date) {
