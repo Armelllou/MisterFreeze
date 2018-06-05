@@ -18,7 +18,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
     //Liste des noms de nos conteneurs pour la supperposition des JPanels
-    private String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
+    private String[] listContent = {" ACCUEIL", "REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
     private JPanel menuderoulant = new JPanel();
     private JPanel haut = new JPanel();
     private JPanel bas = new JPanel();
@@ -121,6 +121,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JLabel textdate2;
     private JTextField textFiche;
     private JPanel hautRegistreM;
+    private JPanel panelAccueil;
 
 
     public InterfaceSecretaireAdministratif() {
@@ -142,6 +143,9 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         panelRegistrePatient.setLayout(new FlowLayout());
         panelRegistreMedecin = new JPanel();
         panelRegistreMedecin.setLayout(new BorderLayout());
+        panelAccueil = new JPanel();
+        panelAccueil.setLayout(new BorderLayout());
+
 
 
         final JPanel panelRegistreM = new JPanel();
@@ -253,7 +257,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[2]);
+                cl.show(affichage, listContent[3]);
                 if (fichierMedical.isSelected()) {
 
                     sp.setVisible(true);
@@ -371,12 +375,13 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         affichage.setLayout(cl);
 
         //On ajoute les cartes à la pile avec un nom pour les retrouver
-        affichage.add(panelRegistrePatient, listContent[0]);
-        affichage.add(panelRegistreMedecin, listContent[1]);
-        affichage.add(panelRegistreM, listContent[2]);
-        affichage.add(panelFicheSoin, listContent[3]);
-        affichage.add(panelActe, listContent[4]);
-        affichage.add(panelDeconnexion, listContent[5]);
+        affichage.add(panelAccueil, listContent[0]);
+        affichage.add(panelRegistrePatient, listContent[1]);
+        affichage.add(panelRegistreMedecin, listContent[2]);
+        affichage.add(panelRegistreM, listContent[3]);
+        affichage.add(panelFicheSoin, listContent[4]);
+        affichage.add(panelActe, listContent[5]);
+        affichage.add(panelDeconnexion, listContent[6]);
 
         this.getContentPane().add(menuderoulant, BorderLayout.WEST);
         this.getContentPane().add(affichage, BorderLayout.CENTER);
@@ -392,9 +397,21 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         setAjouterMedecin();
         setAjouterPatient();
         setRechercherMedecin();
-
+        ImagePanelAccueil();
     }
 
+    public void ImagePanelAccueil() {
+        try {
+            ImageIcon icon = new ImageIcon(new ImageIcon("src/princetonPlainsboro/Bienvenue.png").getImage().getScaledInstance(1000, 700, Image.SCALE_DEFAULT));
+            picLabel = new JLabel(icon);
+            picLabel.setVisible(true);
+            picLabel.setOpaque(true);
+            picLabel.setBackground(Color.white);
+        } catch (Exception ex) {
+            System.out.println("error in image");
+        }
+        panelAccueil.add(picLabel, BorderLayout.CENTER);
+    }
 
     public void ImagePanel() {
         try {
@@ -514,7 +531,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         actemedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[4]);
+                cl.show(affichage, listContent[5]);
                 textCoef.setEditable(false);
                 textCout.setEditable(false);
 
@@ -764,7 +781,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         registrePatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[0]);
+                cl.show(affichage, listContent[1]);
                 if (registrePatient.isSelected()) {
                     rP.setVisible(true);
                     recherche.setVisible(true);
@@ -1024,7 +1041,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         registreMedecin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[1]);
+                cl.show(affichage, listContent[2]);
                 if (registreMedecin.isSelected()) {
                     rM.setVisible(true);
                     rechercheM.setVisible(true);
