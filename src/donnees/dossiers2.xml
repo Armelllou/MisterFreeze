@@ -196,4 +196,31 @@
             <adresse>adresse1</adresse>
         </patient>
     </patient>
+<medecin>
+        <medecin>
+            <nom/>
+            <prenom/>
+            <specialite/>
+            <numeroTelephone/>
+            <mdp>mdp</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>ba</nom>
+            <prenom>bo</prenom>
+            <specialite>bi</specialite>
+            <numeroTelephone>01020304</numeroTelephone>
+            <mdp>mdp21</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>ba</nom>
+            <prenom>bo</prenom>
+            <specialite>bi</specialite>
+            <numeroTelephone>01020304</numeroTelephone>
+            <mdp>mdp21</mdp>
+        </medecin>
+    </medecin>
 </dossier>

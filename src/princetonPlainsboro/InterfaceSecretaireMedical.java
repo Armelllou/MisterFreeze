@@ -1047,6 +1047,10 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     }
 
+    public void RechercheCout(){
+
+    }
+
     public void setPanelActe() {
 
         rAM = new JLabel();
