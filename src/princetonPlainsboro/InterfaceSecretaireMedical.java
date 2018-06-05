@@ -10,6 +10,7 @@ import affichage.Login;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +32,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
     //Liste des noms de nos conteneurs pour la supperposition des JPanels
-    private String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
+    private String[] listContent = {"ACCUEIL","REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
     private JPanel menuderoulant = new JPanel();
     private JPanel haut = new JPanel();
     private JPanel bas = new JPanel();
@@ -161,6 +162,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JSeparator separator1;
     private JButton validerAjout;
     private JTextField textAdresse;
+    private JPanel panelAccueil;
 
 
     private JButton button1Medecin;
@@ -184,6 +186,9 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.setLayout(new FlowLayout());
         panelRegistreMedecin = new JPanel();
         panelRegistreMedecin.setLayout(new BorderLayout());
+        panelAccueil = new JPanel();
+        panelAccueil.setLayout(new BorderLayout());
+
 
         JPanel panelRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
@@ -229,12 +234,13 @@ public class InterfaceSecretaireMedical extends JFrame {
         affichage.setLayout(cl);
 
         //On ajoute les cartes à la pile avec un nom pour les retrouver
-        affichage.add(panelRegistrePatient, listContent[0]);
-        affichage.add(panelRegistreMedecin, listContent[1]);
-        affichage.add(panelRegistreM, listContent[2]);
-        affichage.add(panelFicheSoin, listContent[3]);
-        affichage.add(panelActe, listContent[4]);
-        affichage.add(panelDeconnexion, listContent[5]);
+        affichage.add(panelAccueil, listContent[0]);
+        affichage.add(panelRegistrePatient, listContent[1]);
+        affichage.add(panelRegistreMedecin, listContent[2]);
+        affichage.add(panelRegistreM, listContent[3]);
+        affichage.add(panelFicheSoin, listContent[4]);
+        affichage.add(panelActe, listContent[5]);
+        affichage.add(panelDeconnexion, listContent[6]);
 
         this.getContentPane().add(menuderoulant, BorderLayout.WEST);
         this.getContentPane().add(affichage, BorderLayout.CENTER);
@@ -254,7 +260,21 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherPatient();
         setButtonDeconnexion();
         setButtonFichierMedical();
+        ImagePanelAccueil();
 
+    }
+
+    public void ImagePanelAccueil() {
+        try {
+            ImageIcon icon = new ImageIcon(new ImageIcon("src/princetonPlainsboro/Bienvenue.png").getImage().getScaledInstance(1000, 700, Image.SCALE_DEFAULT));
+            picLabel = new JLabel(icon);
+            picLabel.setVisible(true);
+            picLabel.setOpaque(true);
+            picLabel.setBackground(Color.white);
+        } catch (Exception ex) {
+            System.out.println("error in image");
+        }
+        panelAccueil.add(picLabel, BorderLayout.CENTER);
     }
 
     public void setButtonFichierMedical() {
@@ -262,7 +282,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[2]);
+                cl.show(affichage, listContent[3]);
                 if (fichierMedical.isSelected()) {
                     dossierMed.setVisible(true);
                     registreM.setVisible(true);
@@ -296,7 +316,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 registreMedecin.setSelected(false);
                 fichierMedical.setSelected(false);
                 JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
-                cl.show(affichage, listContent[5]);
+                cl.show(affichage, listContent[6]);
                 new Login().showLogin();
                 dispose();
             }
@@ -505,7 +525,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         ficheSoin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[3]);
+                cl.show(affichage, listContent[4]);
                 scrollPane1.setEditable(false);
                 if (ficheSoin.isSelected()) {
                     label11.setVisible(true);
@@ -538,7 +558,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     buttonImp.setVisible(true);
                     labelajoutActe.setVisible(true);
                     buttonAjoutActe.setVisible(true);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     registrePatient.setSelected(false);
@@ -574,7 +593,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     labelajoutActe.setVisible(false);
                     buttonAjoutActe.setVisible(false);
                     comboBox2.setVisible(false);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     registrePatient.setSelected(false);
@@ -602,7 +620,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registrePatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[0]);
+                cl.show(affichage, listContent[1]);
                 if (registrePatient.isSelected()) {
                     rP.setVisible(true);
                     recherche.setVisible(true);
@@ -631,7 +649,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(true);
                     separator1.setVisible(true);
                     validerAjout.setVisible(true);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -666,7 +683,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(false);
                     separator1.setVisible(false);
                     validerAjout.setVisible(false);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -741,8 +757,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         nom.setBorder(new EtchedBorder());
         panelRegistrePatient.add(nom);
         nom.setBounds(150, 155, 45, nom.getPreferredSize().height);
-
-        //---- ou ----
 
         //---- dateDeNaissance ----
         dateDeNaissance.setText("Date de naissance (jj/mm/aaaa):");
@@ -924,7 +938,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreMedecin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[1]);
+                cl.show(affichage, listContent[2]);
                 //textField4.setEditable(false);
                 //textField3.setEditable(false);
                 if (registreMedecin.isSelected()) {
@@ -951,7 +965,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textTelephone2.setVisible(true);
                     separator1M.setVisible(true);
                     validerRechercheM2.setVisible(true);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -981,7 +994,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textTelephone2.setVisible(false);
                     separator1M.setVisible(false);
                     validerRechercheM2.setVisible(false);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -1087,7 +1099,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         actemedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[4]);
+                cl.show(affichage, listContent[5]);
                 textCoef.setEditable(false);
                 textCout.setEditable(false);
 
@@ -1104,7 +1116,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textCout.setVisible(true);
                     euro.setVisible(true);
                     validerActe.setVisible(true);
-
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
                     registrePatient.setSelected(false);
@@ -1123,7 +1134,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textCout.setVisible(false);
                     euro.setVisible(false);
                     validerActe.setVisible(false);
-
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
                     registrePatient.setSelected(false);
