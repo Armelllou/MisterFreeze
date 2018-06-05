@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dossier>
     <medecin>
-        <nom>pat</nom>
-        <prenom>bol</prenom>
+        <nom>nom1</nom>
+
+        <prenom>prenom1</prenom>
+
+        <mdp>mdp1</mdp>
+
         <specialite>cardio</specialite>
-    </medecin>
-    <medecin>
-        <nom>pat</nom>
-        <prenom>bol</prenom>
-        <specialite>cardio</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bolo</nom>
-        <prenom>Pat</prenom>
-        <specialite>Beurk</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bolo</nom>
-        <prenom>Pat</prenom>
-        <specialite>Beurk</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bolo</nom>
-        <prenom>Pat</prenom>
-        <specialite>Beurk</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bolo</nom>
-        <prenom>Pat</prenom>
-        <specialite>Beurk</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bernard</nom>
-        <prenom>Armelle</prenom>
-        <specialite>Cancero</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bernard</nom>
-        <prenom>Armelle</prenom>
-        <specialite>Cancero</specialite>
-    </medecin>
-    <medecin>
-        <nom>Bernard</nom>
-        <prenom>Armelle</prenom>
-        <specialite>cardiologie</specialite>
-        <numeroTelephone>076546575646</numeroTelephone>
-    </medecin>
-    <medecin>
-        <nom>GB</nom>
-        <prenom>JL</prenom>
-        <specialite>cardiologie</specialite>
+
         <numeroTelephone>0123456788</numeroTelephone>
+
     </medecin>
+
+    <medecin>
+        <nom>nom2</nom>
+
+        <prenom>prenom2</prenom>
+
+        <mdp>mdp2</mdp>
+
+        <specialite>cardio</specialite>
+
+        <numeroTelephone>0123456788</numeroTelephone>
+
+    </medecin>
+
+    <medecin>
+        <nom>nom3</nom>
+
+        <prenom>prenom3</prenom>
+
+        <mdp>mdp3</mdp>
+
+        <specialite>cardio</specialite>
+
+        <numeroTelephone>0123456788</numeroTelephone>
+
+    </medecin>
+
+    <medecin>
+        <nom>nom4</nom>
+
+        <prenom>prenom4</prenom>
+
+        <mdp>mdp4</mdp>
+
+        <specialite>cardio</specialite>
+
+        <numeroTelephone>0123456788</numeroTelephone>
+
+    </medecin>
+
 </dossier>

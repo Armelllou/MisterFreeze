@@ -8,6 +8,7 @@ package affichage;
 import princetonPlainsboro.InterfaceSecretaireAdministratif;
 import princetonPlainsboro.InterfaceSecretaireMedical;
 import princetonPlainsboro.LectureXML;
+import princetonPlainsboro.ListeMedecin;
 
 import javax.swing.*;
 import java.awt.*;
@@ -262,15 +263,17 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSeConnecterActionPerformed
 
     public void seConnecter() {
-        String id = textFieldId.getText();
+        String nom = textFieldId.getText();
         String mdp = textFieldMdp.getText();
 
-        LectureXML lectA = new LectureXML("authentifications.xml");
+        LectureXML lectA = new LectureXML("listeMedecin.xml");
+        LectureXML lectB = new LectureXML ("authentifications.xml");
         int k = 0;
+        int b = 0;
 
         for (int i = 0; i < lectA.repertoire().size() - 1; i++) {
             k++;
-            if (id.equals(lectA.repertoire().get(i)) && mdp.equals(lectA.repertoire().get(i + 1))) {
+            if (nom.equals(lectA.repertoire().get(i)) && mdp.equals(lectA.repertoire().get(i + 1))) {
 
                 k = 0;
                 textFieldId.setText(null);
@@ -284,10 +287,28 @@ public class Login extends javax.swing.JFrame {
             }
 
         }
-        if (k == lectA.repertoire().size() - 1) {
-            JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
-            textFieldId.setText(null);
-            textFieldMdp.setText(null);
+        //if (k == lectA.repertoire().size() - 1) {
+        for (int j=0; j<lectB.repertoire2().size() - 1; j++){
+            b++;
+            if (nom.equals(lectB.repertoire2().get(j)) && mdp.equals(lectB.repertoire2().get(j + 1))) {
+                textFieldId.setText(null);
+                textFieldMdp.setText(null);
+                System.out.println("Connection");
+
+                InterfaceSecretaireAdministratif isa = new InterfaceSecretaireAdministratif();
+                isa.setMinimumSize(new Dimension(1000, 700));
+                this.dispose();
+                break;
+            }
+
+
+            //if (b == lectB.repertoire().size() - 1) {
+            if (k == lectA.repertoire().size() - 1) {
+                JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe errone", "Erreur d'authentification", JOptionPane.ERROR_MESSAGE);
+                textFieldId.setText(null);
+                textFieldMdp.setText(null);
+                break;
+            }
         }
     }
 
