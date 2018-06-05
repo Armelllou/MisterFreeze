@@ -244,8 +244,8 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
-                            break;
                         }
+                        break;
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("medecin")) {
                             listeMedecinCourant.ajouterMedecin(new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant));
@@ -306,8 +306,9 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
-                            break;
-                        }
+                            }
+                        break;
+
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("patient")) {
                             listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, adresseCourant, numSecu, dateCourante));

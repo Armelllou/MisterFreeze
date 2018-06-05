@@ -768,11 +768,8 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.add(textPrenom);
         textPrenom.setBounds(210, 190, 250, textPrenom.getPreferredSize().height);
         panelRegistrePatient.add(jour);
-        jour.setBounds(210, 230, 35, jour.getPreferredSize().height);
-        panelRegistrePatient.add(mois);
-        mois.setBounds(255, 230, 130, 24);
-        panelRegistrePatient.add(annee);
-        annee.setBounds(395, 230, 65, 24);
+        jour.setBounds(210, 230, 250, jour.getPreferredSize().height);
+
 
         //---- validerRecherche ----
         validerRecherche.setText(Constants.VALIDER.getValue());
@@ -809,7 +806,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
                 textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
                 textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
-                //textField4.setText(listePatient.rechercher(Integer.parseInt(textField1.getText())).getDateNaissance());
+                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
                 textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
             }
         });

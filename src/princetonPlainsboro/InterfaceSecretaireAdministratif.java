@@ -53,7 +53,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JLabel prenom;
     private JTextField textNumSecu;
     private JTextField textNom;
-    private JTextField textPrénom;
+    private JTextField textPrenom;
     private JTextField jour;
     private JTextField mois;
     private JTextField annee;
@@ -95,6 +95,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JTextField textSpecialite2;
     private JTextField textTelephone2;
     private JButton validerRechercheM2;
+
 
 
     public InterfaceSecretaireAdministratif() {
@@ -221,6 +222,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         setButtonRegistreMedecin();
         setPanelActe();
         setButtonActe();
+        setRechercherPatient();
 
 
         //setAjouterMedecin();
@@ -312,7 +314,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         coeff.setBounds(70, 210, 75, coeff.getPreferredSize().height);
 
         //---- cout ----
-        cout.setText(" Co\u00fbt :");
+        cout.setText(" Cout :");
         cout.setBorder(new BevelBorder(BevelBorder.LOWERED));
         panelActe.add(cout);
         cout.setBounds(100, 245, 45, 15);
@@ -415,7 +417,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         prenom = new JLabel();
         textNumSecu = new JTextField();
         textNom = new JTextField();
-        textPrénom = new JTextField();
+        textPrenom = new JTextField();
         jour = new JTextField();
         mois = new JTextField();
         annee = new JTextField();
@@ -490,14 +492,10 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         textNumSecu.setBounds(210, 110, 250, textNumSecu.getPreferredSize().height);
         panelRegistrePatient.add(textNom);
         textNom.setBounds(210, 150, 250, textNom.getPreferredSize().height);
-        panelRegistrePatient.add(textPrénom);
-        textPrénom.setBounds(210, 190, 250, textPrénom.getPreferredSize().height);
+        panelRegistrePatient.add(textPrenom);
+        textPrenom.setBounds(210, 190, 250, textPrenom.getPreferredSize().height);
         panelRegistrePatient.add(jour);
-        jour.setBounds(210, 230, 35, jour.getPreferredSize().height);
-        panelRegistrePatient.add(mois);
-        mois.setBounds(255, 230, 130, 24);
-        panelRegistrePatient.add(annee);
-        annee.setBounds(395, 230, 65, 24);
+        jour.setBounds(210, 230, 250, jour.getPreferredSize().height);
 
         //---- validerRecherche ----
         validerRecherche.setText(Constants.VALIDER.getValue());
@@ -576,6 +574,20 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
     }
+    public void setRechercherPatient() {
+        System.out.println("marche");
+        validerRecherche.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                LectureXML test1 = new LectureXML("listePatient.xml");
+                ListePatient listePatient = test1.getListePatient();
+                System.out.println(listePatient.rechercher(textNumSecu.getText()));
+                textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
+                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
+                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+            }
+        });
+    }
 
     public void setButtonRegistrePatient() {
         registrePatient.addActionListener(new ActionListener() {
@@ -592,7 +604,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom.setVisible(true);
                     textNumSecu.setVisible(true);
                     textNom.setVisible(true);
-                    textPrénom.setVisible(true);
+                    textPrenom.setVisible(true);
                     jour.setVisible(true);
                     mois.setVisible(true);
                     annee.setVisible(true);
@@ -620,7 +632,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     prenom.setVisible(false);
                     textNumSecu.setVisible(false);
                     textNom.setVisible(false);
-                    textPrénom.setVisible(false);
+                    textPrenom.setVisible(false);
                     jour.setVisible(false);
                     mois.setVisible(false);
                     annee.setVisible(false);
