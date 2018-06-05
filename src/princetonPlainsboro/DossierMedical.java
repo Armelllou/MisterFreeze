@@ -17,7 +17,7 @@ class DossierMedical {
     }
 
     public String toStringDM() {
-        String t = "Dossier medical informatise :" + "\n" + "-----------------------------" + "\n";
+        String t = "Dossier medical informatise :" + "\n" + Constants.SEPARATION.getValue() + "\n";
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
             t += f.toString();
@@ -28,12 +28,12 @@ class DossierMedical {
 
     public void afficher() { //affiche toutes les fiches de la liste
         System.out.println("Dossier medical informatise :");
-        System.out.println("-----------------------------");
+        System.out.println(Constants.SEPARATION.getValue());
         for (int i = 0; i < fiches.size(); i++) {
             FicheDeSoins f = fiches.get(i);
             f.afficher();
             // pour separer les fiches de soins :
-            System.out.println("--------------------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
         }
     }
 
@@ -123,7 +123,7 @@ class DossierMedical {
             }
             // on affiche la fiche de soins trouvee :
             f1.afficher();
-            System.out.println("------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
             //on copie dans copieLocale et on la supprime de la liste :
             copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);
@@ -149,7 +149,7 @@ class DossierMedical {
             }
             // on affiche la fiche de soins trouvee :
             f1.afficher();
-            System.out.println("------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
             //on la supprime de la liste apès avoir copier dans copie locale :
             copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);
@@ -188,7 +188,7 @@ class DossierMedical {
             }
             // on affiche la fiche de soins trouvee :
             f.afficher();
-            System.out.println("------------------------");
+            System.out.println(Constants.SEPARATION.getValue());
             //on la supprime de la liste après avoir copié dans copieLocale:
             copieLocale.add(copieFiches.get(imin));
             copieFiches.remove(imin);

@@ -9,65 +9,38 @@
     </patient>
 <patient>
         <patient>
-            <nom>Nom:</nom>
-            <prenom>Prénom:</prenom>
-            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
-            <dateNaissance>1997-5-16</dateNaissance>
-            <adresse>Adresse:</adresse>
-        </patient>
-    </patient>
-<patient>
-        <patient>
-            <nom>Nom:</nom>
-            <prenom>Prénom:</prenom>
-            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
-            <dateNaissance>1997-5-16</dateNaissance>
-            <adresse>Adresse:</adresse>
-        </patient>
-    </patient>
-<patient>
-        <patient>
-            <nom>Nom:</nom>
-            <prenom>Prénom:</prenom>
-            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
-            <dateNaissance>1997-5-16</dateNaissance>
-            <adresse>Adresse:</adresse>
-        </patient>
-    </patient>
-<patient>
-        <patient>
-            <nom>Nom:</nom>
-            <prenom>Prénom:</prenom>
-            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
-            <dateNaissance>1997-5-16</dateNaissance>
-            <adresse>Adresse:</adresse>
-        </patient>
-    </patient>
-<patient>
-        <patient>
-            <nom>BERNARD</nom>
-            <prenom>ARMELLE</prenom>
-            <numeroSecuriteSociale>Numéro de sécurité sociale:</numeroSecuriteSociale>
-            <dateNaissance>1990-2-12</dateNaissance>
-            <adresse>Adresse4</adresse>
-        </patient>
-    </patient>
-<patient>
-        <patient>
-            <nom>SALORD</nom>
-            <prenom>FLORIAN</prenom>
-            <numeroSecuriteSociale>55555</numeroSecuriteSociale>
-            <dateNaissance>1996-6-15</dateNaissance>
-            <adresse>ADRESSE4</adresse>
-        </patient>
-    </patient>
-<patient>
-        <patient>
             <nom>salord</nom>
             <prenom>florian</prenom>
             <numeroSecurite>55555</numeroSecurite>
             <dateNaissance>1996-6-15</dateNaissance>
             <adresse>adresse6</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>az</nom>
+            <prenom>ae</prenom>
+            <numeroSecurite>22</numeroSecurite>
+            <dateNaissance>2019-11-12</dateNaissance>
+            <adresse>adress2</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2017-4-15</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>1996-12-21</dateNaissance>
+            <adresse>5 rue de l'ancienne gare</adresse>
         </patient>
     </patient>
 </dossier>

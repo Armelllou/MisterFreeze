@@ -10,6 +10,7 @@ import affichage.Login;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,14 +23,16 @@ import java.util.List;
 
 public class InterfaceSecretaireMedical extends JFrame {
 
-    JLabel picLabel;
-    JToggleButton actemedical;
-    JToggleButton ficheSoin;
-    JPanel panelFicheSoin;
+    private JLabel picLabel;
+    private JToggleButton actemedical;
+    private JToggleButton ficheSoin;
+    private JPanel panelFicheSoin;
+    private Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
+
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
     //Liste des noms de nos conteneurs pour la supperposition des JPanels
-    private String[] listContent = {"REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
+    private String[] listContent = {"ACCUEIL","REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
     private JPanel menuderoulant = new JPanel();
     private JPanel haut = new JPanel();
     private JPanel bas = new JPanel();
@@ -159,6 +162,7 @@ public class InterfaceSecretaireMedical extends JFrame {
     private JSeparator separator1;
     private JButton validerAjout;
     private JTextField textAdresse;
+    private JPanel panelAccueil;
     private JButton button1Medecin;
 
     private Date date;
@@ -168,6 +172,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        this.setTitle("Andromeda");
 
         //panel
         haut.setLayout(new GridLayout(8, 1));
@@ -183,6 +188,9 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.setLayout(new FlowLayout());
         panelRegistreMedecin = new JPanel();
         panelRegistreMedecin.setLayout(new BorderLayout());
+        panelAccueil = new JPanel();
+        panelAccueil.setLayout(new BorderLayout());
+
 
         JPanel panelRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
@@ -193,34 +201,18 @@ public class InterfaceSecretaireMedical extends JFrame {
 
         //creation des boutons
         actemedical = new JToggleButton("Acte Medical");
-        haut.add(actemedical, BorderLayout.CENTER);
-        Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
-        actemedical.setFont(police);
-        actemedical.setPreferredSize(new Dimension(230, 50));
-
         fichierMedical = new JToggleButton("Fichier Medical");
-        haut.add(fichierMedical, BorderLayout.CENTER);
-        fichierMedical.setFont(police);
-        fichierMedical.setPreferredSize(new Dimension(230, 50));
-
         ficheSoin = new JToggleButton("Créer une fiche de soin");
-        haut.add(ficheSoin, BorderLayout.CENTER);
-        ficheSoin.setFont(police);
-        ficheSoin.setPreferredSize(new Dimension(230, 50));
-
         registrePatient = new JToggleButton("Registre Patient");
-        haut.add(registrePatient, BorderLayout.CENTER);
-        registrePatient.setFont(police);
-        registrePatient.setPreferredSize(new Dimension(230, 50));
-
         registreMedecin = new JToggleButton("Registre Medecin");
-        haut.add(registreMedecin, BorderLayout.CENTER);
-        registreMedecin.setFont(police);
-        registreMedecin.setPreferredSize(new Dimension(230, 50));
-
         deconnexion = new JToggleButton("Deconnecter");
-        haut.add(deconnexion, BorderLayout.CENTER);
-        deconnexion.setFont(police);
+
+        setSideButton(actemedical);
+        setSideButton(fichierMedical);
+        setSideButton(ficheSoin);
+        setSideButton(registrePatient);
+        setSideButton(registreMedecin);
+        setSideButton(deconnexion);
 
         panelRegistreM.setLayout(new BorderLayout());
 
@@ -244,12 +236,13 @@ public class InterfaceSecretaireMedical extends JFrame {
         affichage.setLayout(cl);
 
         //On ajoute les cartes à la pile avec un nom pour les retrouver
-        affichage.add(panelRegistrePatient, listContent[0]);
-        affichage.add(panelRegistreMedecin, listContent[1]);
-        affichage.add(panelRegistreM, listContent[2]);
-        affichage.add(panelFicheSoin, listContent[3]);
-        affichage.add(panelActe, listContent[4]);
-        affichage.add(panelDeconnexion, listContent[5]);
+        affichage.add(panelAccueil, listContent[0]);
+        affichage.add(panelRegistrePatient, listContent[1]);
+        affichage.add(panelRegistreMedecin, listContent[2]);
+        affichage.add(panelRegistreM, listContent[3]);
+        affichage.add(panelFicheSoin, listContent[4]);
+        affichage.add(panelActe, listContent[5]);
+        affichage.add(panelDeconnexion, listContent[6]);
 
         this.getContentPane().add(menuderoulant, BorderLayout.WEST);
         this.getContentPane().add(affichage, BorderLayout.CENTER);
@@ -269,10 +262,36 @@ public class InterfaceSecretaireMedical extends JFrame {
         setRechercherPatient();
         setButtonDeconnexion();
         setButtonFichierMedical();
-        setAjouterPatient();
+        ImagePanelAccueil();
+        setRechercheCout();
 
         //a mettre dans secretaire medical
         //setAjouterPatient();
+    }
+
+    public void setRechercheCout(){
+        validerActe.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                textCoef.setEditable(false);
+                textCout.setEditable(false);
+                Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()));
+                textCoef.setText(acte.getCode().getLibelle());
+                textCout.setText(String.valueOf(acte.cout()));
+            }
+        });
+    }
+
+    public void ImagePanelAccueil() {
+        try {
+            ImageIcon icon = new ImageIcon(new ImageIcon("src/princetonPlainsboro/Bienvenue.png").getImage().getScaledInstance(1000, 700, Image.SCALE_DEFAULT));
+            picLabel = new JLabel(icon);
+            picLabel.setVisible(true);
+            picLabel.setOpaque(true);
+            picLabel.setBackground(Color.white);
+        } catch (Exception ex) {
+            System.out.println("error in image");
+        }
+        panelAccueil.add(picLabel, BorderLayout.CENTER);
     }
 
     public void setButtonFichierMedical() {
@@ -280,7 +299,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[2]);
+                cl.show(affichage, listContent[3]);
                 if (fichierMedical.isSelected()) {
                     dossierMed.setVisible(true);
                     registreM.setVisible(true);
@@ -314,7 +333,7 @@ public class InterfaceSecretaireMedical extends JFrame {
                 registreMedecin.setSelected(false);
                 fichierMedical.setSelected(false);
                 JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
-                cl.show(affichage, listContent[5]);
+                cl.show(affichage, listContent[6]);
                 new Login().showLogin();
                 dispose();
             }
@@ -494,19 +513,8 @@ public class InterfaceSecretaireMedical extends JFrame {
             panelFicheSoin.add(buttonImp);
             buttonImp.setBounds(445, 470, 200, 40);
 
-            { // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for (int i = 0; i < panelFicheSoin.getComponentCount(); i++) {
-                    Rectangle bounds = panelFicheSoin.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panelFicheSoin.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panelFicheSoin.setMinimumSize(preferredSize);
-                panelFicheSoin.setPreferredSize(preferredSize);
-            }
+            computePreferedSize(panelFicheSoin);
+
         }
     }
 
@@ -539,7 +547,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         ficheSoin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[3]);
+                cl.show(affichage, listContent[4]);
                 scrollPane1.setEditable(false);
                 if (ficheSoin.isSelected()) {
                     label11.setVisible(true);
@@ -572,7 +580,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     buttonImp.setVisible(true);
                     labelajoutActe.setVisible(true);
                     buttonAjoutActe.setVisible(true);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     registrePatient.setSelected(false);
@@ -608,7 +615,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     labelajoutActe.setVisible(false);
                     buttonAjoutActe.setVisible(false);
                     comboBox2.setVisible(false);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     registrePatient.setSelected(false);
@@ -636,7 +642,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registrePatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[0]);
+                cl.show(affichage, listContent[1]);
                 if (registrePatient.isSelected()) {
                     rP.setVisible(true);
                     recherche.setVisible(true);
@@ -665,7 +671,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(true);
                     separator1.setVisible(true);
                     validerAjout.setVisible(true);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -700,7 +705,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     annee2.setVisible(false);
                     separator1.setVisible(false);
                     validerAjout.setVisible(false);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -755,7 +759,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         rP.setBounds(new Rectangle(new Point(225, 30), rP.getPreferredSize()));
 
         //---- recherche ----
-        recherche.setText("Recherche");
+        recherche.setText("Recherche : entrez le numero de securite");
         recherche.setForeground(Color.blue);
         recherche.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistrePatient.add(recherche);
@@ -775,7 +779,6 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.add(nom);
         nom.setBounds(150, 155, 45, nom.getPreferredSize().height);
 
-        //---- ou ----
         //---- dateDeNaissance ----
         dateDeNaissance.setText("Date de naissance (jj/mm/aaaa):");
         dateDeNaissance.setAlignmentX(0.5F);
@@ -815,34 +818,35 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelRegistrePatient.add(validerRecherche);
         validerRecherche.setBounds(new Rectangle(new Point(480, 110), validerRecherche.getPreferredSize()));
 
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
-        }
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
+        computePreferedSize(panelRegistrePatient);
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
     public void setRechercherPatient() {
-        System.out.println("marche");
+        textNom.setEditable(false);
+        textPrenom.setEditable(false);
+        jour.setEditable(false);
+        textAdresse.setEditable(false);
         validerRecherche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                textNom.setEditable(false);
+                textPrenom.setEditable(false);
+                jour.setEditable(false);
+                textAdresse.setEditable(false);
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
-                textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
-                textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
-                jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
-                textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                if(textNumSecu.getText().length()<16) {
+                    textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
+                    textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
+                    jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
+                    textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Vous avez ajouté un trop grand nombre de chiffre", "Erreur", JOptionPane.ERROR_MESSAGE);
+                    textNumSecu.setText(null);
+                }
             }
         });
     }
@@ -884,7 +888,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         rM.setBounds(new Rectangle(new Point(225, 30), rM.getPreferredSize()));
 
         //---- rechercheM ----
-        rechercheM.setText("Recherche");
+        rechercheM.setText("Recherche: entrez le nom et le prenom");
         rechercheM.setForeground(Color.orange);
         rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
@@ -935,23 +939,12 @@ public class InterfaceSecretaireMedical extends JFrame {
         //---- ouM ----
         panelRegistreMedecin.add(separator1M);
 
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
-        }
-
+        computePreferedSize(panelRegistreMedecin);
     }
 
     public void setRechercherMedecin() {
+        textSpecialite.setEditable(false);
+        textTelephone.setEditable(false);
         validerRechercheM.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 /*Map<String, String> xmlToSave = new LinkedHashMap<String, String>();
@@ -976,7 +969,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         registreMedecin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[1]);
+                cl.show(affichage, listContent[2]);
                 //textField4.setEditable(false);
                 //textField3.setEditable(false);
                 if (registreMedecin.isSelected()) {
@@ -1003,7 +996,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textTelephone2.setVisible(true);
                     separator1M.setVisible(true);
                     validerRechercheM2.setVisible(true);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -1033,7 +1025,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textTelephone2.setVisible(false);
                     separator1M.setVisible(false);
                     validerRechercheM2.setVisible(false);
-
                     actemedical.setSelected(false);
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
@@ -1043,6 +1034,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         });
 
     }
+
 
     public void setPanelActe() {
 
@@ -1065,7 +1057,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelActe.setLayout(null);
 
         //---- rAM ----
-        rAM.setText("Rechercher d'un acte m\u00e9dical");
+        rAM.setText("Rechercher d'un acte m2dical");
         rAM.setFont(new Font("Arimo", Font.BOLD, 22));
         rAM.setForeground(new Color(51, 0, 153));
         panelActe.add(rAM);
@@ -1074,17 +1066,17 @@ public class InterfaceSecretaireMedical extends JFrame {
         rAM.setVerticalAlignment(JLabel.CENTER);
 
         //---- acte ----
-        acte.setText("ACTE");
+        acte.setText("ACTE : entrez le coefficient et le code ");
         acte.setForeground(new Color(0, 102, 102));
         acte.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelActe.add(acte);
         acte.setBounds(70, 95, 50, acte.getPreferredSize().height);
 
         //---- type ----
-        type.setText(" Type :");
+        type.setText(" Coefficient :");
         type.setBorder(new BevelBorder(BevelBorder.LOWERED));
         panelActe.add(type);
-        type.setBounds(100, 140, 45, type.getPreferredSize().height);
+        type.setBounds(70, 140, 75, type.getPreferredSize().height);
 
         //---- code ----
         code.setText("Code :");
@@ -1093,10 +1085,10 @@ public class InterfaceSecretaireMedical extends JFrame {
         code.setBounds(100, 175, 45, code.getPreferredSize().height);
 
         //---- coeff ----
-        coeff.setText("Coefficient :");
+        coeff.setText("Type :");
         coeff.setBorder(new BevelBorder(BevelBorder.LOWERED));
         panelActe.add(coeff);
-        coeff.setBounds(70, 210, 75, coeff.getPreferredSize().height);
+        coeff.setBounds(100, 210, 45, coeff.getPreferredSize().height);
 
         //---- cout ----
         cout.setText(" Co\u00fbt :");
@@ -1106,11 +1098,11 @@ public class InterfaceSecretaireMedical extends JFrame {
         panelActe.add(textType);
         textType.setBounds(150, 135, 235, textType.getPreferredSize().height);
         panelActe.add(textCode);
-        textCode.setBounds(150, 170, 65, textCode.getPreferredSize().height);
+        textCode.setBounds(150, 170, 235, textCode.getPreferredSize().height);
         panelActe.add(textCoef);
-        textCoef.setBounds(150, 205, 65, textCoef.getPreferredSize().height);
+        textCoef.setBounds(150, 205, 235, textCoef.getPreferredSize().height);
         panelActe.add(textCout);
-        textCout.setBounds(150, 240, 65, textCout.getPreferredSize().height);
+        textCout.setBounds(150, 240, 235, textCout.getPreferredSize().height);
 
         //---- euro ----
         euro.setText("\u20ac");
@@ -1122,21 +1114,9 @@ public class InterfaceSecretaireMedical extends JFrame {
         validerActe.setText(Constants.VALIDER.getValue());
         validerActe.setBackground(new Color(0, 161, 219));
         panelActe.add(validerActe);
-        validerActe.setBounds(new Rectangle(new Point(345, 300), validerActe.getPreferredSize()));
+        validerActe.setBounds(new Rectangle(new Point(400, 170), validerActe.getPreferredSize()));
 
-        { // compute preferred size
-            Dimension preferredSize = new Dimension();
-            for (int i = 0; i < getComponentCount(); i++) {
-                Rectangle bounds = getComponent(i).getBounds();
-                preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-            }
-            Insets insets = getInsets();
-            preferredSize.width += insets.right;
-            preferredSize.height += insets.bottom;
-            setMinimumSize(preferredSize);
-            setPreferredSize(preferredSize);
-        }
+        computePreferedSize(panelActe);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -1145,7 +1125,7 @@ public class InterfaceSecretaireMedical extends JFrame {
         actemedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                cl.show(affichage, listContent[4]);
+                cl.show(affichage, listContent[5]);
                 textCoef.setEditable(false);
                 textCout.setEditable(false);
 
@@ -1162,7 +1142,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textCout.setVisible(true);
                     euro.setVisible(true);
                     validerActe.setVisible(true);
-
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
                     registrePatient.setSelected(false);
@@ -1181,7 +1160,6 @@ public class InterfaceSecretaireMedical extends JFrame {
                     textCout.setVisible(false);
                     euro.setVisible(false);
                     validerActe.setVisible(false);
-
                     fichierMedical.setSelected(false);
                     ficheSoin.setSelected(false);
                     registrePatient.setSelected(false);
@@ -1216,6 +1194,7 @@ public class InterfaceSecretaireMedical extends JFrame {
 
                 button1New.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent event) {
+
                         Date date = new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText()));
 
                         //retrouver info Medecin
@@ -1257,5 +1236,26 @@ public class InterfaceSecretaireMedical extends JFrame {
             }
         });
 
+
+    }
+
+    private void computePreferedSize(JPanel panel) {
+        Dimension preferredSize = new Dimension();
+        for (int i = 0; i < panel.getComponentCount(); i++) {
+            Rectangle bounds = panel.getComponent(i).getBounds();
+            preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+            preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+        }
+        Insets insets = panel.getInsets();
+        preferredSize.width += insets.right;
+        preferredSize.height += insets.bottom;
+        panel.setMinimumSize(preferredSize);
+        panel.setPreferredSize(preferredSize);
+    }
+
+    private void setSideButton(JToggleButton button) {
+        haut.add(button, BorderLayout.CENTER);
+        button.setFont(police);
+        button.setPreferredSize(new Dimension(230, 50));
     }
 }

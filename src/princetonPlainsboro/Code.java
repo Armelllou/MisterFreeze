@@ -23,7 +23,7 @@ enum Code {
     private String libelle;
     private double cout;
 
-    // constructeur :
+    // constructeur
     Code(String libelle, double cout) {
         this.libelle = libelle;
         this.cout = cout;

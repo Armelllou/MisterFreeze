@@ -84,8 +84,7 @@ class ListePatient {
         try {
             // instanciation du parser
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
-            XMLInputFactory factory = XMLInputFactory.newInstance();
-            XMLStreamReader parser = factory.createXMLStreamReader(in);
+            XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             // lecture des evenements
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {

@@ -28,4 +28,46 @@
         <specialite>cardio</specialite>
         <numeroTelephone>0123456788</numeroTelephone>
     </medecin>
+<medecin>
+        <medecin>
+            <nom>BA</nom>
+            <prenom>BO</prenom>
+            <specialite>BI</specialite>
+            <numeroTelephone>123456</numeroTelephone>
+            <mdp>mdp34</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <prenom>bi</prenom>
+            <specialite>bu</specialite>
+            <numeroTelephone>12345</numeroTelephone>
+            <mdp>mdp</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <prenom>bi</prenom>
+            <specialite>bu</specialite>
+            <numeroTelephone>12345</numeroTelephone>
+            <mdp>mdp</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <prenom>bi</prenom>
+            <specialite>bu</specialite>
+            <numeroTelephone>12345</numeroTelephone>
+            <mdp>mdp</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>BOBO</nom>
+            <prenom>BABA</prenom>
+            <specialite>CANCERO</specialite>
+            <numeroTelephone>01234566</numeroTelephone>
+            <mdp>mdpbeta</mdp>
+        </medecin>
+    </medecin>
 </dossier>
