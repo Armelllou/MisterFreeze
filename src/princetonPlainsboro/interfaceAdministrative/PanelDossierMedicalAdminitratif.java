@@ -135,10 +135,9 @@ public class PanelDossierMedicalAdminitratif {
             public void actionPerformed(ActionEvent event) {
                 LectureXML test = new LectureXML("dossiers.xml");
                 DossierMedical dm = test.getDossier();
-                //panelDossierMedical.add(dossierMed, BorderLayout.CENTER);
                 List<FicheDeSoins> fiches = dm.rechercherfichesDUnPatient(textFiche.getText());
+                System.out.println(textFiche.getText());
                 if (fiches.isEmpty()) {
-                    dossierMed.setForeground(Color.GRAY);
                     dossierMed.setText("Pas de correspondance...");
                 } else {
                     StringBuilder builder = new StringBuilder("Fiches : \n");

@@ -53,7 +53,8 @@ public class LectureXML {
         int coefCourant = 0;
         String adresseCourant = "";
         String numSecuCourant = "";
-        String typeCourant="";
+        String typeCourant = "";
+        Date dateNaissance = null;
 
         // analyser le fichier par StAX
         try {
@@ -111,7 +112,8 @@ public class LectureXML {
                             coefCourant = 0;
                             adresseCourant = "";
                             numSecuCourant = "";
-                            typeCourant="";
+                            typeCourant = "";
+                            dateNaissance = null;
                         }
                         if (parser.getLocalName().equals("medecin")) {
                             medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant);
@@ -120,13 +122,26 @@ public class LectureXML {
                             nomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourant, numSecuCourant, date);
+                            patientCourant = new Patient(nomCourant, prenomCourant, adresseCourant, numSecuCourant, dateNaissance);
                         }
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("numeroSecurite")) {
+                            numSecuCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("dateNaissance")) {
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+
+                            dateNaissance = new Date(jour, mois, annee);
+                        }
+                        if (parser.getLocalName().equals("adresse")) {
+                            adresseCourant = donneesCourantes;
                         }
 
 
@@ -324,7 +339,7 @@ public class LectureXML {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
                             listePatientCourant = new ListePatient();
-                            }
+                        }
                         break;
 
                     case XMLStreamConstants.END_ELEMENT:

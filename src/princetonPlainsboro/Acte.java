@@ -13,7 +13,7 @@ public class Acte {
         this.code = code;
         this.coef = coef;
         this.codes = new ArrayList<Code>();
-        this.type=type;
+        this.type = type;
         //codes.add();
 
     }
@@ -26,18 +26,30 @@ public class Acte {
         return coef;
     }
 
-
+    @Override
     public String toString() {
-        return code.toString() + ", coefficient : " + coef + "type : " + type;
+        StringBuilder builder = new StringBuilder();
+        if (code.toString().length() > 0) {
+            builder.append(code.toString());
+        }
+        if (coef != 0) {
+            builder.append(", coefficient : ").append(coef);
+        }
+        if (type.length() > 0) {
+            builder.append(", type : ").append(type);
+        }
+        return builder.toString();
     }
+
     public String toStringCout() {
-        return code.toString() + ", coefficient : " + coef ;
+        return code.toString() + ", coefficient : " + coef;
     }
 
     public double cout() {
         return code.calculerCout(coef);
     }
-    public double rechercheCout(Code code, int coef){
+
+    public double rechercheCout(Code code, int coef) {
         return code.calculerCout(coef);
     }
 
