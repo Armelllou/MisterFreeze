@@ -53,7 +53,7 @@ public class FicheDeSoins implements Printable {
                 t.append("    > ").append(a.toString()).append("\n");
             }
         }
-        t.append("- Cout total : ").append(coutTotal()).append("\n");
+        t.append("- Cout total : ").append(String.format("%.2f", coutTotal())).append("\n");
         return t.toString();
     }
 
