@@ -107,10 +107,10 @@ public class PanelActeMedical {
         textCout.setEditable(false);
         validerActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                textCoef.setEditable(false);
+
                 textCout.setEditable(false);
-                Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()));
-                textCoef.setText(acte.getCode().getLibelle());
+                Acte acte = new Acte(Code.valueOf(textCode.getText()), Integer.parseInt(textType.getText()), textCoef.getText());
+
                 textCout.setText(String.valueOf(acte.cout()));
             }
         });

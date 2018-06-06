@@ -77,7 +77,7 @@ public class PanelFicheSoinMedical {
                                             System.out.println("test");
                                             System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
                                             String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
-                                            Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
+                                            Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()), comboBox2.getItemAt(comboBox2.getSelectedIndex()).toString());
                                             actes.add(a);
                                             scrollPane1.setText(actes.toString());
                                         }

@@ -39,8 +39,8 @@ public class FicheDeSoins implements Printable {
         actes.add(acte);
     }
 
-    public void ajouterActe(Code code, int coefficient) {
-        Acte acte = new Acte(code, coefficient);
+    public void ajouterActe(Code code, int coefficient, String type) {
+        Acte acte = new Acte(code, coefficient, type);
         actes.add(acte);
     }
 

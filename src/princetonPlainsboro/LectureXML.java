@@ -52,6 +52,7 @@ public class LectureXML {
         int coefCourant = 0;
         String adresseCourant = "";
         String numSecuCourant = "";
+        String typeCourant="";
 
         // analyser le fichier par StAX
         try {
@@ -70,7 +71,7 @@ public class LectureXML {
                         break;
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("acte")) {
-                            actes.add(new Acte(codeCourant, coefCourant));
+                            actes.add(new Acte(codeCourant, coefCourant, typeCourant));
                         }
                         if (parser.getLocalName().equals("code")) {
                             codeCourant = Code.valueOf(donneesCourantes);
