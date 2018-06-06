@@ -6,6 +6,7 @@
 package affichage;
 
 import princetonPlainsboro.*;
+import princetonPlainsboro.interfaceAdministrative.InterfaceSecretaireAdministratif;
 import princetonPlainsboro.interfacemedical.InterfaceSecretaireMedical;
 
 import javax.swing.*;

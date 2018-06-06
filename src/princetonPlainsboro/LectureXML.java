@@ -128,9 +128,6 @@ public class LectureXML {
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = donneesCourantes;
                         }
-                        if (parser.getLocalName().equals("numeroSecurite")) {
-                            numSecuCourant = donneesCourantes;
-                        }
 
 
                         break;

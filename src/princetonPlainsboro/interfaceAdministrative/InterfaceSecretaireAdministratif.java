@@ -1,0 +1,154 @@
+package princetonPlainsboro.interfaceAdministrative;
+
+import affichage.Login;
+import princetonPlainsboro.*;
+import princetonPlainsboro.interfacemedical.*;
+
+import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InterfaceSecretaireAdministratif extends JFrame {
+    private String[] listContent = {"ACCUEIL", "REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "ACTE_MEDICAL", "DECONNEXION"};
+    private JToggleButton deconnexion;
+    private JLabel picLabel;
+    private CardLayout cl = new CardLayout();
+    private JPanel affichage = new JPanel();
+    private List<JToggleButton> buttons;
+
+    public InterfaceSecretaireAdministratif() {
+        this.setSize(500, 300);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setTitle("Andromeda");
+
+        // Panel haut
+        JPanel haut = new JPanel();
+        haut.setLayout(new GridLayout(8, 1));
+        haut.setBackground(Color.PINK);
+
+        // Panel bas
+        JPanel bas = new JPanel();
+        bas.setLayout(new BorderLayout());
+        bas.setBackground(Color.PINK);
+
+        //Liste des noms de nos conteneurs pour la supperposition des JPanels
+        JPanel menuderoulant = new JPanel();
+        menuderoulant.setBackground(Color.PINK);
+        menuderoulant.add(haut, BorderLayout.CENTER);
+        menuderoulant.add(bas, BorderLayout.NORTH);
+
+        // Les différents panels
+        JPanel panelRegistrePatient = new JPanel();
+        JPanel panelRegistreMedecin = new JPanel();
+        JPanel panelAccueil = new JPanel();
+        panelAccueil.setLayout(new BorderLayout());
+        JPanel panelDossierMedical = new JPanel();
+        JPanel panelDeconnexion = new JPanel();
+        JPanel panelActe = new JPanel();
+
+        imagePanel("src/princetonPlainsboro/image1.jpg", haut, 250, 90);
+        imagePanel("src/princetonPlainsboro/Bienvenue.png", panelAccueil, 1000, 700);
+
+        //creation des boutons
+        JToggleButton actemedical = new JToggleButton("Acte Medical");
+        JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
+        JToggleButton registrePatient = new JToggleButton("Registre Patient");
+        JToggleButton registreMedecin = new JToggleButton("Registre Medecin");
+        deconnexion = new JToggleButton("Deconnecter");
+        deconnexion.setBackground(new Color(255, 93, 86));
+
+
+        buttons = new ArrayList<JToggleButton>();
+        buttons.add(actemedical);
+        buttons.add(fichierMedical);
+        buttons.add(registrePatient);
+        buttons.add(registreMedecin);
+        buttons.add(deconnexion);
+
+        for (JToggleButton button : buttons) {
+            setSideButton(haut, button);
+        }
+
+        //On définit le layout
+        affichage.setLayout(cl);
+
+        //On ajoute les cartes à la pile avec un nom pour les retrouver
+        affichage.add(panelAccueil, listContent[0]);
+        affichage.add(panelRegistrePatient, listContent[1]);
+        affichage.add(panelRegistreMedecin, listContent[2]);
+        affichage.add(panelDossierMedical, listContent[3]);
+        affichage.add(panelActe, listContent[4]);
+        affichage.add(panelDeconnexion, listContent[5]);
+
+        this.getContentPane().add(menuderoulant, BorderLayout.WEST);
+        this.getContentPane().add(affichage, BorderLayout.CENTER);
+        this.setVisible(true);
+
+        setButtonDeconnexion();
+        setButtonListener(actemedical, panelActe, listContent[4]);
+        setButtonListener(registreMedecin, panelRegistreMedecin, listContent[2]);
+        setButtonListener(registrePatient, panelRegistrePatient, listContent[1]);
+        setButtonListener(fichierMedical, panelDossierMedical, listContent[3]);
+
+        new PanelActeMedicalAdministratif(panelActe);
+        new PanelDossierMedicalAdminitratif(panelDossierMedical);
+        new PanelRegistrePatientAdministratif(panelRegistrePatient);
+        new PanelRegistreMedecinAdministration(panelRegistreMedecin);
+    }
+
+    private void setButtonDeconnexion() {
+        //Définition de l'action du Deconnexion
+        deconnexion.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                for (JToggleButton button : buttons) {
+                    button.setSelected(false);
+                }
+                JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
+                cl.show(affichage, listContent[5]);
+                new Login().showLogin();
+                dispose();
+            }
+        });
+    }
+
+    private void imagePanel(String path, JPanel dest, int width, int height) {
+        try {
+            ImageIcon icon = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+            picLabel = new JLabel(icon);
+            picLabel.setVisible(true);
+            picLabel.setOpaque(true);
+            picLabel.setBackground(Color.PINK);
+        } catch (Exception ex) {
+            System.out.println("error in image");
+        }
+        dest.add(picLabel, BorderLayout.CENTER);
+    }
+
+    private void setSideButton(JPanel panel, JToggleButton button) {
+        panel.add(button, BorderLayout.CENTER);
+        button.setFont(new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16));
+        button.setPreferredSize(new Dimension(230, 50));
+    }
+
+    private void setButtonListener(final JToggleButton button, final JPanel panel, final String name) {
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                cl.show(affichage, name);
+                panel.setEnabled(button.isSelected());
+                for (JToggleButton but : buttons) {
+                    if (but != button) {
+                        but.setSelected(false);
+                    }
+                }
+            }
+        });
+    }
+}
