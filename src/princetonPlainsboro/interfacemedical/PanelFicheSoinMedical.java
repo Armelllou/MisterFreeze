@@ -29,6 +29,7 @@ public class PanelFicheSoinMedical {
     private JButton button1New;
     private JButton buttonImp;
     private JButton buttonAjoutActe;
+    private boolean ficheAjouté;
 
     PanelFicheSoinMedical(JPanel panelFicheSoin) {
         JLabel label11 = new JLabel();
@@ -254,6 +255,7 @@ public class PanelFicheSoinMedical {
                         coef.setText(null);
                         scrollPane1.setText(null);
                         actes.clear();
+                        ficheAjouté = true;
 
                     }
                 });
@@ -267,9 +269,13 @@ public class PanelFicheSoinMedical {
     public void setButtonImprimer() {
         buttonImp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
+                if(ficheAjouté == true){
                 PrinterJob job = PrinterJob.getPrinterJob();
                 /* On donne le contenu à imprimer au job */
-                //job.setPrintable(FicheDeSoins ficheCree);
+
+                        final LectureXML test = new LectureXML("dossiers.xml");
+        final DossierMedical dm = test.getDossier(); 
+        job.setPrintable(dm.getListe().get(dm.getListe().size()-1));
                 /* Affichage de la boite de dialogue d'impression */
                 boolean doPrint = job.printDialog();
                 if (doPrint) {
@@ -280,7 +286,7 @@ public class PanelFicheSoinMedical {
                         System.out.println(e1.getMessage());
                     }
                 }
-            }
+            }}
         });
     }
 }

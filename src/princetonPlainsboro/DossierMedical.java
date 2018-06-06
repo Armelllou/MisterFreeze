@@ -175,16 +175,16 @@ public class DossierMedical {
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
             int imin = 0;
-            FicheDeSoins f = fiches.get(imin);
+            FicheDeSoins f = copieFiches.get(imin);
             Date d = f.getDate();
-            if (d.compareTo(d1) >= 0 && d.compareTo(d2) <= 0) {
-                for (int i = 1; i < copieFiches.size(); i++) {
-                    FicheDeSoins f2 = copieFiches.get(i);
-                    if (c.comparer(f2, f) < 0) {
-                        imin = i;
-                        f = f2;
-                    }
+        
+            for (int i = 1; i < copieFiches.size(); i++) {
+                FicheDeSoins f2 = copieFiches.get(i);
+                if (f2.getDate().compareTo(f.getDate()) < 0) {
+                    imin = i;
+                    f = f2;
                 }
+                
             }
             // on affiche la fiche de soins trouvee :
             f.afficher();

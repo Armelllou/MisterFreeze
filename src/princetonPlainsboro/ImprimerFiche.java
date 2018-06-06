@@ -41,38 +41,38 @@ public class ImprimerFiche implements Printable{
 	}
 	
 	@Override
-	public int print(Graphics arg0, PageFormat arg1, int arg2) throws PrinterException {
+	public int print(Graphics graphic, PageFormat p, int num) throws PrinterException {
 		
             // Récupère les coordonnées des bords de la page */             
-		int x=(int) arg1.getImageableX();
-		int y=(int) arg1.getImageableY();
-		int h=(int) arg1.getImageableHeight();
-		int w=(int) arg1.getImageableWidth();
+		int x=(int) p.getImageableX();
+		int y=(int) p.getImageableY();
+		int h=(int) p.getImageableHeight();
+		int w=(int) p.getImageableWidth();
                // On définit une marge et l'interligne
 		int marge=30;
                 int interligne = 20;
 		int nbLignes = 0;		
-		if(arg2==0) {
-			arg0.setFont(new Font("Times New Roman", Font.BOLD, 24));
-			arg0.setColor(Color.BLACK);
-			arg0.drawString("Fiche de soins", x+marge, y+marge+nbLignes*interligne);
+		if(num==0) {
+			graphic.setFont(new Font("Times New Roman", Font.BOLD, 24));
+			graphic.setColor(Color.BLACK);
+			graphic.drawString("Fiche de soins", x+marge, y+marge+nbLignes*interligne);
 			nbLignes++;
-			arg0.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-			arg0.drawString(fiche.toString(), x+marge, y+marge+nbLignes*interligne);
+			graphic.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+			graphic.drawString(fiche.toString(), x+marge, y+marge+nbLignes*interligne);
 			nbLignes++;
-			arg0.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-			arg0.drawString("Patient : "+fiche.getPatient().toString(), x+marge, y+marge+nbLignes*interligne);
+			graphic.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			graphic.drawString("Patient : "+fiche.getPatient().toString(), x+marge, y+marge+nbLignes*interligne);
 			nbLignes++;
-			arg0.drawString(" Medecin : "+fiche.getMedecin().toString(), x+marge, y+marge+nbLignes*interligne);
+			graphic.drawString(" Medecin : "+fiche.getMedecin().toString(), x+marge, y+marge+nbLignes*interligne);
 			nbLignes++;
 			nbLignes++;
-			arg0.drawString("Actes effectués : ", x+marge, y+marge+nbLignes*interligne);
+			graphic.drawString("Actes effectués : ", x+marge, y+marge+nbLignes*interligne);
 			nbLignes++;
 		}
 		int i=acte; //indice de l'acte
-		while(i<l.size() && y+marge+nbLignes*interligne<arg1.getHeight()-interligne) {
+		while(i<l.size() && y+marge+nbLignes*interligne<p.getHeight()-interligne) {
 			String s=l.get(i).toString();
-			arg0.drawString(s, x+marge, y+marge+nbLignes*interligne);
+			graphic.drawString(s, x+marge, y+marge+nbLignes*interligne);
 			nbLignes++;
 			i++;
 		}
@@ -82,11 +82,11 @@ public class ImprimerFiche implements Printable{
 			this.result=true;
 		
 		System.out.println(this.acte+ " "+i+" " +this.hashCode());
-		arg0.setFont(new Font("Tahoma", Font.ITALIC|Font.BOLD, 10));
-		arg0.setColor(Color.RED);
-		arg0.drawString("Imprimer en java", x+marge, (int) arg1.getHeight()-interligne);
+		graphic.setFont(new Font("Tahoma", Font.ITALIC|Font.BOLD, 10));
+		graphic.setColor(Color.RED);
+		graphic.drawString("Imprimer en java", x+marge, (int) p.getHeight()-interligne);
 		
-		if(result && arg2>0 )
+		if(result && num>=1 )
 			return Printable.NO_SUCH_PAGE;
 		
 		return Printable.PAGE_EXISTS;
