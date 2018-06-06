@@ -41,7 +41,7 @@ public class PanelDossierMedicalAdminitratif {
 
         panelDossierMedical.setLayout(new BorderLayout());
         hautRegistreM = new JPanel();
-        hautRegistreM.setLayout(new BorderLayout());
+        hautRegistreM.setLayout(new FlowLayout());
         hautRegistreM.setPreferredSize(new Dimension(500, 110));
 
 
@@ -91,7 +91,9 @@ public class PanelDossierMedicalAdminitratif {
         hautRegistreM.add(date1);
         hautRegistreM.add(date2);
         hautRegistreM.add(date3);
-        hautRegistreM.add(date2);
+
+        hautRegistreM.add(textdate2);
+
         hautRegistreM.add(date4);
         hautRegistreM.add(date5);
         hautRegistreM.add(date6);
