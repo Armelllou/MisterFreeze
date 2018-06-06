@@ -57,13 +57,34 @@
     <patient>
         <nom>Bole</nom>
         <prenom>Maggy</prenom>
+        <numeroSecurite>12345</numeroSecurite>
+        <dateNaissance>2017-4-15</dateNaissance>
+        <adresse>adresse1</adresse>
     </patient>
     <acte>
         <code>CSC</code>
         <coef>2</coef>
     </acte>
   </ficheDeSoins>
-  
+    <ficheDeSoins>
+        <date>2007-01-03</date>
+        <medecin>
+            <nom>Deblouze</nom>
+            <prenom>Agathe</prenom>
+            <specialite>Cardiologue</specialite>
+        </medecin>
+        <patient>
+            <nom>Bole</nom>
+            <prenom>Maggy</prenom>
+            <numeroSecurite>12345</numeroSecurite>
+            <dateNaissance>2017-4-15</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>CS</code>
+            <coef>2</coef>
+        </acte>
+    </ficheDeSoins>
   <ficheDeSoins>
     <date>2005-11-13</date>
     <medecin>
@@ -139,5 +160,5 @@
     </acte>
   </ficheDeSoins>
 
-  
+
 </dossiers>

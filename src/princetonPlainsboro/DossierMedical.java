@@ -10,7 +10,7 @@ public class DossierMedical {
     private List<Patient> lp;  //vérifier si lp etait la au debut
 
     public DossierMedical() {
-        fiches = new ArrayList<FicheDeSoins>();  // liste vide
+        fiches = new ArrayList<FicheDeSoins>();
         lp = new ArrayList<Patient>();
     }
 

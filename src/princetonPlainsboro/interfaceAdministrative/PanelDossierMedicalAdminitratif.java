@@ -115,7 +115,6 @@ public class PanelDossierMedicalAdminitratif {
         registreM.setHorizontalAlignment(JLabel.CENTER);
         registreM.setVerticalAlignment(JLabel.CENTER);
 
-
         //Fonctions
         setAllButtonRegistreMedical();
 
@@ -136,6 +135,7 @@ public class PanelDossierMedicalAdminitratif {
                 LectureXML test = new LectureXML("dossiers.xml");
                 DossierMedical dm = test.getDossier();
                 List<FicheDeSoins> fiches = dm.rechercherfichesDUnPatient(textFiche.getText());
+                System.out.println(dm.rechercherPatientViaSecu(textFiche.getText()));
                 System.out.println(textFiche.getText());
                 if (fiches.isEmpty()) {
                     dossierMed.setText("Pas de correspondance...");
@@ -146,17 +146,18 @@ public class PanelDossierMedicalAdminitratif {
                     }
                     dossierMed.setText(builder.toString());
                 }
-
             }
         });
 
         entreDeuxDates.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
+
                 dossierMed.setForeground(Color.BLACK);
                 Date d1 = new Date(Integer.parseInt(date1.getText()), Integer.parseInt(date2.getText()), Integer.parseInt(date3.getText()));
                 Date d2 = new Date(Integer.parseInt(date4.getText()), Integer.parseInt(date5.getText()), Integer.parseInt(date6.getText()));
-
+                System.out.println(d1);
+                System.out.println(d2);
                 dossierMed.setText(dm1.trierEntreDeuxDates(d1, d2, new ComparaisonFichesCouts()).toString());
 
             }

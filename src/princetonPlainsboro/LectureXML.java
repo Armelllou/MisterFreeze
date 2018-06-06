@@ -317,6 +317,7 @@ public class LectureXML {
         return listeMedecinCourant;
     }
 
+
     public ListePatient getListePatient() {
         ListePatient listePatientCourant = new ListePatient();
         Patient patientCourant = null;
