@@ -241,7 +241,7 @@ public class PanelFicheSoinMedical {
                         Patient patient = new Patient(nomPa.getText(), prenomPa.getText(), adresse, numSecu.getText(), new Date(Integer.parseInt(jj.getText()), Integer.parseInt(mm.getText()), Integer.parseInt(aaaa.getText())));
 
                         //ecrire dans dossiers.xml
-                        EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers2.xml", date, medecin, patient, actes);
+                        EcrireXML.saveFicheDeSoinToXML("src/donnees/dossiers.xml", date, medecin, patient, actes);
 
                         JOptionPane.showMessageDialog(null, "Création de fiche de soins", "Réussis", JOptionPane.INFORMATION_MESSAGE);
 

@@ -43,7 +43,7 @@ public class PanelActeMedical {
         rAM.setFont(new Font("Arimo", Font.BOLD, 22));
         rAM.setForeground(new Color(51, 0, 153));
         panelActe.add(rAM);
-        rAM.setBounds(150, 35, 350, 30);
+        rAM.setBounds(150, 35, 500, 30);
         rAM.setHorizontalAlignment(JLabel.CENTER);
         rAM.setVerticalAlignment(JLabel.CENTER);
 
@@ -96,14 +96,14 @@ public class PanelActeMedical {
         validerActe.setText(Constants.VALIDER.getValue());
         validerActe.setBackground(new Color(0, 161, 219));
         panelActe.add(validerActe);
-        validerActe.setBounds(new Rectangle(new Point(400, 170), validerActe.getPreferredSize()));
+        validerActe.setBounds(new Rectangle(new Point(400, 210), validerActe.getPreferredSize()));
 
         PanelCompute.computePreferedSize(panelActe);
         setRechercheCout();
     }
 
     private void setRechercheCout(){
-        textCoef.setEditable(false);
+
         textCout.setEditable(false);
         validerActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {

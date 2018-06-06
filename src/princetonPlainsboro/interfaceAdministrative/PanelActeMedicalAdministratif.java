@@ -44,16 +44,16 @@ public class PanelActeMedicalAdministratif {
         rAM.setFont(new Font("Arimo", Font.BOLD, 22));
         rAM.setForeground(new Color(51, 0, 153));
         panelActe.add(rAM);
-        rAM.setBounds(150, 35, 350, 30);
+        rAM.setBounds(150, 35, 450, 30);
         rAM.setHorizontalAlignment(JLabel.CENTER);
         rAM.setVerticalAlignment(JLabel.CENTER);
 
         //---- acte ----
         acte.setText("ACTE : entrez le coefficient et le code");
-        acte.setForeground(new Color(0, 102, 102));
+        acte.setForeground(new Color(7, 19, 184));
         acte.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelActe.add(acte);
-        acte.setBounds(70, 95, 300, acte.getPreferredSize().height);
+        acte.setBounds(70, 95, 500, acte.getPreferredSize().height);
 
         //---- type ----
         type.setText(" Coefficient :");
@@ -97,14 +97,14 @@ public class PanelActeMedicalAdministratif {
         validerActe.setText(Constants.VALIDER.getValue());
         validerActe.setBackground(new Color(0, 161, 219));
         panelActe.add(validerActe);
-        validerActe.setBounds(new Rectangle(new Point(400, 170), validerActe.getPreferredSize()));
+        validerActe.setBounds(new Rectangle(new Point(400, 210), validerActe.getPreferredSize()));
 
         PanelCompute.computePreferedSize(panelActe);
         setRechercheCout();
     }
 
     private void setRechercheCout(){
-        textCoef.setEditable(false);
+
         textCout.setEditable(false);
         validerActe.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {

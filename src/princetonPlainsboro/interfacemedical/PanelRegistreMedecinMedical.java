@@ -54,13 +54,13 @@ public class PanelRegistreMedecinMedical {
         //---- rM ----
         rM.setText("Registre Medecins");
         rM.setFont(new Font("Segoe UI Semibold", Font.BOLD, 16));
-        rM.setForeground(Color.magenta);
+        rM.setForeground(Color.red);
         panelRegistreMedecin.add(rM);
         rM.setBounds(new Rectangle(new Point(225, 30), rM.getPreferredSize()));
 
         //---- rechercheM ----
         rechercheM.setText("Recherche : entrez le nom et le prenom");
-        rechercheM.setForeground(Color.orange);
+        rechercheM.setForeground(Color.blue);
         rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
         rechercheM.setBounds(55, 80, 400, 17);
@@ -123,10 +123,10 @@ public class PanelRegistreMedecinMedical {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()));
-                if (textPrenom.getText() != null && textNom.getText() != null) {
+               // if (textPrenom.getText() != null && textNom.getText() != null) {
                     textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()).getSpecialite());
                     textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()).getNumeroTel());
-                }
+                //}
             }
         });
     }

@@ -262,7 +262,7 @@ public class LectureXML {
         // analyser le fichier par StAX
         try {
             // instanciation du parser
-            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier1);
+            InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
             XMLStreamReader parser = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
             // lecture des evenements

@@ -65,13 +65,13 @@ public class PanelRegistreMedecinAdministration {
         //---- rM ----
         rM.setText("Registre Medecins");
         rM.setFont(new Font("Segoe UI Semibold", Font.BOLD, 16));
-        rM.setForeground(Color.magenta);
+        rM.setForeground(Color.red);
         panelRegistreMedecin.add(rM);
         rM.setBounds(new Rectangle(new Point(225, 30), rM.getPreferredSize()));
 
         //---- rechercheM ----
         rechercheM.setText("Recherche");
-        rechercheM.setForeground(Color.orange);
+        rechercheM.setForeground(Color.blue);
         rechercheM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(rechercheM);
         rechercheM.setBounds(55, 80, 93, 17);
@@ -125,7 +125,7 @@ public class PanelRegistreMedecinAdministration {
 
         //---- ajoutM ----
         ajoutM.setText("Ajout d'un medecin");
-        ajoutM.setForeground(Color.orange);
+        ajoutM.setForeground(Color.blue);
         ajoutM.setFont(new Font(Constants.COPPERPLATE.getValue(), Font.BOLD, 14));
         panelRegistreMedecin.add(ajoutM);
         ajoutM.setBounds(55, 295, 175, 17);
@@ -138,7 +138,7 @@ public class PanelRegistreMedecinAdministration {
         nomM2.setBounds(130, 330, 40, 20);
 
         //---- prenomM2 ----
-        prenomM2.setText("Pr\u00e9nom:");
+        prenomM2.setText("Prenom:");
         prenomM2.setAlignmentX(0.5F);
         prenomM2.setBorder(new EtchedBorder());
         panelRegistreMedecin.add(prenomM2);

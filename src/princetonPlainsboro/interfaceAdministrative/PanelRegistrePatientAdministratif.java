@@ -82,7 +82,7 @@ public class PanelRegistrePatientAdministratif {
         recherche.setBounds(new Rectangle(new Point(55, 80), recherche.getPreferredSize()));
 
         //---- numSecu ----
-        numSec.setText("Num\u00e9ro de s\u00e9curit\u00e9 sociale:");
+        numSec.setText("Numero de securite sociale:");
         numSec.setAlignmentX(0.5F);
         numSec.setBorder(new EtchedBorder());
         panelRegistrePatient.add(numSec);
@@ -132,7 +132,7 @@ public class PanelRegistrePatientAdministratif {
         recherche2.setBounds(55, 355, 160, 17);
 
         //---- numSecu2 ----
-        numSecu2.setText("Num\u00e9ro de s\u00e9curit\u00e9 sociale:");
+        numSecu2.setText("Numero de securite sociale:");
         numSecu2.setAlignmentX(0.5F);
         numSecu2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(numSecu2);
@@ -147,7 +147,7 @@ public class PanelRegistrePatientAdministratif {
 
 
         //---- prenom2 ----
-        prenom2.setText("Pr\u00e9nom:");
+        prenom2.setText("Prenom:");
         prenom2.setAlignmentX(0.5F);
         prenom2.setBorder(new EtchedBorder());
         panelRegistrePatient.add(prenom2);

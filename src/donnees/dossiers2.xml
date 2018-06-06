@@ -384,4 +384,31 @@
             <type>thérapeutique</type>
         </acte>
     </ficheDeSoins>
+<ficheDeSoins>
+        <date>2019-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2019-12-12</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+            <type>thérapeutique</type>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>1</coef>
+            <type>diagnostique</type>
+        </acte>
+    </ficheDeSoins>
 </dossier>
