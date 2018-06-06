@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 public class InterfaceSecretaireAdministratif extends JFrame {
 
     JLabel picLabel;
-    JToggleButton actemedical;
-    JToggleButton ficheSoin;
+    private JToggleButton actemedical;
+    private JToggleButton ficheSoin;
     JPanel panelFicheSoin;
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
@@ -123,7 +123,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JTextField textFiche;
     private JPanel hautRegistreM;
     private JPanel panelAccueil;
-
+    private JToggleButton deconnexion;
+    private JToggleButton fichierMedical;
 
     public InterfaceSecretaireAdministratif() {
         this.setSize(500, 300);
@@ -165,7 +166,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         actemedical.setFont(police);
         actemedical.setPreferredSize(new Dimension(230, 50));
 
-        final JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
+        fichierMedical = new JToggleButton("Fichier Medical");
         haut.add(fichierMedical, BorderLayout.CENTER);
         fichierMedical.setFont(police);
         fichierMedical.setPreferredSize(new Dimension(230, 50));
@@ -181,7 +182,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         registreMedecin.setFont(police);
         registreMedecin.setPreferredSize(new Dimension(230, 50));
 
-        JToggleButton deconnexion = new JToggleButton("Deconnecter");
+        deconnexion = new JToggleButton("Deconnecter");
         haut.add(deconnexion, BorderLayout.CENTER);
         deconnexion.setFont(police);
         deconnexion.setBackground(new Color(255, 93, 86));
@@ -266,10 +267,21 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     sp.setVisible(true);
                     registreM.setVisible(true);
                     hautRegistreM.setVisible(true);
+
+                    registrePatient.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    registreMedecin.setSelected(false);
+
                 } else {
                     sp.setVisible(false);
                     registreM.setVisible(false);
                     hautRegistreM.setVisible(false);
+
+                    registrePatient.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    registreMedecin.setSelected(false);
                 }
             }
         });
@@ -548,6 +560,11 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     textCout.setVisible(true);
                     euro.setVisible(true);
                     validerActe.setVisible(true);
+
+                    registreMedecin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
                 } else {
                     rAM.setVisible(false);
                     acte.setVisible(false);
@@ -561,6 +578,16 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     textCout.setVisible(false);
                     euro.setVisible(false);
                     validerActe.setVisible(false);
+                    ficheSoin.setSelected(false);
+                    registreMedecin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
+
+                    registreMedecin.setSelected(false);
+                    registrePatient.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
                 }
             }
         });
@@ -812,6 +839,11 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     adresse2.setVisible(true);
                     textAdresse2.setVisible(true);
 
+
+                    registreMedecin.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
                 } else {
                     rP.setVisible(false);
                     recherche.setVisible(false);
@@ -844,6 +876,12 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     textAdresse.setVisible(false);
                     adresse2.setVisible(false);
                     textAdresse2.setVisible(false);
+
+
+                    registreMedecin.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
 
                 }
             }
@@ -1055,6 +1093,12 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     validerRechercheM2.setVisible(true);
                     mdpMedecin.setVisible(true);
                     textmdpMedecin.setVisible(true);
+
+
+                    registrePatient.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
                 } else {
                     rM.setVisible(false);
                     rechercheM.setVisible(false);
@@ -1081,6 +1125,12 @@ public class InterfaceSecretaireAdministratif extends JFrame {
                     validerRechercheM2.setVisible(false);
                     mdpMedecin.setVisible(false);
                     textmdpMedecin.setVisible(false);
+
+
+                    registrePatient.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    fichierMedical.setSelected(false);
                 }
             }
         });

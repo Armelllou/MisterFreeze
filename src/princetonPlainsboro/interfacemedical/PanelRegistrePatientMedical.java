@@ -1,8 +1,7 @@
 package princetonPlainsboro.interfacemedical;
 
-import princetonPlainsboro.Constants;
-import princetonPlainsboro.LectureXML;
-import princetonPlainsboro.ListePatient;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import princetonPlainsboro.*;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -18,6 +17,7 @@ public class PanelRegistrePatientMedical {
     private JTextField jour;
     private JButton validerRecherche;
     private JTextField textAdresse;
+    private JTextField  textListPatient;
 
 
     PanelRegistrePatientMedical(JPanel panelRegistrePatient) {
@@ -51,6 +51,7 @@ public class PanelRegistrePatientMedical {
         JButton validerAjout = new JButton();
         JLabel adresse = new JLabel();
         textAdresse = new JTextField();
+        textListPatient = new JTextField();
 
         //======== this ========
 
@@ -99,9 +100,12 @@ public class PanelRegistrePatientMedical {
         adresse.setBounds(140, 280, 55, adresse.getPreferredSize().height);
 
         // TextAdresse
-
         panelRegistrePatient.add(textAdresse);
         textAdresse.setBounds(210, 275, 250, textAdresse.getPreferredSize().height);
+
+        // TextAdresse
+        //panelRegistrePatient.add(textListPatient);
+        //textListPatient.setBounds(210, 350, 250, 400);
 
         //---- prenom ----
         prenom.setText("Prenom:");
@@ -140,12 +144,17 @@ public class PanelRegistrePatientMedical {
             public void actionPerformed(ActionEvent event) {
                 LectureXML test1 = new LectureXML("listePatient.xml");
                 ListePatient listePatient = test1.getListePatient();
+                LectureXML test2 = new LectureXML("dossiers.xml");
+                DossierMedical dm1 = test2.getDossier();
                 System.out.println(listePatient.rechercher(textNumSecu.getText()));
+
+
                 if(textNumSecu.getText().length()<16) {
                     textNom.setText(listePatient.rechercher(textNumSecu.getText()).getNom());
                     textPrenom.setText(listePatient.rechercher(textNumSecu.getText()).getPrenom());
                     jour.setText(listePatient.rechercher(textNumSecu.getText()).getDateNaissance().toString());
                     textAdresse.setText(listePatient.rechercher(textNumSecu.getText()).getAdresse());
+                    //textListPatient.setText(dm1.rechercherfichesDUnPatient(textNumSecu.getText()).toString());
                 }
 
                 else {
