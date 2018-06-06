@@ -81,7 +81,7 @@ public class DossierPatient {
         System.out.println("\n");
     }
 
-    public String toString() {
+    public String toStringFi() {
         for (int i = 0; i < fichesDuPatient.size(); i++) {
             FicheDeSoins f = fichesDuPatient.get(i);
             f.afficher();
