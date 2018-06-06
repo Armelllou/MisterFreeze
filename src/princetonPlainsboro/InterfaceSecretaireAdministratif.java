@@ -184,6 +184,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         JToggleButton deconnexion = new JToggleButton("Deconnecter");
         haut.add(deconnexion, BorderLayout.CENTER);
         deconnexion.setFont(police);
+        deconnexion.setBackground(new Color(255, 93, 86));
 
         panelRegistreM.setLayout(new BorderLayout());
 

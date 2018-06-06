@@ -66,6 +66,8 @@ public class InterfaceSecretaireMedical extends JFrame {
         JToggleButton registrePatient = new JToggleButton("Registre Patient");
         JToggleButton registreMedecin = new JToggleButton("Registre Medecin");
         deconnexion = new JToggleButton("Deconnecter");
+        deconnexion.setBackground(new Color(255, 93, 86));
+
 
         buttons = new ArrayList<JToggleButton>();
         buttons.add(actemedical);
