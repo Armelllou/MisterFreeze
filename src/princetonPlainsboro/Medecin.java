@@ -16,8 +16,22 @@ public class Medecin {
         this.mdp = mdp;
     }
 
+    @Override
     public String toString() {
-        return "Dr " + prenom + " " + nom + ", " + specialite + ", " + numeroTel + ", " + mdp;
+        StringBuilder builder = new StringBuilder("Dr.");
+        if (nom.length() > 1) {
+            builder.append(" ").append(nom);
+        }
+        if (prenom.length() > 1) {
+            builder.append(" ").append(prenom);
+        }
+        if (specialite.length() > 1) {
+            builder.append(", ").append(specialite);
+        }
+        if (numeroTel.length() > 1) {
+            builder.append(", ").append(numeroTel);
+        }
+        return builder.toString();
     }
 
     public boolean equals(Object o) {
@@ -33,13 +47,26 @@ public class Medecin {
         return nom;
     }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     public String getPrenom() {
         return prenom;
 
     }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     public String getMdp() {
         return mdp;
 
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     public String getNumeroTel() {
@@ -47,28 +74,16 @@ public class Medecin {
 
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
-    }
-
     public void setNumeroTel(String numeroTel) {
         this.numeroTel = numeroTel;
     }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
-
     public String getSpecialite() {
         return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
     }
 
 }

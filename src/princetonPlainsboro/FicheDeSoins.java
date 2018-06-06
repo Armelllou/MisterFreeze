@@ -1,8 +1,6 @@
 package princetonPlainsboro;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -46,16 +44,17 @@ public class FicheDeSoins implements Printable {
 
     @Override
     public String toString() {
-        String t = "Fiche de soins du " + date.toString() + "\n";
-        t += "- medecin : " + medecin.toString() + "\n";
-        t += "- patient : " + patient.toString() + "\n";
-        t += "- actes medicaux : " + "\n";
-        for (int i = 0; i < actes.size(); i++) {
-            Acte a = actes.get(i);
-            t += "    > " + a.toString() + "\n";
+        StringBuilder t = new StringBuilder("Fiche de soins du " + date.toString() + "\n");
+        t.append("- Medecin : ").append(medecin.toString()).append("\n");
+        t.append("- Patient : ").append(patient.toString()).append("\n");
+        if (!actes.isEmpty()) {
+            t.append("- Actes medicaux : " + "\n");
+            for (Acte a : actes) {
+                t.append("    > ").append(a.toString()).append("\n");
+            }
         }
-        t += "- cout total : " + coutTotal() + "\n";
-        return t;
+        t.append("- Cout total : ").append(coutTotal()).append("\n");
+        return t.toString();
     }
 
     public void afficher() {
@@ -77,7 +76,8 @@ public class FicheDeSoins implements Printable {
         }
         return total;
     }
-    public List<Acte> getActes(){
+
+    public List<Acte> getActes() {
         return actes;
 
     }

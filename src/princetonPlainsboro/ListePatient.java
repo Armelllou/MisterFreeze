@@ -24,13 +24,14 @@ public class ListePatient {
     public void ajouterPatient(Patient p) {
         this.lp.add(p);
     }
+
+    @Override
     public String toString(){
-        String s ="";
-        for(int i = 0; i<lp.size();i++){
-            s+=lp.get(i).toString();
-            s+="\n";
+        StringBuilder s = new StringBuilder();
+        for (Patient patient : lp) {
+            s.append(patient.toString()).append("\n");
         }
-        return s;
+        return s.toString();
     }
 
     public Patient rechercher(String numSecu) {

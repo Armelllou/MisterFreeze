@@ -11,8 +11,7 @@ public class DossierMedical {
 
     public DossierMedical() {
         fiches = new ArrayList<FicheDeSoins>();  // liste vide
-        lp = new ArrayList<Patient>() ;
-
+        lp = new ArrayList<Patient>();
     }
 
     public void ajouterFiche(FicheDeSoins fiche) {
@@ -20,13 +19,11 @@ public class DossierMedical {
     }
 
     public String toStringDM() {
-        String t = "Dossier medical informatise :" + "\n" + Constants.SEPARATION.getValue() + "\n";
-        for (int i = 0; i < fiches.size(); i++) {
-            FicheDeSoins f = fiches.get(i);
-            t += f.toString();
-            t += "\n";
+        StringBuilder t = new StringBuilder("Dossier medical informatise :" + "\n" + Constants.SEPARATION.getValue() + "\n");
+        for (FicheDeSoins f : fiches) {
+            t.append(f.toString()).append("\n");
         }
-        return t;
+        return t.toString();
     }
 
     public void afficher() { //affiche toutes les fiches de la liste
@@ -136,8 +133,8 @@ public class DossierMedical {
 
     // tri generique :
     public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le parametre, le parametre sera comparaisonfichecout/date
-       List<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
-       List<FicheDeSoins> copieLocale = new ArrayList<FicheDeSoins>();
+        List<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
+        List<FicheDeSoins> copieLocale = new ArrayList<FicheDeSoins>();
 
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
@@ -180,14 +177,14 @@ public class DossierMedical {
             int imin = 0;
             FicheDeSoins f = copieFiches.get(imin);
             Date d = f.getDate();
-        
+
             for (int i = 1; i < copieFiches.size(); i++) {
                 FicheDeSoins f2 = copieFiches.get(i);
                 if (f2.getDate().compareTo(f.getDate()) < 0) {
                     imin = i;
                     f = f2;
                 }
-                
+
             }
             // on affiche la fiche de soins trouvee :
             f.afficher();
@@ -222,17 +219,13 @@ public class DossierMedical {
 
     //donne toutes les fiches de soins d'un patient
     public List<FicheDeSoins> rechercherfichesDUnPatient(String num) {
-        List<FicheDeSoins> lfs = new ArrayList<FicheDeSoins>();
-        for (FicheDeSoins fiche : lfs) {
+        List<FicheDeSoins> fichesRecherche = new ArrayList<FicheDeSoins>();
+        for (FicheDeSoins fiche : fiches) {
             if (fiche.getPatient().getNumSecu().equals(num)) {
-                lfs.add(fiche);
+                fichesRecherche.add(fiche);
             }
         }
-        if (lfs.isEmpty()) {
-            return null;
-        } else {
-            return lfs;
-        }
+        return fichesRecherche;
 
     }
 

@@ -13,13 +13,30 @@ public class Patient {
         this.prenom = prenom;
         this.adresse = adresse;
         this.numSecu = numSecu;
-        this.dateNaissance=dateNaissance;
+        this.dateNaissance = dateNaissance;
 
 
     }
 
+    @Override
     public String toString() {
-        return prenom + " " + nom + ", Adresse :  " + adresse + ", et ayant pour numero de securite sociale " + numSecu + ", né(e) le : " + dateNaissance;
+        StringBuilder builder = new StringBuilder();
+        if (nom.length() > 1) {
+            builder.append(" ").append(nom);
+        }
+        if (prenom.length() > 1) {
+            builder.append(" ").append(prenom);
+        }
+        if (dateNaissance != null) {
+            builder.append(", né(e) le : ").append(dateNaissance).append(".");
+        }
+        if (numSecu.length() > 1) {
+            builder.append(" SS : ").append(numSecu);
+        }
+        if (adresse.length() > 1) {
+            builder.append("\n Adresse : ").append(adresse);
+        }
+        return builder.toString();
     }
 
     public boolean equals(Object o) {
@@ -72,11 +89,11 @@ public class Patient {
         this.adresse = adresse;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
-
     public Date getDateNaissance() {
         return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
     }
 }

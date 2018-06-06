@@ -90,14 +90,28 @@ public class LectureXML {
                         if (parser.getLocalName().equals("ficheDeSoins")) {
                             FicheDeSoins f = new FicheDeSoins(patientCourant, medecinCourant, date);
                             // ajout des actes
-                            for (int i = 0; i < actes.size(); i++) {
-                                Acte a = (Acte) actes.get(i);
-                                f.ajouterActe(a);
+                            for (Acte acte : actes) {
+                                f.ajouterActe(acte);
                             }
                             // effacer tous les actes de la liste
                             actes.clear();
                             // ajouter la fiche de soin au dossiers
                             dossierCourant.ajouterFiche(f);
+                            date = null;
+                            medecinCourant = null;
+                            patientCourant = null;
+                            actes = new Vector<Acte>();
+                            donneesCourantes = "";
+                            nomCourant = "";
+                            prenomCourant = "";
+                            mdpCourant = "";
+                            specialiteCourante = "";
+                            codeCourant = null;
+                            numTel = "";
+                            coefCourant = 0;
+                            adresseCourant = "";
+                            numSecuCourant = "";
+                            typeCourant="";
                         }
                         if (parser.getLocalName().equals("medecin")) {
                             medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant);
@@ -146,7 +160,7 @@ public class LectureXML {
 
     public List<String> repertoire() {
         String donneesCourantes = "";
-        List<String> repertoire = null;
+        List<String> repertoire = new ArrayList<String>();
         //setNomFichier("listeMedecin.xml");
         try {
             InputStream in = new FileInputStream(Constants.REB_BASE.getValue() + nomFichier);
@@ -245,11 +259,17 @@ public class LectureXML {
                 switch (event) {
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("dossiers")) {
+                            listeMedecinCourant = new ListeMedecin();
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("medecin")) {
                             listeMedecinCourant.ajouterMedecin(new Medecin(nomCourant, prenomCourant, specialiteCourante, numTel, mdpCourant));
+                            nomCourant = "";
+                            prenomCourant = "";
+                            mdpCourant = "";
+                            specialiteCourante = "";
+                            numTel = "";
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
@@ -313,6 +333,11 @@ public class LectureXML {
                     case XMLStreamConstants.END_ELEMENT:
                         if (parser.getLocalName().equals("patient")) {
                             listePatientCourant.ajouterPatient(new Patient(nomCourant, prenomCourant, adresseCourant, numSecu, dateCourante));
+                            nomCourant = "";
+                            prenomCourant = "";
+                            dateCourante = null;
+                            numSecu = "";
+                            adresseCourant = "";
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
