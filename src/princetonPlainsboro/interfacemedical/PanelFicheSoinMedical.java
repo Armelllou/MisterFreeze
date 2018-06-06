@@ -29,6 +29,7 @@ public class PanelFicheSoinMedical {
     private JButton button1New;
     private JButton buttonImp;
     private JButton buttonAjoutActe;
+    private JComboBox comboBox2;
     private boolean ficheAjouté;
 
     PanelFicheSoinMedical(JPanel panelFicheSoin) {
@@ -51,7 +52,7 @@ public class PanelFicheSoinMedical {
         numSecu = new JTextField();
         JLabel label20 = new JLabel();
         comboBox1 = new JComboBox();
-        JComboBox comboBox2 = new JComboBox();
+        comboBox2 = new JComboBox();
         JLabel label21 = new JLabel();
         JLabel label22 = new JLabel();
         coef = new JTextField();
@@ -215,7 +216,7 @@ public class PanelFicheSoinMedical {
             public void actionPerformed(ActionEvent event) {
                 System.out.println(comboBox1.getItemAt(comboBox1.getSelectedIndex()));
                 String s = comboBox1.getItemAt(comboBox1.getSelectedIndex()).toString();
-                Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()));
+                Acte a = new Acte(Code.valueOf(s), Integer.parseInt(coef.getText()), comboBox2.getItemAt(comboBox2.getSelectedIndex()).toString());
                 actes.add(a);
                 scrollPane1.append(a.toString() + "\n");
 

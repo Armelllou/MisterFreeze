@@ -157,6 +157,9 @@ public class EcrireXML {
                 e = dom.createElement("coef");
                 e.appendChild(dom.createTextNode("" + acte.getCoef()));
                 ac.appendChild(e);
+                e = dom.createElement("type");
+                e.appendChild(dom.createTextNode("" + acte.getType()));
+                ac.appendChild(e);
                 root.appendChild(ac);
             }
         }
