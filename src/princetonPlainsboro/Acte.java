@@ -9,7 +9,7 @@ public class Acte {
     private List<Code> codes;
     private String type;
 
-    public Acte(Code code, int coef, String type) {
+        public Acte(Code code, int coef, String type) {
         this.code = code;
         this.coef = coef;
         this.codes = new ArrayList<Code>();

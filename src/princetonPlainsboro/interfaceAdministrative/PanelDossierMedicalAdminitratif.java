@@ -13,7 +13,7 @@ public class PanelDossierMedicalAdminitratif {
     private JButton listeMedecin;
     private JButton trieCout;
     private JButton listePatient;
-    private JButton entreDeuxDates;
+    private JButton imprimer;
     private JButton ficheDUnPatient;
     private JTextField listePatientText;
     private JButton dossierMedical;
@@ -50,8 +50,8 @@ public class PanelDossierMedicalAdminitratif {
         listePatient = new JButton("Liste des patients");
         trieDate = new JButton("Trier les fiches par dates");
         trieCout = new JButton("Trier les fiches par cout");
-        ficheDUnPatient = new JButton("Afficher le dossier d'un patient via numéro de sécu");
-        entreDeuxDates = new JButton("Fiches entre les dates suivantes :");
+        ficheDUnPatient = new JButton("Afficher le dossier d'un patient via numéro Securite social");
+        imprimer = new JButton("Imprimer");
         textFiche = new JTextField();
 
         dossierMedical.setPreferredSize(new Dimension(160, 25));
@@ -60,12 +60,10 @@ public class PanelDossierMedicalAdminitratif {
         trieDate.setPreferredSize(new Dimension(180, 25));
         trieCout.setPreferredSize(new Dimension(160, 25));
         textFiche.setPreferredSize(new Dimension(60, 25));
-        entreDeuxDates.setPreferredSize(new Dimension(200, 25));
+        imprimer.setPreferredSize(new Dimension(100, 25));
+        ficheDUnPatient.setPreferredSize(new Dimension(400, 25));
 
-        textdate1 = new JLabel("Date de début JJ/MM/AAAA : ");
-        textdate2 = new JLabel("Date de fin JJ/MM/AAAA : ");
 
-        hautRegistreM.add(textdate1);
         hautRegistreM.add(dossierMedical);
         hautRegistreM.add(listeMedecin);
         hautRegistreM.add(listePatient);
@@ -73,30 +71,7 @@ public class PanelDossierMedicalAdminitratif {
         hautRegistreM.add(trieCout);
         hautRegistreM.add(ficheDUnPatient);
         hautRegistreM.add(textFiche);
-        hautRegistreM.add(entreDeuxDates);
-
-
-        date1 = new JTextField();
-        date2 = new JTextField();
-        date3 = new JTextField();
-        date4 = new JTextField();
-        date5 = new JTextField();
-        date6 = new JTextField();
-        date1.setPreferredSize(new Dimension(25, 25));
-        date2.setPreferredSize(new Dimension(25, 25));
-        date3.setPreferredSize(new Dimension(40, 25));
-        date4.setPreferredSize(new Dimension(25, 25));
-        date5.setPreferredSize(new Dimension(25, 25));
-        date6.setPreferredSize(new Dimension(40, 25));
-        hautRegistreM.add(date1);
-        hautRegistreM.add(date2);
-        hautRegistreM.add(date3);
-
-        hautRegistreM.add(textdate2);
-
-        hautRegistreM.add(date4);
-        hautRegistreM.add(date5);
-        hautRegistreM.add(date6);
+        hautRegistreM.add(imprimer);
 
 
         //recupère Les fiches de soins du XML
@@ -149,16 +124,10 @@ public class PanelDossierMedicalAdminitratif {
             }
         });
 
-        entreDeuxDates.addActionListener(new ActionListener() {
+        imprimer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
 
-                dossierMed.setForeground(Color.BLACK);
-                Date d1 = new Date(Integer.parseInt(date1.getText()), Integer.parseInt(date2.getText()), Integer.parseInt(date3.getText()));
-                Date d2 = new Date(Integer.parseInt(date4.getText()), Integer.parseInt(date5.getText()), Integer.parseInt(date6.getText()));
-                System.out.println(d1);
-                System.out.println(d2);
-                dossierMed.setText(dm1.trierEntreDeuxDates(d1, d2, new ComparaisonFichesCouts()).toString());
 
             }
         });

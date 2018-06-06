@@ -202,6 +202,7 @@ public class DossierMedical {
         return fiches;
     }
 
+
     //rechercher patient à partir de son numèro de sécu
     public Patient rechercherPatientViaSecu(String numSecu) {
         int i = 0;
