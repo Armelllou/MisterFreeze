@@ -30,6 +30,7 @@ public class LectureXML {
     /// nom du document XML a analyser
     private String nomFichier1 = "listeMedecin.xml";
     private String nomFichier2 = "listePatient.xml";
+    private String nomFichier3 = "dossiers2.xml";
 
     // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'REP_BASE' a lire :
     public LectureXML(String nomFichier) {
@@ -113,6 +114,9 @@ public class LectureXML {
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = donneesCourantes;
                         }
+                        if (parser.getLocalName().equals("numeroSecurite")) {
+                            numSecuCourant = donneesCourantes;
+                        }
 
 
                         break;
@@ -124,10 +128,10 @@ public class LectureXML {
             parser.close();
             in.close();
         } catch (XMLStreamException ex) {
-            System.out.println(Constants.XMLEXC.getValue() + nomFichier);
+            System.out.println(Constants.XMLEXC.getValue() + nomFichier3);
             System.out.println(ex.getMessage());
         } catch (IOException ex) {
-            System.out.println(Constants.IOEXC.getValue() + nomFichier);
+            System.out.println(Constants.IOEXC.getValue() + nomFichier3);
             System.out.println(ex.getMessage());
         } catch (Exception e) {
             System.out.println(("Impossible de trouver le code d'acte = " + donneesCourantes));

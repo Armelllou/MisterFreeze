@@ -126,6 +126,13 @@ public class InterfaceSecretaireAdministratif extends JFrame {
     private JToggleButton deconnexion;
     private JToggleButton fichierMedical;
 
+    private JLabel registreM;
+    private JScrollPane sp;
+
+    private LectureXML test;
+    private DossierMedical dm1;
+    private JPanel panelRegistreM;
+
     public InterfaceSecretaireAdministratif() {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -151,8 +158,8 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
 
 
-        final JPanel panelRegistreM = new JPanel();
-        final JPanel hautRegistreM = new JPanel();
+        panelRegistreM = new JPanel();
+        hautRegistreM = new JPanel();
         JPanel panelDeconnexion = new JPanel();
         panelActe = new JPanel();
         panelFicheSoin = new JPanel();
@@ -239,17 +246,17 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         hautRegistreM.add(date6);
 
         //recupère Les fiches de soins du XML
-        final LectureXML test = new LectureXML("dossiers.xml");
-        final DossierMedical dm1 = test.getDossier();
+        test = new LectureXML("dossiers.xml");
+        dm1 = test.getDossier();
         dossierMed = new JTextArea(dm1.toStringDM());
-        final JScrollPane sp = new JScrollPane(dossierMed);
+        sp = new JScrollPane(dossierMed);
         panelRegistreM.add(sp, BorderLayout.CENTER);
         panelRegistreM.add(hautRegistreM, BorderLayout.SOUTH);
 
         sp.setVisible(false);
 
         //titre registre Medical
-        final JLabel registreM = new JLabel("Registre Medical");
+        registreM = new JLabel("Registre Medical");
         panelRegistreM.add(registreM, BorderLayout.NORTH);
         registreM.setVisible(false);
         Font police1 = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 20);
@@ -257,43 +264,53 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         registreM.setHorizontalAlignment(JLabel.CENTER);
         registreM.setVerticalAlignment(JLabel.CENTER);
 
-        //Définition de l'action du bouton fichierMedical
-        fichierMedical.addActionListener(new ActionListener() {
+
+
+        //Définition de l'action du Deconnexion
+        deconnexion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au prochain conteneur de la pile
-                cl.show(affichage, listContent[3]);
-                if (fichierMedical.isSelected()) {
-
-                    sp.setVisible(true);
-                    registreM.setVisible(true);
-                    hautRegistreM.setVisible(true);
-
-                    registrePatient.setSelected(false);
-                    actemedical.setSelected(false);
-                    deconnexion.setSelected(false);
-                    registreMedecin.setSelected(false);
-
-                } else {
-                    sp.setVisible(false);
-                    registreM.setVisible(false);
-                    hautRegistreM.setVisible(false);
-
-                    registrePatient.setSelected(false);
-                    actemedical.setSelected(false);
-                    deconnexion.setSelected(false);
-                    registreMedecin.setSelected(false);
-                }
+                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
+                JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
+                cl.show(affichage, listContent[5]);
+                new Login().showLogin();
+                dispose();
             }
         });
-        //boutons registre médical
-        ficheDUnPatient.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au prochain conteneur de la pile
-                dossierMed.setForeground(Color.BLACK);
-                dossierMed.setText(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
+        //  PAS DE MODIF EN DESSOUS
 
-            }
-        });
+        //On définit le layout
+        affichage.setLayout(cl);
+
+        //On ajoute les cartes à la pile avec un nom pour les retrouver
+        affichage.add(panelAccueil, listContent[0]);
+        affichage.add(panelRegistrePatient, listContent[1]);
+        affichage.add(panelRegistreMedecin, listContent[2]);
+        affichage.add(panelRegistreM, listContent[3]);
+        affichage.add(panelFicheSoin, listContent[4]);
+        affichage.add(panelActe, listContent[5]);
+        affichage.add(panelDeconnexion, listContent[6]);
+
+        this.getContentPane().add(menuderoulant, BorderLayout.WEST);
+        this.getContentPane().add(affichage, BorderLayout.CENTER);
+        this.setVisible(true);
+
+        setPanelRegistrePatient();
+        setButtonRegistrePatient();
+        setPanelRegistreMedecin();
+        setButtonRegistreMedecin();
+        setPanelActe();
+        setButtonActe();
+        setRechercherPatient();
+        setAjouterMedecin();
+        setAjouterPatient();
+        setRechercherMedecin();
+        ImagePanelAccueil();
+        setRechercheCout();
+        setButtonFichierMedical();
+        setAllButtonRegistreMedical();
+    }
+
+    public void setAllButtonRegistreMedical(){
 
         dossierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -307,16 +324,15 @@ public class InterfaceSecretaireAdministratif extends JFrame {
         ficheDUnPatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
-                LectureXML test = new LectureXML("dossiers.xml");
+                LectureXML test = new LectureXML("dossiers2.xml");
                 DossierMedical dm1 = test.getDossier();
-                dossierMed = new JTextArea(dm1.toStringDM());
-                panelRegistreMedecin.add(dossierMed, BorderLayout.CENTER);
-                dossierMed.setVisible(false);
+                System.out.println(dm1.rechercherfichesDUnPatient(textFiche.getText()));
                 if (dm1.rechercherfichesDUnPatient(textFiche.getText()) == null) {
                     dossierMed.setForeground(Color.GRAY);
                     dossierMed.setText("Pas de correspondance...");
                 } else {
                     dossierMed.setForeground(Color.BLACK);
+                    System.out.println(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
                     dossierMed.setText(dm1.rechercherfichesDUnPatient(textFiche.getText()).toString());
                 }
 
@@ -327,9 +343,9 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 //Via cette instruction, on passe au prochain conteneur de la pile
                 dossierMed.setForeground(Color.BLACK);
-                Date d1= new Date(Integer.parseInt(date1.getText()),Integer.parseInt(date2.getText()),Integer.parseInt(date3.getText()));                
+                Date d1= new Date(Integer.parseInt(date1.getText()),Integer.parseInt(date2.getText()),Integer.parseInt(date3.getText()));
                 Date d2= new Date(Integer.parseInt(date4.getText()),Integer.parseInt(date5.getText()),Integer.parseInt(date6.getText()));
-                
+
                 dossierMed.setText(dm1.trierEntreDeuxDates(d1,d2, new ComparaisonFichesCouts()).toString());
 
             }
@@ -372,47 +388,37 @@ public class InterfaceSecretaireAdministratif extends JFrame {
 
             }
         });
+    }
 
-        //Définition de l'action du Deconnexion
-        deconnexion.addActionListener(new ActionListener() {
+    public void setButtonFichierMedical(){
+        //Définition de l'action du bouton fichierMedical
+        fichierMedical.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                //Via cette instruction, on passe au conteneur correspondant au nom fourni en paramètre
-                JOptionPane.showMessageDialog(null, "Déconnexion", "Vous êtes déconnecté", JOptionPane.INFORMATION_MESSAGE);
-                cl.show(affichage, listContent[5]);
-                new Login().showLogin();
-                dispose();
+                //Via cette instruction, on passe au prochain conteneur de la pile
+                cl.show(affichage, listContent[3]);
+                if (fichierMedical.isSelected()) {
+
+                    sp.setVisible(true);
+                    registreM.setVisible(true);
+                    hautRegistreM.setVisible(true);
+
+                    registrePatient.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    registreMedecin.setSelected(false);
+
+                } else {
+                    sp.setVisible(false);
+                    registreM.setVisible(false);
+                    hautRegistreM.setVisible(false);
+
+                    registrePatient.setSelected(false);
+                    actemedical.setSelected(false);
+                    deconnexion.setSelected(false);
+                    registreMedecin.setSelected(false);
+                }
             }
         });
-        //  PAS DE MODIF EN DESSOUS
-
-        //On définit le layout
-        affichage.setLayout(cl);
-
-        //On ajoute les cartes à la pile avec un nom pour les retrouver
-        affichage.add(panelAccueil, listContent[0]);
-        affichage.add(panelRegistrePatient, listContent[1]);
-        affichage.add(panelRegistreMedecin, listContent[2]);
-        affichage.add(panelRegistreM, listContent[3]);
-        affichage.add(panelFicheSoin, listContent[4]);
-        affichage.add(panelActe, listContent[5]);
-        affichage.add(panelDeconnexion, listContent[6]);
-
-        this.getContentPane().add(menuderoulant, BorderLayout.WEST);
-        this.getContentPane().add(affichage, BorderLayout.CENTER);
-        this.setVisible(true);
-
-        setPanelRegistrePatient();
-        setButtonRegistrePatient();
-        setPanelRegistreMedecin();
-        setButtonRegistreMedecin();
-        setPanelActe();
-        setButtonActe();
-        setRechercherPatient();
-        setAjouterMedecin();
-        setAjouterPatient();
-        setRechercherMedecin();
-        ImagePanelAccueil();
-        setRechercheCout();
     }
 
     public void setRechercheCout(){
@@ -1161,7 +1167,7 @@ public class InterfaceSecretaireAdministratif extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 Patient patient = new Patient(textNom2.getText(), textPrenom2.getText(), textAdresse2.getText(), textNumSecu2.getText(), new Date(Integer.parseInt(jour2.getText()), Integer.parseInt(mois2.getText()), Integer.parseInt(annee2.getText())));
                 EcrireXML.saveToXML("src/donnees/ListePatient.xml", "patient", patient);
-                JOptionPane.showMessageDialog(null, "Vous avez ajouté un medecin", "Ajout Patient", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vous avez ajouté un patient", "Ajout Patient", JOptionPane.INFORMATION_MESSAGE);
 
                 textNom2.setText(null);
                 textPrenom2.setText(null);

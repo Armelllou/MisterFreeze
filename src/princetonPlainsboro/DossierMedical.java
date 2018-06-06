@@ -1,5 +1,6 @@
 package princetonPlainsboro;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -9,7 +10,9 @@ public class DossierMedical {
     private List<Patient> lp;  //vérifier si lp etait la au debut
 
     public DossierMedical() {
-        fiches = new Vector<FicheDeSoins>();  // liste vide
+        fiches = new ArrayList<FicheDeSoins>();  // liste vide
+        lp = new ArrayList<Patient>() ;
+
     }
 
     public void ajouterFiche(FicheDeSoins fiche) {
@@ -108,8 +111,8 @@ public class DossierMedical {
     }
 
     public void trierDates() {
-        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
-        Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
+        List<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
+        List<FicheDeSoins> copieLocale = new ArrayList<FicheDeSoins>();
         while (!copieFiches.isEmpty()) {  //tant que c'est pas vide, on affiche la fiche minimale qu'on en date et on la supprime
             // on cherche la fiche de soins de date minimale :
             int imin = 0;
@@ -133,8 +136,8 @@ public class DossierMedical {
 
     // tri generique :
     public void trier(ComparaisonFiches c) {  //comparaisonfiche ne sera pas le parametre, le parametre sera comparaisonfichecout/date
-        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
-        Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
+       List<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
+       List<FicheDeSoins> copieLocale = new ArrayList<FicheDeSoins>();
 
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
@@ -159,8 +162,8 @@ public class DossierMedical {
     }
 
     public List<FicheDeSoins> trierEntreDeuxDates(Date d1, Date d2, ComparaisonFiches c) {
-        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
-        Vector<FicheDeSoins> copieLocale = new Vector<FicheDeSoins>();
+        List<FicheDeSoins> copieFiches = new ArrayList<FicheDeSoins>(fiches);
+        List<FicheDeSoins> copieLocale = new ArrayList<FicheDeSoins>();
 
         for (int i = 0; i < fiches.size(); i++) {
             int imin = 0;
@@ -216,12 +219,13 @@ public class DossierMedical {
 
     }
 
+
     //donne toutes les fiches de soins d'un patient
     public List<FicheDeSoins> rechercherfichesDUnPatient(String num) {
-        Vector<FicheDeSoins> lfs = new Vector<FicheDeSoins>();
-        for (int i = 0; i < fiches.size(); i++) {
-            if (num.equals(fiches.get(i).getPatient().getNumSecu())) {
-                lfs.add(fiches.get(i));
+        List<FicheDeSoins> lfs = new ArrayList<FicheDeSoins>();
+        for (FicheDeSoins fiche : lfs) {
+            if (fiche.getPatient().getNumSecu().equals(num)) {
+                lfs.add(fiche);
             }
         }
         if (lfs.isEmpty()) {
@@ -245,14 +249,4 @@ public class DossierMedical {
         }
     }
 
-    /*
-    public Patient rechercher(String nom, String prenom, Date dateNaissance, int numSecu) {
-        int i = 0;
-        Patient p = new Patient(nom, prenom, dateNaissance, numSecu);
-        while (lp.get(i).getNom() != nom && lp.get(i).getPrenom() != prenom) {
-            i++;
-        }
-        p = lp.get(i);
-        return p;
-    }*/
 }

@@ -43,4 +43,22 @@
             <adresse>5 rue de l'ancienne gare</adresse>
         </patient>
     </patient>
+<patient>
+        <patient>
+            <nom>GB</nom>
+            <prenom>JL</prenom>
+            <numeroSecurite>123457890875</numeroSecurite>
+            <dateNaissance>2000-4-29</dateNaissance>
+            <adresse>25 chemin du shindeiru</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>Salam</nom>
+            <prenom>Alekoum</prenom>
+            <numeroSecurite>1111111111111111</numeroSecurite>
+            <dateNaissance>1934-12-12</dateNaissance>
+            <adresse>76 rue du salami</adresse>
+        </patient>
+    </patient>
 </dossier>

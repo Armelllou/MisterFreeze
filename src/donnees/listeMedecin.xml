@@ -70,4 +70,13 @@
             <mdp>mdpbeta</mdp>
         </medecin>
     </medecin>
+<medecin>
+        <medecin>
+            <nom>Peto</nom>
+            <prenom>Sophie</prenom>
+            <specialite>Endoctrinologie</specialite>
+            <numeroTelephone>0475678798</numeroTelephone>
+            <mdp>peto</mdp>
+        </medecin>
+    </medecin>
 </dossier>
