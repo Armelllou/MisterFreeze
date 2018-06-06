@@ -3,6 +3,7 @@ package princetonPlainsboro.interfacemedical;
 import princetonPlainsboro.Constants;
 import princetonPlainsboro.LectureXML;
 import princetonPlainsboro.ListeMedecin;
+import princetonPlainsboro.Medecin;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -122,11 +123,12 @@ public class PanelRegistreMedecinMedical {
             public void actionPerformed(ActionEvent event) {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
-                System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()));
-               // if (textPrenom.getText() != null && textNom.getText() != null) {
-                    textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()).getSpecialite());
-                    textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()).getNumeroTel());
-                //}
+                Medecin medecin = listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText());
+                System.out.println(medecin);
+                if (medecin != null) {
+                    textSpecialite.setText(medecin.getSpecialite());
+                    textTelephone.setText(medecin.getNumeroTel());
+                }
             }
         });
     }
