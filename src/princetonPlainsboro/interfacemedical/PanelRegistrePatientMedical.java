@@ -21,6 +21,7 @@ public class PanelRegistrePatientMedical {
 
 
     PanelRegistrePatientMedical(JPanel panelRegistrePatient) {
+        panelRegistrePatient.setLayout(new FlowLayout());
         JLabel rP = new JLabel();
         JLabel recherche = new JLabel();
         JLabel numSec = new JLabel();

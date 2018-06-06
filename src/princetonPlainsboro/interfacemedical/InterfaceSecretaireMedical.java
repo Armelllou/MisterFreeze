@@ -17,22 +17,11 @@ import java.util.List;
 
 public class InterfaceSecretaireMedical extends JFrame {
 
-    private Font police = new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16);
     private String[] listContent = {"ACCUEIL", "REGISTRE_PATIENT", "REGISTRE_MEDECIN", "FICHIER_MEDICAL", "CREER_UNE_FICHE", "ACTE_MEDICAL", "DECONNEXION"};
-
-    private JToggleButton actemedical;
-    private JToggleButton ficheSoin;
-    private JToggleButton registrePatient;
-    private JToggleButton registreMedecin;
     private JToggleButton deconnexion;
-    private JToggleButton fichierMedical;
-
     private JLabel picLabel;
-
-
     private CardLayout cl = new CardLayout();
     private JPanel affichage = new JPanel();
-
     private List<JToggleButton> buttons;
 
     public InterfaceSecretaireMedical() {
@@ -41,11 +30,12 @@ public class InterfaceSecretaireMedical extends JFrame {
         this.setLocationRelativeTo(null);
         this.setTitle("Andromeda");
 
-        //panel
+        // Panel haut
         JPanel haut = new JPanel();
         haut.setLayout(new GridLayout(8, 1));
         haut.setBackground(Color.PINK);
 
+        // Panel bas
         JPanel bas = new JPanel();
         bas.setLayout(new BorderLayout());
         bas.setBackground(Color.PINK);
@@ -56,16 +46,12 @@ public class InterfaceSecretaireMedical extends JFrame {
         menuderoulant.add(haut, BorderLayout.CENTER);
         menuderoulant.add(bas, BorderLayout.NORTH);
 
-        //On cree trois conteneurs de couleurs differentes
+        // Les différents panels
         JPanel panelRegistrePatient = new JPanel();
-        panelRegistrePatient.setLayout(new FlowLayout());
         JPanel panelRegistreMedecin = new JPanel();
-        panelRegistreMedecin.setLayout(new BorderLayout());
         JPanel panelAccueil = new JPanel();
         panelAccueil.setLayout(new BorderLayout());
         JPanel panelDossierMedical = new JPanel();
-        panelDossierMedical.setLayout(new BorderLayout());
-
         JPanel panelDeconnexion = new JPanel();
         JPanel panelActe = new JPanel();
         JPanel panelFicheSoin = new JPanel();
@@ -74,11 +60,11 @@ public class InterfaceSecretaireMedical extends JFrame {
         imagePanel("src/princetonPlainsboro/Bienvenue.png", panelAccueil, 1000, 700);
 
         //creation des boutons
-        actemedical = new JToggleButton("Acte Medical");
-        fichierMedical = new JToggleButton("Fichier Medical");
-        ficheSoin = new JToggleButton("Créer une fiche de soin");
-        registrePatient = new JToggleButton("Registre Patient");
-        registreMedecin = new JToggleButton("Registre Medecin");
+        JToggleButton actemedical = new JToggleButton("Acte Medical");
+        JToggleButton fichierMedical = new JToggleButton("Fichier Medical");
+        JToggleButton ficheSoin = new JToggleButton("Créer une fiche de soin");
+        JToggleButton registrePatient = new JToggleButton("Registre Patient");
+        JToggleButton registreMedecin = new JToggleButton("Registre Medecin");
         deconnexion = new JToggleButton("Deconnecter");
 
         buttons = new ArrayList<JToggleButton>();
@@ -154,7 +140,7 @@ public class InterfaceSecretaireMedical extends JFrame {
 
     private void setSideButton(JPanel panel, JToggleButton button) {
         panel.add(button, BorderLayout.CENTER);
-        button.setFont(police);
+        button.setFont(new Font(Constants.TAHOMA.getValue(), Font.BOLD, 16));
         button.setPreferredSize(new Dimension(230, 50));
     }
 

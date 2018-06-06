@@ -21,6 +21,8 @@ public class PanelRegistreMedecinMedical {
     private JButton validerRechercheM;
 
     PanelRegistreMedecinMedical(JPanel panelRegistreMedecin) {
+        panelRegistreMedecin.setLayout(new BorderLayout());
+
         JLabel rM = new JLabel();
         JLabel rechercheM = new JLabel();
         JLabel nomM = new JLabel();

@@ -10,6 +10,8 @@ import java.awt.*;
 public class PanelDossierMedical {
 
     PanelDossierMedical(JPanel panelDossierMedical) {
+        panelDossierMedical.setLayout(new BorderLayout());
+
         //recupère Les fiches de soins du XML
         LectureXML test = new LectureXML("dossiers.xml");
         DossierMedical dm1 = test.getDossier();
