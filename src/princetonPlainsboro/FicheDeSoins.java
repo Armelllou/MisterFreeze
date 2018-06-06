@@ -82,7 +82,6 @@ public class FicheDeSoins implements Printable {
 
     }
 
-    @Override
     public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
         if (pageIndex > 0) {
             return NO_SUCH_PAGE;
