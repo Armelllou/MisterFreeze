@@ -37,22 +37,4 @@
             <mdp>peto</mdp>
         </medecin>
     </medecin>
-<medecin>
-        <medecin>
-            <nom>nom6</nom>
-            <prenom>prenom6</prenom>
-            <specialite>cancerologie</specialite>
-            <numeroTelephone>0478746754</numeroTelephone>
-            <mdp>mdp6</mdp>
-        </medecin>
-    </medecin>
-<medecin>
-        <medecin>
-            <nom>nom7</nom>
-            <prenom>prenom7</prenom>
-            <specialite>general</specialite>
-            <numeroTelephone>numtel7</numeroTelephone>
-            <mdp>mdp7</mdp>
-        </medecin>
-    </medecin>
 </dossier>

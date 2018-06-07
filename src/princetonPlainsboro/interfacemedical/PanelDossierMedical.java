@@ -2,12 +2,20 @@ package princetonPlainsboro.interfacemedical;
 
 import princetonPlainsboro.*;
 
+import javax.print.*;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.Copies;
+import javax.print.event.PrintJobAdapter;
+import javax.print.event.PrintJobEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -53,16 +61,33 @@ public class PanelDossierMedical {
         table = new JTable();
 
 
+        dossierMedical = new JButton("Dossier Médical");
         listeMedecin = new JButton("Liste des médecins");
         listePatient = new JButton("Liste des patients");
+        trieDate = new JButton("Trier les fiches par dates");
+        trieCout = new JButton("Trier les fiches par cout");
+        ficheDUnPatient = new JButton("Afficher le dossier d'un patient via numéro Securite social");
+        imprimer = new JButton("Imprimer");
+        textFiche = new JTextField();
 
-
+        dossierMedical.setPreferredSize(new Dimension(160, 25));
         listeMedecin.setPreferredSize(new Dimension(160, 25));
         listePatient.setPreferredSize(new Dimension(160, 25));
+        trieDate.setPreferredSize(new Dimension(180, 25));
+        trieCout.setPreferredSize(new Dimension(160, 25));
+        textFiche.setPreferredSize(new Dimension(60, 25));
+        imprimer.setPreferredSize(new Dimension(100, 25));
+        ficheDUnPatient.setPreferredSize(new Dimension(400, 25));
 
 
+        hautRegistreM.add(dossierMedical);
         hautRegistreM.add(listeMedecin);
         hautRegistreM.add(listePatient);
+        hautRegistreM.add(trieDate);
+        hautRegistreM.add(trieCout);
+        hautRegistreM.add(ficheDUnPatient);
+        hautRegistreM.add(textFiche);
+        hautRegistreM.add(imprimer);
 
 
         //recupère Les fiches de soins du XML
@@ -88,6 +113,114 @@ public class PanelDossierMedical {
 
     public void setAllButtonRegistreMedical() {
 
+        dossierMedical.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                dossierMed.setForeground(Color.BLACK);
+                dossierMed.setText(dm1.toStringDM());
+
+            }
+        });
+
+        ficheDUnPatient.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                LectureXML test = new LectureXML("dossiers.xml");
+                DossierMedical dm = test.getDossier();
+                List<FicheDeSoins> fiches = dm.rechercherfichesDUnPatient(textFiche.getText());
+                System.out.println(dm.rechercherPatientViaSecu(textFiche.getText()));
+                System.out.println(textFiche.getText());
+
+                if (fiches.isEmpty()) {
+                    dossierMed.setText("Pas de correspondance...");
+                } else {
+                    Set<Patient> patients = new HashSet<Patient>();
+                    Set<FicheDeSoins> fiche = new HashSet<FicheDeSoins>();
+                    StringBuilder builder = new StringBuilder("Dossier du patient : " + patients + "\n");
+                    for (FicheDeSoins fiche1 : fiches) {
+                        patients.add(fiche1.getPatient());
+                    }
+                    for (Patient patient : patients) {
+                        builder.append(patient + "\n");
+                    }
+                    for (FicheDeSoins fiche1 : fiches) {
+                        fiche.add(fiche1);
+                    }
+                    for (FicheDeSoins fiche1 : fiches) {
+                        builder.append("\n" + fiche1);
+                    }
+
+                    dossierMed.setText(builder.toString());
+                }
+            }
+        });
+
+        imprimer.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                String defaultPrinter = PrintServiceLookup.lookupDefaultPrintService().getName();
+                System.out.println("Default printer: " + defaultPrinter);
+                PrintService service = PrintServiceLookup.lookupDefaultPrintService();
+
+                // prints the famous hello world! plus a form feed
+                InputStream is = new ByteArrayInputStream(dossierMed.getText().getBytes());
+
+                PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+                pras.add(new Copies(1));
+
+                DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+                Doc doc = new SimpleDoc(is, flavor, null);
+                DocPrintJob job = service.createPrintJob();
+
+                PrintJobWatcher pjw = new PrintJobWatcher(job);
+                try {
+                    job.print(doc, pras);
+                } catch (PrintException e) {
+                    e.printStackTrace();
+                }
+                pjw.waitForDone();
+                //is.close();
+            }
+
+            class PrintJobWatcher {
+                boolean done = false;
+
+                PrintJobWatcher(DocPrintJob job) {
+                    job.addPrintJobListener(new PrintJobAdapter() {
+                        public void printJobCanceled(PrintJobEvent pje) {
+                            allDone();
+                        }
+
+                        public void printJobCompleted(PrintJobEvent pje) {
+                            allDone();
+                        }
+
+                        public void printJobFailed(PrintJobEvent pje) {
+                            allDone();
+                        }
+
+                        public void printJobNoMoreEvents(PrintJobEvent pje) {
+                            allDone();
+                        }
+
+                        void allDone() {
+                            synchronized (PrintJobWatcher.this) {
+                                done = true;
+                                System.out.println("Printing done ...");
+                                PrintJobWatcher.this.notify();
+                            }
+                        }
+                    });
+                }
+
+                public synchronized void waitForDone() {
+                    try {
+                        while (!done) {
+                            wait();
+                        }
+                    } catch (InterruptedException e) {
+                    }
+                }
+            }
+        });
+
 
         listePatient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -107,8 +240,27 @@ public class PanelDossierMedical {
             }
         });
 
+        trieDate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+                dossierMed.setForeground(Color.BLACK);
+                dm1.trierDates();
+                dossierMed.setText(dm1.toStringDM());
 
+            }
+        });
+
+        trieCout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                //Via cette instruction, on passe au prochain conteneur de la pile
+                dossierMed.setForeground(Color.BLACK);
+                dm1.trier(new ComparaisonFichesCouts());
+                dossierMed.setText(dm1.toStringDM());
+
+            }
+        });
     }
-}
 
+
+}
 

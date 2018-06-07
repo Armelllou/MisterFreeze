@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dossier>
+    <medecin>
+        <nom>pat</nom>
+        <prenom>bol</prenom>
+        <specialite>cardio</specialite>
+    </medecin>
+    <medecin>
+        <nom>pat</nom>
+        <prenom>bol</prenom>
+        <specialite>cardio</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bolo</nom>
+        <prenom>Pat</prenom>
+        <specialite>Beurk</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bolo</nom>
+        <prenom>Pat</prenom>
+        <specialite>Beurk</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bolo</nom>
+        <prenom>Pat</prenom>
+        <specialite>Beurk</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bolo</nom>
+        <prenom>Pat</prenom>
+        <specialite>Beurk</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bernard</nom>
+        <prenom>Armelle</prenom>
+        <specialite>Cancero</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bernard</nom>
+        <prenom>Armelle</prenom>
+        <specialite>Cancero</specialite>
+    </medecin>
+    <medecin>
+        <nom>Bernard</nom>
+        <prenom>Armelle</prenom>
+        <specialite>cardiologie</specialite>
+        <numeroTelephone>076546575646</numeroTelephone>
+    </medecin>
+    <patient>
+        <nom>salord</nom>
+        <prenom>florian</prenom>
+        <dateNaissance>14031996</dateNaissance>
+        <numeroSecurite>1728662</numeroSecurite>
+    </patient>
+<ficheDeSoins>
+        <date>1111-1-11</date>
+        <medecin>
+            <nom>jl</nom>
+            <prenom>AS</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>ZE</nom>
+            <prenom>QS</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>11-11-11</date>
+        <medecin>
+            <nom>1</nom>
+            <prenom>1</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>1</nom>
+            <prenom>1</prenom>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>autres actes de specialite</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait A</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait B</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2010-12-12</date>
+        <medecin>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <specialite>blabla</specialite>
+        </medecin>
+        <patient>
+            <nom>SALORD</nom>
+            <prenom>FLORIAN</prenom>
+        </patient>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>forfait A</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>1234-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Henfayitte</nom>
+            <Adresse/>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2010-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Henfayitte</nom>
+            <Adresse/>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2012-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Henfayitte</nom>
+            <prenom>Melusine</prenom>
+            <numeroSecuriteSociale>12345</numeroSecuriteSociale>
+            <Adresse/>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>1728662</numeroSecuriteSociale>
+            <dateNaissance>1996-3-14</dateNaissance>
+            <adresse>adresse1</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>1728662</numeroSecuriteSociale>
+            <dateNaissance>1995-4-15</dateNaissance>
+            <adresse>adresse1</adresse>
+        </patient>
+    </patient>
+<patient>
+        <patient>
+            <nom>BERNARD</nom>
+            <prenom>ARMELLE</prenom>
+            <numeroSecuriteSociale>1728662</numeroSecuriteSociale>
+            <dateNaissance>1995-4-15</dateNaissance>
+            <adresse>adresse1</adresse>
+        </patient>
+    </patient>
+<medecin>
+        <medecin>
+            <nom/>
+            <prenom/>
+            <specialite/>
+            <numeroTelephone/>
+            <mdp>mdp</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>ba</nom>
+            <prenom>bo</prenom>
+            <specialite>bi</specialite>
+            <numeroTelephone>01020304</numeroTelephone>
+            <mdp>mdp21</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>ba</nom>
+            <prenom>bo</prenom>
+            <specialite>bi</specialite>
+            <numeroTelephone>01020304</numeroTelephone>
+            <mdp>mdp21</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <specialite>Genetique</specialite>
+            <numeroTelephone>09876543211</numeroTelephone>
+            <mdp>sophie1</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <specialite>Genetique</specialite>
+            <numeroTelephone>09876543211</numeroTelephone>
+            <mdp>sophie1</mdp>
+        </medecin>
+    </medecin>
+<medecin>
+        <medecin>
+            <nom>Provillard</nom>
+            <prenom>Sophie</prenom>
+            <specialite>genetique</specialite>
+            <numeroTelephone>0988776655</numeroTelephone>
+            <mdp>sophie1</mdp>
+        </medecin>
+    </medecin>
+<ficheDeSoins>
+        <date>2019-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2019-12-12</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2016-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2016-12-12</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+        <acte>
+            <code>actes d'echographie, de doppler</code>
+            <coef>2</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2019-12-12</date>
+        <medecin>
+            <nom>nom1</nom>
+            <prenom>prenom1</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp1</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2019-12-12</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>11</coef>
+        </acte>
+        <acte>
+            <code>consultation cardiologie</code>
+            <coef>1</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2019-11-11</date>
+        <medecin>
+            <nom>nom2</nom>
+            <prenom>prenom2</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp2</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2019-11-11</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+        </acte>
+        <acte>
+            <code>forfait pediatrique</code>
+            <coef>2</coef>
+        </acte>
+    </ficheDeSoins>
+<ficheDeSoins>
+        <date>2019-11-12</date>
+        <medecin>
+            <nom>nom2</nom>
+            <prenom>prenom2</prenom>
+            <specialite>cardio</specialite>
+            <numeroTelephone>0123456788</numeroTelephone>
+            <mdp>mdp2</mdp>
+        </medecin>
+        <patient>
+            <nom>Pat</nom>
+            <prenom>bolo</prenom>
+            <numeroSecurite>333</numeroSecurite>
+            <dateNaissance>2019-11-12</dateNaissance>
+            <adresse>adressebeta</adresse>
+        </patient>
+        <acte>
+            <code>consultation au cabinet</code>
+            <coef>1</coef>
+            <type>thérapeutique</type>
+        </acte>
+    </ficheDeSoins>
+</dossier>

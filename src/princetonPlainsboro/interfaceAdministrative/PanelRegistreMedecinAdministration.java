@@ -1,6 +1,5 @@
 package princetonPlainsboro.interfaceAdministrative;
 
-import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
 import princetonPlainsboro.*;
 import princetonPlainsboro.interfacemedical.PanelCompute;
 
@@ -198,10 +197,10 @@ public class PanelRegistreMedecinAdministration {
                 LectureXML test1 = new LectureXML("listeMedecin.xml");
                 ListeMedecin listeMedecin = test1.getListeMedecin();
                 System.out.println(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()));
-                if (textPrenom.getText() != null && textNom.getText() != null) {
+                //if (textPrenom.getText() != null && textNom.getText() != null) {
                     textSpecialite.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()).getSpecialite());
                     textTelephone.setText(listeMedecin.rechercherMedecin(textNomM.getText(), textPrenomM.getText()).getNumeroTel());
-                }
+                //}
             }
         });
     }

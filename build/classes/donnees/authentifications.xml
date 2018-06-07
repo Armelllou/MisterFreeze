@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<root>
+    <user>
+        <id>id1</id>
+        <mdp>mdp1</mdp>
+    </user>
+    
+    <user>
+        <id>id2</id>
+        <mdp>mdp2</mdp>
+    </user>
+    
+    <user>
+        <id>id3</id>
+        <mdp>mdp3</mdp>
+    </user>
+    
+    <user>
+        <id>id4</id>
+        <mdp>mdp4</mdp>
+    </user>
+    
+    <user>
+        <id>id5</id>
+        <mdp>mdp5</mdp>
+    </user>
+    
+</root>
